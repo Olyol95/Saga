@@ -43,6 +43,10 @@ public class GeneralMessages {
 	public static String invalidPlayer(String playerName) {
 		return Colour.negative + "Player " + playerName + " doesn't exist.";
 	}
+	
+	public static String invalidParameter() {
+		return Colour.negative + "Invalid parameters.";
+	}
 
 	public static String nameFromArg(String name) {
 		return name.replaceAll(SPACE_SYMBOL, " ");

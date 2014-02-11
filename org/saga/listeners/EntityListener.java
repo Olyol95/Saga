@@ -126,7 +126,7 @@ public class EntityListener implements Listener {
 
 		// Limit player fireball destruction:
 		if (event.getEntity() instanceof Fireball
-				&& ((Fireball) event.getEntity()).getShooter() instanceof Player) {
+				&& ((Projectile) event.getEntity()).getShooter() instanceof Player) {
 
 			int remaining = (int) (GeneralConfiguration.config()
 					.getPlayerFireballDestruction() * event.blockList().size());

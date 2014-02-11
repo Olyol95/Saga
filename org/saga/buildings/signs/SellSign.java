@@ -6,6 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.block.Sign;
 import org.saga.SagaLogger;
 import org.saga.buildings.Building;
+import org.saga.buildings.TradingPost;
 import org.saga.buildings.Warehouse;
 import org.saga.buildings.production.SagaItem;
 import org.saga.config.EconomyConfiguration;
@@ -90,7 +91,10 @@ public class SellSign extends BuildingSign {
 			String fourthLine, Building building) {
 
 		super(sign, SIGN_NAME, secondLine, thirdLine, fourthLine, building);
-
+		TradingPost post = (TradingPost) building;
+		if (post.isUnlimited()) {
+			coins = 100.0;
+		}
 		coins = 0.0;
 		pending = 0.0;
 
@@ -280,12 +284,14 @@ public class SellSign extends BuildingSign {
 	@Override
 	public SignStatus getStatus() {
 
+		TradingPost building = (TradingPost) super.getBuilding();
+		
 		if (maxCoins == null || item.getType() == null
 				|| item.getType() == Material.AIR || item.getData() == null
 				|| item.getAmount() == null || price == null)
 			return SignStatus.INVALIDATED;
 
-		if (coins <= 0 || !EconomyConfiguration.config().isEnabled())
+		if (!building.isUnlimited() && coins <= 0 || !EconomyConfiguration.config().isEnabled())
 			return SignStatus.DISABLED;
 
 		return SignStatus.ENABLED;
@@ -364,15 +370,21 @@ public class SellSign extends BuildingSign {
 
 		SagaItem request = new SagaItem(item);
 
-		// Available coins:
-		if (coins == 0.0) {
-			sagaPlayer.message(EconomyMessages.insufCoins());
-			return;
-		}
+		TradingPost building = (TradingPost) super.getBuilding();
+		
+		if (!building.isUnlimited()) {
+		
+			// Available coins:
+			if (coins == 0.0) {
+				sagaPlayer.message(EconomyMessages.insufCoins());
+				return;
+			}
 
-		// Trim amount based on coins:
-		if (request.getAmount() * price > coins)
-			request.setAmount(coins / price);
+			// Trim amount based on coins:
+			if (request.getAmount() * price > coins)
+				request.setAmount(coins / price);
+			
+		}
 
 		// Available items:
 		SagaItem takenItem = sagaPlayer.takeItem(request);
@@ -386,7 +398,9 @@ public class SellSign extends BuildingSign {
 		pending += takenItem.getAmount();
 		Double cost = price * takenItem.getAmount();
 		EconomyDependency.addCoins(sagaPlayer, cost);
-		coins -= cost;
+		if (!building.isUnlimited()) {
+			coins -= cost;
+		}
 
 		// Inform:
 		sagaPlayer.message(EconomyMessages.sold(item.getType(), takenItem

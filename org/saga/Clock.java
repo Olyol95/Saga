@@ -98,6 +98,12 @@ public class Clock implements Runnable {
 
 			secondsCycle = 0;
 			minutesCycle++;
+			
+			if (minutesCycle == 30) {
+				
+				System.gc();
+				
+			}
 
 			ArrayList<MinuteTicker> minute = new ArrayList<Clock.MinuteTicker>(
 					this.minutes);

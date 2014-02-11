@@ -1,8 +1,11 @@
 package org.saga.listeners.events;
 
+import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.hanging.HangingBreakByEntityEvent;
 import org.saga.config.FactionConfiguration;
 import org.saga.dependencies.PermissionsDependency;
 import org.saga.listeners.events.SagaBuildEvent.BuildOverride;
@@ -44,6 +47,14 @@ public class SagaEventHandler {
 				if (PermissionsDependency.hasPermission(sagaPlayer,
 						PermissionsDependency.WILDERNESS_DESTROY_PERMISSION
 								+ "." + block.getTypeId()))
+					event.addBuildOverride(BuildOverride.WILDERNESS_SPECIFIC_BLOCK_ALLOW);
+			}
+			
+			else if (event.getWrappedEvent() instanceof HangingBreakByEntityEvent) {
+				Entity block = event.getEntity();
+				if (PermissionsDependency.hasPermission(sagaPlayer,
+						PermissionsDependency.WILDERNESS_DESTROY_PERMISSION
+								+ "." + Material.ITEM_FRAME.getId()))
 					event.addBuildOverride(BuildOverride.WILDERNESS_SPECIFIC_BLOCK_ALLOW);
 			}
 

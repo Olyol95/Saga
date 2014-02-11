@@ -3,6 +3,9 @@ package org.saga.listeners;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.ItemFrame;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -12,6 +15,11 @@ import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.block.BlockSpreadEvent;
 import org.bukkit.event.block.SignChangeEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.hanging.HangingBreakByEntityEvent;
+import org.bukkit.event.hanging.HangingEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.saga.Saga;
 import org.saga.config.GeneralConfiguration;
 import org.saga.config.SettlementConfiguration;
@@ -167,6 +175,70 @@ public class BlockListener implements Listener {
 			event.setCancelled(true);
 
 	}
+	
+	@EventHandler(priority = EventPriority.NORMAL)
+	public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
+		
+		if (event.getEntity() instanceof ItemFrame) {
+			
+			Entity entity = event.getDamager();
+			
+			Player player = (Player) entity;
+			
+			// Saga disabled:
+			if (GeneralConfiguration.isDisabled(player.getLocation()
+					.getWorld()))
+				return;
+
+			// Cancel build on failure:
+			SagaPlayer sagaPlayer = Saga.plugin().getLoadedPlayer(
+					player.getName());
+			if (sagaPlayer == null) {
+				event.setCancelled(true);
+				return;
+			}
+
+			// Get saga chunk:
+			SagaChunk sagaChunk = BundleManager.manager().getSagaChunk(
+					event.getEntity().getLocation());
+
+			// Build event:
+			SagaBuildEvent buildEvent = new SagaBuildEvent(event, sagaPlayer,
+					sagaChunk);
+			SagaEventHandler.handleBuild(buildEvent);
+			if (buildEvent.isCancelled())
+				return;
+
+		}
+		
+	}
+	
+	@EventHandler(priority = EventPriority.NORMAL)
+	public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
+		
+		if (event.getRightClicked() instanceof ItemFrame) {
+			
+			Player player = event.getPlayer();
+			
+			// Cancel build on failure:
+			SagaPlayer sagaPlayer = Saga.plugin().getLoadedPlayer(player.getName());
+			if (sagaPlayer == null) {
+				event.setCancelled(true);
+				return;
+			}
+
+			// Get saga chunk:
+			SagaChunk sagaChunk = BundleManager.manager().getSagaChunk(event.getRightClicked().getLocation());
+
+			// Build event:
+			SagaBuildEvent buildEvent = new SagaBuildEvent(event, sagaPlayer,sagaChunk);
+			SagaEventHandler.handleBuild(buildEvent);
+			if (buildEvent.isCancelled())
+				return;
+			
+		}
+		
+	}
 
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void onBlockFromTo(BlockFromToEvent event) {
@@ -183,6 +255,43 @@ public class BlockListener implements Listener {
 
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void onBlockBurn(BlockBurnEvent event) {
+	}
+	
+	@EventHandler(priority = EventPriority.NORMAL)
+	public void onHangingBreakByEntityEvent(HangingBreakByEntityEvent event) {
+		
+		if (event.getEntity() instanceof ItemFrame) {
+			
+			Entity entity = event.getRemover();
+			
+			Player player = (Player) entity;
+			
+			// Saga disabled:
+			if (GeneralConfiguration.isDisabled(player.getLocation()
+					.getWorld()))
+				return;
+
+			// Cancel build on failure:
+			SagaPlayer sagaPlayer = Saga.plugin().getLoadedPlayer(
+					player.getName());
+			if (sagaPlayer == null) {
+				event.setCancelled(true);
+				return;
+			}
+
+			// Get saga chunk:
+			SagaChunk sagaChunk = BundleManager.manager().getSagaChunk(
+					event.getEntity().getLocation());
+
+			// Build event:
+			SagaBuildEvent buildEvent = new SagaBuildEvent(event, sagaPlayer,
+					sagaChunk);
+			SagaEventHandler.handleBuild(buildEvent);
+			if (buildEvent.isCancelled())
+				return;
+
+		}
+		
 	}
 
 	// Util:

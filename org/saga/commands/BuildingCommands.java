@@ -13,6 +13,7 @@ import org.saga.buildings.Building;
 import org.saga.buildings.CrumbleArena;
 import org.saga.buildings.Home;
 import org.saga.buildings.TownSquare;
+import org.saga.buildings.TradingPost;
 import org.saga.buildings.storage.StorageArea;
 import org.saga.config.BuildingConfiguration;
 import org.saga.exceptions.InvalidBuildingException;
@@ -274,6 +275,65 @@ public class BuildingCommands {
 		// Effect:
 		SettlementEffectHandler.playStoreAreaCreate(sagaPlayer, newStoreArea);
 
+	}
+	
+	@Command(aliases = { "bsetunlimited"}, usage = "", flags = "", desc = "Make the trading post unlimited.", min = 1, max = 1)
+	@CommandPermissions({ "saga.admin.building.unlimited" })
+	public static void setUnlimited(CommandContext args, Saga plugin,
+			SagaPlayer sagaPlayer) {
+		
+		// Retrieve Saga chunk:
+		SagaChunk selChunk = sagaPlayer.getSagaChunk();
+		if (selChunk == null) {
+			sagaPlayer.message(SettlementMessages.chunkNotClaimed());
+			return;
+		}
+
+		// Retrieve building:
+		Building selBuilding = selChunk.getBuilding();
+		if (selBuilding == null) {
+			sagaPlayer.message(BuildingMessages.noBuildingSet());
+			return;
+		}
+
+		// Permission:
+		Bundle selBundle = selBuilding.getChunkBundle();
+		if (!selBundle.hasPermission(sagaPlayer,
+				SettlementPermission.TOGGLE_UNLIMITED_STORAGE)) {
+			sagaPlayer.message(GeneralMessages.noPermission(selBundle));
+			return;
+		}
+
+		try {
+			
+			TradingPost post = (TradingPost) selBuilding;
+			
+			if(args.getString(0).equals("true")) {
+				
+				post.setUnlimited(true);
+				sagaPlayer.message(BuildingMessages.unlimitedAdded(selBuilding));
+				
+			} else if (args.getString(0).equals("false")) {
+				
+				post.setUnlimited(false);
+				sagaPlayer.message(BuildingMessages.unlimitedRemoved(selBuilding));
+				
+			} else {
+				
+				sagaPlayer.message(GeneralMessages.invalidParameter());
+				return;
+				
+			}
+			
+		} catch (ClassCastException e) {
+			
+			sagaPlayer.message(BuildingMessages.invalidBuilding(selBuilding.getName()));
+			
+		}
+
+		// Inform:
+		sagaPlayer.message(BuildingMessages.storeAreaAdded(selBuilding));
+		
 	}
 
 	@Command(aliases = { "bremovestorage", "bremovestore" }, usage = "", flags = "", desc = "Remove a storage area from the building.", min = 0, max = 0)

@@ -5,12 +5,16 @@ import java.util.PriorityQueue;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.entity.Entity;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event.Result;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.block.SignChangeEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.hanging.HangingBreakByEntityEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.saga.player.SagaPlayer;
@@ -37,6 +41,7 @@ public class SagaBuildEvent {
 	 * Block.
 	 */
 	private Block block;
+	private Entity entity;
 
 	/**
 	 * Build override.
@@ -59,6 +64,23 @@ public class SagaBuildEvent {
 		this.block = event.getBlock();
 
 	}
+	
+	// Initialise:
+		/**
+		 * Sets event.
+		 * 
+		 * @param event
+		 *            event
+		 */
+		public SagaBuildEvent(HangingBreakByEntityEvent event, SagaPlayer sagaPlayer,
+				SagaChunk sagaChunk) {
+
+			this.event = event;
+			this.sagaPlayer = sagaPlayer;
+			this.sagaChunk = sagaChunk;
+			this.entity = event.getEntity();
+
+		}
 
 	/**
 	 * Sets event.
@@ -106,6 +128,26 @@ public class SagaBuildEvent {
 		this.sagaChunk = sagaChunk;
 		this.block = event.getBlock();
 
+	}
+
+	public SagaBuildEvent(EntityDamageByEntityEvent event2,
+			SagaPlayer sagaPlayer2, SagaChunk sagaChunk2) {
+		
+		this.event = event2;
+		this.sagaPlayer = sagaPlayer2;
+		this.sagaChunk = sagaChunk2;
+		this.entity = event2.getEntity();
+		
+	}
+
+	public SagaBuildEvent(PlayerInteractEntityEvent event2,
+			SagaPlayer sagaPlayer2, SagaChunk sagaChunk2) {
+		
+		this.event = event2;
+		this.sagaPlayer = sagaPlayer2;
+		this.sagaChunk = sagaChunk2;
+		this.entity = event2.getRightClicked();
+		
 	}
 
 	// Modify:
@@ -320,6 +362,12 @@ public class SagaBuildEvent {
 			return allow;
 		}
 
+	}
+
+	public Entity getEntity() {
+		
+		return entity;
+		
 	}
 
 }

@@ -684,7 +684,7 @@ public class SagaChunk {
 				storage = true;
 				bld.handleItemStorageOpen(event, sagaPlayer);
 
-			}
+			} 
 
 		}
 

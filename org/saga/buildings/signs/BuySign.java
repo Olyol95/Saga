@@ -7,6 +7,7 @@ import org.bukkit.block.Sign;
 import org.bukkit.inventory.ItemStack;
 import org.saga.SagaLogger;
 import org.saga.buildings.Building;
+import org.saga.buildings.TradingPost;
 import org.saga.buildings.Warehouse;
 import org.saga.buildings.production.SagaItem;
 import org.saga.config.EconomyConfiguration;
@@ -82,7 +83,16 @@ public class BuySign extends BuildingSign {
 		super(sign, SIGN_NAME, secondLine, thirdLine, fourthLine, building);
 
 		maxStored = 0.0;
-		stored = 0.0;
+		TradingPost post = (TradingPost) building;
+		if (post.isUnlimited()) {
+			
+			stored = 64.0;
+			
+		} else {
+			
+			stored = 0.0;
+			
+		}
 		initialiseFields();
 
 	}
@@ -262,13 +272,15 @@ public class BuySign extends BuildingSign {
 	 */
 	@Override
 	public SignStatus getStatus() {
+		
+		TradingPost building = (TradingPost) super.getBuilding();
 
 		if (maxStored == null || item == null || item.getType() == null
 				|| item.getType() == Material.AIR || item.getData() == null
 				|| item.getAmount() == null || price == null)
 			return SignStatus.INVALIDATED;
 
-		if (stored <= 0 || !EconomyConfiguration.config().isEnabled())
+		if (!building.isUnlimited() && stored <= 0 || !EconomyConfiguration.config().isEnabled())
 			return SignStatus.DISABLED;
 
 		return SignStatus.ENABLED;
@@ -347,21 +359,27 @@ public class BuySign extends BuildingSign {
 		// Create item:
 		ItemStack item = this.item.createItem();
 
-		// Available goods:
-		if (stored < 1.0) {
-			sagaPlayer.message(EconomyMessages.insufItems(item.getType()));
-			return;
-		}
+		TradingPost building = (TradingPost) super.getBuilding();
+		
+		if (!building.isUnlimited()) {
+			
+			// Available goods:
+			if (stored < 1.0) {
+				sagaPlayer.message(EconomyMessages.insufItems(item.getType()));
+				return;
+			}
 
-		// Trim amount based on goods:
-		if (item.getAmount() > stored)
+			// Trim amount based on goods:
+			if (item.getAmount() > stored)
 			item.setAmount(stored.intValue());
-
+			
+		} 
+		
 		// Trim amount based on coins:
 		double coins = EconomyDependency.getCoins(sagaPlayer);
 		if (item.getAmount() * price > coins)
-			item.setAmount((int) (coins / price));
-
+		item.setAmount((int) (coins / price));
+		
 		// Available coins:
 		if (item.getAmount() < 1) {
 			sagaPlayer.message(EconomyMessages.insufCoins());
@@ -373,7 +391,10 @@ public class BuySign extends BuildingSign {
 			sagaPlayer.message(EconomyMessages.insufItems(item.getType()));
 			return;
 		}
-		stored -= item.getAmount();
+		
+		if (!building.isUnlimited()) {
+			stored -= item.getAmount();
+		}
 
 		// Finish transaction:
 		Double cost = price * item.getAmount();

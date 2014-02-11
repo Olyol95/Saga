@@ -53,6 +53,11 @@ public class TradingPost extends ProductionBuilding implements DaytimeTicker {
 	 * Work done for exports.
 	 */
 	private double[] exportsWork;
+	
+	/**
+	 * Admin shop (does not require warehouse)
+	 */
+	private boolean isUnlimited;
 
 	// Initialisation:
 	/**
@@ -64,6 +69,8 @@ public class TradingPost extends ProductionBuilding implements DaytimeTicker {
 	public TradingPost(BuildingDefinition definition) {
 
 		super(definition);
+		
+		isUnlimited = false;
 
 		importCoins = 0.0;
 		exportCoins = 0.0;
@@ -606,6 +613,18 @@ public class TradingPost extends ProductionBuilding implements DaytimeTicker {
 	@Override
 	public String toString() {
 		return super.toString();
+	}
+	
+	public boolean isUnlimited() {
+		
+		return isUnlimited;
+		
+	}
+	
+	public void setUnlimited(boolean value) {
+		
+		this.isUnlimited = value;
+		
 	}
 
 }

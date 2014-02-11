@@ -11,6 +11,7 @@ import org.saga.buildings.Building;
 import org.saga.buildings.CrumbleArena;
 import org.saga.buildings.CrumbleArena.CrumblePlayer;
 import org.saga.buildings.TownSquare;
+import org.saga.buildings.TradingPost;
 import org.saga.buildings.production.SagaItem;
 import org.saga.messages.colours.Colour;
 import org.saga.messages.colours.ColourLoop;
@@ -122,6 +123,20 @@ public class BuildingMessages {
 	public static String storeAreaAdded(Building building) {
 		return Colour.positive + "Storage area added to " + building.getName()
 				+ ".";
+	}
+	
+	public static String unlimitedAdded(Building building) {
+		
+		return Colour.positive + "Enabled unlimited storage for" + building.getName()
+				+ ".";
+		
+	}
+	
+	public static String unlimitedRemoved(Building building) {
+		
+		return Colour.positive + "Removed unlimited storage for" + building.getName()
+				+ ".";
+		
 	}
 
 	public static String storeAreaRemoved(Building building) {
