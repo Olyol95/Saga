@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Saga">
+    <output-path>$PROJECT_DIR$/out/artifacts/Saga</output-path>
+    <root id="archive" name="Saga.jar">
+      <element id="module-output" name="Saga" />
+      <element id="directory" name="config">
+        <element id="dir-copy" path="$PROJECT_DIR$/config" />
+      </element>
+      <element id="file-copy" path="$PROJECT_DIR$/plugin.yml" />
+      <element id="file-copy" path="$PROJECT_DIR$/README" />
+      <element id="file-copy" path="$PROJECT_DIR$/LICENCE.txt" />
+    </root>
+  </artifact>
+</component>
