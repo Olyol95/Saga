@@ -357,10 +357,12 @@ public class SagaDamageEvent {
 				harm *= blocking;
 
 			// Apply Saga damage:
-			sagaDefender.getWrapped().damage(harm);
+			if (sagaDefender.getHealth() > event.getDamage()) {
+				sagaDefender.getWrapped().damage(harm);
 
-			// Take control:
-			event.setDamage(0.0);
+				// Take control:
+				event.setDamage(0.0);
+			}
 
 		}
 

@@ -17,13 +17,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.EntityBlockFormEvent;
-import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.event.entity.*;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
-import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.event.entity.EntityExplodeEvent;
-import org.bukkit.event.entity.EntityTargetEvent;
-import org.bukkit.event.entity.ProjectileHitEvent;
 import org.saga.Saga;
 import org.saga.config.GeneralConfiguration;
 import org.saga.config.SettlementConfiguration;
@@ -62,8 +57,12 @@ public class EntityListener implements Listener {
 		}
 
 		// Dead:
-		if (event.getEntity().isDead())
+		if (event.getEntity().isDead()) {
+
+			event.setCancelled(true);
 			return;
+
+		}
 
 		// Saga damage event:
 		SagaDamageEvent damageEvent = new SagaDamageEvent(event);

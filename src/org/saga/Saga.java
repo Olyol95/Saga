@@ -1,10 +1,6 @@
 package org.saga;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.Random;
+import java.util.*;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -335,15 +331,12 @@ public class Saga extends JavaPlugin implements MinuteTicker {
 	 */
 	private void loadAllSagaPlayers() {
 
-		Collection playerCollection = getServer().getOnlinePlayers();
-		Player[] players = (Player[]) playerCollection.toArray();
+		for (Player player: getServer().getOnlinePlayers()) {
 
-		for (int i = 0; i < players.length; i++) {
-
-			SagaPlayer sagaPlayer = loadSagaPlayer(players[i].getName());
+			SagaPlayer sagaPlayer = loadSagaPlayer(player.getName());
 
 			if (sagaPlayer != null)
-				sagaPlayer.setPlayer(players[i]);
+				sagaPlayer.setPlayer(player);
 
 		}
 
