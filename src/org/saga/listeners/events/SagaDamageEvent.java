@@ -134,12 +134,6 @@ public class SagaDamageEvent {
 		if (event.getEntity() instanceof LivingEntity)
 			defender = (LivingEntity) event.getEntity();
 
-		// Damage penalty:
-		// Prevents massive damage from weak attacks.
-		double tresh = AttributeConfiguration.config().getPenaltyValue(type);
-		if (tresh > 0 && event.getDamage() < tresh)
-			penalty = event.getDamage() / tresh;
-
 		// Attacked by an entity:
 		if (event instanceof EntityDamageByEntityEvent)
 			attacker = ((EntityDamageByEntityEvent) event).getDamager();
@@ -158,6 +152,12 @@ public class SagaDamageEvent {
 
 		// Get attacker saga player:
 		if (attacker instanceof Player) {
+
+			// Damage penalty:
+			// Prevents massive damage from weak attacks.
+			double tresh = AttributeConfiguration.config().getPenaltyValue(type);
+			if (tresh > 0 && event.getDamage() < tresh)
+				penalty = event.getDamage() / tresh;
 
 			sagaAttacker = Saga.plugin().getLoadedPlayer(
 					attacker.getName());
