@@ -157,7 +157,7 @@ public class ChatDependency {
 	public static String format(String format, SagaPlayer sagaPlayer) {
 
 		// Faction prefix if no chat managers present:
-		if (manager.essentialsChat == null && manager.vaultChat == null
+		/**if (manager.essentialsChat == null && manager.vaultChat == null
 				&& manager.groupManager == null) {
 
 			Faction faction = sagaPlayer.getFaction();
@@ -171,7 +171,7 @@ public class ChatDependency {
 			return "<" + color1 + faction.getName() + "-" + color2 + "%1$s"
 					+ reset + "> %2$s";
 
-		}
+		//}
 
 		// Settlement:
 		Bundle bundle = sagaPlayer.getBundle();
@@ -223,7 +223,18 @@ public class ChatDependency {
 			format = format.replace(RANK_INSERT, "");
 		}
 
-		return format;
+		return format;*/
+
+		Faction faction = sagaPlayer.getFaction();
+		if (faction == null || !faction.isFormed())
+			return format;
+
+		ChatColor color1 = faction.getColour1();
+		ChatColor color2 = faction.getColour2();
+		ChatColor reset = ChatColor.RESET;
+
+		return "<" + color1 + faction.getName() + "-" + color2 + "%1$s"
+				+ reset + "> %2$s";
 
 	}
 
