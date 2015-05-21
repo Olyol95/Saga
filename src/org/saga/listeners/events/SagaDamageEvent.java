@@ -389,14 +389,17 @@ public class SagaDamageEvent {
 						if (sagaAttacker instanceof SagaPlayer) {
 							Player player = ((SagaPlayer) sagaAttacker)
 									.getPlayer();
-							ItemStack item = player.getItemInHand();
-							int damage = item.getDurability() - undurability;
-							damage = TwoPointFunction.randomRound(
-									sloppiness * damage).shortValue();
-							int pundurability = item.getDurability();
-							item.setDurability((short) (undurability + damage));
-							if (item.getDurability() != pundurability)
-								player.updateInventory();
+							if (player != null) {
+								ItemStack item = player.getItemInHand();
+								int damage = item.getDurability() - undurability;
+								damage = TwoPointFunction.randomRound(
+										sloppiness * damage).shortValue();
+								int pundurability = item.getDurability();
+								item.setDurability((short) (undurability + damage));
+								if (item.getDurability() != pundurability)
+									player.updateInventory();
+
+							}
 						}
 
 					}
