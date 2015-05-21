@@ -146,7 +146,7 @@ public class AbilityDefinition {
 		}
 
 		if (itemRestrictions == null) {
-			itemRestrictions = new HashSet<Material>();
+			itemRestrictions = new HashSet<>();
 			SagaLogger.nullField(this, "itemRestrictions");
 		}
 
@@ -185,7 +185,7 @@ public class AbilityDefinition {
 
 		// Requirements;
 		if (attributeRequirements == null) {
-			attributeRequirements = new Hashtable<String, TwoPointFunction>();
+			attributeRequirements = new Hashtable<>();
 			SagaLogger.nullField(this, "attributeRequirements");
 		}
 		Collection<TwoPointFunction> reqFunctions = attributeRequirements
@@ -195,17 +195,17 @@ public class AbilityDefinition {
 		}
 
 		if (buildingsRequired == null) {
-			buildingsRequired = new Hashtable<Integer, ArrayList<String>>();
+			buildingsRequired = new Hashtable<>();
 			SagaLogger.nullField(this, "buildingsRequired");
 		}
 
 		if (proficienciesRequired == null) {
-			proficienciesRequired = new Hashtable<Integer, ArrayList<String>>();
+			proficienciesRequired = new Hashtable<>();
 			SagaLogger.nullField(this, "proficienciesRequired");
 		}
 
 		if (functions == null) {
-			functions = new Hashtable<String, TwoPointFunction>();
+			functions = new Hashtable<>();
 			SagaLogger.nullField(this, "functions");
 		}
 		Collection<TwoPointFunction> functionsElements = functions.values();
@@ -400,7 +400,7 @@ public class AbilityDefinition {
 	 */
 	public HashSet<String> getBldgReq(Integer score) {
 
-		HashSet<String> required = new HashSet<String>();
+		HashSet<String> required = new HashSet<>();
 		for (int curScore = score; curScore >= 0; curScore--) {
 
 			ArrayList<String> req = buildingsRequired.get(curScore);
@@ -422,7 +422,7 @@ public class AbilityDefinition {
 	 */
 	public HashSet<String> getProfReq(Integer score) {
 
-		HashSet<String> required = new HashSet<String>();
+		HashSet<String> required = new HashSet<>();
 		for (int curScore = score; curScore >= 0; curScore--) {
 
 			ArrayList<String> req = proficienciesRequired.get(curScore);
@@ -517,10 +517,7 @@ public class AbilityDefinition {
 			return true;
 
 		Proficiency rank = sagaPlayer.getRank();
-		if (rank != null && required.contains(rank.getName()))
-			return true;
-
-		return false;
+		return rank != null && required.contains(rank.getName());
 
 	}
 

@@ -477,7 +477,7 @@ public class TradingPost extends ProductionBuilding implements DaytimeTicker {
 				.getTradingPostExports();
 		Double coins = 0.0;
 
-		ArrayList<SagaItem> exported = new ArrayList<SagaItem>();
+		ArrayList<SagaItem> exported = new ArrayList<>();
 
 		// Export:
 		for (int i = 0; i < exports.length; i++) {

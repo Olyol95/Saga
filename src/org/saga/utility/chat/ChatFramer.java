@@ -69,10 +69,10 @@ public class ChatFramer {
 				.calcLength(FRAME_VERTICAL + " " + " " + FRAME_VERTICAL))
 				* width;
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 
 		// Frame bottom:
-		StringBuffer frameBottom = new StringBuffer();
+		StringBuilder frameBottom = new StringBuilder();
 		while (ChatFiller.calcLength(frameBottom.toString() + FRAME_HORIZONTAL) <= length) {
 			frameBottom.append(FRAME_HORIZONTAL);
 		}
@@ -81,7 +81,7 @@ public class ChatFramer {
 		frameBottom.append(FRAME_BOTTOM_RIGHT);
 
 		// Frame upper:
-		StringBuffer frameUp = new StringBuffer();
+		StringBuilder frameUp = new StringBuilder();
 		while (ChatFiller.calcLength(frameUp.toString() + FRAME_HORIZONTAL) <= length) {
 			frameUp.append(FRAME_HORIZONTAL);
 		}
@@ -91,7 +91,7 @@ public class ChatFramer {
 		frameUp.append("\n");
 
 		// Label upper:
-		StringBuffer labelUp = new StringBuffer();
+		StringBuilder labelUp = new StringBuilder();
 		while (ChatFiller.calcLength(labelUp.toString() + FRAME_HORIZONTAL) <= length) {
 			labelUp.append(FRAME_HORIZONTAL);
 		}
@@ -107,21 +107,17 @@ public class ChatFramer {
 
 		// Label:
 		title = title.toUpperCase();
-		StringBuffer label = new StringBuffer();
+		StringBuilder label = new StringBuilder();
 		int labelShift = (int) (length / 2.0 - ChatFiller.calcLength(title) / 2.0);
-		label.append(FRAME_VERTICAL
-				+ " "
-				+ ChatFiller.fillString(
-						ChatFiller.fillString("", (double) labelShift) + title,
-						length) + " " + colour + FRAME_VERTICAL + "\n");
+		label.append(FRAME_VERTICAL).append(" ").append(ChatFiller.fillString(
+				ChatFiller.fillString("", (double) labelShift) + title,
+				length)).append(" ").append(colour).append(FRAME_VERTICAL).append("\n");
 		label.insert(0, colour);
 
 		// Content:
 		String[] lines = message.split("\n");
-		for (int i = 0; i < lines.length; i++) {
-			result.append(colour.toString() + FRAME_VERTICAL + " "
-					+ ChatFiller.fillString(lines[i], length) + " " + colour
-					+ FRAME_VERTICAL + "\n");
+		for (String line : lines) {
+			result.append(colour.toString()).append(FRAME_VERTICAL).append(" ").append(ChatFiller.fillString(line, length)).append(" ").append(colour).append(FRAME_VERTICAL).append("\n");
 		}
 
 		// Add up and down:

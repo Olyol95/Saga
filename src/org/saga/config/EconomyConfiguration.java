@@ -292,7 +292,7 @@ public class EconomyConfiguration {
 
 		if (settlementWageWeights == null) {
 			SagaLogger.nullField(getClass(), "settlementWageWeights");
-			settlementWageWeights = new Hashtable<Integer, Double>();
+			settlementWageWeights = new Hashtable<>();
 		}
 
 		if (settlementWagesTime == null) {
@@ -317,7 +317,7 @@ public class EconomyConfiguration {
 
 		if (factionWageWeights == null) {
 			SagaLogger.nullField(getClass(), "factionWageWeights");
-			factionWageWeights = new Hashtable<Integer, Double>();
+			factionWageWeights = new Hashtable<>();
 		}
 
 		if (factionWagesTime == null) {
@@ -788,9 +788,9 @@ public class EconomyConfiguration {
 	 */
 	public SagaPricedItem getExportItem(SagaItem sagaItem) {
 
-		for (int i = 0; i < exports.length; i++) {
-			if (sagaItem.checkRepresents(exports[i]))
-				return exports[i];
+		for (SagaPricedItem export : exports) {
+			if (sagaItem.checkRepresents(export))
+				return export;
 		}
 
 		return null;
@@ -806,9 +806,9 @@ public class EconomyConfiguration {
 	 */
 	public SagaPricedItem getImportItem(SagaItem sagaItem) {
 
-		for (int i = 0; i < imports.length; i++) {
-			if (sagaItem.checkRepresents(imports[i]))
-				return imports[i];
+		for (SagaPricedItem anImport : imports) {
+			if (sagaItem.checkRepresents(anImport))
+				return anImport;
 		}
 
 		return null;
@@ -834,9 +834,9 @@ public class EconomyConfiguration {
 	 */
 	public SagaPricedItem getBlocCoinsItem(Block sagaItem) {
 
-		for (int i = 0; i < blockCoins.length; i++) {
-			if (blockCoins[i].checkRepresents(sagaItem))
-				return blockCoins[i];
+		for (SagaPricedItem blockCoin : blockCoins) {
+			if (blockCoin.checkRepresents(sagaItem))
+				return blockCoin;
 		}
 
 		return null;

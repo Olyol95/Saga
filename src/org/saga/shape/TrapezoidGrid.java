@@ -30,7 +30,7 @@ public class TrapezoidGrid {
 
 		grid = new Point[height][width];
 
-		double radius = 0.5 * bottom;
+		double radius;
 
 		for (int h = 0; h < grid.length; h++) {
 
@@ -68,17 +68,17 @@ public class TrapezoidGrid {
 	public ArrayList<ArrayList<Point>> create(double shift, double x, double z,
 			double rot) {
 
-		ArrayList<ArrayList<Point>> points = new ArrayList<ArrayList<Point>>();
+		ArrayList<ArrayList<Point>> points = new ArrayList<>();
 
-		for (int h = 0; h < grid.length; h++) {
+		for (Point[] aGrid : grid) {
 
-			ArrayList<Point> row = new ArrayList<Point>();
+			ArrayList<Point> row = new ArrayList<>();
 			points.add(row);
 
-			for (int w = 0; w < grid[h].length; w++) {
+			for (Point anAGrid : aGrid) {
 
-				if (grid[h][w] != null)
-					row.add(grid[h][w].moved(shift, 0, rot, x, z));
+				if (anAGrid != null)
+					row.add(anAGrid.moved(shift, 0, rot, x, z));
 
 			}
 
@@ -97,7 +97,7 @@ public class TrapezoidGrid {
 	@Override
 	public String toString() {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 
 		for (int h = 0; h < grid.length; h++) {
 

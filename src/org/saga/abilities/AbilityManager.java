@@ -34,7 +34,7 @@ public class AbilityManager {
 	public AbilityManager(SagaLiving sagaLiving) {
 
 		this.sagaLiving = sagaLiving;
-		abilities = new HashSet<Ability>();
+		abilities = new HashSet<>();
 
 	}
 
@@ -45,7 +45,7 @@ public class AbilityManager {
 	public void update() {
 
 		HashSet<Ability> allAbilities = sagaLiving.getAbilities();
-		abilities = new HashSet<Ability>();
+		abilities = new HashSet<>();
 
 		// Only add abilities if the requirements are met:
 		for (Ability ability : allAbilities) {
@@ -229,7 +229,7 @@ public class AbilityManager {
 	 * @return all abilities
 	 */
 	public HashSet<Ability> getAbilities() {
-		return new HashSet<Ability>(abilities);
+		return new HashSet<>(abilities);
 	}
 
 }

@@ -892,9 +892,9 @@ public class FactionCommands {
 		String cColorName = colorName.replace(" ", "_").toUpperCase();
 		ChatColor[] colors = getAvailableColours();
 
-		for (int i = 0; i < colors.length; i++) {
-			if (colors[i].name().equals(cColorName)) {
-				color = colors[i];
+		for (ChatColor color1 : colors) {
+			if (color1.name().equals(cColorName)) {
+				color = color1;
 				break;
 			}
 		}
@@ -938,9 +938,9 @@ public class FactionCommands {
 		String cColorName = colorName.replace(" ", "_").toUpperCase();
 		ChatColor[] colors = getAvailableColours();
 
-		for (int i = 0; i < colors.length; i++) {
-			if (colors[i].name().equals(cColorName)) {
-				color = colors[i];
+		for (ChatColor color1 : colors) {
+			if (color1.name().equals(cColorName)) {
+				color = color1;
 				break;
 			}
 		}
@@ -963,12 +963,12 @@ public class FactionCommands {
 	private static ChatColor[] getAvailableColours() {
 
 		ChatColor[] allColours = ChatColor.values();
-		ArrayList<ChatColor> availableColours = new ArrayList<ChatColor>();
+		ArrayList<ChatColor> availableColours = new ArrayList<>();
 
-		for (int i = 0; i < allColours.length; i++) {
+		for (ChatColor allColour : allColours) {
 
-			if (allColours[i].isColor())
-				availableColours.add(allColours[i]);
+			if (allColour.isColor())
+				availableColours.add(allColour);
 
 		}
 

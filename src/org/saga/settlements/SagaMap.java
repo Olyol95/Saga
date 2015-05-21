@@ -82,7 +82,7 @@ public class SagaMap {
 			put(Biome.TAIGA, ChatColor.WHITE);
 			put(Biome.TAIGA_HILLS, ChatColor.WHITE);
 
-		};
+		}
 	};
 
 	/**
@@ -91,7 +91,7 @@ public class SagaMap {
 	public static ArrayList<String> getMap(SagaPlayer sagaPlayer,
 			Location location) {
 
-		ArrayList<String> map = new ArrayList<String>();
+		ArrayList<String> map = new ArrayList<>();
 
 		int halfHeight = 14 / 2;
 		int halfWidth = 24 / 2;
@@ -107,23 +107,22 @@ public class SagaMap {
 		int width = halfHeight * 2 + 1;
 		int height = halfWidth * 2 + 1;
 
-		ChatColor prevColor = null;
-		ChatColor color = ChatColor.GRAY;
+		ChatColor prevColor;
+		ChatColor color;
 
 		// Row:
 		for (int dz = -width + 1; dz <= 0; dz++) {
 			prevColor = null;
-			color = null;
 
 			// Column:
-			StringBuffer row = new StringBuffer();
+			StringBuilder row = new StringBuilder();
 			for (int dx = 0; dx < height; dx++) {
 
 				SagaChunk sagaChunk = BundleManager.manager().getSagaChunk(
 						location.getWorld().getName(), topLeftX + dx,
 						topLeftZ + dz);
 
-				String symbol = "?";
+				String symbol;
 
 				// Claimed:
 				if (sagaChunk != null) {
@@ -193,7 +192,7 @@ public class SagaMap {
 		map.set(2, map.get(2) + " " + asciiCompass.get(2));
 
 		// Add name:
-		char[] locationName = null;
+		char[] locationName;
 
 		if (locationSagaChunk != null) {
 			locationName = locationSagaChunk.getBundle().getName()

@@ -109,14 +109,13 @@ public class MeteorsTarget extends Ability {
 		final LivingEntity shooter = sagaLiving.getWrapped();
 
 		// Target:
-		Block block = sagaLiving.getWrapped().getTargetBlock((Set<Material>)null,
+		Block block = sagaLiving.getWrapped().getTargetBlock((Set<Material>) null,
 				getDefinition().getFunction(DISTANCE).intValue(getScore()));
 		if (block.getType() == Material.AIR) {
 			sagaLiving.message(AbilityMessages.targetTooFar(this));
 			return false;
 		}
 		final Location target = block.getLocation().add(0.5, 0.5, 0.5);
-		;
 
 		// Check if not underground:
 		if (!checkSky(block)) {
@@ -128,7 +127,6 @@ public class MeteorsTarget extends Ability {
 		Random random = new Random();
 		int bonusFireballs = getDefinition().getFunction(BONUS_FIREBALLS)
 				.intValue(getScore());
-		;
 		final double speed = getDefinition().getFunction(SPEED).value(
 				getScore());
 
@@ -136,7 +134,7 @@ public class MeteorsTarget extends Ability {
 
 		shootFireball(shooter, target.clone().add(0.0, SHOOT_HEIGHT, 0.0),
 				speed);
-		ArrayList<Vector> shootShifts = new ArrayList<Vector>(SHOOT_SHIFTS);
+		ArrayList<Vector> shootShifts = new ArrayList<>(SHOOT_SHIFTS);
 		while (shootShifts.size() > 0 && bonusFireballs > 0) {
 
 			int i = random.nextInt(shootShifts.size());

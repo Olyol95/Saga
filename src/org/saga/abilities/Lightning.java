@@ -78,7 +78,7 @@ public class Lightning extends Ability {
 		Location target = null;
 
 		// Target:
-		Block block = sagaLiving.getWrapped().getTargetBlock((Set<Material>)null,
+		Block block = sagaLiving.getWrapped().getTargetBlock((Set<Material>) null,
 				getDefinition().getFunction(DISTANCE).intValue(getScore()));
 		if (block.getType() == Material.AIR) {
 			sagaLiving.message(AbilityMessages.targetTooFar(this));
@@ -109,7 +109,7 @@ public class Lightning extends Ability {
 		double range = getDefinition().getFunction(RANGE).value(getScore());
 		double range2 = range * range;
 		List<Entity> nearby = lightning.getNearbyEntities(range, range, range);
-		ArrayList<LivingEntity> filteredNearby = new ArrayList<LivingEntity>();
+		ArrayList<LivingEntity> filteredNearby = new ArrayList<>();
 		for (Entity entity : nearby) {
 
 			if (entity == shooter)

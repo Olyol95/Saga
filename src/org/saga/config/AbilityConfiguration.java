@@ -108,7 +108,7 @@ public class AbilityConfiguration {
 		// Definitions:
 		if (definitions == null) {
 			SagaLogger.nullField(getClass(), "definitions");
-			definitions = new ArrayList<AbilityDefinition>();
+			definitions = new ArrayList<>();
 		}
 		for (int i = 0; i < definitions.size(); i++) {
 
@@ -205,7 +205,7 @@ public class AbilityConfiguration {
 	 */
 	public ArrayList<AbilityDefinition> getDefinitions() {
 
-		return new ArrayList<AbilityDefinition>(definitions);
+		return new ArrayList<>(definitions);
 
 	}
 
@@ -255,9 +255,9 @@ public class AbilityConfiguration {
 	 */
 	public ArrayList<String> getAbilityNames() {
 
-		ArrayList<String> abilityNames = new ArrayList<String>();
+		ArrayList<String> abilityNames = new ArrayList<>();
 
-		ArrayList<AbilityDefinition> definitions = new ArrayList<AbilityDefinition>(
+		ArrayList<AbilityDefinition> definitions = new ArrayList<>(
 				this.definitions);
 		for (AbilityDefinition definition : definitions) {
 			abilityNames.add(definition.getName());

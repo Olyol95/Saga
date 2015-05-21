@@ -282,11 +282,11 @@ public class SagaChunk {
 
 		Entity[] entities = getBukkitChunk().getEntities();
 
-		for (int i = 0; i < entities.length; i++) {
+		for (Entity entity : entities) {
 
-			if (entities[i] instanceof Player) {
+			if (entity instanceof Player) {
 
-				Player player = (Player) entities[i];
+				Player player = (Player) entity;
 				player.sendMessage(message);
 
 			}
@@ -403,7 +403,7 @@ public class SagaChunk {
 	 */
 	public ArrayList<SagaChunk> getAdjacent(int radius) {
 
-		ArrayList<SagaChunk> adjacent = new ArrayList<SagaChunk>();
+		ArrayList<SagaChunk> adjacent = new ArrayList<>();
 		int radiusSquared = radius * radius;
 
 		for (int dx = -radius; dx <= radius; dx++) {
@@ -443,9 +443,9 @@ public class SagaChunk {
 		int count = 0;
 
 		Entity[] entities = bukkitChunk.getEntities();
-		for (int i = 0; i < entities.length; i++) {
+		for (Entity entity : entities) {
 
-			if (entities[i] instanceof Player)
+			if (entity instanceof Player)
 				count++;
 
 		}
@@ -461,7 +461,7 @@ public class SagaChunk {
 	 */
 	public ArrayList<Player> getPlayers() {
 
-		ArrayList<Player> players = new ArrayList<Player>();
+		ArrayList<Player> players = new ArrayList<>();
 
 		Chunk bukkitChunk = getBukkitChunk();
 
@@ -470,10 +470,10 @@ public class SagaChunk {
 
 		// Add players:
 		Entity[] entities = bukkitChunk.getEntities();
-		for (int i = 0; i < entities.length; i++) {
+		for (Entity entity : entities) {
 
-			if (entities[i] instanceof Player) {
-				players.add((Player) entities[i]);
+			if (entity instanceof Player) {
+				players.add((Player) entity);
 			}
 
 		}
@@ -490,7 +490,7 @@ public class SagaChunk {
 	public ArrayList<SagaPlayer> getSagaPlayers() {
 
 		ArrayList<Player> players = getPlayers();
-		ArrayList<SagaPlayer> sagaPlayers = new ArrayList<SagaPlayer>();
+		ArrayList<SagaPlayer> sagaPlayers = new ArrayList<>();
 
 		for (Player player : players) {
 
@@ -894,15 +894,7 @@ public class SagaChunk {
 			return false;
 		}
 
-		if (x != ((SagaChunk) obj).x) {
-			return false;
-		}
-
-		if (z != ((SagaChunk) obj).z) {
-			return false;
-		}
-
-		return true;
+		return x == ((SagaChunk) obj).x && z == ((SagaChunk) obj).z;
 
 	}
 
@@ -958,8 +950,8 @@ public class SagaChunk {
 	 */
 	public static ArrayList<SagaChunk> getAllAdjacent(Chunk bukkitChunk) {
 
-		SagaChunk sagaChunk = null;
-		ArrayList<SagaChunk> sagaChunks = new ArrayList<SagaChunk>();
+		SagaChunk sagaChunk;
+		ArrayList<SagaChunk> sagaChunks = new ArrayList<>();
 
 		int x = bukkitChunk.getX();
 		int z = bukkitChunk.getZ();
@@ -1015,7 +1007,7 @@ public class SagaChunk {
 	 */
 	public boolean isBorder() {
 
-		SagaChunk adjacent = null;
+		SagaChunk adjacent;
 
 		adjacent = getAdjacent(ChunkSide.BACK);
 		if (adjacent == null
@@ -1033,11 +1025,8 @@ public class SagaChunk {
 			return true;
 
 		adjacent = getAdjacent(ChunkSide.RIGHT);
-		if (adjacent == null
-				|| !adjacent.getBundle().getId().equals(getBundle().getId()))
-			return true;
-
-		return false;
+		return adjacent == null
+				|| !adjacent.getBundle().getId().equals(getBundle().getId());
 
 	}
 

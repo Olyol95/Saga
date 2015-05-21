@@ -22,7 +22,7 @@ public enum MetricPrefix {
 	 * @param value
 	 *            value
 	 */
-	private MetricPrefix(String name, Double value) {
+	MetricPrefix(String name, Double value) {
 		this.name = name;
 		this.value = value;
 	}

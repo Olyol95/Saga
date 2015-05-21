@@ -163,7 +163,7 @@ public class Proficiency {
 		 * @param name
 		 *            name
 		 */
-		private ProficiencyType(String name) {
+		ProficiencyType(String name) {
 			this.name = name;
 		}
 

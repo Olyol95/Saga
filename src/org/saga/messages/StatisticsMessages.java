@@ -366,12 +366,12 @@ public class StatisticsMessages {
 				GeneralMessages.columnTitle("ratio/ind"),
 				GeneralMessages.columnTitle("veins") });
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 
 		result.append("\n");
 
 		// Players:
-		result.append(colours.nextColour() + "Indications: ");
+		result.append(colours.nextColour()).append("Indications: ");
 		if (suspects.length > 0) {
 
 			for (int i = 0; i < suspects.length; i++) {
@@ -393,7 +393,7 @@ public class StatisticsMessages {
 							+ ChatColor.STRIKETHROUGH + vein;
 				}
 
-				table.addLine(new String[] { name, ratioComb, vein.toString() });
+				table.addLine(new String[] { name, ratioComb, vein});
 
 			}
 

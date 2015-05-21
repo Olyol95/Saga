@@ -8,9 +8,9 @@ public class ArrayUtil {
 
 		Double max = 0.0;
 
-		for (int i = 0; i < data.length; i++) {
-			if (data[i] > max)
-				max = data[i];
+		for (Double aData : data) {
+			if (aData > max)
+				max = aData;
 		}
 
 		return max;
@@ -21,9 +21,9 @@ public class ArrayUtil {
 
 		Double min = Double.MAX_VALUE;
 
-		for (int i = 0; i < data.length; i++) {
-			if (data[i] < min)
-				min = data[i];
+		for (Double aData : data) {
+			if (aData < min)
+				min = aData;
 		}
 
 		return min;
@@ -34,9 +34,9 @@ public class ArrayUtil {
 
 		Integer min = Integer.MAX_VALUE;
 
-		for (int i = 0; i < data.length; i++) {
-			if (data[i] < min)
-				min = data[i];
+		for (Integer aData : data) {
+			if (aData < min)
+				min = aData;
 		}
 
 		return min;
@@ -47,9 +47,9 @@ public class ArrayUtil {
 
 		Integer max = 0;
 
-		for (int i = 0; i < data.length; i++) {
-			if (data[i] > max)
-				max = data[i];
+		for (Integer aData : data) {
+			if (aData > max)
+				max = aData;
 		}
 
 		return max;

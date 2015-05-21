@@ -126,12 +126,12 @@ public class CrumbleArena extends Building implements SecondTicker {
 
 		super(definition);
 
-		crumblePlayers = new ArrayList<CrumbleArena.CrumblePlayer>();
+		crumblePlayers = new ArrayList<>();
 
 		rounds = 0;
 		remaining = 0;
 		countdown = -1;
-		players = new HashSet<String>();
+		players = new HashSet<>();
 
 	}
 
@@ -146,7 +146,7 @@ public class CrumbleArena extends Building implements SecondTicker {
 		super.complete();
 
 		if (crumblePlayers == null) {
-			crumblePlayers = new ArrayList<CrumbleArena.CrumblePlayer>();
+			crumblePlayers = new ArrayList<>();
 			SagaLogger.nullField(this, "crublePlayers");
 		}
 		for (CrumblePlayer crumblePlayer : crumblePlayers) {
@@ -169,7 +169,7 @@ public class CrumbleArena extends Building implements SecondTicker {
 		}
 
 		if (players == null) {
-			players = new HashSet<String>();
+			players = new HashSet<>();
 			SagaLogger.nullField(this, "players");
 		}
 
@@ -293,7 +293,7 @@ public class CrumbleArena extends Building implements SecondTicker {
 	 */
 	public ArrayList<CrumblePlayer> getTop(Integer count) {
 
-		ArrayList<CrumblePlayer> topPlayers = new ArrayList<CrumbleArena.CrumblePlayer>();
+		ArrayList<CrumblePlayer> topPlayers = new ArrayList<>();
 
 		Collections.sort(crumblePlayers);
 
@@ -320,7 +320,7 @@ public class CrumbleArena extends Building implements SecondTicker {
 		countdown = 5;
 
 		// Add players:
-		players = new HashSet<String>();
+		players = new HashSet<>();
 		ArrayList<SagaPlayer> sagaPlayers = getSagaChunk().getSagaPlayers();
 		for (SagaPlayer sagaPlayer : sagaPlayers) {
 			players.add(sagaPlayer.getName());
@@ -456,7 +456,7 @@ public class CrumbleArena extends Building implements SecondTicker {
 	 */
 	private ArrayList<Block> getAllArenaBlocks() {
 
-		ArrayList<Block> blocks = new ArrayList<Block>();
+		ArrayList<Block> blocks = new ArrayList<>();
 		if (y == null)
 			return blocks;
 
@@ -514,7 +514,7 @@ public class CrumbleArena extends Building implements SecondTicker {
 	 */
 	private ArrayList<Block> filterStableBlocks(ArrayList<Block> blocks) {
 
-		ArrayList<Block> filtered = new ArrayList<Block>();
+		ArrayList<Block> filtered = new ArrayList<>();
 		for (Block block : blocks) {
 			if (block.getType() == STABLE_BLOCK.getItemType()
 					&& block.getData() == STABLE_BLOCK.getData())
@@ -534,7 +534,7 @@ public class CrumbleArena extends Building implements SecondTicker {
 	 */
 	private ArrayList<Block> filterStableAvailableBlocks(ArrayList<Block> blocks) {
 
-		ArrayList<Block> filtered = new ArrayList<Block>();
+		ArrayList<Block> filtered = new ArrayList<>();
 		for (Block block : blocks) {
 
 			if (block.getType() != STABLE_BLOCK.getItemType()
@@ -636,7 +636,7 @@ public class CrumbleArena extends Building implements SecondTicker {
 	 */
 	private ArrayList<Block> filterDamagedBlocks(ArrayList<Block> blocks) {
 
-		ArrayList<Block> filtered = new ArrayList<Block>();
+		ArrayList<Block> filtered = new ArrayList<>();
 		for (Block block : blocks) {
 			if (block.getType() == DAMAGED_BLOCK.getItemType()
 					&& block.getData() == DAMAGED_BLOCK.getData())

@@ -29,12 +29,12 @@ public class Histogram {
 		Integer[] histogram = ArrayUtil.intArray(width);
 		Double step = (width.doubleValue() - 1.0) / max;
 
-		for (int i = 0; i < data.length; i++) {
+		for (Double aData : data) {
 
-			if (data[i] == 0)
+			if (aData == 0)
 				continue;
 
-			Integer index = new Double(data[i] * step).intValue();
+			Integer index = new Double(aData * step).intValue();
 			histogram[index] = histogram[index] + 1;
 
 		}

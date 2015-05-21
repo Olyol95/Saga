@@ -41,10 +41,10 @@ public enum BundleToggleable {
 
 		name = name.toUpperCase().replace(" ", "_");
 
-		for (int i = 0; i < values.length; i++) {
+		for (BundleToggleable value : values) {
 
-			if (values[i].name().startsWith(name))
-				return values[i];
+			if (value.name().startsWith(name))
+				return value;
 
 		}
 

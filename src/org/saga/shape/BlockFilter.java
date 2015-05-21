@@ -10,7 +10,7 @@ public class BlockFilter implements ShapeFilter {
 	/**
 	 * Materials.
 	 */
-	private HashSet<Material> materials = new HashSet<Material>();
+	private HashSet<Material> materials = new HashSet<>();
 
 	/**
 	 * If true then the check will return the reverse result.

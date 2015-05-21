@@ -165,7 +165,7 @@ public class EconomyDependency {
 	 */
 	public enum TransactionType {
 
-		SELL, BUY, INVALID;
+		SELL, BUY, INVALID
 
 	}
 

@@ -21,7 +21,7 @@ public abstract class SagaCommandsManager<T> extends CommandsManager<T> {
 	 */
 	public HashSet<Method> getCommandMethods() {
 
-		HashSet<Method> methods = new HashSet<Method>();
+		HashSet<Method> methods = new HashSet<>();
 
 		Set<Entry<Method, Map<String, Method>>> methodEntries = commands
 				.entrySet();

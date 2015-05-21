@@ -87,9 +87,9 @@ public class StatsMessages {
 		// Health:
 		table.addLine(
 				"health",
-				ChatUtil.round((double) sagaPlayer.getHealth(), 0)
+				ChatUtil.round(sagaPlayer.getHealth(), 0)
 						+ "/"
-						+ ChatUtil.round((double) sagaPlayer.getTotalHealth(),
+						+ ChatUtil.round(sagaPlayer.getTotalHealth(),
 								0), 0);
 
 		// Stamina:
@@ -345,7 +345,7 @@ public class StatsMessages {
 				Colour.normal1).addColor(Colour.normal2));
 
 		// Table size:
-		ArrayList<Double> widths = new ArrayList<Double>();
+		ArrayList<Double> widths = new ArrayList<>();
 		widths.add(28.5);
 		widths.add(28.5);
 		table.setCustomWidths(widths);
@@ -385,7 +385,7 @@ public class StatsMessages {
 	private static ArrayList<Faction> getFactions(ArrayList<Integer> ids) {
 
 		// Faction invites:
-		ArrayList<Faction> factions = new ArrayList<Faction>();
+		ArrayList<Faction> factions = new ArrayList<>();
 		if (ids.size() > 0) {
 
 			for (int i = 0; i < ids.size(); i++) {
@@ -409,7 +409,7 @@ public class StatsMessages {
 	private static ArrayList<Bundle> getSettlements(ArrayList<Integer> ids) {
 
 		// Faction invites:
-		ArrayList<Bundle> bundles = new ArrayList<Bundle>();
+		ArrayList<Bundle> bundles = new ArrayList<>();
 		if (ids.size() > 0) {
 
 			for (int i = 0; i < ids.size(); i++) {
@@ -432,7 +432,7 @@ public class StatsMessages {
 	public static String requirements(AbilityDefinition definition,
 			Integer score) {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 
 		String scores = scores(definition, score);
 		if (scores.length() > 0) {
@@ -462,15 +462,13 @@ public class StatsMessages {
 
 	public static String scores(AbilityDefinition definition, Integer score) {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 
 		// Attributes:
 		ArrayList<String> attributeNames = AttributeConfiguration.config()
 				.getAttributeNames();
 
-		for (int i = 0; i < attributeNames.size(); i++) {
-
-			String attribute = attributeNames.get(i);
+		for (String attribute : attributeNames) {
 
 			Integer reqScore = definition.getAttrReq(attribute, score);
 			if (reqScore <= 0)
@@ -478,7 +476,7 @@ public class StatsMessages {
 
 			if (result.length() > 0)
 				result.append(", ");
-			result.append(GeneralMessages.attrAbrev(attribute) + " " + reqScore);
+			result.append(GeneralMessages.attrAbrev(attribute)).append(" ").append(reqScore);
 
 		}
 
@@ -521,7 +519,7 @@ public class StatsMessages {
 
 	public static String list(SagaPlayer sagaPlayer, Settlement settlement) {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 		ColourLoop colours = new ColourLoop().addColor(Colour.normal1)
 				.addColor(Colour.normal2);
 
@@ -656,8 +654,9 @@ public class StatsMessages {
 		ChatTable table = new ChatTable(colours);
 
 		// Retrieve buildings:
-		BuildingDefinition[] definitions = BuildingConfiguration.config()
-				.getBuildingDefinitions().toArray(new BuildingDefinition[0]);
+		ArrayList<BuildingDefinition> var = BuildingConfiguration.config()
+				.getBuildingDefinitions();
+		BuildingDefinition[] definitions = var.toArray(new BuildingDefinition[var.size()]);
 
 		// Sort required by size:
 		Comparator<BuildingDefinition> comparator = new Comparator<BuildingDefinition>() {
@@ -676,15 +675,15 @@ public class StatsMessages {
 		// Column values:
 		if (definitions.length != 0) {
 
-			for (int j = 0; j < definitions.length; j++) {
+			for (BuildingDefinition definition : definitions) {
 
 				// Values:
-				String name = definitions[j].getName();
-				String points = definitions[j].getBuildPoints() + "";
+				String name = definition.getName();
+				String points = definition.getBuildPoints() + "";
 				String effect = "";
 
 				// Requirements met:
-				if (definitions[j].checkRequirements(settlement, 1)) {
+				if (definition.checkRequirements(settlement, 1)) {
 
 					// Multiple buildings:
 					Integer totalBuildings = settlement
@@ -695,7 +694,7 @@ public class StatsMessages {
 					if (usedBuildings > 0) {
 
 						// Status:
-						effect = definitions[j].getEffect();
+						effect = definition.getEffect();
 						if (effect.length() == 0)
 							effect = "set";
 
@@ -721,10 +720,10 @@ public class StatsMessages {
 				else {
 					name = Colour.unavailable + name;
 					effect = Colour.unavailable + "("
-							+ requirements(definitions[j], 1) + ")";
+							+ requirements(definition, 1) + ")";
 				}
 
-				table.addLine(new String[] { name, points, effect });
+				table.addLine(new String[]{name, points, effect});
 
 			}
 
@@ -741,12 +740,12 @@ public class StatsMessages {
 	private static String requirements(BuildingDefinition definition,
 			Integer buildingLevel) {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 
 		// Level:
 		Integer reqSize = definition.getRequiredClaimed();
 		if (reqSize > 0)
-			result.append("claimed " + reqSize);
+			result.append("claimed ").append(reqSize);
 
 		return result.toString();
 
@@ -754,7 +753,7 @@ public class StatsMessages {
 
 	private static String listMembers(Settlement settlement) {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 
 		ChatColor general = Colour.normal1;
 		ChatColor normal = Colour.normal2;
@@ -778,7 +777,7 @@ public class StatsMessages {
 			result.append(GeneralMessages.tableTitle(general + groupName));
 
 			// All roles:
-			StringBuffer resultRoles = new StringBuffer();
+			StringBuilder resultRoles = new StringBuilder();
 
 			ArrayList<ProficiencyDefinition> roles = ProficiencyConfiguration
 					.config().getDefinitions(ProficiencyType.ROLE, hierarchy);
@@ -806,8 +805,7 @@ public class StatsMessages {
 
 				if (roleDefinition.getHierarchyLevel() > FactionConfiguration
 						.config().getHierarchyMin()) {
-					resultRoles.append(" " + usedRoles + "/"
-							+ availRoles.intValue());
+					resultRoles.append(" ").append(usedRoles).append("/").append(availRoles.intValue());
 				}
 
 				resultRoles.append(": ");
@@ -890,12 +888,8 @@ public class StatsMessages {
 
 	public static String list(Faction faction) {
 
-		StringBuffer result = new StringBuffer();
-
-		result.append(listMembers(faction));
-
 		return ChatFramer.frame(faction.getName() + " members",
-				result.toString(), Colour.normal1);
+				listMembers(faction), Colour.normal1);
 
 	}
 
@@ -1036,7 +1030,7 @@ public class StatsMessages {
 
 	private static String listMembers(Faction faction) {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 
 		ChatColor general = faction.getColour1();
 		ChatColor normal = faction.getColour2();
@@ -1060,7 +1054,7 @@ public class StatsMessages {
 			result.append(GeneralMessages.tableTitle(general + groupName));
 
 			// All ranks:
-			StringBuffer resultRanks = new StringBuffer();
+			StringBuilder resultRanks = new StringBuilder();
 
 			Hashtable<String, Double> allAvailRanks = SiegeManager.manager()
 					.getRanks(faction.getId());
@@ -1092,8 +1086,7 @@ public class StatsMessages {
 
 				if (definition.getHierarchyLevel() > FactionConfiguration
 						.config().getHierarchyMin()) {
-					resultRanks.append(" " + usedRanks + "/"
-							+ availRanks.intValue());
+					resultRanks.append(" ").append(usedRanks).append("/").append(availRanks.intValue());
 				}
 
 				resultRanks.append(": ");
@@ -1123,14 +1116,13 @@ public class StatsMessages {
 					.getLimitedOnlineMembers();
 
 			// Naming:
-			result.append(general
-					+ GeneralMessages.tableTitle("limited membership"));
+			result.append(general).append(GeneralMessages.tableTitle("limited membership"));
 
 			result.append("\n");
 
 			if (onlineLimted.size() > 0) {
 
-				Collection<String> limitedNames = new ArrayList<String>();
+				Collection<String> limitedNames = new ArrayList<>();
 
 				for (SagaPlayer sagaPlayer : onlineLimted) {
 					limitedNames.add(sagaPlayer.getName());
@@ -1141,7 +1133,7 @@ public class StatsMessages {
 
 			} else {
 
-				result.append(normal + "none online");
+				result.append(normal).append("none online");
 
 			}
 
@@ -1247,9 +1239,7 @@ public class StatsMessages {
 		if (location == null)
 			return null;
 
-		for (int i = 0; i < otherSettles.size(); i++) {
-
-			Settlement otherSettlement = otherSettles.get(i);
+		for (Settlement otherSettlement : otherSettles) {
 
 			// Same settlement:
 			if (settlement == otherSettlement)
@@ -1279,11 +1269,10 @@ public class StatsMessages {
 
 	private static String location(Location location) {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 
 		if (location != null) {
-			result.append(location.getBlockX() + ", " + location.getBlockY()
-					+ ", " + location.getBlockZ());
+			result.append(location.getBlockX()).append(", ").append(location.getBlockY()).append(", ").append(location.getBlockZ());
 
 			if (!location.getWorld().getName()
 					.equals(GeneralConfiguration.config().getDefaultWorld()))
@@ -1521,21 +1510,21 @@ public class StatsMessages {
 					duplic = true;
 
 				// Progress:
-				String progress = (int) (resource.getWork().doubleValue()
+				String progress = (int) (resource.getWork()
 						/ resource.getRequiredWork() * 100)
 						+ "%";
 				table.addLine(progress, 0);
 
 				// Name:
-				StringBuffer recipeName = new StringBuffer();
+				StringBuilder recipeName = new StringBuilder();
 				if (resource.getAmount() > 1)
-					recipeName.append(resource.getAmount().intValue() + " ");
+					recipeName.append(resource.getAmount().intValue()).append(" ");
 				recipeName.append(GeneralMessages.material(resource.getType()));
 				if (duplic)
-					recipeName.append(":" + resource.getData());
+					recipeName.append(":").append(resource.getData());
 				table.addLine(recipeName.toString(), 1);
 
-				StringBuffer requirements = new StringBuffer();
+				StringBuilder requirements = new StringBuilder();
 
 				// Requirements:
 				if (resource.recipeLength() != 0) {
@@ -1548,11 +1537,9 @@ public class StatsMessages {
 						requirements.append(GeneralMessages.material(component
 								.getType()));
 						if (duplic)
-							requirements.append(":" + component.getData());
+							requirements.append(":").append(component.getData());
 
-						requirements.append(" "
-								+ (int) resource.getCollected(i) + "/"
-								+ component.getAmount().intValue());
+						requirements.append(" ").append((int) resource.getCollected(i)).append("/").append(component.getAmount().intValue());
 
 					}
 
@@ -1602,14 +1589,13 @@ public class StatsMessages {
 				// Name:
 				table.addLine(EconomyMessages.coins(building.calcCost(r)), 1);
 
-				StringBuffer requirements = new StringBuffer();
+				StringBuilder requirements = new StringBuilder();
 
 				// Requirement:
 				requirements.append(GeneralMessages.material(export.getType()));
 				if (duplic)
-					requirements.append(":" + export.getData());
-				requirements.append(" " + (int) building.getForExport()[r]
-						+ "/" + export.getAmount().intValue());
+					requirements.append(":").append(export.getData());
+				requirements.append(" ").append((int) building.getForExport()[r]).append("/").append(export.getAmount().intValue());
 
 				table.addLine(requirements.toString(), 2);
 

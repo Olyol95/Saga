@@ -122,7 +122,7 @@ public class PermissionsDependency {
 
 		final PluginManager pluginManager = Saga.plugin().getServer()
 				.getPluginManager();
-		Plugin plugin = null;
+		Plugin plugin;
 
 		// Commands map:
 		manager.commandMap = new SagaCommandsManager<Player>() {
@@ -211,9 +211,7 @@ public class PermissionsDependency {
 
 			final AnjoPermissionsHandler handler = manager.groupManager
 					.getWorldsHolder().getWorldPermissions(player);
-			if (handler == null)
-				return false;
-			return handler.has(player, permission);
+			return handler != null && handler.has(player, permission);
 
 		}
 
@@ -259,10 +257,7 @@ public class PermissionsDependency {
 			return true;
 
 		Player player = sagaPlayer.getPlayer();
-		if (player == null)
-			return false;
-
-		return hasPermission(player, permission);
+		return player != null && hasPermission(player, permission);
 
 	}
 

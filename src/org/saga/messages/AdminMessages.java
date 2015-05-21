@@ -241,7 +241,7 @@ public class AdminMessages {
 	public static String format(ChatTable table, String start, String left,
 			String middle, String right, String next, String end) {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 
 		String[][] contents = table.getRawContents();
 
@@ -277,7 +277,7 @@ public class AdminMessages {
 	// Wiki normal:
 	public static String wikiCommands(ArrayList<Method> commandMethods) {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 		ArrayList<String> categories = new ArrayList<String>() {
 
 			private static final long serialVersionUID = 1L;
@@ -326,8 +326,7 @@ public class AdminMessages {
 				result.append("\n\n");
 
 			// Begin:
-			result.append("==" + ChatUtil.capitalize(getCategoryName(category))
-					+ " commands" + "==" + "\n");
+			result.append("==").append(ChatUtil.capitalize(getCategoryName(category))).append(" commands").append("==").append("\n");
 			result.append("{| width=\"90%\" class=\"wikitable\"\n");
 			result.append("|-");
 			result.append("\n");
@@ -362,12 +361,11 @@ public class AdminMessages {
 				result.append("\n");
 				result.append("|-");
 				result.append("\n");
-				result.append("|" + command.aliases()[0]);
+				result.append("|").append(command.aliases()[0]);
 				result.append("\n");
-				result.append("|" + "<nowiki>" + flags + command.usage()
-						+ "</nowiki>");
+				result.append("|" + "<nowiki>").append(flags).append(command.usage()).append("</nowiki>");
 				result.append("\n");
-				result.append("|" + command.desc());
+				result.append("|").append(command.desc());
 
 				// if(permission.length() > 0){
 				// result.append("\n");
@@ -389,7 +387,7 @@ public class AdminMessages {
 
 	public static String wikiPermissions(ArrayList<Method> commandMethods) {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 		ArrayList<String> categories = new ArrayList<String>() {
 
 			private static final long serialVersionUID = 1L;
@@ -468,9 +466,9 @@ public class AdminMessages {
 			result.append("\n");
 			result.append("|-");
 			result.append("\n");
-			result.append("|" + permission);
+			result.append("|").append(permission);
 			result.append("\n");
-			result.append("|" + command.aliases()[0]);
+			result.append("|").append(command.aliases()[0]);
 
 		}
 		result.append("\n");
@@ -489,7 +487,7 @@ public class AdminMessages {
 		result.append("\n");
 		result.append("!Effect");
 
-		ArrayList<Entry<String, String>> descriptions = new ArrayList<Entry<String, String>>(
+		ArrayList<Entry<String, String>> descriptions = new ArrayList<>(
 				PermissionsDependency.PERMISSION_DESCRIPTIONS.entrySet());
 
 		// Sort:
@@ -511,9 +509,9 @@ public class AdminMessages {
 			result.append("\n");
 			result.append("|-");
 			result.append("\n");
-			result.append("|" + entry.getKey());
+			result.append("|").append(entry.getKey());
 			result.append("\n");
-			result.append("|" + entry.getValue());
+			result.append("|").append(entry.getValue());
 
 		}
 		result.append("\n");
@@ -527,7 +525,7 @@ public class AdminMessages {
 
 	public static String wikiAttributes() {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 		ArrayList<Attribute> attributes = AttributeConfiguration.config()
 				.getAttributes();
 		int max = AttributeConfiguration.config().getMaxAttributeCap();
@@ -548,7 +546,7 @@ public class AdminMessages {
 		result.append("\n");
 		result.append("! rowspan=\"" + 2 + "\" | Parameter ");
 		result.append("\n");
-		result.append("! colspan=\"" + (max / 5) + "\" | Score ");
+		result.append("! colspan=\"").append(max / 5).append("\" | Score ");
 
 		result.append("\n");
 		result.append("|-");
@@ -557,7 +555,7 @@ public class AdminMessages {
 		result.append("| || ");
 		for (int i = 5; i <= max; i += 5) {
 			result.append(" || ");
-			result.append("'''" + i + "'''");
+			result.append("'''").append(i).append("'''");
 		}
 
 		for (Attribute attribute : attributes) {
@@ -568,8 +566,7 @@ public class AdminMessages {
 			result.append("\n");
 			result.append("|-");
 			result.append("\n");
-			result.append("! rowspan=\"" + parameters.size() + "\" | "
-					+ ChatUtil.capitalize(attribute.getName()));
+			result.append("! rowspan=\"").append(parameters.size()).append("\" | ").append(ChatUtil.capitalize(attribute.getName()));
 
 			boolean first = true;
 			for (Entry<AttributeParameter, TwoPointFunction> entry : parameters) {
@@ -588,7 +585,7 @@ public class AdminMessages {
 				TwoPointFunction function = entry.getValue();
 
 				// Key:
-				result.append("| " + parameterKey(parameter));
+				result.append("| ").append(parameterKey(parameter));
 
 				// Values:
 				for (int i = 5; i <= max; i += 5) {
@@ -610,7 +607,7 @@ public class AdminMessages {
 
 	public static String wikiAbilities() {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 
 		ArrayList<AbilityDefinition> definitions = AbilityConfiguration
 				.config().getDefinitions();
@@ -620,15 +617,12 @@ public class AdminMessages {
 
 		result.append("\n");
 
-		for (int i = 0; i < definitions.size(); i++) {
-
-			AbilityDefinition definition = definitions.get(i);
+		for (AbilityDefinition definition : definitions) {
 
 			result.append("\n");
 
 			// Name:
-			result.append("==" + ChatUtil.capitalize(definition.getName())
-					+ "==");
+			result.append("==").append(ChatUtil.capitalize(definition.getName())).append("==");
 
 			result.append("\n");
 			result.append("\n");
@@ -721,7 +715,7 @@ public class AdminMessages {
 		String next = "\n|-\n";
 		String end = "\n|}";
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 		ChatBook[] books = new ChatBook[] { HelpMessages.pbook(),
 				HelpMessages.sbook(), HelpMessages.fbook(),
 				HelpMessages.ebook() };
@@ -743,7 +737,7 @@ public class AdminMessages {
 			}
 
 			// Title:
-			result.append("==" + book.getTitle() + "==");
+			result.append("==").append(book.getTitle()).append("==");
 			result.append("\n");
 
 			for (int i = 0; i < book.sections(); i++) {
@@ -784,7 +778,7 @@ public class AdminMessages {
 	// Wiki Creole:
 	public static String wikiCommandsCreole(ArrayList<Method> commandMethods) {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 		ArrayList<String> categories = new ArrayList<String>() {
 
 			private static final long serialVersionUID = 1L;
@@ -833,8 +827,7 @@ public class AdminMessages {
 				result.append("\n\n");
 
 			// Begin:
-			result.append("==" + ChatUtil.capitalize(getCategoryName(category))
-					+ " commands" + "" + "\n");
+			result.append("==").append(ChatUtil.capitalize(getCategoryName(category))).append(" commands").append("").append("\n");
 			result.append("|=Command|=Parameters|=Description");
 
 			// Commands:
@@ -858,9 +851,9 @@ public class AdminMessages {
 					flags = "[-" + command.flags().replace(" ", "] [-") + "] ";
 
 				result.append("\n");
-				result.append("|" + command.aliases()[0]);
-				result.append("|" + flags + command.usage());
-				result.append("|" + command.desc() + "|");
+				result.append("|").append(command.aliases()[0]);
+				result.append("|").append(flags).append(command.usage());
+				result.append("|").append(command.desc()).append("|");
 
 				// if(permission.length() > 0){
 				// result.append("\n");
@@ -877,7 +870,7 @@ public class AdminMessages {
 
 	public static String wikiPermissionsCreole(ArrayList<Method> commandMethods) {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 		ArrayList<String> categories = new ArrayList<String>() {
 
 			private static final long serialVersionUID = 1L;
@@ -949,8 +942,8 @@ public class AdminMessages {
 				continue;
 
 			result.append("\n");
-			result.append("|" + permission);
-			result.append("|" + command.aliases()[0] + "|");
+			result.append("|").append(permission);
+			result.append("|").append(command.aliases()[0]).append("|");
 
 		}
 
@@ -961,7 +954,7 @@ public class AdminMessages {
 		result.append("==" + "Other permissions" + "" + "\n");
 		result.append("|=Permission|=Effect|");
 
-		ArrayList<Entry<String, String>> descriptions = new ArrayList<Entry<String, String>>(
+		ArrayList<Entry<String, String>> descriptions = new ArrayList<>(
 				PermissionsDependency.PERMISSION_DESCRIPTIONS.entrySet());
 
 		// Sort:
@@ -981,8 +974,8 @@ public class AdminMessages {
 		for (Entry<String, String> entry : descriptions) {
 
 			result.append("\n");
-			result.append("|" + entry.getKey());
-			result.append("|" + entry.getValue() + "|");
+			result.append("|").append(entry.getKey());
+			result.append("|").append(entry.getValue()).append("|");
 
 		}
 
@@ -995,7 +988,7 @@ public class AdminMessages {
 		int step = 10;
 		int init = 5;
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 		ArrayList<Attribute> attributes = AttributeConfiguration.config()
 				.getAttributes();
 		int max = AttributeConfiguration.config().getMaxAttributeCap();
@@ -1017,20 +1010,17 @@ public class AdminMessages {
 			result.append("\n");
 
 			// Attribute name:
-			result.append("|=" + attribute.getName() + "|");
+			result.append("|=").append(attribute.getName()).append("|");
 
 			// Scores:
 			for (int j = init; j <= max; j += step) {
-				result.append(" " + j + " ");
+				result.append(" ").append(j).append(" ");
 				result.append("|");
 			}
 
 			ArrayList<Entry<AttributeParameter, TwoPointFunction>> parameters = attribute
 					.getAllParameterEntries();
-			for (int i = 0; i < parameters.size(); i++) {
-
-				Entry<AttributeParameter, TwoPointFunction> parameter = parameters
-						.get(i);
+			for (Entry<AttributeParameter, TwoPointFunction> parameter : parameters) {
 
 				result.append("\n");
 
@@ -1064,7 +1054,7 @@ public class AdminMessages {
 		String rowCompensation = " | | | | | | | | | | | | | |";
 		String horizontalLine = "----";
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 
 		ArrayList<AbilityDefinition> definitions = AbilityConfiguration
 				.config().getDefinitions();
@@ -1077,16 +1067,14 @@ public class AdminMessages {
 
 		result.append(horizontalLine);
 
-		for (int i = 0; i < definitions.size(); i++) {
-
-			AbilityDefinition definition = definitions.get(i);
+		for (AbilityDefinition definition : definitions) {
 
 			result.append("\n");
 
 			result.append("\n");
 
 			// Name:
-			result.append("==" + ChatUtil.capitalize(definition.getName()));
+			result.append("==").append(ChatUtil.capitalize(definition.getName()));
 
 			result.append("\n");
 			result.append("\n");
@@ -1177,7 +1165,7 @@ public class AdminMessages {
 		String next = "\n";
 		String end = "";
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 		ChatBook[] books = new ChatBook[] { HelpMessages.pbook(),
 				HelpMessages.sbook(), HelpMessages.fbook(),
 				HelpMessages.ebook() };
@@ -1199,7 +1187,7 @@ public class AdminMessages {
 			}
 
 			// Title:
-			result.append("==" + book.getTitle() + "==");
+			result.append("==").append(book.getTitle()).append("==");
 			result.append("\n");
 
 			for (int i = 0; i < book.sections(); i++) {

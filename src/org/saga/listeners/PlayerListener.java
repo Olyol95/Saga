@@ -289,7 +289,7 @@ public class PlayerListener implements Listener {
 		if (event.getEntity() instanceof Player) {
 
 			SagaPlayer sagaPlayer = Saga.plugin().getLoadedPlayer(
-					((Player) event.getEntity()).getName());
+					event.getEntity().getName());
 			if (sagaPlayer == null)
 				return;
 

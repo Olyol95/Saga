@@ -48,8 +48,8 @@ public class XrayIndicator {
 			return;
 
 		// Get relative:
-		HashSet<Block> targets = new HashSet<Block>();
-		HashSet<Block> others = new HashSet<Block>();
+		HashSet<Block> targets = new HashSet<>();
+		HashSet<Block> others = new HashSet<>();
 		getRelative(vein, targets, others, 30);
 
 		// Check for transparent blocks:
@@ -59,7 +59,7 @@ public class XrayIndicator {
 		}
 
 		// Add vein:
-		HashSet<Material> veinMaterials = new HashSet<Material>();
+		HashSet<Material> veinMaterials = new HashSet<>();
 		for (Block block : targets) {
 
 			if (veinMaterials.contains(block.getType()))
@@ -83,7 +83,7 @@ public class XrayIndicator {
 	 */
 	private static Block getVein(Block anchor) {
 
-		Block relative = null;
+		Block relative;
 
 		relative = anchor.getRelative(BlockFace.NORTH);
 		if (XRAY_BLOCKS.contains(relative.getType())) {
@@ -141,7 +141,7 @@ public class XrayIndicator {
 
 		targetBlocks.add(anchor);
 
-		Block relative = null;
+		Block relative;
 
 		relative = anchor.getRelative(BlockFace.NORTH);
 		if (XRAY_BLOCKS.contains(relative.getType())) {
@@ -195,7 +195,7 @@ public class XrayIndicator {
 	 */
 	public static HashSet<Material> getXrayBlocks() {
 
-		HashSet<Material> materials = new HashSet<Material>();
+		HashSet<Material> materials = new HashSet<>();
 
 		materials.add(Material.COAL_ORE);
 		materials.add(Material.IRON_ORE);
@@ -215,7 +215,7 @@ public class XrayIndicator {
 	 */
 	public static HashSet<Material> getTransparent() {
 
-		HashSet<Material> materials = new HashSet<Material>();
+		HashSet<Material> materials = new HashSet<>();
 
 		materials.add(Material.AIR);
 		materials.add(Material.WATER);

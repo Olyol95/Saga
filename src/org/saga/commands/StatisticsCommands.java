@@ -32,9 +32,9 @@ public class StatisticsCommands {
 			SagaPlayer sagaPlayer) {
 
 		Material material = Material.DIAMOND_ORE;
-		ArrayList<String> suspects = new ArrayList<String>();
-		ArrayList<Double> ratios = new ArrayList<Double>();
-		ArrayList<Integer> veins = new ArrayList<Integer>();
+		ArrayList<String> suspects = new ArrayList<>();
+		ArrayList<Double> ratios = new ArrayList<>();
+		ArrayList<Integer> veins = new ArrayList<>();
 
 		ArrayList<String> allNames = StatisticsManager.manager()
 				.getVeinFoundPlayers(material);
@@ -456,11 +456,11 @@ public class StatisticsCommands {
 		// Force and release:
 		String[] players = WriterReader.getFileNames(Directory.PLAYER_DATA);
 
-		for (int i = 0; i < players.length; i++) {
+		for (String player : players) {
 
 			try {
 				SagaPlayer selPlayer = Saga.plugin().forceSagaPlayer(
-						players[i].replace(Directory.FILE_EXTENTENSION, ""));
+						player.replace(Directory.FILE_EXTENTENSION, ""));
 				selPlayer.updateStatistics();
 				selPlayer.indicateRelease();
 			} catch (NonExistantSagaPlayerException e) {

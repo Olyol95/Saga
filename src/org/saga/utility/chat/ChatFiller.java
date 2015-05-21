@@ -126,7 +126,7 @@ public class ChatFiller {
 
 		char[] chars = str.toCharArray();
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 		Double length = 0.0;
 
 		// Cut size:
@@ -190,7 +190,7 @@ public class ChatFiller {
 	 */
 	private static Character findCustom(Double gapLen, Double reqLength) {
 
-		Set<Character> gapStrs = new HashSet<Character>(FILL_CHARS);
+		Set<Character> gapStrs = new HashSet<>(FILL_CHARS);
 		Double bestFitLen = -1.0;
 		Character bestFitStr = null;
 

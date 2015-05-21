@@ -103,9 +103,9 @@ public class SagaLiving {
 	public SagaLiving(String name) {
 
 		this.energy = AbilityConfiguration.config().getBaseEnergyPoins();
-		this.abilities = new ArrayList<Ability>();
-		this.attributeScores = new Hashtable<String, Integer>();
-		this.abilityScores = new Hashtable<String, Integer>();
+		this.abilities = new ArrayList<>();
+		this.attributeScores = new Hashtable<>();
+		this.abilityScores = new Hashtable<>();
 		this.abilityManager = new AbilityManager(this);
 		this.attributeManager = new AttributeManager(this);
 
@@ -127,7 +127,7 @@ public class SagaLiving {
 
 		// Abilities:
 		if (abilities == null) {
-			abilities = new ArrayList<Ability>();
+			abilities = new ArrayList<>();
 			SagaLogger.nullField(this, "abilities");
 		}
 
@@ -158,12 +158,12 @@ public class SagaLiving {
 		}
 
 		if (attributeScores == null) {
-			attributeScores = new Hashtable<String, Integer>();
+			attributeScores = new Hashtable<>();
 			SagaLogger.nullField(this, "attributeScores");
 		}
 
 		if (abilityScores == null) {
-			abilityScores = new Hashtable<String, Integer>();
+			abilityScores = new Hashtable<>();
 			SagaLogger.nullField(this, "abilityScores");
 		}
 
@@ -193,7 +193,7 @@ public class SagaLiving {
 	 */
 	private void syncAbilities() {
 
-		List<Ability> result = new ArrayList<Ability>();
+		List<Ability> result = new ArrayList<>();
 
 		Set<String> trained = abilityScores.keySet();
 
@@ -294,7 +294,7 @@ public class SagaLiving {
 		if (wrapped == null)
 			return VanillaConfiguration.PLAYER_DEFAULT_HEALTH;
 
-		Damageable d = (Damageable) wrapped;
+		Damageable d = wrapped;
 		
 		return d.getHealth();
 
@@ -310,7 +310,7 @@ public class SagaLiving {
 		if (wrapped == null)
 			return VanillaConfiguration.PLAYER_DEFAULT_HEALTH;
 
-		Damageable d = (Damageable) wrapped;
+		Damageable d = wrapped;
 		
 		return d.getMaxHealth();
 
@@ -337,7 +337,7 @@ public class SagaLiving {
 		if (wrapped == null)
 			return;
 
-		Damageable d = (Damageable) wrapped;
+		Damageable d = wrapped;
 		
 		double hpRate = d.getHealth() / d.getMaxHealth();
 		double maxHealth = getMaxHealth();
@@ -372,7 +372,7 @@ public class SagaLiving {
 		if (wrapped == null)
 			return;
 		
-		Damageable d = (Damageable) wrapped;
+		Damageable d = wrapped;
 		
 		d.setHealth(d.getHealth() + amount.intValue());
 
@@ -387,7 +387,7 @@ public class SagaLiving {
 		if (wrapped == null)
 			return;
 		
-		Damageable d = (Damageable) wrapped;
+		Damageable d = wrapped;
 		
 		d.setHealth(d.getMaxHealth());
 
@@ -755,7 +755,7 @@ public class SagaLiving {
 	 * @return abilities
 	 */
 	public HashSet<Ability> getAbilities() {
-		return new HashSet<Ability>(abilities);
+		return new HashSet<>(abilities);
 	}
 
 	/**
@@ -1134,7 +1134,7 @@ public class SagaLiving {
 	public List<Entity> getNearbyEntities(double x, double y, double z) {
 
 		if (wrapped == null)
-			return new ArrayList<Entity>();
+			return new ArrayList<>();
 
 		return wrapped.getNearbyEntities(x, y, z);
 

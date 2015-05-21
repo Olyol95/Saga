@@ -175,20 +175,19 @@ public class FactionMessages {
 
 	public static String notFormedInfo(Faction faction) {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 
 		if (FactionConfiguration.config().formationAmount != 0
 				|| FactionConfiguration.config().getFormationSettlements() != 0) {
 
 			if (FactionConfiguration.config().formationAmount != 0) {
-				result.append(FactionConfiguration.config().formationAmount
-						+ " members");
+				result.append(FactionConfiguration.config().formationAmount).append(" members");
 			}
 			if (FactionConfiguration.config().getFormationSettlements() != 0) {
 				if (result.length() > 0)
 					result.append(" and ");
 				result.append(FactionConfiguration.config()
-						.getFormationSettlements() + " settlements");
+						.getFormationSettlements()).append(" settlements");
 			}
 
 		} else {
@@ -224,7 +223,7 @@ public class FactionMessages {
 
 	public static String possibleColors(ChatColor[] colours, Faction faction) {
 
-		StringBuffer rString = new StringBuffer();
+		StringBuilder rString = new StringBuilder();
 
 		if (colours.length == 0) {
 			rString.append("Possible colours: none");

@@ -125,7 +125,7 @@ public class TwoPointFunction {
 		if (k == 0)
 			return x2;
 
-		return new Double((y - b) / k);
+		return (y - b) / k;
 
 	}
 
@@ -181,7 +181,7 @@ public class TwoPointFunction {
 
 		double k = (y2 - y1) / (x2 - x1);
 		double b = y1 - k * x1;
-		return new Double(k * x + b);
+		return k * x + b;
 
 	}
 
@@ -241,7 +241,7 @@ public class TwoPointFunction {
 	 */
 	public Integer randomIntValue(Integer x) {
 
-		return randomRound(value(x.intValue()));
+		return randomRound(value(x));
 
 	}
 

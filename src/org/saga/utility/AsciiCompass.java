@@ -10,7 +10,7 @@ public class AsciiCompass {
 
 		public final char asciiChar;
 
-		private Point(final char asciiChar) {
+		Point(final char asciiChar) {
 			this.asciiChar = asciiChar;
 		}
 
@@ -56,7 +56,7 @@ public class AsciiCompass {
 
 	public static ArrayList<String> getAsciiCompass(Point point,
 			ChatColor colorActive, ChatColor colorDefault) {
-		ArrayList<String> ret = new ArrayList<String>();
+		ArrayList<String> ret = new ArrayList<>();
 		String row;
 
 		row = "";

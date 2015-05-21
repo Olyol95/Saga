@@ -32,7 +32,7 @@ public class Colour {
 
 		private char ch;
 
-		private CustomColour(char ch) {
+		CustomColour(char ch) {
 			this.ch = ch;
 		}
 
@@ -45,8 +45,8 @@ public class Colour {
 		 */
 		public static String process(String message) {
 
-			StringBuffer result = new StringBuffer(message.length());
-			Stack<ChatColor> cols = new Stack<ChatColor>();
+			StringBuilder result = new StringBuilder(message.length());
+			Stack<ChatColor> cols = new Stack<>();
 
 			for (int i = 0; i < message.length(); i++) {
 
@@ -99,7 +99,7 @@ public class Colour {
 		 */
 		public static String strip(String message) {
 
-			StringBuffer result = new StringBuffer();
+			StringBuilder result = new StringBuilder();
 
 			for (int i = 0; i < message.length(); i++) {
 

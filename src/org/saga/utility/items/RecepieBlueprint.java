@@ -30,14 +30,14 @@ public class RecepieBlueprint {
 	public void complete() {
 
 		if (from == null) {
-			from = new HashSet<ItemBlueprint>();
+			from = new HashSet<>();
 		}
 		for (ItemBlueprint blueprint : from) {
 			blueprint.complete();
 		}
 
 		if (to == null) {
-			to = new HashSet<ItemBlueprint>();
+			to = new HashSet<>();
 		}
 		for (ItemBlueprint blueprint : to) {
 			blueprint.complete();
@@ -57,7 +57,7 @@ public class RecepieBlueprint {
 	 */
 	public ArrayList<ItemStack> createFrom() {
 
-		ArrayList<ItemStack> items = new ArrayList<ItemStack>();
+		ArrayList<ItemStack> items = new ArrayList<>();
 
 		for (ItemBlueprint blueprint : from) {
 			items.add(blueprint.createItem());
@@ -74,7 +74,7 @@ public class RecepieBlueprint {
 	 */
 	public ArrayList<ItemStack> createTo() {
 
-		ArrayList<ItemStack> items = new ArrayList<ItemStack>();
+		ArrayList<ItemStack> items = new ArrayList<>();
 
 		for (ItemBlueprint blueprint : to) {
 			items.add(blueprint.createItem());

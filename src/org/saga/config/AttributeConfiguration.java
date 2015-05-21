@@ -68,12 +68,12 @@ public class AttributeConfiguration {
 
 		if (damagePenaltyValues == null) {
 			SagaLogger.nullField(getClass(), "damagePenaltyValues");
-			damagePenaltyValues = new Hashtable<DamageType, Double>();
+			damagePenaltyValues = new Hashtable<>();
 		}
 
 		if (attributes == null) {
 			SagaLogger.nullField(getClass(), "attributes");
-			attributes = new ArrayList<Attribute>();
+			attributes = new ArrayList<>();
 		}
 		if (attributes.remove(null))
 			SagaLogger.nullField(getClass(), "attributes element");
@@ -128,7 +128,7 @@ public class AttributeConfiguration {
 	 * @return attributes
 	 */
 	public ArrayList<Attribute> getAttributes() {
-		return new ArrayList<Attribute>(attributes);
+		return new ArrayList<>(attributes);
 	}
 
 	/**
@@ -139,11 +139,10 @@ public class AttributeConfiguration {
 	public ArrayList<String> getAttributeNames() {
 
 		ArrayList<Attribute> attributes = getAttributes();
-		ArrayList<String> attributeNames = new ArrayList<String>();
+		ArrayList<String> attributeNames = new ArrayList<>();
 
-		Iterator<Attribute> it = attributes.iterator();
-		while (it.hasNext()) {
-			attributeNames.add(it.next().getName());
+		for (Attribute attribute : attributes) {
+			attributeNames.add(attribute.getName());
 		}
 
 		return attributeNames;

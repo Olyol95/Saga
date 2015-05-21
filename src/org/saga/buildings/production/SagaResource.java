@@ -65,7 +65,7 @@ public class SagaResource extends SagaRecipe {
 	 */
 	public ArrayList<SagaItem> getRequests() {
 
-		ArrayList<SagaItem> requests = new ArrayList<SagaItem>();
+		ArrayList<SagaItem> requests = new ArrayList<>();
 
 		for (int i = 0; i < this.recipe.length; i++) {
 
@@ -309,14 +309,13 @@ public class SagaResource extends SagaRecipe {
 	@Override
 	public String toString() {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 
 		result.append(super.toString());
 
 		result.append("{");
 		for (int i = 0; i < collected.length; i++) {
-			result.append(recipe[i].getType() + " " + collected[i] + "/"
-					+ recipe[i].getAmount());
+			result.append(recipe[i].getType()).append(" ").append(collected[i]).append("/").append(recipe[i].getAmount());
 		}
 		result.append("}");
 

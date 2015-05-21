@@ -162,7 +162,7 @@ public class Saga extends JavaPlugin implements MinuteTicker {
 		final PluginManager pluginManager = getServer().getPluginManager();
 
 		// Players:
-		loadedPlayers = new Hashtable<String, SagaPlayer>();
+		loadedPlayers = new Hashtable<>();
 
 		// Configuration:
 		Clock.load(); // Needs access to Saga.pluging().
@@ -360,7 +360,7 @@ public class Saga extends JavaPlugin implements MinuteTicker {
 	 */
 	public Collection<SagaPlayer> getLoadedPlayers() {
 
-		Collection<SagaPlayer> sagaPlayers = new ArrayList<SagaPlayer>(
+		Collection<SagaPlayer> sagaPlayers = new ArrayList<>(
 				loadedPlayers.values());
 
 		return sagaPlayers;

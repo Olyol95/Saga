@@ -19,7 +19,7 @@ public class PlayerMessages {
 			return Colour.negative + "Nothing to reset.";
 		}
 
-		StringBuffer rString = new StringBuffer();
+		StringBuilder rString = new StringBuilder();
 
 		if (proffRespec) {
 			rString.append(ProficiencyType.PROFESSION.getName());
@@ -44,8 +44,7 @@ public class PlayerMessages {
 		}
 
 		if (coinCost > 0) {
-			rString.append(" reset for " + EconomyMessages.coins(coinCost)
-					+ ".");
+			rString.append(" reset for ").append(EconomyMessages.coins(coinCost)).append(".");
 		} else {
 			rString.append(" reset.");
 		}
@@ -96,9 +95,9 @@ public class PlayerMessages {
 		int count = GuardianRune.countItems(rune.getItems())
 				+ GuardianRune.countItems(rune.getArmour());
 
-		StringBuffer rString = new StringBuffer();
+		StringBuilder rString = new StringBuilder();
 
-		rString.append("Guardian rune restored " + count + " items.");
+		rString.append("Guardian rune restored ").append(count).append(" items.");
 
 		rString.insert(0, Colour.positive);
 
@@ -143,11 +142,10 @@ public class PlayerMessages {
 
 	public static String recharged(GuardianRune rune, Double price) {
 
-		StringBuffer rString = new StringBuffer();
+		StringBuilder rString = new StringBuilder();
 
 		if (price > 0.0) {
-			rString.append("Recharged the guardian rune for "
-					+ EconomyMessages.coins(price) + ".");
+			rString.append("Recharged the guardian rune for ").append(EconomyMessages.coins(price)).append(".");
 		} else {
 			rString.append("Recharged the guardian rune.");
 		}

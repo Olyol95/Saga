@@ -10,7 +10,7 @@ public interface Trader {
 	 * 
 	 * @return trading name
 	 */
-	public String getName();
+	String getName();
 
 	/**
 	 * Adds coins.
@@ -19,7 +19,7 @@ public interface Trader {
 	 *            amount
 	 * @return true if coins were added
 	 */
-	public boolean addCoins(Double amount);
+	boolean addCoins(Double amount);
 
 	/**
 	 * Removes coins.
@@ -28,14 +28,14 @@ public interface Trader {
 	 *            amount
 	 * @return true if coins were removed
 	 */
-	public boolean removeCoins(Double amount);
+	boolean removeCoins(Double amount);
 
 	/**
 	 * Gets traders currency.
 	 * 
 	 * @return currency amount of currency the trader has
 	 */
-	public Double getCoins();
+	Double getCoins();
 
 	/**
 	 * Adds currency
@@ -43,7 +43,7 @@ public interface Trader {
 	 * @param itemStack
 	 *            item stack
 	 */
-	public void addItem(ItemStack itemStack);
+	void addItem(ItemStack itemStack);
 
 	/**
 	 * Removes currency
@@ -51,7 +51,7 @@ public interface Trader {
 	 * @param itemStack
 	 *            irem stack
 	 */
-	public void removeItem(ItemStack itemStack);
+	void removeItem(ItemStack itemStack);
 
 	/**
 	 * Gets item count.
@@ -60,20 +60,20 @@ public interface Trader {
 	 *            material
 	 * @return
 	 */
-	public Integer getAmount(Material material);
+	Integer getAmount(Material material);
 
 	/**
 	 * Gets item price.
 	 * 
 	 * @return item price, null if none
 	 */
-	public Double getSellPrice(Material material);
+	Double getSellPrice(Material material);
 
 	/**
 	 * Gets item price.
 	 * 
 	 * @return item price, null if none
 	 */
-	public Double getBuyPrice(Material material);
+	Double getBuyPrice(Material material);
 
 }

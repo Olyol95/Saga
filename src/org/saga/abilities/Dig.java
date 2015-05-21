@@ -83,8 +83,8 @@ public class Dig extends Ability {
 		double randRadius2 = (radius + 1) * (radius + 1);
 		int boxRadius = (int) Math.ceil(radius + 1);
 
-		ArrayList<Block> blocks = new ArrayList<Block>();
-		ArrayList<Block> randoms = new ArrayList<Block>();
+		ArrayList<Block> blocks = new ArrayList<>();
+		ArrayList<Block> randoms = new ArrayList<>();
 		for (int modx = -boxRadius; modx <= boxRadius; modx++) {
 			for (int mody = -boxRadius; mody <= boxRadius; mody++) {
 				for (int modz = -boxRadius; modz <= boxRadius; modz++) {
@@ -168,10 +168,7 @@ public class Dig extends Ability {
 		if (block.getType() == Material.GRAVEL)
 			return true;
 
-		if (block.getType() == Material.SOUL_SAND)
-			return true;
-
-		return false;
+		return block.getType() == Material.SOUL_SAND;
 
 	}
 

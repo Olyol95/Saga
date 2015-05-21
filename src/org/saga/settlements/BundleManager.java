@@ -34,12 +34,12 @@ public class BundleManager {
 	/**
 	 * Registered bundles.
 	 */
-	transient Hashtable<Integer, Bundle> registeredBundles = new Hashtable<Integer, Bundle>();
+	transient Hashtable<Integer, Bundle> registeredBundles = new Hashtable<>();
 
 	/**
 	 * All saga chunks.
 	 */
-	transient private Hashtable<String, Hashtable<Integer, Hashtable<Integer, SagaChunk>>> sagaChunks = new Hashtable<String, Hashtable<Integer, Hashtable<Integer, SagaChunk>>>();
+	transient private Hashtable<String, Hashtable<Integer, Hashtable<Integer, SagaChunk>>> sagaChunks = new Hashtable<>();
 
 	// Synchronisation:
 	/**
@@ -97,7 +97,7 @@ public class BundleManager {
 	 */
 	public ArrayList<Bundle> getBundles(ArrayList<Integer> bundleIds) {
 
-		ArrayList<Bundle> bundles = new ArrayList<Bundle>();
+		ArrayList<Bundle> bundles = new ArrayList<>();
 
 		for (Integer bundleId : bundleIds) {
 
@@ -118,7 +118,7 @@ public class BundleManager {
 	 */
 	public Collection<Bundle> getAllBundles() {
 
-		return new ArrayList<Bundle>(registeredBundles.values());
+		return new ArrayList<>(registeredBundles.values());
 
 	}
 
@@ -320,14 +320,14 @@ public class BundleManager {
 				.get(sagaChunk.getWorldName());
 
 		if (world == null) {
-			world = new Hashtable<Integer, Hashtable<Integer, SagaChunk>>();
+			world = new Hashtable<>();
 			sagaChunks.put(sagaChunk.getWorldName(), world);
 		}
 
 		Hashtable<Integer, SagaChunk> x = world.get(sagaChunk.getX());
 
 		if (x == null) {
-			x = new Hashtable<Integer, SagaChunk>();
+			x = new Hashtable<>();
 			world.put(sagaChunk.getX(), x);
 		}
 
@@ -442,9 +442,9 @@ public class BundleManager {
 
 		// Load:
 		String[] ids = WriterReader.getAllIds(Directory.SETTLEMENT_DATA);
-		for (int i = 0; i < ids.length; i++) {
+		for (String id : ids) {
 
-			Bundle element = Bundle.load(ids[i]);
+			Bundle element = Bundle.load(id);
 
 			// Ignore all invalid IDs:
 			if (element.getId() < 0) {

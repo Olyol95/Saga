@@ -92,8 +92,8 @@ public abstract class Building extends SagaCustomSerialization implements
 
 		this.name = definition.getName();
 		this.definition = definition;
-		this.signs = new ArrayList<BuildingSign>();
-		this.storage = new ArrayList<StorageArea>();
+		this.signs = new ArrayList<>();
+		this.storage = new ArrayList<>();
 
 	}
 
@@ -123,7 +123,7 @@ public abstract class Building extends SagaCustomSerialization implements
 		}
 
 		if (signs == null) {
-			signs = new ArrayList<BuildingSign>();
+			signs = new ArrayList<>();
 			SagaLogger.nullField(this, "signs");
 			integrity = false;
 		}
@@ -145,7 +145,7 @@ public abstract class Building extends SagaCustomSerialization implements
 		}
 
 		if (storage == null) {
-			storage = new ArrayList<StorageArea>();
+			storage = new ArrayList<>();
 			SagaLogger.nullField(this, "storage");
 			integrity = false;
 		}
@@ -528,7 +528,7 @@ public abstract class Building extends SagaCustomSerialization implements
 	 * @return building signs
 	 */
 	public ArrayList<BuildingSign> getBuildingSigns() {
-		return new ArrayList<BuildingSign>(signs);
+		return new ArrayList<>(signs);
 	}
 
 	/**
@@ -542,7 +542,7 @@ public abstract class Building extends SagaCustomSerialization implements
 			Class<T> signClass) {
 
 		ArrayList<BuildingSign> allSigns = getBuildingSigns();
-		ArrayList<T> rSigns = new ArrayList<T>();
+		ArrayList<T> rSigns = new ArrayList<>();
 
 		for (BuildingSign buildingSign : allSigns) {
 
@@ -615,9 +615,9 @@ public abstract class Building extends SagaCustomSerialization implements
 	 */
 	protected BuildingSign buildingSignAt(Location location) {
 
-		for (int i = 0; i < signs.size(); i++) {
-			if (signs.get(i).getLocation().equals(location)) {
-				return signs.get(i);
+		for (BuildingSign sign : signs) {
+			if (sign.getLocation().equals(location)) {
+				return sign;
 			}
 		}
 		return null;
@@ -659,7 +659,7 @@ public abstract class Building extends SagaCustomSerialization implements
 	 * @return
 	 */
 	public ArrayList<StorageArea> getStorageAreas() {
-		return new ArrayList<StorageArea>(storage);
+		return new ArrayList<>(storage);
 	}
 
 	/**
@@ -873,7 +873,7 @@ public abstract class Building extends SagaCustomSerialization implements
 	 * @return building specific stats, empty string if none
 	 */
 	public ArrayList<String> getSpecificStats() {
-		return new ArrayList<String>();
+		return new ArrayList<>();
 	}
 
 	/**

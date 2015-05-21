@@ -52,27 +52,27 @@ public class Clock implements Runnable {
 	/**
 	 * Second tick instances.
 	 */
-	private HashSet<SecondTicker> seconds = new HashSet<SecondTicker>();
+	private HashSet<SecondTicker> seconds = new HashSet<>();
 
 	/**
 	 * Minute tick instances.
 	 */
-	private HashSet<MinuteTicker> minutes = new HashSet<MinuteTicker>();
+	private HashSet<MinuteTicker> minutes = new HashSet<>();
 
 	/**
 	 * Hour tick instances.
 	 */
-	private HashSet<HourTicker> hours = new HashSet<HourTicker>();
+	private HashSet<HourTicker> hours = new HashSet<>();
 
 	/**
 	 * Daytime tick instances.
 	 */
-	private HashSet<DaytimeTicker> daytimes = new HashSet<DaytimeTicker>();
+	private HashSet<DaytimeTicker> daytimes = new HashSet<>();
 
 	/**
 	 * Previous daytime.
 	 */
-	private Hashtable<String, Daytime> prevDaytimes = new Hashtable<String, Clock.DaytimeTicker.Daytime>();
+	private Hashtable<String, Daytime> prevDaytimes = new Hashtable<>();
 
 	// Ticking:
 	/*
@@ -86,7 +86,7 @@ public class Clock implements Runnable {
 		// Seconds:
 		secondsCycle++;
 
-		ArrayList<SecondTicker> second = new ArrayList<Clock.SecondTicker>(
+		ArrayList<SecondTicker> second = new ArrayList<>(
 				this.seconds);
 		for (SecondTicker ticker : second) {
 			if (!ticker.clockSecondTick())
@@ -105,7 +105,7 @@ public class Clock implements Runnable {
 				
 			}
 
-			ArrayList<MinuteTicker> minute = new ArrayList<Clock.MinuteTicker>(
+			ArrayList<MinuteTicker> minute = new ArrayList<>(
 					this.minutes);
 			for (MinuteTicker ticker : minute) {
 				if (!ticker.clockMinuteTick())
@@ -120,7 +120,7 @@ public class Clock implements Runnable {
 			minutesCycle = 0;
 			hoursCycle++;
 
-			ArrayList<HourTicker> hour = new ArrayList<HourTicker>(this.hours);
+			ArrayList<HourTicker> hour = new ArrayList<>(this.hours);
 			for (HourTicker ticker : hour) {
 				if (!ticker.clockHourTick())
 					this.hours.remove(ticker);
@@ -155,7 +155,7 @@ public class Clock implements Runnable {
 			// Tick only if daytime changed:
 			if (currDaytime != Daytime.NONE && prevDaytime != currDaytime) {
 
-				ArrayList<DaytimeTicker> daytimes = new ArrayList<DaytimeTicker>(
+				ArrayList<DaytimeTicker> daytimes = new ArrayList<>(
 						this.daytimes);
 				for (DaytimeTicker ticker : daytimes) {
 
@@ -355,40 +355,40 @@ public class Clock implements Runnable {
 	}
 
 	// Types:
-	public static interface SecondTicker {
+	public interface SecondTicker {
 
 		/**
 		 * A clock tick.
 		 * 
 		 * @return true if continue
 		 */
-		public boolean clockSecondTick();
+		boolean clockSecondTick();
 
 	}
 
-	public static interface MinuteTicker {
+	public interface MinuteTicker {
 
 		/**
 		 * A clock tick.
 		 * 
 		 * @return true if continue
 		 */
-		public boolean clockMinuteTick();
+		boolean clockMinuteTick();
 
 	}
 
-	public static interface HourTicker {
+	public interface HourTicker {
 
 		/**
 		 * A clock tick.
 		 * 
 		 * @return true if continue
 		 */
-		public boolean clockHourTick();
+		boolean clockHourTick();
 
 	}
 
-	public static interface DaytimeTicker {
+	public interface DaytimeTicker {
 
 		/**
 		 * A clock tick.
@@ -397,7 +397,7 @@ public class Clock implements Runnable {
 		 *            daytime
 		 * @return true if the world is correct
 		 */
-		public boolean daytimeTick(Daytime daytime);
+		boolean daytimeTick(Daytime daytime);
 
 		/**
 		 * Checks if the world is correct.
@@ -406,7 +406,7 @@ public class Clock implements Runnable {
 		 *            world name
 		 * @return true if the world is correct
 		 */
-		public boolean checkWorld(String worldName);
+		boolean checkWorld(String worldName);
 
 		/**
 		 * Represents daytime.
@@ -414,7 +414,7 @@ public class Clock implements Runnable {
 		 * @author andf
 		 * 
 		 */
-		public static enum Daytime {
+		enum Daytime {
 
 			MIDDAY(6225L), SUNSET(12300L), MIDNIGHT(18075L), SUNRISE(23850L), NONE(
 					0L);
@@ -432,7 +432,7 @@ public class Clock implements Runnable {
 			 * @param next
 			 *            next daytime
 			 */
-			private Daytime(Long time) {
+			Daytime(Long time) {
 
 				this.time = time;
 
@@ -499,9 +499,9 @@ public class Clock implements Runnable {
 
 				Daytime[] values = values();
 
-				for (int i = 0; i < values.length; i++) {
-					if (values[i].getTime() > time)
-						return values[i];
+				for (Daytime value : values) {
+					if (value.getTime() > time)
+						return value;
 				}
 
 				return values[0];

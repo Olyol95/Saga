@@ -122,7 +122,7 @@ public class HeavySwing extends Ability {
 		Random random = new Random();
 
 		// Crumble blocks:
-		ArrayList<Block> crumbleBlocks = new ArrayList<Block>();
+		ArrayList<Block> crumbleBlocks = new ArrayList<>();
 		for (Block block : blocks) {
 
 			if (block.getRelative(BlockFace.UP).getType() != Material.AIR) {
@@ -188,10 +188,7 @@ public class HeavySwing extends Ability {
 		if (block.getType() == Material.DIAMOND_ORE)
 			return true;
 
-		if (block.getType() == Material.REDSTONE_ORE)
-			return true;
-
-		return false;
+		return block.getType() == Material.REDSTONE_ORE;
 
 	}
 

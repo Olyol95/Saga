@@ -591,10 +591,7 @@ public class VanillaConfiguration {
 				+ "\u263B\u25D8\u263C" + "\u2591\u2592\u2593";
 
 		if (!oldallowedchars.contains(custom)) {
-			StringBuilder sb = new StringBuilder();
-			sb.append(oldallowedchars);
-			sb.append(custom);
-			field.set(null, sb.toString());
+			field.set(null, oldallowedchars + custom);
 		}
 
 		instance.bonusCharacters = true;

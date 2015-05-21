@@ -58,10 +58,10 @@ public class WarManager implements SecondTicker {
 	 */
 	public WarManager(String name) {
 
-		warsDeclared = new Hashtable<Integer, HashSet<Integer>>();
-		alliancesDeclared = new Hashtable<Integer, HashSet<Integer>>();
-		defeatTimes = new Hashtable<Integer, Long>();
-		peaceTimes = new Hashtable<Integer, Hashtable<Integer, Long>>();
+		warsDeclared = new Hashtable<>();
+		alliancesDeclared = new Hashtable<>();
+		defeatTimes = new Hashtable<>();
+		peaceTimes = new Hashtable<>();
 
 	}
 
@@ -73,22 +73,22 @@ public class WarManager implements SecondTicker {
 
 		if (warsDeclared == null) {
 			SagaLogger.nullField(getClass(), "warsDeclared");
-			warsDeclared = new Hashtable<Integer, HashSet<Integer>>();
+			warsDeclared = new Hashtable<>();
 		}
 
 		if (alliancesDeclared == null) {
 			SagaLogger.nullField(getClass(), "alliancesDeclared");
-			alliancesDeclared = new Hashtable<Integer, HashSet<Integer>>();
+			alliancesDeclared = new Hashtable<>();
 		}
 
 		if (defeatTimes == null) {
 			SagaLogger.nullField(getClass(), "defeatTimes");
-			defeatTimes = new Hashtable<Integer, Long>();
+			defeatTimes = new Hashtable<>();
 		}
 
 		if (peaceTimes == null) {
 			SagaLogger.nullField(getClass(), "peaceTimes");
-			peaceTimes = new Hashtable<Integer, Hashtable<Integer, Long>>();
+			peaceTimes = new Hashtable<>();
 		}
 
 	}
@@ -106,7 +106,7 @@ public class WarManager implements SecondTicker {
 
 		HashSet<Integer> declared = warsDeclared.get(attacker);
 		if (declared == null) {
-			declared = new HashSet<Integer>();
+			declared = new HashSet<>();
 			warsDeclared.put(attacker, declared);
 		}
 
@@ -145,7 +145,7 @@ public class WarManager implements SecondTicker {
 
 		HashSet<Integer> declared = warsDeclared.get(attackerID);
 		if (declared == null)
-			return new HashSet<Integer>();
+			return new HashSet<>();
 		return declared;
 
 	}
@@ -246,13 +246,13 @@ public class WarManager implements SecondTicker {
 
 		Hashtable<Integer, Long> peaceTimes1 = peaceTimes.get(faction1ID);
 		if (peaceTimes1 == null) {
-			peaceTimes1 = new Hashtable<Integer, Long>();
+			peaceTimes1 = new Hashtable<>();
 			peaceTimes.put(faction1ID, peaceTimes1);
 		}
 
 		Hashtable<Integer, Long> peaceTimes2 = peaceTimes.get(faction2ID);
 		if (peaceTimes2 == null) {
-			peaceTimes2 = new Hashtable<Integer, Long>();
+			peaceTimes2 = new Hashtable<>();
 			peaceTimes.put(faction2ID, peaceTimes2);
 		}
 
@@ -294,7 +294,7 @@ public class WarManager implements SecondTicker {
 
 		HashSet<Integer> declared = alliancesDeclared.get(attacker);
 		if (declared == null) {
-			declared = new HashSet<Integer>();
+			declared = new HashSet<>();
 			alliancesDeclared.put(attacker, declared);
 		}
 
@@ -333,7 +333,7 @@ public class WarManager implements SecondTicker {
 
 		HashSet<Integer> declared = alliancesDeclared.get(attackerID);
 		if (declared == null)
-			return new HashSet<Integer>();
+			return new HashSet<>();
 		return declared;
 
 	}

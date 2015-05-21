@@ -183,7 +183,7 @@ public abstract class Ability extends SagaCustomSerialization implements
 	public boolean clockSecondTick() {
 
 		if (cooldown == 1 && sagaLiving instanceof SagaPlayer) {
-			((SagaPlayer) sagaLiving)
+			sagaLiving
 					.message(AbilityMessages.cooldownEnd(this));
 		}
 

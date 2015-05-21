@@ -31,7 +31,7 @@ public class FactionManager {
 	/**
 	 * Factions.
 	 */
-	private Hashtable<Integer, Faction> loadedFactions = new Hashtable<Integer, Faction>();
+	private Hashtable<Integer, Faction> loadedFactions = new Hashtable<>();
 
 	// Synchronisation:
 	/**
@@ -81,7 +81,7 @@ public class FactionManager {
 	 */
 	public ArrayList<Faction> getFactions(ArrayList<Integer> factionIds) {
 
-		ArrayList<Faction> factions = new ArrayList<Faction>();
+		ArrayList<Faction> factions = new ArrayList<>();
 
 		for (Integer id : factionIds) {
 
@@ -104,7 +104,7 @@ public class FactionManager {
 	 * @return factions
 	 */
 	public ArrayList<Faction> getFactions(Set<Integer> factionIds) {
-		return getFactions(new ArrayList<Integer>(factionIds));
+		return getFactions(new ArrayList<>(factionIds));
 	}
 
 	/**
@@ -220,7 +220,7 @@ public class FactionManager {
 	 */
 	public ArrayList<String> getFactionNames(Collection<Integer> ids) {
 
-		ArrayList<String> factions = new ArrayList<String>();
+		ArrayList<String> factions = new ArrayList<>();
 
 		for (Integer id : ids) {
 
@@ -262,8 +262,8 @@ public class FactionManager {
 
 		// Load factions:
 		String[] ids = WriterReader.getAllIds(Directory.FACTION_DATA);
-		for (int i = 0; i < ids.length; i++) {
-			Faction element = Faction.load(ids[i]);
+		for (String id : ids) {
+			Faction element = Faction.load(id);
 			// Ignore all invalid IDs:
 			if (element.getId() < 0) {
 				SagaLogger.severe(FactionManager.class, "can't load " + element

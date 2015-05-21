@@ -19,7 +19,7 @@ public class SagaLogger {
 
 	private final Terminal terminal;
 
-	private final Map<ChatColor, String> replacements = new EnumMap<ChatColor, String>(
+	private final Map<ChatColor, String> replacements = new EnumMap<>(
 			ChatColor.class);
 
 	private final ChatColor[] colors = ChatColor.values();

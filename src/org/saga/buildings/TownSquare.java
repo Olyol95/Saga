@@ -52,7 +52,7 @@ public class TownSquare extends Building implements SecondTicker {
 
 		super(definition);
 
-		protectionTimes = new Hashtable<String, Long>();
+		protectionTimes = new Hashtable<>();
 
 	}
 
@@ -75,7 +75,7 @@ public class TownSquare extends Building implements SecondTicker {
 			}
 
 		// Transient:
-		protectionTimes = new Hashtable<String, Long>();
+		protectionTimes = new Hashtable<>();
 
 		return true;
 
@@ -220,7 +220,7 @@ public class TownSquare extends Building implements SecondTicker {
 			return null;
 
 		// Possible spawn blocks:
-		HashSet<Block> blocks = new HashSet<Block>();
+		HashSet<Block> blocks = new HashSet<>();
 		fillAdjecentValid(spawn.getLocation().getBlock(), blocks);
 		if (blocks.size() == 0)
 			return null;
@@ -316,11 +316,8 @@ public class TownSquare extends Building implements SecondTicker {
 			return false;
 		if (block.getRelative(BlockFace.UP).getType().isSolid())
 			return false;
-		if (block.getRelative(BlockFace.UP).getRelative(BlockFace.UP).getType()
-				.isSolid())
-			return false;
-
-		return true;
+		return !block.getRelative(BlockFace.UP).getRelative(BlockFace.UP).getType()
+				.isSolid();
 
 	}
 

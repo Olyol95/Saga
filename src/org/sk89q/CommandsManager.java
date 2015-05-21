@@ -80,18 +80,18 @@ public abstract class CommandsManager<T> {
 	 * their respective {@link Method}. The child map has the key of the command
 	 * name (one for each alias) with the method.
 	 */
-	protected Map<Method, Map<String, Method>> commands = new HashMap<Method, Map<String, Method>>();
+	protected Map<Method, Map<String, Method>> commands = new HashMap<>();
 
 	/**
 	 * Used to store the instances associated with a method.
 	 */
-	protected Map<Method, Object> instances = new HashMap<Method, Object>();
+	protected Map<Method, Object> instances = new HashMap<>();
 
 	/**
 	 * Mapping of commands (not including aliases) with a description. This is
 	 * only for top level commands.
 	 */
-	protected Map<String, String> descs = new HashMap<String, String>();
+	protected Map<String, String> descs = new HashMap<>();
 
 	/**
 	 * Stores the injector used to getInstance.
@@ -122,15 +122,11 @@ public abstract class CommandsManager<T> {
 			if (getInjector() == null) {
 				registerMethods(cls, parent, null);
 			} else {
-				Object obj = null;
+				Object obj;
 				obj = getInjector().getInstance(cls);
 				registerMethods(cls, parent, obj);
 			}
-		} catch (InvocationTargetException e) {
-			logger.log(Level.SEVERE, "Failed to register commands", e);
-		} catch (IllegalAccessException e) {
-			logger.log(Level.SEVERE, "Failed to register commands", e);
-		} catch (InstantiationException e) {
+		} catch (InvocationTargetException | InstantiationException | IllegalAccessException e) {
 			logger.log(Level.SEVERE, "Failed to register commands", e);
 		}
 	}
@@ -149,7 +145,7 @@ public abstract class CommandsManager<T> {
 		if (commands.containsKey(parent)) {
 			map = commands.get(parent);
 		} else {
-			map = new HashMap<String, Method>();
+			map = new HashMap<>();
 			commands.put(parent, map);
 		}
 
@@ -236,7 +232,7 @@ public abstract class CommandsManager<T> {
 		command.append("/");
 
 		for (int i = 0; i <= level; ++i) {
-			command.append(args[i] + " ");
+			command.append(args[i]).append(" ");
 		}
 
 		command.append(cmd.flags().length() > 0 ? "[-" + cmd.flags() + "] "
@@ -264,7 +260,7 @@ public abstract class CommandsManager<T> {
 		command.append("/");
 
 		for (int i = 0; i <= level; ++i) {
-			command.append(args[i] + " ");
+			command.append(args[i]).append(" ");
 		}
 
 		Map<String, Method> map = commands.get(method);
@@ -272,7 +268,7 @@ public abstract class CommandsManager<T> {
 
 		command.append("<");
 
-		Set<String> allowedCommands = new HashSet<String>();
+		Set<String> allowedCommands = new HashSet<>();
 
 		for (Map.Entry<String, Method> entry : map.entrySet()) {
 			Method childMethod = entry.getValue();
@@ -404,7 +400,7 @@ public abstract class CommandsManager<T> {
 			}
 
 			for (char flag : context.getFlags()) {
-				if (cmd.flags().indexOf(String.valueOf(flag)) == -1) {
+				if (!cmd.flags().contains(String.valueOf(flag))) {
 					throw new CommandUsageException("Unknown flag: " + flag,
 							getUsage(args, level, cmd));
 				}
@@ -416,9 +412,7 @@ public abstract class CommandsManager<T> {
 
 			try {
 				method.invoke(instance, methodArgs);
-			} catch (IllegalArgumentException e) {
-				logger.log(Level.SEVERE, "Failed to execute command", e);
-			} catch (IllegalAccessException e) {
+			} catch (IllegalArgumentException | IllegalAccessException e) {
 				logger.log(Level.SEVERE, "Failed to execute command", e);
 			} catch (InvocationTargetException e) {
 				if (e.getCause() instanceof CommandException) {

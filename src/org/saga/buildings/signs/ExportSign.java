@@ -238,7 +238,6 @@ public class ExportSign extends BuildingSign {
 	public String getLine(int index, SignStatus status) {
 
 		SagaPricedItem importItem = null;
-		;
 		Double price = null;
 
 		switch (status) {

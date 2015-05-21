@@ -18,7 +18,7 @@ public class RandomRecipe {
 	/**
 	 * Weight and blueprint map.
 	 */
-	private TreeMap<Double, RecepieBlueprint> map = new TreeMap<Double, RecepieBlueprint>();
+	private TreeMap<Double, RecepieBlueprint> map = new TreeMap<>();
 
 	/**
 	 * Random.
@@ -93,7 +93,7 @@ public class RandomRecipe {
 	public void remove(RecepieBlueprint recipe) {
 
 		TreeMap<Double, RecepieBlueprint> oldMap = this.map;
-		map = new TreeMap<Double, RecepieBlueprint>();
+		map = new TreeMap<>();
 
 		// Add all values again:
 		Collection<RecepieBlueprint> values = oldMap.values();
@@ -142,7 +142,7 @@ public class RandomRecipe {
 	protected RandomRecipe clone() throws CloneNotSupportedException {
 
 		RandomRecipe result = new RandomRecipe();
-		result.map = new TreeMap<Double, RecepieBlueprint>(this.map);
+		result.map = new TreeMap<>(this.map);
 		result.random = this.random;
 		result.total = this.total;
 

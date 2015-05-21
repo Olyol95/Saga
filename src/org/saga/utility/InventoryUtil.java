@@ -25,11 +25,11 @@ public class InventoryUtil {
 	public static Integer getItemCount(Material material, ItemStack[] items) {
 
 		int count = 0;
-		for (int i = 0; i < items.length; i++) {
-			if (items[i] != null && items[i].getType().equals(material)
-					&& items[i].getDurability() == 0
-					&& items[i].getEnchantments().size() == 0) {
-				count += items[i].getAmount();
+		for (ItemStack item : items) {
+			if (item != null && item.getType().equals(material)
+					&& item.getDurability() == 0
+					&& item.getEnchantments().size() == 0) {
+				count += item.getAmount();
 			}
 		}
 		return count;

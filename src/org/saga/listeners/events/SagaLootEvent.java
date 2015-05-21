@@ -129,7 +129,7 @@ public class SagaLootEvent {
 	public void apply() {
 
 		ItemStack item = event.getPlayer().getItemInHand();
-		ArrayList<ItemStack> drops = new ArrayList<ItemStack>(event.getBlock()
+		ArrayList<ItemStack> drops = new ArrayList<>(event.getBlock()
 				.getDrops(item));
 
 		// Reduce tool damage:
@@ -145,7 +145,7 @@ public class SagaLootEvent {
 
 				// Award exp:
 				Double exp = ExperienceConfiguration.config().getExp(block);
-				((SagaPlayer) sagaLiving).awardExp(exp);
+				sagaLiving.awardExp(exp);
 
 				SagaPricedItem blockCoins = EconomyConfiguration.config()
 						.getBlocCoinsItem(block);

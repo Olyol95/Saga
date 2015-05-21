@@ -36,7 +36,7 @@ public class SagaEnumSerializer implements TypeAdapterFactory {
 			return null;
 
 		// Create a map of all enums:
-		final Map<String, T> constantMap = new HashMap<String, T>();
+		final Map<String, T> constantMap = new HashMap<>();
 		boolean first = true;
 		for (T constant : rawType.getEnumConstants()) {
 

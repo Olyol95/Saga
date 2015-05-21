@@ -856,7 +856,7 @@ public class HelpMessages {
 	// Utility:
 	public static String bonuses(ProficiencyDefinition definition) {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 
 		// Attributes:
 		ArrayList<String> attributeNames = AttributeConfiguration.config()
@@ -871,8 +871,7 @@ public class HelpMessages {
 			if (result.length() > 0)
 				result.append(", ");
 
-			result.append("+" + bonus + " "
-					+ GeneralMessages.attrAbrev(attribute));
+			result.append("+").append(bonus).append(" ").append(GeneralMessages.attrAbrev(attribute));
 
 		}
 
@@ -882,7 +881,7 @@ public class HelpMessages {
 
 	public static String caps(ProficiencyDefinition definition) {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 
 		// Attributes:
 		ArrayList<String> attributeNames = AttributeConfiguration.config()
@@ -897,8 +896,7 @@ public class HelpMessages {
 			if (result.length() > 0)
 				result.append(", ");
 
-			result.append("+" + bonus + " "
-					+ GeneralMessages.attrAbrev(attribute));
+			result.append("+").append(bonus).append(" ").append(GeneralMessages.attrAbrev(attribute));
 
 		}
 

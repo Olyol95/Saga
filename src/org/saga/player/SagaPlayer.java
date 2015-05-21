@@ -125,8 +125,8 @@ public class SagaPlayer extends SagaLiving implements Trader {
 
 		this.exp = 0.0;
 
-		this.factionInvites = new ArrayList<Integer>();
-		this.bundleInvites = new ArrayList<Integer>();
+		this.factionInvites = new ArrayList<>();
+		this.bundleInvites = new ArrayList<>();
 
 		this.coins = EconomyConfiguration.config().playerCoins;
 
@@ -173,12 +173,12 @@ public class SagaPlayer extends SagaLiving implements Trader {
 		}
 
 		if (factionInvites == null) {
-			factionInvites = new ArrayList<Integer>();
+			factionInvites = new ArrayList<>();
 			SagaLogger.nullField(this, "factionInvites");
 		}
 
 		if (bundleInvites == null) {
-			bundleInvites = new ArrayList<Integer>();
+			bundleInvites = new ArrayList<>();
 			// TODO Restore bundle invites check: SagaLogger.nullField(this,
 			// "bundleInvites");
 		}
@@ -496,7 +496,7 @@ public class SagaPlayer extends SagaLiving implements Trader {
 
 		this.exp += amount;
 		if (exp > ExperienceConfiguration.config().getMaxExp())
-			exp = ExperienceConfiguration.config().getMaxExp().doubleValue();
+			exp = ExperienceConfiguration.config().getMaxExp();
 
 		int aftAttributes = ExperienceConfiguration.config()
 				.getAttributePoints(exp);
@@ -747,7 +747,7 @@ public class SagaPlayer extends SagaLiving implements Trader {
 	 * @return faction invites
 	 */
 	public ArrayList<Integer> getFactionInvites() {
-		return new ArrayList<Integer>(factionInvites);
+		return new ArrayList<>(factionInvites);
 	}
 
 	/**
@@ -804,7 +804,7 @@ public class SagaPlayer extends SagaLiving implements Trader {
 	 * @return chunk group invites
 	 */
 	public ArrayList<Integer> getBundleInvites() {
-		return new ArrayList<Integer>(bundleInvites);
+		return new ArrayList<>(bundleInvites);
 	}
 
 	/**
@@ -1361,7 +1361,7 @@ public class SagaPlayer extends SagaLiving implements Trader {
 	@Override
 	public String toString() {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 		if (this.wrapped == null) {
 			result.append("(offline)");
 		}

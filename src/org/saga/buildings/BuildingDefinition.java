@@ -148,7 +148,7 @@ public class BuildingDefinition {
 		}
 
 		if (functions == null) {
-			functions = new Hashtable<String, TwoPointFunction>();
+			functions = new Hashtable<>();
 			SagaLogger.nullField(this, "functions");
 		}
 		Collection<TwoPointFunction> functionsElements = functions.values();
@@ -157,12 +157,12 @@ public class BuildingDefinition {
 		}
 
 		if (roles == null) {
-			roles = new Hashtable<String, Double>();
+			roles = new Hashtable<>();
 			SagaLogger.nullField(BuildingDefinition.class, "roles");
 		}
 
 		if (ranks == null) {
-			ranks = new Hashtable<String, Double>();
+			ranks = new Hashtable<>();
 			SagaLogger.nullField(BuildingDefinition.class, "ranks");
 		}
 
@@ -230,7 +230,7 @@ public class BuildingDefinition {
 	 */
 	public Integer getRequiredClaimed() {
 
-		return available.getXMin().intValue();
+		return available.getXMin();
 
 	}
 
@@ -247,10 +247,7 @@ public class BuildingDefinition {
 			Integer buildingLevel) {
 
 		// Building not available:
-		if (getRequiredClaimed() > settlement.getSize())
-			return false;
-
-		return true;
+		return getRequiredClaimed() <= settlement.getSize();
 
 	}
 

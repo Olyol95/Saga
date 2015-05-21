@@ -327,7 +327,7 @@ public class FactionConfiguration {
 		}
 
 		if (hierarchyNames == null) {
-			hierarchyNames = new Hashtable<Integer, String>();
+			hierarchyNames = new Hashtable<>();
 			SagaLogger.nullField(getClass(), "hierarchyNames");
 		}
 

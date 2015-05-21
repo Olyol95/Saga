@@ -114,13 +114,13 @@ public class Bundle extends SagaCustomSerialization {
 
 		this.name = name;
 		this.id = BundleManager.manager().getUnusedId();
-		this.players = new ArrayList<String>();
-		this.groupChunks = new ArrayList<SagaChunk>();
+		this.players = new ArrayList<>();
+		this.groupChunks = new ArrayList<>();
 		this.isSavingEnabled = true;
 		this.owner = "";
 		this.fireSpread = false;
 		this.lavaSpread = false;
-		this.toggleOptions = new HashSet<BundleToggleable>();
+		this.toggleOptions = new HashSet<>();
 
 	}
 
@@ -140,7 +140,7 @@ public class Bundle extends SagaCustomSerialization {
 		}
 		if (players == null) {
 			SagaLogger.nullField(this, "players");
-			players = new ArrayList<String>();
+			players = new ArrayList<>();
 		}
 		for (int i = 0; i < players.size(); i++) {
 			if (players.get(i) == null) {
@@ -157,7 +157,7 @@ public class Bundle extends SagaCustomSerialization {
 
 		if (groupChunks == null) {
 			SagaLogger.nullField(this, "groupChunks");
-			groupChunks = new ArrayList<SagaChunk>();
+			groupChunks = new ArrayList<>();
 		}
 		for (int i = 0; i < groupChunks.size(); i++) {
 
@@ -204,7 +204,7 @@ public class Bundle extends SagaCustomSerialization {
 
 		if (toggleOptions == null) {
 			SagaLogger.nullField(this, "toggleOptions");
-			toggleOptions = new HashSet<BundleToggleable>();
+			toggleOptions = new HashSet<>();
 		}
 		if (toggleOptions.remove(null)) {
 			SagaLogger.nullField(this, "toggleOptions element");
@@ -379,7 +379,7 @@ public class Bundle extends SagaCustomSerialization {
 		}
 
 		// Remove all saga chunks:
-		ArrayList<SagaChunk> schunks = new ArrayList<SagaChunk>(groupChunks);
+		ArrayList<SagaChunk> schunks = new ArrayList<>(groupChunks);
 		for (SagaChunk sagaChunk : schunks) {
 			removeChunk(sagaChunk);
 		}
@@ -408,10 +408,7 @@ public class Bundle extends SagaCustomSerialization {
 			return false;
 
 		// No delete option:
-		if (toggleOptions.contains(BundleToggleable.NO_DELETE))
-			return false;
-
-		return true;
+		return !toggleOptions.contains(BundleToggleable.NO_DELETE);
 
 	}
 
@@ -421,7 +418,7 @@ public class Bundle extends SagaCustomSerialization {
 	 * @return all Saga chunks
 	 */
 	public ArrayList<SagaChunk> getSagaChunks() {
-		return new ArrayList<SagaChunk>(groupChunks);
+		return new ArrayList<>(groupChunks);
 	}
 
 	/**
@@ -503,8 +500,7 @@ public class Bundle extends SagaCustomSerialization {
 		int bX = bukkitChunk.getX();
 		int bZ = bukkitChunk.getZ();
 
-		for (int i = 0; i < groupChunks.size(); i++) {
-			SagaChunk sChunk = groupChunks.get(i);
+		for (SagaChunk sChunk : groupChunks) {
 			// World:
 			if (!sChunk.getWorldName().equals(bWorld)) {
 				continue;
@@ -540,10 +536,10 @@ public class Bundle extends SagaCustomSerialization {
 
 		if (buildings == null) {
 
-			buildings = new ArrayList<Building>();
+			buildings = new ArrayList<>();
 
-			for (int i = 0; i < groupChunks.size(); i++) {
-				Building building = groupChunks.get(i).getBuilding();
+			for (SagaChunk groupChunk : groupChunks) {
+				Building building = groupChunk.getBuilding();
 				if (building != null)
 					buildings.add(building);
 			}
@@ -628,10 +624,7 @@ public class Bundle extends SagaCustomSerialization {
 	 */
 	public boolean isBuildingAvailable(String buildingName) {
 
-		if (isOptionEnabled(BundleToggleable.UNLIMITED_BUILDINGS))
-			return true;
-
-		return getRemainingBuildings(buildingName) > 0;
+		return isOptionEnabled(BundleToggleable.UNLIMITED_BUILDINGS) || getRemainingBuildings(buildingName) > 0;
 
 	}
 
@@ -645,7 +638,7 @@ public class Bundle extends SagaCustomSerialization {
 	public ArrayList<Building> getBuildings(String bldgName) {
 
 		ArrayList<Building> allBuildings = getBuildings();
-		ArrayList<Building> buildings = new ArrayList<Building>();
+		ArrayList<Building> buildings = new ArrayList<>();
 
 		for (Building building : allBuildings) {
 			if (building.getName().equals(bldgName))
@@ -666,7 +659,7 @@ public class Bundle extends SagaCustomSerialization {
 	public <T extends Building> ArrayList<T> getBuildings(Class<T> bldgClass) {
 
 		ArrayList<Building> allBuildings = getBuildings();
-		ArrayList<T> buildings = new ArrayList<T>();
+		ArrayList<T> buildings = new ArrayList<>();
 
 		for (Building building : allBuildings) {
 
@@ -696,7 +689,7 @@ public class Bundle extends SagaCustomSerialization {
 			String bldgName) {
 
 		ArrayList<Building> allBuildings = getBuildings();
-		ArrayList<T> buildings = new ArrayList<T>();
+		ArrayList<T> buildings = new ArrayList<>();
 
 		for (Building building : allBuildings) {
 
@@ -741,7 +734,7 @@ public class Bundle extends SagaCustomSerialization {
 	 * @return member names
 	 */
 	public ArrayList<String> getMembers() {
-		return new ArrayList<String>(players);
+		return new ArrayList<>(players);
 	}
 
 	/**
@@ -811,7 +804,7 @@ public class Bundle extends SagaCustomSerialization {
 	public Collection<SagaPlayer> getOnlineMembers() {
 
 		Collection<SagaPlayer> onlinePlayers = Saga.plugin().getLoadedPlayers();
-		Collection<SagaPlayer> onlineMembers = new HashSet<SagaPlayer>();
+		Collection<SagaPlayer> onlineMembers = new HashSet<>();
 
 		for (SagaPlayer onlinePlayer : onlinePlayers) {
 

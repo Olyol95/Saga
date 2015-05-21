@@ -38,7 +38,7 @@ public class Warehouse extends Building {
 
 		super(definition);
 
-		buffer = new ArrayList<SagaItem>();
+		buffer = new ArrayList<>();
 
 	}
 
@@ -53,7 +53,7 @@ public class Warehouse extends Building {
 		super.complete();
 
 		if (buffer == null) {
-			buffer = new ArrayList<SagaItem>();
+			buffer = new ArrayList<>();
 			SagaLogger.nullField(this, "buffer");
 		}
 
@@ -353,11 +353,11 @@ public class Warehouse extends Building {
 		ArrayList<Block> possibleStorage = findAllStorage();
 
 		// Buffer:
-		for (int i = 0; i < buffer.size(); i++) {
+		for (SagaItem aBuffer : buffer) {
 
-			if (buffer.get(i).checkRepresents(countItem)) {
+			if (aBuffer.checkRepresents(countItem)) {
 
-				count += buffer.get(i).getAmount();
+				count += aBuffer.getAmount();
 				break;
 
 			}
@@ -393,11 +393,11 @@ public class Warehouse extends Building {
 		ArrayList<Chest> possibleStorage = findChests();
 
 		// Buffer:
-		for (int i = 0; i < buffer.size(); i++) {
+		for (SagaItem aBuffer : buffer) {
 
-			if (buffer.get(i).checkRepresents(countItem)) {
+			if (aBuffer.checkRepresents(countItem)) {
 
-				count += buffer.get(i).getAmount();
+				count += aBuffer.getAmount();
 				break;
 
 			}
@@ -405,16 +405,16 @@ public class Warehouse extends Building {
 		}
 
 		// Chests:
-		for (int i = 0; i < possibleStorage.size(); i++) {
+		for (Chest aPossibleStorage : possibleStorage) {
 
-			ItemStack[] inventory = possibleStorage.get(i).getInventory()
+			ItemStack[] inventory = aPossibleStorage.getInventory()
 					.getContents();
 
-			for (int j = 0; j < inventory.length; j++) {
+			for (ItemStack anInventory : inventory) {
 
-				if (!countItem.checkRepresents(inventory[j]))
+				if (!countItem.checkRepresents(anInventory))
 					continue;
-				count += inventory[j].getAmount();
+				count += anInventory.getAmount();
 
 			}
 
@@ -432,7 +432,7 @@ public class Warehouse extends Building {
 	 */
 	private ArrayList<Block> findLowestEmpty() {
 
-		ArrayList<Block> blocks = new ArrayList<Block>();
+		ArrayList<Block> blocks = new ArrayList<>();
 		ArrayList<StorageArea> storages = getStorageAreas();
 
 		for (StorageArea storageArea : storages) {
@@ -450,7 +450,7 @@ public class Warehouse extends Building {
 	 */
 	private ArrayList<Block> findAllStorage() {
 
-		ArrayList<Block> blocks = new ArrayList<Block>();
+		ArrayList<Block> blocks = new ArrayList<>();
 		ArrayList<StorageArea> storages = getStorageAreas();
 
 		for (StorageArea storageArea : storages) {
@@ -470,7 +470,7 @@ public class Warehouse extends Building {
 	 */
 	private ArrayList<Chest> findChests() {
 
-		ArrayList<Chest> possible = new ArrayList<Chest>();
+		ArrayList<Chest> possible = new ArrayList<>();
 		ArrayList<StorageArea> storages = getStorageAreas();
 
 		for (StorageArea storageArea : storages) {

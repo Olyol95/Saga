@@ -129,7 +129,7 @@ public class ExperienceConfiguration {
 		}
 
 		if (blockExp == null) {
-			blockExp = new Hashtable<Material, Hashtable<Byte, Double>>();
+			blockExp = new Hashtable<>();
 			SagaLogger.nullField(getClass(), "blockExp");
 			integrity = false;
 		}
@@ -141,13 +141,13 @@ public class ExperienceConfiguration {
 		}
 
 		if (creatureExp == null) {
-			creatureExp = new Hashtable<String, Double>();
+			creatureExp = new Hashtable<>();
 			SagaLogger.nullField(getClass(), "creatureExp");
 			integrity = false;
 		}
 
 		if (abilityExp == null) {
-			abilityExp = new Hashtable<String, TwoPointFunction>();
+			abilityExp = new Hashtable<>();
 			SagaLogger.nullField(getClass(), "abilityExp");
 			integrity = false;
 		}

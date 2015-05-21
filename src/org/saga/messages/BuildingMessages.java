@@ -57,7 +57,7 @@ public class BuildingMessages {
 		ChatColor first = colours.nextColour();
 		ChatColor second = colours.nextColour();
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 		if (items.size() != 0) {
 
 			for (int i = 0; i < items.size(); i++) {
@@ -80,10 +80,10 @@ public class BuildingMessages {
 				// Item:
 				result.append(second);
 				if (item.getAmount() > 1)
-					result.append(item.getAmount().intValue() + " ");
+					result.append(item.getAmount().intValue()).append(" ");
 				result.append(GeneralMessages.material(item.getType()));
 				if (duplic)
-					result.append(":" + item.getData());
+					result.append(":").append(item.getData());
 				result.append(first);
 
 			}

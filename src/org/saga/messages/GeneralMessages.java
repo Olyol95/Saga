@@ -164,20 +164,20 @@ public class GeneralMessages {
 	// Timing:
 	public static String duration(Duration duration) {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 
 		// Days:
 		if (duration.getDays() != 0) {
 			if (result.length() > 0)
 				result.append(" ");
-			result.append(duration.getDays() + "d");
+			result.append(duration.getDays()).append("d");
 		}
 
 		// Hours:
 		if (duration.getHours() != 0 || duration.getDays() != 0) {
 			if (result.length() > 0)
 				result.append(" ");
-			result.append(duration.getHours() + "h");
+			result.append(duration.getHours()).append("h");
 		}
 
 		// Minutes:
@@ -185,13 +185,13 @@ public class GeneralMessages {
 				|| duration.getDays() != 0) {
 			if (result.length() > 0)
 				result.append(" ");
-			result.append(duration.getMinutes() + "m");
+			result.append(duration.getMinutes()).append("m");
 		}
 
 		// Seconds:
 		if (result.length() > 0)
 			result.append(" ");
-		result.append(duration.getSeconds() + "s");
+		result.append(duration.getSeconds()).append("s");
 
 		return result.toString();
 
@@ -199,26 +199,26 @@ public class GeneralMessages {
 
 	public static String durationDHM(Duration duration) {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 
 		// Days:
 		if (duration.getDays() != 0) {
 			if (result.length() > 0)
 				result.append(" ");
-			result.append(duration.getDays() + "d");
+			result.append(duration.getDays()).append("d");
 		}
 
 		// Hours:
 		if (duration.getHours() != 0 || duration.getDays() != 0) {
 			if (result.length() > 0)
 				result.append(" ");
-			result.append(duration.getHours() + "h");
+			result.append(duration.getHours()).append("h");
 		}
 
 		// Minutes:
 		if (result.length() > 0)
 			result.append(" ");
-		result.append(duration.getMinutes() + "m");
+		result.append(duration.getMinutes()).append("m");
 
 		return result.toString();
 

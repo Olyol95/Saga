@@ -116,7 +116,7 @@ public class Meteors extends Ability {
 		}
 
 		// Create shoot order:
-		final Deque<Point> shoorOrder = new ArrayDeque<Point>();
+		final Deque<Point> shoorOrder = new ArrayDeque<>();
 		for (int r = 0; r < fireballs.length; r++) {
 
 			while (fireballs[r] > 0) {

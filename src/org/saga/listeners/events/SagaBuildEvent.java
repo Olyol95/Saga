@@ -46,7 +46,7 @@ public class SagaBuildEvent {
 	/**
 	 * Build override.
 	 */
-	private PriorityQueue<BuildOverride> buildOverride = new PriorityQueue<SagaBuildEvent.BuildOverride>();
+	private PriorityQueue<BuildOverride> buildOverride = new PriorityQueue<>();
 
 	// Initialise:
 	/**
@@ -303,12 +303,8 @@ public class SagaBuildEvent {
 		}
 
 		// Trample:
-		if (event.getAction() == Action.PHYSICAL
-				&& block.getType() == Material.SOIL) {
-			return true;
-		}
-
-		return false;
+		return event.getAction() == Action.PHYSICAL
+				&& block.getType() == Material.SOIL;
 
 	}
 
@@ -349,7 +345,7 @@ public class SagaBuildEvent {
 		 * 
 		 * @param true if allows build, false if denies build
 		 */
-		private BuildOverride(boolean allow) {
+		BuildOverride(boolean allow) {
 			this.allow = allow;
 		}
 

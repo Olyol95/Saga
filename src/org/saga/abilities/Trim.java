@@ -88,7 +88,7 @@ public class Trim extends Ability {
 		boolean triggered = false;
 
 		// Get greens:
-		ArrayList<Block> blocks = new ArrayList<Block>();
+		ArrayList<Block> blocks = new ArrayList<>();
 		blocks.add(clickedBlock);
 		getGreens(clickedBlock, blocks);
 
@@ -255,10 +255,7 @@ public class Trim extends Ability {
 			return true;
 		if (block.getType() == Material.RED_ROSE)
 			return true;
-		if (block.getType() == Material.YELLOW_FLOWER)
-			return true;
-
-		return false;
+		return block.getType() == Material.YELLOW_FLOWER;
 
 	}
 

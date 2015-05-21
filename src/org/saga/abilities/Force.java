@@ -79,7 +79,7 @@ public class Force extends Ability {
 		double radiusSquared = radius * radius;
 
 		List<Entity> entities = player.getNearbyEntities(radius, 4, radius);
-		ArrayList<LivingEntity> filteredEntities = new ArrayList<LivingEntity>();
+		ArrayList<LivingEntity> filteredEntities = new ArrayList<>();
 		for (Entity entity : entities) {
 
 			if (!(entity instanceof LivingEntity))
@@ -89,11 +89,11 @@ public class Force extends Ability {
 			if (entity instanceof Player) {
 
 				SagaPlayer targetPlayer = Saga.plugin().getLoadedPlayer(
-						((Player) entity).getName());
+						entity.getName());
 				if (targetPlayer == null) {
 					SagaLogger.severe(this,
 							"can't continue with trigger because the player "
-									+ ((Player) entity).getName()
+									+ entity.getName()
 									+ " isn't loaded");
 					return false;
 				}

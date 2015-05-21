@@ -52,10 +52,10 @@ public class BuildingConfiguration {
 
 		if (definitions == null) {
 			SagaLogger.nullField(getClass(), "definitions");
-			definitions = new ArrayList<BuildingDefinition>();
+			definitions = new ArrayList<>();
 		}
 
-		final HashMap<String, Integer> priority = new HashMap<String, Integer>();
+		final HashMap<String, Integer> priority = new HashMap<>();
 		priority.put(null, 0);
 
 		for (int i = 0; i < definitions.size(); i++) {
@@ -136,7 +136,7 @@ public class BuildingConfiguration {
 	 */
 	public ArrayList<BuildingDefinition> getBuildingDefinitions() {
 
-		return new ArrayList<BuildingDefinition>(definitions);
+		return new ArrayList<>(definitions);
 
 	}
 
@@ -147,7 +147,7 @@ public class BuildingConfiguration {
 	 */
 	public Collection<String> getBuildingNames() {
 
-		HashSet<String> names = new HashSet<String>();
+		HashSet<String> names = new HashSet<>();
 
 		for (BuildingDefinition definition : definitions) {
 			names.add(definition.getName());

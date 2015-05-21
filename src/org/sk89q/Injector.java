@@ -23,7 +23,7 @@ public interface Injector {
 	 * @throws InstantiationException
 	 * @throws InvocationTargetException
 	 */
-	public Object getInstance(Class<?> cls) throws InvocationTargetException,
+	Object getInstance(Class<?> cls) throws InvocationTargetException,
 			IllegalAccessException, InstantiationException;
 
 }

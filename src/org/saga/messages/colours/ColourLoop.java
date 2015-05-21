@@ -10,7 +10,7 @@ public class ColourLoop {
 	/**
 	 * All colours.
 	 */
-	private ArrayList<ChatColor> colours = new ArrayList<ChatColor>();
+	private ArrayList<ChatColor> colours = new ArrayList<>();
 
 	/**
 	 * Current index.

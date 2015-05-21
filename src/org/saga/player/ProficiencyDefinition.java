@@ -96,12 +96,12 @@ public class ProficiencyDefinition {
 		}
 
 		if (attributeBonuses == null) {
-			attributeBonuses = new Hashtable<String, Integer>();
+			attributeBonuses = new Hashtable<>();
 			SagaLogger.nullField(this, "attributeBonuses");
 		}
 
 		if (attributeCapBonus == null) {
-			attributeCapBonus = new Hashtable<String, Integer>();
+			attributeCapBonus = new Hashtable<>();
 			SagaLogger.nullField(this, "attributeCapBonus");
 		}
 
@@ -160,8 +160,8 @@ public class ProficiencyDefinition {
 	 */
 	public boolean hasSettlementPermission(SettlementPermission permission) {
 
-		for (int i = 0; i < settlementPermissions.length; i++) {
-			if (settlementPermissions[i].equals(permission))
+		for (SettlementPermission settlementPermission : settlementPermissions) {
+			if (settlementPermission.equals(permission))
 				return true;
 		}
 		return false;
@@ -177,8 +177,8 @@ public class ProficiencyDefinition {
 	 */
 	public boolean hasFactionPermission(FactionPermission permission) {
 
-		for (int i = 0; i < factionPermissions.length; i++) {
-			if (factionPermissions[i].equals(permission))
+		for (FactionPermission factionPermission : factionPermissions) {
+			if (factionPermission.equals(permission))
 				return true;
 		}
 		return false;

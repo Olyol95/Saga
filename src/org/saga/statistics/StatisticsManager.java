@@ -140,7 +140,7 @@ public class StatisticsManager implements HourTicker {
 
 		if (xrayStatistics == null) {
 			SagaLogger.nullField(getClass(), "xrayStatistics");
-			xrayStatistics = new Hashtable<String, Hashtable<Material, Integer>>();
+			xrayStatistics = new Hashtable<>();
 			integrity = false;
 		}
 
@@ -152,36 +152,36 @@ public class StatisticsManager implements HourTicker {
 
 		if (playerSellCoins == null) {
 			SagaLogger.nullField(getClass(), "playerSellCoins");
-			playerSellCoins = new Hashtable<String, Hashtable<Material, Double>>();
+			playerSellCoins = new Hashtable<>();
 			integrity = false;
 		}
 
 		if (playerBuyCoins == null) {
 			SagaLogger.nullField(getClass(), "playerBuyCoins");
-			playerBuyCoins = new Hashtable<String, Hashtable<Material, Double>>();
+			playerBuyCoins = new Hashtable<>();
 			integrity = false;
 		}
 
 		if (playerSellAmount == null) {
 			SagaLogger.nullField(getClass(), "playerSellAmount");
-			playerSellAmount = new Hashtable<String, Hashtable<Material, Integer>>();
+			playerSellAmount = new Hashtable<>();
 			integrity = false;
 		}
 
 		if (playerBuyAmount == null) {
 			SagaLogger.nullField(getClass(), "playerBuyAmount");
-			playerBuyAmount = new Hashtable<String, Hashtable<Material, Integer>>();
+			playerBuyAmount = new Hashtable<>();
 			integrity = false;
 		}
 
 		if (expGained == null) {
 			SagaLogger.nullField(getClass(), "expGained");
-			expGained = new Hashtable<String, Hashtable<String, Double>>();
+			expGained = new Hashtable<>();
 		}
 
 		if (doubleValues == null) {
 			SagaLogger.nullField(getClass(), "doubleValues");
-			doubleValues = new Hashtable<String, Double>();
+			doubleValues = new Hashtable<>();
 		}
 
 		// Import attributes:
@@ -250,17 +250,17 @@ public class StatisticsManager implements HourTicker {
 
 		startDate = System.currentTimeMillis();
 
-		xrayStatistics = new Hashtable<String, Hashtable<Material, Integer>>();
+		xrayStatistics = new Hashtable<>();
 		blockDataChanges = 0;
 
-		playerBuyCoins = new Hashtable<String, Hashtable<Material, Double>>();
-		playerSellCoins = new Hashtable<String, Hashtable<Material, Double>>();
-		playerBuyAmount = new Hashtable<String, Hashtable<Material, Integer>>();
-		playerSellAmount = new Hashtable<String, Hashtable<Material, Integer>>();
+		playerBuyCoins = new Hashtable<>();
+		playerSellCoins = new Hashtable<>();
+		playerBuyAmount = new Hashtable<>();
+		playerSellAmount = new Hashtable<>();
 
-		expGained = new Hashtable<String, Hashtable<String, Double>>();
+		expGained = new Hashtable<>();
 
-		doubleValues = new Hashtable<String, Double>();
+		doubleValues = new Hashtable<>();
 
 	}
 
@@ -330,7 +330,7 @@ public class StatisticsManager implements HourTicker {
 		Hashtable<Material, Double> cMaterials = playerBuyCoins.get(sagaPlayer
 				.getName());
 		if (cMaterials == null) {
-			cMaterials = new Hashtable<Material, Double>();
+			cMaterials = new Hashtable<>();
 			playerBuyCoins.put(sagaPlayer.getName(), cMaterials);
 		}
 
@@ -345,7 +345,7 @@ public class StatisticsManager implements HourTicker {
 		Hashtable<Material, Integer> aMaterials = playerBuyAmount
 				.get(sagaPlayer.getName());
 		if (aMaterials == null) {
-			aMaterials = new Hashtable<Material, Integer>();
+			aMaterials = new Hashtable<>();
 			playerBuyAmount.put(sagaPlayer.getName(), aMaterials);
 		}
 
@@ -365,7 +365,7 @@ public class StatisticsManager implements HourTicker {
 		Hashtable<Material, Double> cMaterials = playerSellCoins.get(sagaPlayer
 				.getName());
 		if (cMaterials == null) {
-			cMaterials = new Hashtable<Material, Double>();
+			cMaterials = new Hashtable<>();
 			playerSellCoins.put(sagaPlayer.getName(), cMaterials);
 		}
 
@@ -380,7 +380,7 @@ public class StatisticsManager implements HourTicker {
 		Hashtable<Material, Integer> aMaterials = playerSellAmount
 				.get(sagaPlayer.getName());
 		if (aMaterials == null) {
-			aMaterials = new Hashtable<Material, Integer>();
+			aMaterials = new Hashtable<>();
 			playerSellAmount.put(sagaPlayer.getName(), aMaterials);
 		}
 
@@ -475,7 +475,7 @@ public class StatisticsManager implements HourTicker {
 
 	public ArrayList<Material> getAllEcoMaterials() {
 
-		HashSet<Material> allMaterials = new HashSet<Material>();
+		HashSet<Material> allMaterials = new HashSet<>();
 
 		// Buy materials:
 		Collection<Hashtable<Material, Double>> buyMaterials = playerBuyCoins
@@ -491,7 +491,7 @@ public class StatisticsManager implements HourTicker {
 			allMaterials.addAll(hashtable.keySet());
 		}
 
-		ArrayList<Material> sortedMaterials = new ArrayList<Material>(
+		ArrayList<Material> sortedMaterials = new ArrayList<>(
 				allMaterials);
 
 		// Sort:
@@ -520,7 +520,7 @@ public class StatisticsManager implements HourTicker {
 		TreeSet<String> names = getSubCategs(
 				"found_veins" + "." + material.toString(), false);
 
-		return new ArrayList<String>(names);
+		return new ArrayList<>(names);
 
 	}
 
@@ -539,7 +539,7 @@ public class StatisticsManager implements HourTicker {
 
 	public Double[] getVeinRatios(Material material) {
 
-		Collection<Double> ratios = new ArrayList<Double>();
+		Collection<Double> ratios = new ArrayList<>();
 		ArrayList<String> names = getVeinFoundPlayers(material);
 
 		for (String name : names) {
@@ -569,7 +569,7 @@ public class StatisticsManager implements HourTicker {
 
 		Hashtable<String, Double> subcats = expGained.get(category);
 		if (subcats == null) {
-			subcats = new Hashtable<String, Double>();
+			subcats = new Hashtable<>();
 			expGained.put(category, subcats);
 		}
 
@@ -583,14 +583,14 @@ public class StatisticsManager implements HourTicker {
 	}
 
 	public Hashtable<String, Hashtable<String, Double>> getExpGained() {
-		return new Hashtable<String, Hashtable<String, Double>>(expGained);
+		return new Hashtable<>(expGained);
 	}
 
 	public Double getExpGained(String category) {
 
 		Hashtable<String, Double> subcategs = expGained.get(category);
 		if (subcategs == null)
-			subcategs = new Hashtable<String, Double>();
+			subcategs = new Hashtable<>();
 
 		Double exp = 0.0;
 		Collection<Double> exps = subcategs.values();
@@ -606,7 +606,7 @@ public class StatisticsManager implements HourTicker {
 
 		Hashtable<String, Double> subcateg = expGained.get(category);
 		if (subcateg == null)
-			subcateg = new Hashtable<String, Double>();
+			subcateg = new Hashtable<>();
 
 		Double exp = subcateg.get(subcategory);
 		if (exp == null)
@@ -618,7 +618,7 @@ public class StatisticsManager implements HourTicker {
 
 	public ArrayList<String> getExpCategories() {
 
-		ArrayList<String> sortedCategs = new ArrayList<String>(
+		ArrayList<String> sortedCategs = new ArrayList<>(
 				expGained.keySet());
 		Collections.sort(sortedCategs);
 
@@ -628,14 +628,14 @@ public class StatisticsManager implements HourTicker {
 
 	public ArrayList<String> getExpSubcategories() {
 
-		HashSet<String> subcategs = new HashSet<String>();
+		HashSet<String> subcategs = new HashSet<>();
 
 		Collection<Hashtable<String, Double>> allSubcategs = expGained.values();
 		for (Hashtable<String, Double> subcateg : allSubcategs) {
 			subcategs.addAll(subcateg.keySet());
 		}
 
-		ArrayList<String> sortedSubcategs = new ArrayList<String>(subcategs);
+		ArrayList<String> sortedSubcategs = new ArrayList<>(subcategs);
 		Collections.sort(sortedSubcategs);
 
 		return sortedSubcategs;
@@ -738,7 +738,7 @@ public class StatisticsManager implements HourTicker {
 	public TreeSet<String> getSubCategs(String category, boolean ignoreBottom) {
 
 		Set<String> allCategs = doubleValues.keySet();
-		TreeSet<String> subCategs = new TreeSet<String>();
+		TreeSet<String> subCategs = new TreeSet<>();
 
 		for (String fullCateg : allCategs) {
 
@@ -787,7 +787,7 @@ public class StatisticsManager implements HourTicker {
 		Collection<String> subCategs = StatisticsManager.manager()
 				.getSubCategs(category, false);
 
-		ArrayList<Double> data = new ArrayList<Double>();
+		ArrayList<Double> data = new ArrayList<>();
 
 		for (String subCateg : subCategs) {
 

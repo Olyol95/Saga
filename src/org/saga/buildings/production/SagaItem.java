@@ -41,7 +41,7 @@ public class SagaItem {
 	 */
 	public SagaItem(Material type, Double amount, Short data) {
 		this.type = type;
-		this.amount = amount.doubleValue();
+		this.amount = amount;
 		this.data = data;
 	}
 
@@ -197,9 +197,7 @@ public class SagaItem {
 				return false;
 			if (!this.amount.equals(item.amount))
 				return false;
-			if (!this.data.equals(item.data))
-				return false;
-			return true;
+			return this.data.equals(item.data);
 
 		}
 
@@ -218,9 +216,7 @@ public class SagaItem {
 
 		if (!this.type.equals(sagaItem.getType()))
 			return false;
-		if (!this.data.equals((short) sagaItem.getData()))
-			return false;
-		return true;
+		return this.data.equals(sagaItem.getData());
 
 	}
 
@@ -235,9 +231,7 @@ public class SagaItem {
 
 		if (!this.type.equals(block.getType()))
 			return false;
-		if (!this.data.equals((short) block.getData()))
-			return false;
-		return true;
+		return this.data.equals((short) block.getData());
 
 	}
 
@@ -252,9 +246,7 @@ public class SagaItem {
 
 		if (!this.type.equals(itemStack.getType()))
 			return false;
-		if (!this.data.equals(itemStack.getData()))
-			return false;
-		return true;
+		return this.data.equals(itemStack.getData());
 
 	}
 

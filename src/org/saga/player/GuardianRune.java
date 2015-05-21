@@ -283,9 +283,9 @@ public class GuardianRune {
 	public static int countItems(ItemStack[] items) {
 
 		int count = 0;
-		for (int i = 0; i < items.length; i++) {
-			if (items[i] != null && items[i].getType() != Material.AIR)
-				count += items[i].getAmount();
+		for (ItemStack item : items) {
+			if (item != null && item.getType() != Material.AIR)
+				count += item.getAmount();
 		}
 		return count;
 

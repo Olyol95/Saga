@@ -65,7 +65,7 @@ public class Arena extends Building implements SecondTicker {
 
 		super(definition);
 
-		arenaPlayers = new ArrayList<Arena.ArenaPlayer>();
+		arenaPlayers = new ArrayList<>();
 
 		// Transient:
 		count = 0;
@@ -83,7 +83,7 @@ public class Arena extends Building implements SecondTicker {
 		boolean integrity = super.complete();
 
 		if (arenaPlayers == null) {
-			arenaPlayers = new ArrayList<Arena.ArenaPlayer>();
+			arenaPlayers = new ArrayList<>();
 			SagaLogger.nullField(this, "arenaPlayers");
 			integrity = false;
 		}
@@ -224,7 +224,7 @@ public class Arena extends Building implements SecondTicker {
 	 */
 	public ArrayList<ArenaPlayer> getTop(Integer count) {
 
-		ArrayList<ArenaPlayer> topPlayers = new ArrayList<Arena.ArenaPlayer>();
+		ArrayList<ArenaPlayer> topPlayers = new ArrayList<>();
 
 		Collections.sort(arenaPlayers);
 
@@ -458,13 +458,13 @@ public class Arena extends Building implements SecondTicker {
 	private void synchArenas() {
 
 		// Find all adjacent arenas:
-		HashSet<Arena> arenas = new HashSet<Arena>();
+		HashSet<Arena> arenas = new HashSet<>();
 		collectAdjacentBuildings(this, arenas);
 
 		// Set scores:
 		for (Arena arena : arenas) {
 			if (arena != this)
-				arena.arenaPlayers = new ArrayList<Arena.ArenaPlayer>(
+				arena.arenaPlayers = new ArrayList<>(
 						this.arenaPlayers);
 		}
 

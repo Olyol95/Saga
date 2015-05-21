@@ -100,10 +100,10 @@ public class Settlement extends Bundle implements MinuteTicker, DaytimeTicker {
 				.doubleValue();
 		coins = 0.0;
 
-		playerRoles = new Hashtable<String, Proficiency>();
-		lastSeen = new Hashtable<String, Date>();
-		workPoints = new Hashtable<String, Double>();
-		wages = new Hashtable<String, Double>();
+		playerRoles = new Hashtable<>();
+		lastSeen = new Hashtable<>();
+		workPoints = new Hashtable<>();
+		wages = new Hashtable<>();
 
 	}
 
@@ -154,27 +154,27 @@ public class Settlement extends Bundle implements MinuteTicker, DaytimeTicker {
 
 		if (lastSeen == null) {
 			SagaLogger.nullField(this, "lastSeen");
-			lastSeen = new Hashtable<String, Date>();
+			lastSeen = new Hashtable<>();
 		}
 
 		if (playerRoles == null) {
 			SagaLogger.nullField(this, "playerRoles");
-			playerRoles = new Hashtable<String, Proficiency>();
+			playerRoles = new Hashtable<>();
 		}
 
 		if (workPoints == null) {
 			SagaLogger.nullField(this, "workPoints");
-			workPoints = new Hashtable<String, Double>();
+			workPoints = new Hashtable<>();
 		}
 
 		if (wages == null) {
 			SagaLogger.nullField(this, "wages");
-			wages = new Hashtable<String, Double>();
+			wages = new Hashtable<>();
 		}
 
 		Enumeration<String> playerNames = playerRoles.keys();
 		while (playerNames.hasMoreElements()) {
-			String playerName = null;
+			String playerName;
 			Proficiency proficiency = null;
 			playerName = playerNames.nextElement();
 			try {
@@ -460,11 +460,7 @@ public class Settlement extends Bundle implements MinuteTicker, DaytimeTicker {
 		if (role == null)
 			return false;
 
-		if (role.getHierarchyLevel() == FactionConfiguration.config()
-				.getHierarchyMin())
-			return true;
-
-		return getRemainingRoles(roleName) > 0;
+		return role.getHierarchyLevel() == FactionConfiguration.config().getHierarchyMin() || getRemainingRoles(roleName) > 0;
 
 	}
 
@@ -477,7 +473,7 @@ public class Settlement extends Bundle implements MinuteTicker, DaytimeTicker {
 	 */
 	public ArrayList<String> getMembersForRoles(String roleName) {
 
-		ArrayList<String> filtMembers = new ArrayList<String>();
+		ArrayList<String> filtMembers = new ArrayList<>();
 		ArrayList<String> allMembers = getMembers();
 
 		for (String member : allMembers) {
@@ -794,11 +790,7 @@ public class Settlement extends Bundle implements MinuteTicker, DaytimeTicker {
 	 */
 	public boolean isBuildPointsAvailable(Building building) {
 
-		if (isOptionEnabled(BundleToggleable.UNLIMITED_BUILDINGS))
-			return true;
-
-		return getRemainingBuildPoints() >= building.getDefinition()
-				.getBuildPoints();
+		return isOptionEnabled(BundleToggleable.UNLIMITED_BUILDINGS) || getRemainingBuildPoints() >= building.getDefinition().getBuildPoints();
 
 	}
 
@@ -1193,7 +1185,7 @@ public class Settlement extends Bundle implements MinuteTicker, DaytimeTicker {
 	public void handleWork() {
 
 		// Increase work points:
-		Hashtable<String, Double> onlineRolesTotals = new Hashtable<String, Double>();
+		Hashtable<String, Double> onlineRolesTotals = new Hashtable<>();
 		Collection<SagaPlayer> members = getOnlineMembers();
 		for (SagaPlayer sagaPlayer : members) {
 
@@ -1294,7 +1286,7 @@ public class Settlement extends Bundle implements MinuteTicker, DaytimeTicker {
 		REMOVE_RESIDENT, ADD_RESIDENT,
 
 		// Trading post:
-		MANAGE_EXPORT, MANAGE_IMPORT, MANAGE_SELL, MANAGE_BUY;
+		MANAGE_EXPORT, MANAGE_IMPORT, MANAGE_SELL, MANAGE_BUY
 
 	}
 

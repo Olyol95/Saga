@@ -214,11 +214,11 @@ public class SettlementConfiguration {
 
 		if (requiredBuildings == null) {
 			SagaLogger.nullField(this, "requiredBuildings");
-			requiredBuildings = new Hashtable<String, Integer>();
+			requiredBuildings = new Hashtable<>();
 		}
 
 		if (hierarchyNames == null) {
-			hierarchyNames = new Hashtable<Integer, String>();
+			hierarchyNames = new Hashtable<>();
 			SagaLogger.nullField(this, "hierarchyNames");
 		}
 
@@ -284,7 +284,7 @@ public class SettlementConfiguration {
 
 		if (memberOnlyCommands == null) {
 			SagaLogger.nullField(getClass(), "memberOnlyCommands");
-			memberOnlyCommands = new HashSet<String>();
+			memberOnlyCommands = new HashSet<>();
 		}
 		if (memberOnlyCommands.remove(null)) {
 			SagaLogger.nullField(getClass(), "memberOnlyCommands");
@@ -358,7 +358,7 @@ public class SettlementConfiguration {
 	 */
 	public boolean checkMemberOnlyCommand(String command) {
 
-		return new HashSet<String>(memberOnlyCommands).contains(command);
+		return new HashSet<>(memberOnlyCommands).contains(command);
 
 	}
 
@@ -471,7 +471,7 @@ public class SettlementConfiguration {
 	 */
 	public List<Entry<String, Integer>> getSortedBuildingRequirements() {
 
-		List<Entry<String, Integer>> bldgReq = new ArrayList<Entry<String, Integer>>(
+		List<Entry<String, Integer>> bldgReq = new ArrayList<>(
 				requiredBuildings.entrySet());
 
 		// Sort by claims:
@@ -526,7 +526,7 @@ public class SettlementConfiguration {
 
 		Integer totalClaims = settlement.getTotalClaims();
 		List<Entry<String, Integer>> requirements = getSortedBuildingRequirements();
-		ArrayList<String> required = new ArrayList<String>();
+		ArrayList<String> required = new ArrayList<>();
 
 		for (Entry<String, Integer> requirement : requirements) {
 			if (totalClaims >= requirement.getValue()) {

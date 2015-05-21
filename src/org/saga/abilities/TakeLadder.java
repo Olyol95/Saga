@@ -78,7 +78,7 @@ public class TakeLadder extends Ability {
 				getScore());
 
 		// Down:
-		ArrayList<Block> ladder = new ArrayList<Block>();
+		ArrayList<Block> ladder = new ArrayList<>();
 		byte data = targetBlock.getData();
 		for (int i = 0; i < height + 1; i++) {
 

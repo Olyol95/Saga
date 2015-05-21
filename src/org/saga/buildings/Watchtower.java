@@ -44,8 +44,8 @@ public class Watchtower extends Building implements DaytimeTicker {
 
 		super(definition);
 
-		protectedChunks = new ArrayList<SagaChunk>();
-		mobReport = new Hashtable<String, Integer>();
+		protectedChunks = new ArrayList<>();
+		mobReport = new Hashtable<>();
 
 	}
 
@@ -62,8 +62,8 @@ public class Watchtower extends Building implements DaytimeTicker {
 		// Transient:
 		isOnCooldown = false;
 		cooldownLeft = 0;
-		protectedChunks = new ArrayList<SagaChunk>();
-		mobReport = new Hashtable<String, Integer>();
+		protectedChunks = new ArrayList<>();
+		mobReport = new Hashtable<>();
 
 		return integrity;
 
@@ -110,7 +110,7 @@ public class Watchtower extends Building implements DaytimeTicker {
 	public void perform() {
 
 		// Reset the report:
-		mobReport = new Hashtable<String, Integer>();
+		mobReport = new Hashtable<>();
 
 	}
 
@@ -178,7 +178,7 @@ public class Watchtower extends Building implements DaytimeTicker {
 	@Override
 	public ArrayList<String> getSpecificStats() {
 
-		ArrayList<String> rList = new ArrayList<String>();
+		ArrayList<String> rList = new ArrayList<>();
 		StringBuffer eString = new StringBuffer();
 		Enumeration<String> spotted = mobReport.keys();
 
@@ -201,7 +201,7 @@ public class Watchtower extends Building implements DaytimeTicker {
 				first = false;
 			}
 
-			eString.append(amount + " " + mob);
+			eString.append(amount).append(" ").append(mob);
 			if (amount > 1)
 				eString.append("s");
 

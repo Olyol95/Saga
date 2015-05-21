@@ -54,7 +54,7 @@ public class ProficiencyConfiguration {
 
 		// Definitions:
 		if (definitions == null) {
-			definitions = new ArrayList<ProficiencyDefinition>();
+			definitions = new ArrayList<>();
 			SagaLogger.nullField(getClass(), "definitions");
 			integrity = false;
 		}
@@ -84,7 +84,7 @@ public class ProficiencyConfiguration {
 	 */
 	public ProficiencyDefinition getDefinition(String name) {
 
-		ArrayList<ProficiencyDefinition> definitions = new ArrayList<ProficiencyDefinition>(
+		ArrayList<ProficiencyDefinition> definitions = new ArrayList<>(
 				this.definitions);
 
 		for (ProficiencyDefinition definition : definitions) {
@@ -104,7 +104,7 @@ public class ProficiencyConfiguration {
 	 * @return all proficiency definitions
 	 */
 	public ArrayList<ProficiencyDefinition> getDefinitions() {
-		return new ArrayList<ProficiencyDefinition>(definitions);
+		return new ArrayList<>(definitions);
 	}
 
 	/**
@@ -119,9 +119,9 @@ public class ProficiencyConfiguration {
 	public ArrayList<ProficiencyDefinition> getDefinitions(
 			ProficiencyType type, Integer hierarchy) {
 
-		ArrayList<ProficiencyDefinition> definitions = new ArrayList<ProficiencyDefinition>(
+		ArrayList<ProficiencyDefinition> definitions = new ArrayList<>(
 				this.definitions);
-		ArrayList<ProficiencyDefinition> filteredDefs = new ArrayList<ProficiencyDefinition>();
+		ArrayList<ProficiencyDefinition> filteredDefs = new ArrayList<>();
 
 		for (ProficiencyDefinition definition : definitions) {
 
@@ -144,9 +144,9 @@ public class ProficiencyConfiguration {
 	 */
 	public ArrayList<ProficiencyDefinition> getDefinitions(ProficiencyType type) {
 
-		ArrayList<ProficiencyDefinition> definitions = new ArrayList<ProficiencyDefinition>(
+		ArrayList<ProficiencyDefinition> definitions = new ArrayList<>(
 				this.definitions);
-		ArrayList<ProficiencyDefinition> filteredDefs = new ArrayList<ProficiencyDefinition>();
+		ArrayList<ProficiencyDefinition> filteredDefs = new ArrayList<>();
 
 		for (ProficiencyDefinition definition : definitions) {
 
@@ -168,9 +168,9 @@ public class ProficiencyConfiguration {
 	 */
 	public ArrayList<String> getProficiencyNames(ProficiencyType type) {
 
-		ArrayList<ProficiencyDefinition> definitions = new ArrayList<ProficiencyDefinition>(
+		ArrayList<ProficiencyDefinition> definitions = new ArrayList<>(
 				this.definitions);
-		ArrayList<String> proficiencyNames = new ArrayList<String>();
+		ArrayList<String> proficiencyNames = new ArrayList<>();
 
 		for (ProficiencyDefinition definition : definitions) {
 

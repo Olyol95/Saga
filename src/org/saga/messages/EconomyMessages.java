@@ -225,14 +225,14 @@ public class EconomyMessages {
 	// Trading post:
 	public static String exported(ArrayList<SagaItem> exports, Double coins) {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 		ChatColor primCol = Colour.normal2;
 		ChatColor secCol = Colour.normal1;
 
 		if (exports.size() == 0)
 			return primCol + "Exported: -.";
 
-		result.append(primCol + "Exported: ");
+		result.append(primCol).append("Exported: ");
 
 		for (int i = 0; i < exports.size(); i++) {
 
@@ -247,19 +247,19 @@ public class EconomyMessages {
 				duplic = true;
 
 			if (i != 0)
-				result.append(primCol + ", ");
+				result.append(primCol).append(", ");
 			result.append(secCol);
 
 			// Item:
 			if (item.getAmount() > 1)
-				result.append(item.getAmount().intValue() + " ");
+				result.append(item.getAmount().intValue()).append(" ");
 			result.append(GeneralMessages.material(item.getType()));
 			if (duplic)
-				result.append(":" + item.getData());
+				result.append(":").append(item.getData());
 
 		}
 
-		result.append(primCol + " for " + EconomyMessages.coins(coins) + ".");
+		result.append(primCol).append(" for ").append(EconomyMessages.coins(coins)).append(".");
 
 		return result.toString();
 

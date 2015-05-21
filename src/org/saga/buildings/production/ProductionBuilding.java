@@ -187,9 +187,8 @@ public class ProductionBuilding extends Building {
 				Warehouse.class);
 
 		// All resources:
-		for (int i = 0; i < resources.length; i++) {
+		for (SagaResource resource : resources) {
 
-			SagaResource resource = resources[i];
 			Collection<SagaItem> requests = resource.getRequests();
 
 			// Handle requests:
@@ -242,8 +241,8 @@ public class ProductionBuilding extends Building {
 
 		// Store here if loaded:
 		if (getSagaChunk().isLoaded()) {
-			for (int i = 0; i < produced.length; i++) {
-				store(produced[i]);
+			for (SagaItem aProduced : produced) {
+				store(aProduced);
 			}
 		}
 
@@ -252,8 +251,8 @@ public class ProductionBuilding extends Building {
 				Warehouse.class);
 		for (Warehouse warehouse : warehouses) {
 
-			for (int i = 0; i < produced.length; i++) {
-				warehouse.store(produced[i]);
+			for (SagaItem aProduced : produced) {
+				warehouse.store(aProduced);
 			}
 
 		}
@@ -269,8 +268,8 @@ public class ProductionBuilding extends Building {
 	 */
 	public void offer(SagaItem[] items) {
 
-		for (int i = 0; i < items.length; i++) {
-			offer(items[i]);
+		for (SagaItem item : items) {
+			offer(item);
 		}
 
 	}
@@ -371,7 +370,7 @@ public class ProductionBuilding extends Building {
 	 */
 	private ArrayList<Block> findLowestEmpty() {
 
-		ArrayList<Block> blocks = new ArrayList<Block>();
+		ArrayList<Block> blocks = new ArrayList<>();
 		ArrayList<StorageArea> storages = getStorageAreas();
 
 		for (StorageArea storageArea : storages) {
@@ -391,7 +390,7 @@ public class ProductionBuilding extends Building {
 	 */
 	private ArrayList<Chest> findChests() {
 
-		ArrayList<Chest> possible = new ArrayList<Chest>();
+		ArrayList<Chest> possible = new ArrayList<>();
 		ArrayList<StorageArea> storages = getStorageAreas();
 
 		for (StorageArea storageArea : storages) {
@@ -428,11 +427,11 @@ public class ProductionBuilding extends Building {
 	 */
 	private ArrayList<SagaItem> filterStoreable(SagaItem[] items) {
 
-		ArrayList<SagaItem> results = new ArrayList<SagaItem>();
+		ArrayList<SagaItem> results = new ArrayList<>();
 
-		for (int i = 0; i < items.length; i++) {
-			if (items[i].getAmount() >= 1)
-				results.add(items[i]);
+		for (SagaItem item : items) {
+			if (item.getAmount() >= 1)
+				results.add(item);
 		}
 
 		return results;

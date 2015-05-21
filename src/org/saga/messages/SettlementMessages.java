@@ -339,10 +339,10 @@ public class SettlementMessages {
 	public static String optionInvalidInfo() {
 
 		BundleToggleable[] options = BundleToggleable.values();
-		ArrayList<String> validOptions = new ArrayList<String>();
-		for (int i = 0; i < options.length; i++) {
+		ArrayList<String> validOptions = new ArrayList<>();
+		for (BundleToggleable option : options) {
 
-			validOptions.add(options[i].toString().replace(" ",
+			validOptions.add(option.toString().replace(" ",
 					GeneralMessages.SPACE_SYMBOL));
 
 		}
@@ -398,7 +398,7 @@ public class SettlementMessages {
 
 		ArrayList<String> map = SagaMap.getMap(sagaPlayer,
 				sagaPlayer.getLocation());
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 
 		// Add borders:
 		for (int i = 0; i < map.size(); i++) {

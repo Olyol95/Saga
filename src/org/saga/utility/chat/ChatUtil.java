@@ -12,13 +12,13 @@ import org.saga.utility.ArrayUtil;
 
 public class ChatUtil {
 
-	public static final ArrayList<String> SUBSTANCE_CHARS = new ArrayList<String>(
-			Arrays.asList(new String[] { "0", "1", "2", "3", "4", "5", "6",
+	public static final ArrayList<String> SUBSTANCE_CHARS = new ArrayList<>(
+			Arrays.asList(new String[]{"0", "1", "2", "3", "4", "5", "6",
 					"7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I",
 					"J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
 					"V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g",
 					"h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
-					"t", "u", "v", "w", "x", "y", "z", " " }));
+					"t", "u", "v", "w", "x", "y", "z", " "}));
 
 	public static String repeat(String s, int times) {
 
@@ -139,7 +139,7 @@ public class ChatUtil {
 
 	public static String flatten(Collection<String> array) {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 
 		boolean first = true;
 
@@ -161,7 +161,7 @@ public class ChatUtil {
 
 	public static String histogram(Double[] data, ColourLoop colours) {
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 
 		Integer row = ArrayUtil.max(data).intValue();
 

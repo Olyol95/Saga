@@ -87,15 +87,15 @@ public class SiegeManager implements SecondTicker {
 	 */
 	public SiegeManager(String name) {
 
-		declaredSieges = new Hashtable<Integer, Integer>();
-		declaredDates = new Hashtable<Integer, Long>();
-		siegeProgresses = new Hashtable<Integer, Double>();
-		owningFaction = new Hashtable<Integer, Integer>();
-		affiliation = new Hashtable<Integer, Integer>();
-		factionCapital = new Hashtable<Integer, Integer>();
+		declaredSieges = new Hashtable<>();
+		declaredDates = new Hashtable<>();
+		siegeProgresses = new Hashtable<>();
+		owningFaction = new Hashtable<>();
+		affiliation = new Hashtable<>();
+		factionCapital = new Hashtable<>();
 
-		attackers = new Hashtable<Integer, Integer>();
-		defenders = new Hashtable<Integer, Integer>();
+		attackers = new Hashtable<>();
+		defenders = new Hashtable<>();
 
 	}
 
@@ -107,32 +107,32 @@ public class SiegeManager implements SecondTicker {
 
 		if (declaredSieges == null) {
 			SagaLogger.nullField(getClass(), "declaredSieges");
-			declaredSieges = new Hashtable<Integer, Integer>();
+			declaredSieges = new Hashtable<>();
 		}
 
 		if (declaredDates == null) {
 			SagaLogger.nullField(getClass(), "declaredDates");
-			declaredDates = new Hashtable<Integer, Long>();
+			declaredDates = new Hashtable<>();
 		}
 
 		if (siegeProgresses == null) {
 			SagaLogger.nullField(getClass(), "siegeProgresses");
-			siegeProgresses = new Hashtable<Integer, Double>();
+			siegeProgresses = new Hashtable<>();
 		}
 
 		if (owningFaction == null) {
 			SagaLogger.nullField(getClass(), "owningFaction");
-			owningFaction = new Hashtable<Integer, Integer>();
+			owningFaction = new Hashtable<>();
 		}
 
 		if (affiliation == null) {
 			SagaLogger.nullField(getClass(), "affiliation");
-			affiliation = new Hashtable<Integer, Integer>();
+			affiliation = new Hashtable<>();
 		}
 
 		if (factionCapital == null) {
 			SagaLogger.nullField(getClass(), "factionCapital");
-			factionCapital = new Hashtable<Integer, Integer>();
+			factionCapital = new Hashtable<>();
 		}
 
 		// Remove unused declarations:
@@ -167,8 +167,8 @@ public class SiegeManager implements SecondTicker {
 		}
 
 		// Transient:
-		attackers = new Hashtable<Integer, Integer>();
-		defenders = new Hashtable<Integer, Integer>();
+		attackers = new Hashtable<>();
+		defenders = new Hashtable<>();
 
 	}
 
@@ -317,9 +317,7 @@ public class SiegeManager implements SecondTicker {
 	public boolean isSieged(Integer bundleID) {
 
 		Double progress = siegeProgresses.get(bundleID);
-		if (progress == null)
-			return false;
-		return true;
+		return progress != null;
 
 	}
 
@@ -343,7 +341,7 @@ public class SiegeManager implements SecondTicker {
 		if (defenderID != null)
 			defenderMembers = findSiegingMembers(defenderID, bundleID);
 		else
-			defenderMembers = new ArrayList<SagaPlayer>();
+			defenderMembers = new ArrayList<>();
 
 		// Set counts:
 		attackers.put(bundleID, attakcerMembers.size());
@@ -379,14 +377,14 @@ public class SiegeManager implements SecondTicker {
 	public Collection<SagaPlayer> findSiegingMembers(Integer factionID,
 			Integer bundleID) {
 
-		ArrayList<SagaPlayer> sieging = new ArrayList<SagaPlayer>();
+		ArrayList<SagaPlayer> sieging = new ArrayList<>();
 
 		// Get faction:
 		Faction faction = FactionManager.manager().getFaction(factionID);
 		if (faction == null) {
 			SagaLogger.severe(getClass(), "failed to retrieve faction for ID "
 					+ factionID);
-			return new ArrayList<SagaPlayer>(0);
+			return new ArrayList<>(0);
 		}
 
 		// Find sieging members:
@@ -469,7 +467,7 @@ public class SiegeManager implements SecondTicker {
 	 */
 	public ArrayList<Integer> getDeclaredSiegesAttackIDs(Integer factionID) {
 
-		ArrayList<Integer> bundleIDs = new ArrayList<Integer>();
+		ArrayList<Integer> bundleIDs = new ArrayList<>();
 		Set<Entry<Integer, Integer>> declarations = declaredSieges.entrySet();
 
 		for (Entry<Integer, Integer> declaration : declarations) {
@@ -502,7 +500,7 @@ public class SiegeManager implements SecondTicker {
 	 */
 	public ArrayList<Integer> getDeclaredSiegesDefendIDs(Integer factionID) {
 
-		ArrayList<Integer> bundleIDs = new ArrayList<Integer>();
+		ArrayList<Integer> bundleIDs = new ArrayList<>();
 
 		ArrayList<Integer> ownedBundleIDs = getOwnedBundleIDs(factionID);
 		for (Integer owneBundleID : ownedBundleIDs) {
@@ -540,7 +538,7 @@ public class SiegeManager implements SecondTicker {
 	 */
 	public ArrayList<Integer> getOwnedBundleIDs(Integer factionID) {
 
-		ArrayList<Integer> bundleIDs = new ArrayList<Integer>();
+		ArrayList<Integer> bundleIDs = new ArrayList<>();
 
 		Set<Entry<Integer, Integer>> owned = owningFaction.entrySet();
 		for (Entry<Integer, Integer> owner : owned) {
@@ -574,7 +572,7 @@ public class SiegeManager implements SecondTicker {
 
 		ArrayList<Bundle> bundles = BundleManager.manager().getBundles(
 				getOwnedBundleIDs(factionID));
-		ArrayList<Settlement> settlements = new ArrayList<Settlement>();
+		ArrayList<Settlement> settlements = new ArrayList<>();
 
 		for (Bundle bundle : bundles) {
 			if (bundle instanceof Settlement)
@@ -1008,7 +1006,7 @@ public class SiegeManager implements SecondTicker {
 	 */
 	public Hashtable<String, Double> getRanks(Integer factionID) {
 
-		Hashtable<String, Double> ranks = new Hashtable<String, Double>();
+		Hashtable<String, Double> ranks = new Hashtable<>();
 
 		ArrayList<Bundle> bundles = getOwnedBundles(factionID);
 		for (Bundle bundle : bundles) {

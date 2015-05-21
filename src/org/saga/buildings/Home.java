@@ -31,7 +31,7 @@ public class Home extends Building {
 
 		super(definition);
 
-		residents = new ArrayList<String>();
+		residents = new ArrayList<>();
 
 	}
 
@@ -46,7 +46,7 @@ public class Home extends Building {
 		boolean integrity = super.complete();
 
 		if (residents == null) {
-			residents = new ArrayList<String>();
+			residents = new ArrayList<>();
 			SagaLogger.nullField(this, "residents");
 			integrity = false;
 		}
@@ -114,7 +114,7 @@ public class Home extends Building {
 	 * @return all residents
 	 */
 	public ArrayList<String> getResidents() {
-		return new ArrayList<String>(residents);
+		return new ArrayList<>(residents);
 	}
 
 	// Display:
@@ -127,7 +127,7 @@ public class Home extends Building {
 	public String getDisplayName() {
 
 		ArrayList<String> residents = getResidents();
-		StringBuffer rString = new StringBuffer();
+		StringBuilder rString = new StringBuilder();
 
 		for (int i = 0; i < residents.size(); i++) {
 
@@ -138,7 +138,7 @@ public class Home extends Building {
 			} else {
 				rString.append(", ");
 			}
-			rString.append(residents.get(i) + "s");
+			rString.append(residents.get(i)).append("s");
 
 		}
 
@@ -159,7 +159,7 @@ public class Home extends Building {
 
 		ArrayList<String> residents = getResidents();
 		String rString = "";
-		ArrayList<String> rList = new ArrayList<String>();
+		ArrayList<String> rList = new ArrayList<>();
 
 		if (residents.size() == 0) {
 			rString = "Residents: none";

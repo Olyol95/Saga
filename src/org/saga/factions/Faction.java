@@ -148,15 +148,15 @@ public class Faction implements MinuteTicker, DaytimeTicker {
 
 		this.id = factionId;
 		this.name = factionName;
-		members = new HashSet<String>();
+		members = new HashSet<>();
 		claims = FactionConfiguration.config().getInitialClaims().doubleValue();
 		coins = 0.0;
 		colour1 = ChatColor.WHITE;
 		colour2 = ChatColor.WHITE;
-		playerRanks = new Hashtable<String, Proficiency>();
-		dailyKills = new HashSet<String>();
-		allyRequests = new HashSet<Integer>();
-		wages = new Hashtable<String, Double>();
+		playerRanks = new Hashtable<>();
+		dailyKills = new HashSet<>();
+		allyRequests = new HashSet<>();
+		wages = new Hashtable<>();
 
 		removeOwner();
 
@@ -185,7 +185,7 @@ public class Faction implements MinuteTicker, DaytimeTicker {
 
 		if (members == null) {
 			SagaLogger.nullField(this, "memberNames");
-			members = new HashSet<String>();
+			members = new HashSet<>();
 			integrity = false;
 		}
 
@@ -226,7 +226,7 @@ public class Faction implements MinuteTicker, DaytimeTicker {
 
 		if (playerRanks == null) {
 			SagaLogger.nullField(this, "playerRanks");
-			playerRanks = new Hashtable<String, Proficiency>();
+			playerRanks = new Hashtable<>();
 			integrity = false;
 		}
 
@@ -271,19 +271,19 @@ public class Faction implements MinuteTicker, DaytimeTicker {
 
 		if (dailyKills == null) {
 			SagaLogger.nullField(this, "dailyKills");
-			dailyKills = new HashSet<String>();
+			dailyKills = new HashSet<>();
 			integrity = false;
 		}
 
 		if (allyRequests == null) {
 			SagaLogger.nullField(this, "allyRequests");
-			allyRequests = new HashSet<Integer>();
+			allyRequests = new HashSet<>();
 			integrity = false;
 		}
 
 		if (wages == null) {
 			SagaLogger.nullField(this, "wages");
-			wages = new Hashtable<String, Double>();
+			wages = new Hashtable<>();
 		}
 
 		return integrity;
@@ -304,8 +304,8 @@ public class Faction implements MinuteTicker, DaytimeTicker {
 
 		// Remove all members:
 		ArrayList<String> playerNames = getMembers();
-		for (int i = 0; i < playerNames.size(); i++) {
-			removeMember(playerNames.get(i));
+		for (String playerName : playerNames) {
+			removeMember(playerName);
 		}
 
 		// Update faction manager:
@@ -513,7 +513,7 @@ public class Faction implements MinuteTicker, DaytimeTicker {
 	 * @return the members
 	 */
 	public ArrayList<String> getMembers() {
-		return new ArrayList<String>(members);
+		return new ArrayList<>(members);
 	}
 
 	/**
@@ -531,7 +531,7 @@ public class Faction implements MinuteTicker, DaytimeTicker {
 	 * @return the active members
 	 */
 	public ArrayList<String> getActiveMembers() {
-		return new ArrayList<String>(members);
+		return new ArrayList<>(members);
 	}
 
 	/**
@@ -571,7 +571,7 @@ public class Faction implements MinuteTicker, DaytimeTicker {
 	public Collection<SagaPlayer> getRawOnlineMembers() {
 
 		Collection<SagaPlayer> onlinePlayers = Saga.plugin().getLoadedPlayers();
-		Collection<SagaPlayer> onlineMembers = new HashSet<SagaPlayer>();
+		Collection<SagaPlayer> onlineMembers = new HashSet<>();
 
 		for (SagaPlayer onlinePlayer : onlinePlayers) {
 
@@ -591,7 +591,7 @@ public class Faction implements MinuteTicker, DaytimeTicker {
 	 */
 	public Collection<SagaPlayer> getOnlineMembers() {
 
-		Collection<SagaPlayer> onlineMembers = new HashSet<SagaPlayer>(
+		Collection<SagaPlayer> onlineMembers = new HashSet<>(
 				getRawOnlineMembers());
 		Collection<SagaPlayer> onlinePlayers = Saga.plugin().getLoadedPlayers();
 
@@ -613,7 +613,7 @@ public class Faction implements MinuteTicker, DaytimeTicker {
 	 */
 	public Collection<SagaPlayer> getLimitedOnlineMembers() {
 
-		Collection<SagaPlayer> onlineLimited = new HashSet<SagaPlayer>();
+		Collection<SagaPlayer> onlineLimited = new HashSet<>();
 		Collection<SagaPlayer> onlinePlayers = Saga.plugin().getLoadedPlayers();
 
 		for (SagaPlayer sagaPlayer : onlinePlayers) {
@@ -665,11 +665,8 @@ public class Faction implements MinuteTicker, DaytimeTicker {
 		if (getMemberCount() < FactionConfiguration.config().formationAmount)
 			return false;
 
-		if (SiegeManager.manager().getOwnedBundleCount(id) < FactionConfiguration
-				.config().getFormationSettlements())
-			return false;
-
-		return true;
+		return SiegeManager.manager().getOwnedBundleCount(id) >= FactionConfiguration
+				.config().getFormationSettlements();
 
 	}
 
@@ -903,7 +900,7 @@ public class Faction implements MinuteTicker, DaytimeTicker {
 			allies = null;
 		}
 
-		return new HashSet<Integer>(allyRequests);
+		return new HashSet<>(allyRequests);
 
 	}
 
@@ -1104,7 +1101,7 @@ public class Faction implements MinuteTicker, DaytimeTicker {
 	 */
 	public ArrayList<String> getMembersForRanks(String rankName) {
 
-		ArrayList<String> filtMembers = new ArrayList<String>();
+		ArrayList<String> filtMembers = new ArrayList<>();
 		ArrayList<String> allMembers = getMembers();
 
 		for (String member : allMembers) {
@@ -1180,7 +1177,7 @@ public class Faction implements MinuteTicker, DaytimeTicker {
 
 		// Reset kills:
 		if (daytime == Daytime.SUNRISE)
-			dailyKills = new HashSet<String>();
+			dailyKills = new HashSet<>();
 
 		// Wages:
 		if (daytime == EconomyConfiguration.config().getFactionWagesTime())
@@ -1254,7 +1251,7 @@ public class Faction implements MinuteTicker, DaytimeTicker {
 		}
 
 		// Reset kills:
-		dailyKills = new HashSet<String>();
+		dailyKills = new HashSet<>();
 
 	}
 
@@ -1598,7 +1595,7 @@ public class Faction implements MinuteTicker, DaytimeTicker {
 		SET_CAPITAL, REMOVE_CAPITAL,
 
 		// Spawn:
-		SET_SPAWN, SPAWN;
+		SET_SPAWN, SPAWN
 
 	}
 

@@ -115,7 +115,7 @@ public class SagaDamageEvent {
 	/**
 	 * PvP override.
 	 */
-	private PriorityQueue<PvPOverride> pvpOverride = new PriorityQueue<SagaDamageEvent.PvPOverride>();
+	private PriorityQueue<PvPOverride> pvpOverride = new PriorityQueue<>();
 
 	// Initiate:
 	/**
@@ -160,7 +160,7 @@ public class SagaDamageEvent {
 		if (attacker instanceof Player) {
 
 			sagaAttacker = Saga.plugin().getLoadedPlayer(
-					((Player) attacker).getName());
+					attacker.getName());
 			creatureAttacker = null;
 
 			// Tool:
@@ -189,7 +189,7 @@ public class SagaDamageEvent {
 
 			creatureDefender = null;
 			sagaDefender = Saga.plugin().getLoadedPlayer(
-					((Player) defender).getName());
+					defender.getName());
 
 		}
 
@@ -435,11 +435,8 @@ public class SagaDamageEvent {
 	 * @return true if blocking
 	 */
 	public boolean isBlocking() {
-		if (sagaDefender == null)
-			return false;
-		return VanillaConfiguration.checkBlocking(event,
-				sagaDefender.getWrapped());
-	}
+        return sagaDefender != null && VanillaConfiguration.checkBlocking(event, sagaDefender.getWrapped());
+    }
 
 	/**
 	 * Checks if player attacked a player.
@@ -493,13 +490,9 @@ public class SagaDamageEvent {
 	 */
 	public boolean isFvF() {
 
-		if (!(sagaAttacker instanceof SagaPlayer)
-				|| !(sagaDefender instanceof SagaPlayer))
-			return false;
-		return ((SagaPlayer) sagaAttacker).getFaction() != null
-				&& ((SagaPlayer) sagaDefender).getFaction() != null;
+        return !(!(sagaAttacker instanceof SagaPlayer) || !(sagaDefender instanceof SagaPlayer)) && ((SagaPlayer) sagaAttacker).getFaction() != null && ((SagaPlayer) sagaDefender).getFaction() != null;
 
-	}
+    }
 
 	/**
 	 * Gets the attacker.
@@ -615,7 +608,7 @@ public class SagaDamageEvent {
 		 * 
 		 * @param allow true if allows pvp, false if denies pvp
 		 */
-		private PvPOverride(boolean allow) {
+        PvPOverride(boolean allow) {
 			this.allow = allow;
 		}
 

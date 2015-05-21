@@ -13,10 +13,7 @@ public class BlockBottomFilter extends BlockFilter {
 	@Override
 	public boolean checkBlock(Block block) {
 
-		if (super.checkBlock(block.getRelative(BlockFace.DOWN)))
-			return false;
-
-		return super.checkBlock(block);
+		return !super.checkBlock(block.getRelative(BlockFace.DOWN)) && super.checkBlock(block);
 
 	}
 

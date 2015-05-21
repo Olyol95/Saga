@@ -23,7 +23,7 @@ import java.util.Set;
 
 public class CommandContext {
 	protected String[] args;
-	protected Set<Character> flags = new HashSet<Character>();
+	protected Set<Character> flags = new HashSet<>();
 
 	public CommandContext(String args) {
 		this(args.split(" "));

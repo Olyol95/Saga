@@ -33,12 +33,12 @@ public class ChatBook {
 	/**
 	 * Section.
 	 */
-	private ArrayList<String> sections = new ArrayList<String>();
+	private ArrayList<String> sections = new ArrayList<>();
 
 	/**
 	 * All tables.
 	 */
-	private Hashtable<String, ChatTable> tables = new Hashtable<String, ChatTable>();
+	private Hashtable<String, ChatTable> tables = new Hashtable<>();
 
 	/**
 	 * Message colours.
@@ -91,8 +91,8 @@ public class ChatBook {
 		if (line.contains("\n")) {
 
 			String[] sects = line.split("\n");
-			for (int i = 0; i < sects.length; i++) {
-				add(sects[i]);
+			for (String sect : sects) {
+				add(sect);
 			}
 
 			return;
@@ -196,7 +196,7 @@ public class ChatBook {
 			page = getLastPage();
 
 		// Create page:
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 
 		int currPage = 0;
 
@@ -300,18 +300,18 @@ public class ChatBook {
 	 */
 	private String createTable(ChatTable table) {
 
-		StringBuffer rows = new StringBuffer();
+		StringBuilder rows = new StringBuilder();
 
 		String[][] contents = table.getContents();
 
 		for (int row = 0; row < contents.length; row++) {
 
-			StringBuffer sect = new StringBuffer();
+			StringBuilder sect = new StringBuilder();
 			ChatColor colour = colours.nextColour();
 
 			for (int col = 0; col < contents[row].length; col++) {
 
-				sect.append(colour + contents[row][col]);
+				sect.append(colour).append(contents[row][col]);
 
 			}
 

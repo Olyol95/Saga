@@ -58,8 +58,8 @@ public class SagaRecipe extends SagaItem {
 			reqWork = VanillaConfiguration.MINUTES_IN_MC_DAY;
 		}
 
-		for (int i = 0; i < recipe.length; i++) {
-			recipe[i].complete();
+		for (SagaItem aRecipe : recipe) {
+			aRecipe.complete();
 		}
 
 	}
@@ -149,10 +149,7 @@ public class SagaRecipe extends SagaItem {
 					return false;
 			}
 
-			if (!recipe.reqWork.equals(this.reqWork))
-				return false;
-
-			return true;
+			return recipe.reqWork.equals(this.reqWork);
 
 		}
 

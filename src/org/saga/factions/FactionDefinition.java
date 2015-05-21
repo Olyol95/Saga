@@ -77,7 +77,7 @@ public class FactionDefinition {
 	 */
 	public Integer getMaxLevel() {
 
-		return levelUpExp.getXMax().intValue();
+		return levelUpExp.getXMax();
 
 	}
 

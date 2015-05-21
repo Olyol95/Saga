@@ -1,6 +1,7 @@
 package org.saga.utility.chat;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import org.bukkit.ChatColor;
 import org.saga.messages.colours.ColourLoop;
@@ -10,7 +11,7 @@ public class ChatTable {
 	/**
 	 * Table cells.
 	 */
-	public ArrayList<ArrayList<String>> cells = new ArrayList<ArrayList<String>>();
+	public ArrayList<ArrayList<String>> cells = new ArrayList<>();
 
 	/**
 	 * Selected column.
@@ -93,11 +94,9 @@ public class ChatTable {
 	 */
 	public void setCustomWidths(Double[] customWidths) {
 
-		this.customWidths = new ArrayList<Double>();
+		this.customWidths = new ArrayList<>();
 
-		for (int i = 0; i < customWidths.length; i++) {
-			this.customWidths.add(customWidths[i]);
-		}
+		Collections.addAll(this.customWidths, customWidths);
 
 	}
 
@@ -109,7 +108,7 @@ public class ChatTable {
 	 */
 	public void setCustomWidths(Double customWidth) {
 
-		customWidths = new ArrayList<Double>();
+		customWidths = new ArrayList<>();
 
 		for (int i = 0; i <= cells.size(); i++) {
 			customWidths.add(customWidth / cells.size());
@@ -127,8 +126,8 @@ public class ChatTable {
 		Double[] widths = getColumnWidths();
 
 		Double width = 0.0;
-		for (int i = 0; i < widths.length; i++) {
-			width += widths[i];
+		for (Double width1 : widths) {
+			width += width1;
 		}
 
 		return width;
@@ -141,7 +140,7 @@ public class ChatTable {
 	 */
 	public void collapse() {
 
-		customWidths = new ArrayList<Double>();
+		customWidths = new ArrayList<>();
 
 		for (ArrayList<String> column : cells) {
 
@@ -255,7 +254,7 @@ public class ChatTable {
 
 		Double[] widths = getColumnWidths();
 
-		ArrayList<String> result = new ArrayList<String>();
+		ArrayList<String> result = new ArrayList<>();
 
 		// Table size:
 		int rows = 0;
@@ -378,7 +377,7 @@ public class ChatTable {
 
 		Double[] widths = getColumnWidths();
 
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 
 		// Table size:
 		int rows = 0;

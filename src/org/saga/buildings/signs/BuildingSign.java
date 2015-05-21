@@ -323,7 +323,7 @@ public abstract class BuildingSign extends SagaCustomSerialization {
 	 */
 	public ArrayList<String> getParameters() {
 
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<>();
 
 		if (!secondLine.equals(""))
 			list.add(secondLine);
@@ -349,9 +349,7 @@ public abstract class BuildingSign extends SagaCustomSerialization {
 			return true;
 		if (thirdLine.equals(string))
 			return true;
-		if (fourthLine.equals(string))
-			return true;
-		return false;
+		return fourthLine.equals(string);
 
 	}
 
@@ -510,7 +508,7 @@ public abstract class BuildingSign extends SagaCustomSerialization {
 
 	public enum SignStatus {
 
-		ENABLED, DISABLED, INVALIDATED;
+		ENABLED, DISABLED, INVALIDATED
 
 	}
 

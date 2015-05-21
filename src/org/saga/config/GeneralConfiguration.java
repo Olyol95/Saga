@@ -212,7 +212,7 @@ public class GeneralConfiguration {
 
 		if (harmfulSplashPotions == null) {
 			SagaLogger.nullField(getClass(), "badSplashPotions");
-			harmfulSplashPotions = new HashSet<Short>();
+			harmfulSplashPotions = new HashSet<>();
 		}
 
 		if (harmfulSplashPotions.remove(null) == true) {
@@ -226,7 +226,7 @@ public class GeneralConfiguration {
 
 		if (blockPlaceData == null) {
 			SagaLogger.nullField(getClass(), "blockPlaceData");
-			blockPlaceData = new Hashtable<Material, Byte>();
+			blockPlaceData = new Hashtable<>();
 		}
 
 		if (stopCreeperExplosions == null) {
@@ -246,7 +246,7 @@ public class GeneralConfiguration {
 
 		if (guardRuneDisableWorlds == null) {
 			SagaLogger.nullField(getClass(), "guardRuneDisableWorlds");
-			guardRuneDisableWorlds = new HashSet<String>();
+			guardRuneDisableWorlds = new HashSet<>();
 		}
 
 		if (guardRuneDisableWorlds.remove(null) == true) {
@@ -260,7 +260,7 @@ public class GeneralConfiguration {
 
 		if (disableWorlds == null) {
 			SagaLogger.nullField(getClass(), "disableWorlds");
-			disableWorlds = new HashSet<String>();
+			disableWorlds = new HashSet<>();
 		}
 
 		if (xrayMinStone == null) {
@@ -275,7 +275,7 @@ public class GeneralConfiguration {
 
 		if (commandsOverride == null) {
 			SagaLogger.nullField(getClass(), "commandsOverride");
-			commandsOverride = new Hashtable<String, String>();
+			commandsOverride = new Hashtable<>();
 		}
 
 	}
@@ -287,7 +287,7 @@ public class GeneralConfiguration {
 	 * @return bad splash potions
 	 */
 	public HashSet<Short> getHarmfulSplashPotions() {
-		return new HashSet<Short>(harmfulSplashPotions);
+		return new HashSet<>(harmfulSplashPotions);
 	}
 
 	// Block data:

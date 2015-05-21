@@ -817,7 +817,7 @@ public class AdminCommands {
 			SagaPlayer sagaPlayer) {
 
 		Building bld = sagaPlayer.getSagaChunk().getBuilding();
-		HashSet<Building> adjacent = new HashSet<Building>();
+		HashSet<Building> adjacent = new HashSet<>();
 
 		bld.collectAdjacentBuildings(bld, adjacent);
 
@@ -1040,7 +1040,7 @@ public class AdminCommands {
 	public static void writeCommands(CommandContext args, Saga plugin,
 			SagaPlayer sagaPlayer) {
 
-		ArrayList<Method> commandMethods = new ArrayList<Method>(
+		ArrayList<Method> commandMethods = new ArrayList<>(
 				PermissionsDependency.getCommandMap().getCommandMethods());
 
 		String wikiText = "";
@@ -1080,7 +1080,7 @@ public class AdminCommands {
 	public static void writePermissions(CommandContext args, Saga plugin,
 			SagaPlayer sagaPlayer) {
 
-		ArrayList<Method> commandMethods = new ArrayList<Method>(
+		ArrayList<Method> commandMethods = new ArrayList<>(
 				PermissionsDependency.getCommandMap().getCommandMethods());
 
 		String wikiText = "";

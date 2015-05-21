@@ -169,7 +169,7 @@ public class StorageArea {
 				orientation, size);
 
 		// Bukkit chunks:
-		HashSet<Chunk> bukkitChunks = new HashSet<Chunk>();
+		HashSet<Chunk> bukkitChunks = new HashSet<>();
 		for (Block block : blocks) {
 
 			bukkitChunks.add(block.getChunk());
@@ -177,7 +177,7 @@ public class StorageArea {
 		}
 
 		// Saga chunks
-		ArrayList<SagaChunk> sagaChunks = new ArrayList<SagaChunk>();
+		ArrayList<SagaChunk> sagaChunks = new ArrayList<>();
 		for (Chunk chunk : bukkitChunks) {
 
 			sagaChunks.add(BundleManager.manager().getSagaChunk(chunk));
@@ -209,7 +209,7 @@ public class StorageArea {
 
 		ArrayList<Block> allBlocks = SHAPE.getBlocks(anchor.getLocation(),
 				orientation, size);
-		ArrayList<Block> blocks = new ArrayList<Block>();
+		ArrayList<Block> blocks = new ArrayList<>();
 
 		int ymin = allBlocks.get(0).getY();
 		for (int level = ymin; level <= ymin + HEIGHT; level++) {
@@ -239,7 +239,7 @@ public class StorageArea {
 
 		ArrayList<Block> allBlocks = SHAPE.getBlocks(anchor.getLocation(),
 				orientation, size);
-		ArrayList<Block> blocks = new ArrayList<Block>();
+		ArrayList<Block> blocks = new ArrayList<>();
 
 		int ymin = allBlocks.get(0).getY();
 		for (int level = ymin + HEIGHT; level >= ymin; level--) {
@@ -349,7 +349,7 @@ public class StorageArea {
 		ArrayList<Block> blocks = SHAPE.getBlocks(anchor.getLocation(),
 				orientation, size, CHEST_FILTER);
 
-		ArrayList<Chest> chests = new ArrayList<Chest>();
+		ArrayList<Chest> chests = new ArrayList<>();
 		for (Block block : blocks) {
 			if (block.getState() instanceof Chest)
 				chests.add((Chest) block.getState());
@@ -394,7 +394,7 @@ public class StorageArea {
 		ArrayList<Block> blocks = SHAPE.getBlocks(anchor.getLocation(),
 				orientation, size, CHEST_FILTER);
 
-		ArrayList<Chest> chests = new ArrayList<Chest>();
+		ArrayList<Chest> chests = new ArrayList<>();
 		for (Block block : blocks) {
 			if (block.getState() instanceof Chest)
 				chests.add((Chest) block.getState());
@@ -445,24 +445,24 @@ public class StorageArea {
 
 				ItemStack[] inventory = ((Chest) block.getState())
 						.getBlockInventory().getContents();
-				for (int i = 0; i < inventory.length; i++) {
+				for (ItemStack anInventory : inventory) {
 
-					if (inventory[i] == null)
+					if (anInventory == null)
 						continue;
 
 					// From
 					// https://github.com/Bukkit/CraftBukkit/blob/master/src/main/java/org/bukkit/craftbukkit/inventory/CraftInventory.java
-					boolean equals = item.getTypeId() == inventory[i]
+					boolean equals = item.getTypeId() == anInventory
 							.getTypeId()
-							&& item.getDurability() == inventory[i]
-									.getDurability()
+							&& item.getDurability() == anInventory
+							.getDurability()
 							&& item.getEnchantments().equals(
-									inventory[i].getEnchantments());
+							anInventory.getEnchantments());
 
 					if (!equals)
 						continue;
 
-					amount += inventory[i].getAmount();
+					amount += anInventory.getAmount();
 
 				}
 

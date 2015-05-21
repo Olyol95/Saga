@@ -10,22 +10,22 @@ public class RelativeShape {
 	/**
 	 * X offsets.
 	 */
-	private ArrayList<Integer> xoffsets = new ArrayList<Integer>();
+	private ArrayList<Integer> xoffsets = new ArrayList<>();
 
 	/**
 	 * Y offsets.
 	 */
-	private ArrayList<Integer> yoffsets = new ArrayList<Integer>();
+	private ArrayList<Integer> yoffsets = new ArrayList<>();
 
 	/**
 	 * Z offsets.
 	 */
-	private ArrayList<Integer> zoffsets = new ArrayList<Integer>();
+	private ArrayList<Integer> zoffsets = new ArrayList<>();
 
 	/**
 	 * Required levels.
 	 */
-	private ArrayList<Integer> reqLevels = new ArrayList<Integer>();
+	private ArrayList<Integer> reqLevels = new ArrayList<>();
 
 	/**
 	 * Shape filter.
@@ -146,7 +146,7 @@ public class RelativeShape {
 	public ArrayList<Block> getBlocks(Location anchor, Orientation orientation,
 			Integer level, ShapeFilter pFilter) {
 
-		ArrayList<Block> blocks = new ArrayList<Block>();
+		ArrayList<Block> blocks = new ArrayList<>();
 
 		for (int i = 0; i < xoffsets.size(); i++) {
 
@@ -279,7 +279,7 @@ public class RelativeShape {
 	 */
 	public enum Orientation {
 
-		WEST, NORTH, EAST, SOUTH;
+		WEST, NORTH, EAST, SOUTH
 
 	}
 

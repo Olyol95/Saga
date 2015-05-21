@@ -50,10 +50,10 @@ public class Attribute {
 	public Attribute(String name) {
 
 		this.name = name;
-		attack = new Hashtable<AttributeParameter, TwoPointFunction>();
-		defend = new Hashtable<AttributeParameter, TwoPointFunction>();
-		passive = new Hashtable<AttributeParameter, TwoPointFunction>();
-		handling = new Hashtable<Material, TwoPointFunction>();
+		attack = new Hashtable<>();
+		defend = new Hashtable<>();
+		passive = new Hashtable<>();
+		handling = new Hashtable<>();
 		description = "";
 
 	}
@@ -71,7 +71,7 @@ public class Attribute {
 		}
 
 		if (attack == null) {
-			attack = new Hashtable<AttributeParameter, TwoPointFunction>();
+			attack = new Hashtable<>();
 			SagaLogger.nullField(this, "attack");
 		}
 		Collection<TwoPointFunction> scores = attack.values();
@@ -80,7 +80,7 @@ public class Attribute {
 		}
 
 		if (defend == null) {
-			defend = new Hashtable<AttributeParameter, TwoPointFunction>();
+			defend = new Hashtable<>();
 			SagaLogger.nullField(this, "defend");
 		}
 		scores = defend.values();
@@ -89,7 +89,7 @@ public class Attribute {
 		}
 
 		if (passive == null) {
-			passive = new Hashtable<AttributeParameter, TwoPointFunction>();
+			passive = new Hashtable<>();
 			SagaLogger.nullField(this, "passive");
 		}
 		scores = passive.values();
@@ -98,7 +98,7 @@ public class Attribute {
 		}
 
 		if (handling == null) {
-			handling = new Hashtable<Material, TwoPointFunction>();
+			handling = new Hashtable<>();
 			SagaLogger.nullField(this, "handling");
 		}
 		scores = handling.values();
@@ -216,7 +216,7 @@ public class Attribute {
 	 */
 	public ArrayList<Entry<AttributeParameter, TwoPointFunction>> getAllParameterEntries() {
 
-		ArrayList<Entry<AttributeParameter, TwoPointFunction>> entries = new ArrayList<Entry<AttributeParameter, TwoPointFunction>>();
+		ArrayList<Entry<AttributeParameter, TwoPointFunction>> entries = new ArrayList<>();
 
 		entries.addAll(attack.entrySet());
 		entries.addAll(defend.entrySet());
@@ -233,7 +233,7 @@ public class Attribute {
 	 */
 	public ArrayList<Entry<Material, TwoPointFunction>> getAllHandlingEntries() {
 
-		ArrayList<Entry<Material, TwoPointFunction>> entries = new ArrayList<Entry<Material, TwoPointFunction>>();
+		ArrayList<Entry<Material, TwoPointFunction>> entries = new ArrayList<>();
 
 		entries.addAll(handling.entrySet());
 

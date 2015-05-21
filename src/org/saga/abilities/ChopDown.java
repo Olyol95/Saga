@@ -82,15 +82,15 @@ public class ChopDown extends Ability {
 		boolean triggered = false;
 
 		// Get the tree:
-		ArrayList<Block> blocks = new ArrayList<Block>();
+		ArrayList<Block> blocks = new ArrayList<>();
 		blocks.add(clickedBlock);
-		ArrayList<Block> leaves = new ArrayList<Block>();
+		ArrayList<Block> leaves = new ArrayList<>();
 		getTree(clickedBlock, blocks, leaves);
 
 		// Check ratio:
 		if (blocks.size() == 0)
 			return false;
-		double ratio = new Double(leaves.size()) / new Double(blocks.size());
+		double ratio = (double) leaves.size() / (double) blocks.size();
 
 		if (ratio < MINIMUM_LEAVES_LOGS_RATIO) {
 
