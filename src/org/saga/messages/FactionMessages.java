@@ -265,14 +265,14 @@ public class FactionMessages {
 	public static String sentAlliance(Faction faction, Faction target) {
 
 		return faction.getColour2() + "An alliance request was sent to "
-				+ faction(faction) + " faction.";
+				+ faction(target) + " faction.";
 
 	}
 
 	public static String recievedAlliance(Faction faction, Faction source) {
 
 		return faction.getColour2() + "Recieved an alliance request from "
-				+ faction(faction) + " faction.";
+				+ faction(source) + " faction.";
 
 	}
 
