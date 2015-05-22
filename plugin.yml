@@ -1,7 +1,7 @@
 name: Saga
 main: org.saga.Saga
-version: 0.1.1
-author: andfRa
+version: 0.2
+author: andfRa, Olyol95
 softdepend:
   - GroupManager
   - PermissionsEx

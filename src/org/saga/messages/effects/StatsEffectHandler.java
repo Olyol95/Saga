@@ -8,6 +8,7 @@ import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.craftbukkit.v1_8_R2.CraftServer;
 import org.bukkit.craftbukkit.v1_8_R2.CraftWorld;
+import org.bukkit.craftbukkit.v1_8_R2.entity.CraftPlayer;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.saga.player.SagaLiving;
@@ -19,9 +20,11 @@ public class StatsEffectHandler {
 
 		Player player = sagaPlayer.getPlayer();
 
-		Location loc = player.getLocation();
+		((CraftPlayer) player).getHandle().playerConnection.a(new PacketPlayInArmAnimation());
 
-		((CraftServer) Bukkit.getServer())
+		//Location loc = player.getLocation();
+
+		/**((CraftServer) Bukkit.getServer())
 				.getServer()
 				.getPlayerList()
 				.sendPacketNearby(
@@ -30,7 +33,7 @@ public class StatsEffectHandler {
 						loc.getZ(),
 						64,
 						((CraftWorld) loc.getWorld()).getHandle().dimension,
-						new PacketPlayInArmAnimation());
+						new PacketPlayInArmAnimation());*/
 
 	}
 
