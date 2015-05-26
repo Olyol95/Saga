@@ -6,14 +6,12 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Set;
 
-import net.minecraft.server.v1_8_R2.PacketPlayInEntityAction;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
-import org.bukkit.craftbukkit.v1_8_R2.entity.CraftPlayer;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Damageable;
 import org.bukkit.entity.Entity;
