@@ -3,9 +3,7 @@ package org.saga.listeners;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.ItemFrame;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -177,10 +175,25 @@ public class BlockListener implements Listener {
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
 		
-		if (event.getEntity() instanceof ItemFrame) {
+		if (event.getEntity() instanceof ItemFrame || event.getEntity() instanceof Painting) {
 			
 			Entity entity = event.getDamager();
-			
+
+			if (entity instanceof Creeper) {
+
+				// Get saga chunk:
+				SagaChunk sagaChunk = BundleManager.manager().getSagaChunk(
+						event.getEntity().getLocation());
+
+				if (sagaChunk != null) {
+
+					event.setCancelled(true);
+					return;
+
+				}
+
+			}
+
 			Player player = (Player) entity;
 			
 			// Saga disabled:
@@ -258,10 +271,25 @@ public class BlockListener implements Listener {
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void onHangingBreakByEntityEvent(HangingBreakByEntityEvent event) {
 		
-		if (event.getEntity() instanceof ItemFrame) {
+		if (event.getEntity() instanceof ItemFrame || event.getEntity() instanceof Painting) {
 			
 			Entity entity = event.getRemover();
-			
+
+			if (entity instanceof Creeper) {
+
+				// Get saga chunk:
+				SagaChunk sagaChunk = BundleManager.manager().getSagaChunk(
+						event.getEntity().getLocation());
+
+				if (sagaChunk != null) {
+
+					event.setCancelled(true);
+					return;
+
+				}
+
+			}
+
 			Player player = (Player) entity;
 			
 			// Saga disabled:
