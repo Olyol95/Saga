@@ -179,27 +179,22 @@ public class BlockListener implements Listener {
 			
 			Entity entity = event.getDamager();
 
+			if (GeneralConfiguration.isDisabled(entity.getLocation().getWorld()))
+				return;
+
 			if (entity instanceof Creeper) {
 
-				// Get saga chunk:
-				SagaChunk sagaChunk = BundleManager.manager().getSagaChunk(
-						event.getEntity().getLocation());
-
-				if (sagaChunk != null) {
+				if (GeneralConfiguration.config().stopCreeperExplosions) {
 
 					event.setCancelled(true);
-					return;
 
 				}
+
+				return;
 
 			}
 
 			Player player = (Player) entity;
-			
-			// Saga disabled:
-			if (GeneralConfiguration.isDisabled(player.getLocation()
-					.getWorld()))
-				return;
 
 			// Cancel build on failure:
 			SagaPlayer sagaPlayer = Saga.plugin().getLoadedPlayer(
@@ -275,27 +270,22 @@ public class BlockListener implements Listener {
 			
 			Entity entity = event.getRemover();
 
+			if (GeneralConfiguration.isDisabled(event.getEntity().getLocation().getWorld()))
+				return;
+
 			if (entity instanceof Creeper) {
 
-				// Get saga chunk:
-				SagaChunk sagaChunk = BundleManager.manager().getSagaChunk(
-						event.getEntity().getLocation());
-
-				if (sagaChunk != null) {
+				if (GeneralConfiguration.config().stopCreeperExplosions) {
 
 					event.setCancelled(true);
-					return;
 
 				}
+
+				return;
 
 			}
 
 			Player player = (Player) entity;
-			
-			// Saga disabled:
-			if (GeneralConfiguration.isDisabled(player.getLocation()
-					.getWorld()))
-				return;
 
 			// Cancel build on failure:
 			SagaPlayer sagaPlayer = Saga.plugin().getLoadedPlayer(

@@ -51,12 +51,12 @@ public class SagaBuildEvent {
 	// Initialise:
 	/**
 	 * Sets event.
-	 * 
+	 *
 	 * @param event
 	 *            event
 	 */
 	public SagaBuildEvent(BlockBreakEvent event, SagaPlayer sagaPlayer,
-			SagaChunk sagaChunk) {
+						  SagaChunk sagaChunk) {
 
 		this.event = event;
 		this.sagaPlayer = sagaPlayer;
@@ -64,32 +64,32 @@ public class SagaBuildEvent {
 		this.block = event.getBlock();
 
 	}
-	
+
 	// Initialise:
-		/**
-		 * Sets event.
-		 * 
-		 * @param event
-		 *            event
-		 */
-		public SagaBuildEvent(HangingBreakByEntityEvent event, SagaPlayer sagaPlayer,
-				SagaChunk sagaChunk) {
+	/**
+	 * Sets event.
+	 *
+	 * @param event
+	 *            event
+	 */
+	public SagaBuildEvent(HangingBreakByEntityEvent event, SagaPlayer sagaPlayer,
+						  SagaChunk sagaChunk) {
 
-			this.event = event;
-			this.sagaPlayer = sagaPlayer;
-			this.sagaChunk = sagaChunk;
-			this.entity = event.getEntity();
+		this.event = event;
+		this.sagaPlayer = sagaPlayer;
+		this.sagaChunk = sagaChunk;
+		this.entity = event.getEntity();
 
-		}
+	}
 
 	/**
 	 * Sets event.
-	 * 
+	 *
 	 * @param event
 	 *            event
 	 */
 	public SagaBuildEvent(BlockPlaceEvent event, SagaPlayer sagaPlayer,
-			SagaChunk sagaChunk) {
+						  SagaChunk sagaChunk) {
 
 		this.event = event;
 		this.sagaPlayer = sagaPlayer;
@@ -100,12 +100,12 @@ public class SagaBuildEvent {
 
 	/**
 	 * Sets event.
-	 * 
+	 *
 	 * @param event
 	 *            event
 	 */
 	public SagaBuildEvent(PlayerInteractEvent event, SagaPlayer sagaPlayer,
-			SagaChunk sagaChunk) {
+						  SagaChunk sagaChunk) {
 
 		this.event = event;
 		this.sagaPlayer = sagaPlayer;
@@ -116,12 +116,12 @@ public class SagaBuildEvent {
 
 	/**
 	 * Sets event.
-	 * 
+	 *
 	 * @param event
 	 *            event
 	 */
 	public SagaBuildEvent(SignChangeEvent event, SagaPlayer sagaPlayer,
-			SagaChunk sagaChunk) {
+						  SagaChunk sagaChunk) {
 
 		this.event = event;
 		this.sagaPlayer = sagaPlayer;
@@ -131,29 +131,29 @@ public class SagaBuildEvent {
 	}
 
 	public SagaBuildEvent(EntityDamageByEntityEvent event2,
-			SagaPlayer sagaPlayer2, SagaChunk sagaChunk2) {
-		
+						  SagaPlayer sagaPlayer2, SagaChunk sagaChunk2) {
+
 		this.event = event2;
 		this.sagaPlayer = sagaPlayer2;
 		this.sagaChunk = sagaChunk2;
 		this.entity = event2.getEntity();
-		
+
 	}
 
 	public SagaBuildEvent(PlayerInteractEntityEvent event2,
-			SagaPlayer sagaPlayer2, SagaChunk sagaChunk2) {
-		
+						  SagaPlayer sagaPlayer2, SagaChunk sagaChunk2) {
+
 		this.event = event2;
 		this.sagaPlayer = sagaPlayer2;
 		this.sagaChunk = sagaChunk2;
 		this.entity = event2.getRightClicked();
-		
+
 	}
 
 	// Modify:
 	/**
 	 * Adds a build override.
-	 * 
+	 *
 	 * @param override
 	 *            build override
 	 */
@@ -166,7 +166,7 @@ public class SagaBuildEvent {
 	// Conclude:
 	/**
 	 * Cancel event.
-	 * 
+	 *
 	 */
 	public void cancel() {
 
@@ -186,7 +186,7 @@ public class SagaBuildEvent {
 	// Event information:
 	/**
 	 * Gets the sagaPlayer.
-	 * 
+	 *
 	 * @return the sagaPlayer
 	 */
 	public SagaPlayer getSagaPlayer() {
@@ -195,7 +195,7 @@ public class SagaBuildEvent {
 
 	/**
 	 * Gets the sagaChunk.
-	 * 
+	 *
 	 * @return the sagaChunk, null if none
 	 */
 	public SagaChunk getSagaChunk() {
@@ -204,7 +204,7 @@ public class SagaBuildEvent {
 
 	/**
 	 * Gets the block.
-	 * 
+	 *
 	 * @return block, null if none
 	 */
 	public Block getBlock() {
@@ -213,7 +213,7 @@ public class SagaBuildEvent {
 
 	/**
 	 * Gets the top override.
-	 * 
+	 *
 	 * @return top override, NONE if none
 	 */
 	public BuildOverride getbuildOverride() {
@@ -227,7 +227,7 @@ public class SagaBuildEvent {
 
 	/**
 	 * Checks if the event is cancelled.
-	 * 
+	 *
 	 * @return true if cancelled
 	 */
 	public boolean isCancelled() {
@@ -236,7 +236,7 @@ public class SagaBuildEvent {
 
 	/**
 	 * Gets the wrapped event.
-	 * 
+	 *
 	 * @return wrapped event
 	 */
 	public Cancellable getWrappedEvent() {
@@ -246,7 +246,7 @@ public class SagaBuildEvent {
 	// Other:
 	/**
 	 * Check if the interact event is a build event.
-	 * 
+	 *
 	 * @param event
 	 *            interact event
 	 * @return build event
@@ -261,38 +261,38 @@ public class SagaBuildEvent {
 
 		switch (item.getType()) {
 
-		case LAVA_BUCKET:
+			case LAVA_BUCKET:
 
-			return true;
+				return true;
 
-		case FLINT_AND_STEEL:
+			case FLINT_AND_STEEL:
 
-			return true;
+				return true;
 
-		case FIREBALL:
+			case FIREBALL:
 
-			return true;
+				return true;
 
-		case WATER_BUCKET:
+			case WATER_BUCKET:
 
-			return true;
+				return true;
 
-		case BUCKET:
+			case BUCKET:
 
-			return true;
+				return true;
 
-		case INK_SACK:
+			case INK_SACK:
 
-			if (item.getData().getData() != 15)
+				if (item.getData().getData() != 15)
+					break;
+				return true;
+
+			case PAINTING:
+
+				return true;
+
+			default:
 				break;
-			return true;
-
-		case PAINTING:
-
-			return true;
-
-		default:
-			break;
 
 		}
 
@@ -311,9 +311,9 @@ public class SagaBuildEvent {
 	// Types:
 	/**
 	 * Build overrides.
-	 * 
+	 *
 	 * @author andf
-	 * 
+	 *
 	 */
 	public enum BuildOverride {
 
@@ -342,7 +342,7 @@ public class SagaBuildEvent {
 
 		/**
 		 * Sets if build override enables build.
-		 * 
+		 *
 		 * @param true if allows build, false if denies build
 		 */
 		BuildOverride(boolean allow) {
@@ -351,7 +351,7 @@ public class SagaBuildEvent {
 
 		/**
 		 * If true, then build will be allowed. Denied if false.
-		 * 
+		 *
 		 * @return true if allowed, false if denied
 		 */
 		public boolean isAllow() {
@@ -361,9 +361,9 @@ public class SagaBuildEvent {
 	}
 
 	public Entity getEntity() {
-		
+
 		return entity;
-		
+
 	}
 
 }

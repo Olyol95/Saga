@@ -6,6 +6,7 @@ import java.util.List;
 import org.bukkit.Chunk;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Creature;
 import org.bukkit.entity.Creeper;
@@ -19,11 +20,13 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.EntityBlockFormEvent;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.saga.Saga;
 import org.saga.config.GeneralConfiguration;
 import org.saga.config.SettlementConfiguration;
 import org.saga.config.VanillaConfiguration;
 import org.saga.factions.Faction;
+import org.saga.listeners.events.SagaBuildEvent;
 import org.saga.listeners.events.SagaDamageEvent;
 import org.saga.listeners.events.SagaDeathEvent;
 import org.saga.listeners.events.SagaEventHandler;
@@ -150,6 +153,19 @@ public class EntityListener implements Listener {
 				if (BundleManager.manager().getSagaChunk(block.getLocation()) != null)
 					it.remove();
 			}
+		}
+
+	}
+
+	@EventHandler (priority = EventPriority.NORMAL)
+	public void onEntityInteract(EntityInteractEvent event) {
+
+		if (event.getBlock().getType() == Material.SOIL) {
+
+			SagaChunk sagaChunk = BundleManager.manager().getSagaChunk(event.getBlock().getLocation());
+
+			if (sagaChunk != null) event.setCancelled(true);
+
 		}
 
 	}
