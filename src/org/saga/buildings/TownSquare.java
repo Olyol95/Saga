@@ -163,7 +163,7 @@ public class TownSquare extends Building implements SecondTicker {
 	 */
 	public Location findSpawnLocation() {
 
-        if (isValidSpawnBlock(getSpawn().getLocation().getBlock())) {
+        if (getSpawn() != null && isValidSpawnBlock(getSpawn().getLocation().getBlock())) {
 
             return getSpawn().getLocation();
 
