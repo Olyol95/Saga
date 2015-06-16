@@ -217,7 +217,7 @@ commands:
     usage: /grenable
   p:
     description: Sends a message in the special chat.
-    usage: /sc <message>
+    usage: /p <message>
   phelp:
     description: Displays player help.
     usage: /phelp [page]
