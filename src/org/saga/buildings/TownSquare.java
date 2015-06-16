@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Hashtable;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.event.player.PlayerRespawnEvent;
@@ -161,6 +162,12 @@ public class TownSquare extends Building implements SecondTicker {
 	 * @return finds the spawn location
 	 */
 	public Location findSpawnLocation() {
+
+        if (isValidSpawnBlock(getSpawn().getLocation().getBlock())) {
+
+            return getSpawn().getLocation();
+
+        }
 
 		Location location = findLeveledSpawnLocation();
 		if (location != null)
