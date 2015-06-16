@@ -752,8 +752,8 @@ public class AdminCommands {
 
 		// Inform:
 		if (selPlayer != sagaPlayer) {
-			selPlayer.message(AdminMessages.runeRecharged(rune, sagaPlayer));
-			sagaPlayer.message(AdminMessages.runeRecharged(rune));
+			sagaPlayer.message(AdminMessages.runeRecharged(rune, sagaPlayer));
+			selPlayer.message(AdminMessages.runeRecharged(rune));
 		} else {
 			sagaPlayer.message(AdminMessages.runeRecharged(rune));
 		}

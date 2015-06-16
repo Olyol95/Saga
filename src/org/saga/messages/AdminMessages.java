@@ -135,8 +135,8 @@ public class AdminMessages {
 
 	// Guardian rune:
 	public static String runeRecharged(GuardianRune rune, SagaPlayer sagaPlayer) {
-		return Colour.positive + "Recharged players " + sagaPlayer.getName()
-				+ " guardian rune recharged.";
+		return Colour.positive + "Recharged " + sagaPlayer.getName()
+				+ "'s guardian rune.";
 	}
 
 	public static String runeRecharged(GuardianRune rune) {

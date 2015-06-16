@@ -93,7 +93,7 @@ public class PlayerCommands {
 	}
 
 	// Special chat:
-	@Command(aliases = { "sc" }, usage = "<message>", flags = "", desc = "Sends a message in the special chat.", min = 1)
+	@Command(aliases = { "p" }, usage = "<message>", flags = "", desc = "Sends a message in the special chat.", min = 1)
 	@CommandPermissions({ "saga.special.player.chat" })
 	public static void specialChat(CommandContext args, Saga plugin,
 			SagaPlayer sagaPlayer) {

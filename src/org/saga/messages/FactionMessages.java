@@ -286,20 +286,20 @@ public class FactionMessages {
 	public static String declinedAllianceRequest(Faction faction, Faction target) {
 
 		return faction.getColour2() + "Alliance request from "
-				+ faction(faction) + " faction was declined.";
+				+ faction(target) + " faction was declined.";
 
 	}
 
 	public static String formedAlliance(Faction faction, Faction target) {
 
 		return faction.getColour2() + "An alliance was formed with "
-				+ faction(faction) + " faction.";
+				+ faction(target) + " faction.";
 
 	}
 
 	public static String brokeAlliance(Faction faction, Faction target) {
 
-		return faction.getColour2() + "The alliance with " + faction(faction)
+		return faction.getColour2() + "The alliance with " + faction(target)
 				+ " faction was broken.";
 
 	}

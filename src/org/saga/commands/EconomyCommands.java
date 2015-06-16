@@ -24,7 +24,7 @@ import org.sk89q.CommandPermissions;
 public class EconomyCommands {
 
 	// Coins:
-	@Command(aliases = { "pay" }, usage = "<name> <amount>", flags = "", desc = "Gives money to someone.", min = 2, max = 2)
+	@Command(aliases = { "pay" }, usage = "<player_name> <amount>", flags = "", desc = "Gives money to someone.", min = 2, max = 2)
 	@CommandPermissions({ "saga.user.economy.pay" })
 	public static void pay(CommandContext args, Saga plugin,
 			SagaPlayer sagaPlayer) {

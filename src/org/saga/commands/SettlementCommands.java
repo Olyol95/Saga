@@ -1,6 +1,7 @@
 package org.saga.commands;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
@@ -13,6 +14,8 @@ import org.saga.config.ProficiencyConfiguration.InvalidProficiencyException;
 import org.saga.config.SettlementConfiguration;
 import org.saga.dependencies.EconomyDependency;
 import org.saga.exceptions.NonExistantSagaPlayerException;
+import org.saga.factions.Faction;
+import org.saga.factions.WarManager;
 import org.saga.messages.AdminMessages;
 import org.saga.messages.EconomyMessages;
 import org.saga.messages.FactionMessages;
@@ -537,7 +540,7 @@ public class SettlementCommands {
 	}
 
 	// Members:
-	@Command(aliases = { "sinvite" }, usage = "[settlement_name] <player_name>", flags = "", desc = "Send a settlement join invitation.", min = 1, max = 2)
+	@Command(aliases = { "sinvite" }, usage = "[settlement_name] <player_name>", flags = "", desc = "Invite a player to the settlement.", min = 1, max = 2)
 	@CommandPermissions({ "saga.user.settlement.invite" })
 	public static void invite(CommandContext args, Saga plugin,
 			SagaPlayer sagaPlayer) {
@@ -1276,6 +1279,30 @@ public class SettlementCommands {
 
 		sagaPlayer.message(SettlementMessages.map(sagaPlayer,
 				sagaPlayer.getLocation()));
+
+	}
+
+	// Messages:
+	@Command(aliases = { "s" }, usage = "<message>", flags = "", desc = "Send a settlement chat message.", min = 1)
+	@CommandPermissions({ "saga.user.settlement.chat" })
+	public static void chat(CommandContext args, Saga plugin,
+							SagaPlayer sagaPlayer) {
+
+		Settlement selBundle = null;
+
+		// Faction:
+		selBundle = (Settlement) sagaPlayer.getBundle();
+
+        if (selBundle == null) {
+            sagaPlayer.message(SettlementMessages.notMember());
+            return;
+        }
+
+		// Create message:
+		String message = args.getJoinedStrings(0);
+
+		// Inform:
+		selBundle.chat(sagaPlayer, message);
 
 	}
 

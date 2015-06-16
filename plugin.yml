@@ -1,9 +1,388 @@
 name: Saga
 main: org.saga.Saga
-version: 0.2
+version: 0.3
 author: andfRa, Olyol95
 softdepend:
   - GroupManager
   - PermissionsEx
   - Vault
   - EssentialsChat
+commands:
+  astatsother:
+    description: Show other player stats. With -o flag offline players are also included.
+    usage: /astatsother <player_name> [page] [-o]
+  asetexp:
+    description: 'Set players experience.'
+    usage: /asetexp [player_name] <exp>
+  asetattribute:
+    description: Set players attribute score.
+    usage: /asetattribute [player_name] <attribute> <score>
+  aheal:
+    description: Heal a player.
+    usage: /aheal [player_name]
+  amodwallet:
+    description: Modifies players balance. Negative values to subtract.
+    usage: /amodwallet [player_name] <amount>
+  assetclaims:
+    description: Set settlement claims.
+    usage: /assetclaims [settlement_name] <claims>
+  assetbuildpoints:
+    description: Set settlement build points.
+    usage: /assetbuildpoints [settlement_name] <build_points>
+  asenableopt:
+    description: Enable settlement option.
+    usage: /asenableopt [settlement_name] <option>
+  asdisableopt:
+    description: Disable settlement option.
+    usage: /asdisableopt [settlement_name] <option>
+  agrrecharge:
+    description: Recharge a guard rune.
+    usage: /agrrecharge [player_name]
+  a:
+    description: Send an admin chat message.
+    usage: /a <message>
+  debuginfo:
+    description: Debug assist command.
+    usage: /debuginfo
+  debugcommand:
+    description: Debug assist command.
+    usage: /debugcommand
+  damagetool:
+    description: Debug assist command.
+    usage: /damagetool
+  anextdaytime:
+    description: Force the next daytime.
+    usage: /anextdaytime
+  aforcework:
+    description: Force the next work tick for settlements.
+    usage: /aforcework
+  aforcecollect:
+    description: Force the next collect tick for settlements.
+    usage: /aforcecollect
+  aforceproduce:
+    description: Force the next production tick for settlements. The -w and -c flags will also force work and collect ticks first. The -d flag forces the amount of tick equivalent of a Minecraft day (20).
+    usage: /aforceproduce [-w -c -d]
+  aenable:
+    description: Enable Saga admin mode.
+    usage: /aenable
+  adisable:
+    description: Disable Saga admin mode.
+    usage: /adisable
+  asave:
+    description: Saves Saga information.
+    usage: /asave
+  awritecommands:
+    description: Write all commands in MediaWiki format. The c flag changes the format to WikiCreole.
+    usage: /awritecommands [-c]
+  awritepermissions:
+    descriptions: Write all permissions in MediaWiki format. The c flag changes the format to WikiCreole.
+    usage: /awritepermissions [-c]
+  awriteattributes:
+    description: Write all attributes in MediaWiki format. The c flag changes the format to WikiCreole.
+    usage: /awriteattributes [-c]
+  awriteabilities:
+    description: Write all abilities in MediaWiki format. The c flag changes the format to WikiCreole.
+    usage: /awriteabilities [-c]
+  awritehelpmessages:
+    description: Write all help messages in MediaWiki format. The c flag changes the format to WikiCreole.
+    usage: /awritehelpmessages [-c]
+  bset:
+    description: Set a building on the chunk of land.
+    usage: /bset <building_name>
+  bremove:
+    description: Remove a building from the chunk of land.
+    usage: /bremove
+  bstats:
+    description: Show building stats.
+    usage: /bstats
+  baddstorage:
+    description: Add a storage area to the building.
+    usage: /baddstorage
+  bsetunlimited:
+    description: Make the trading post unlimited.
+    usage: /bsetunlimited <true/false>
+  bremovestorage:
+    description: Remove a storage area from the building.
+    usage: /bremovestorage
+  bborder:
+    description: Show storage area border outline.
+    usage: /bborder
+  bpvptop:
+    description: Show pvp arena top players.
+    usage: /bpvptop [to_display]
+  bsetheight:
+    description: Set arena height.
+    usage: /bsetheight
+  bsetkickloc:
+    description: Set crumble arena kick location.
+    usage: /bsetkickloc
+  bcrumbletop:
+    description: Show crumble arena top players.
+    usage: /bcrumbletop [to_display]
+  baddresident:
+    description: Add a resident to a home.
+    usage: /baddresident <player_name>
+  bremoveresident:
+    description: Remove a resident from a home.
+    usage: /bremoveresident <player_name>
+  sspawn:
+    description: Spawn in a town square.
+    usage: /sspawn [settlement_name]
+  bsetspawn:
+    description: Set spawn area for town square.
+    usage: /bsetspawn
+  pay:
+    description: Gives money to someone.
+    usage: /pay <player_name> <amount>
+  balance:
+    description: See how much currency you have.
+    usage: /balance
+  sdeposit:
+    description: Deposit coins to the settlements bank.
+    usage: /sdeposit [settlement_name] <amount>
+  swithdraw:
+    description: Withdraw coins from the settlements bank.
+    usage: /swithdraw [settlement_name] <amount>
+  sbuyclaims:
+    description: Buy additional claims for the settlement.
+    usage: /sbuyclaims [settlement_name] [amount]
+  sbuybuildpoints:
+    description: Buy additional build points for the settlement.
+    usage: /sbuybuildpoints [settlement_name] [amount]
+  fdeposit:
+    description: Deposit coins to the factions bank.
+    usage: /fdeposit [faction_name] <amount>
+  fwithdraw:
+    description: Withdraw coins from the factions bank.
+    usage: /fwithdraw [faction_name] <amount>
+  ehelp:
+    description: Display economy help.
+    usage: /ehelp [page]
+  fcreate:
+    description: Create a new faction.
+    usage: /fcreate <faction_name>
+  finvite:
+    description: Invite a player to the faction.
+    usage: /finvite [faction_name] <player_name>
+  faccept:
+    description: Accept a faction join invitation.
+    usage: /faccept [faction_name]
+  fdecline:
+    description: Decline a faction join invitation.
+    usage: /fdecline [faction_name]
+  fkick:
+    description: Kick a member from faction.
+    usage: /fkick [faction_name] <member_name>
+  factionquit:
+    description: Quit the faction.
+    usage: /factionquit
+  fresign:
+    description: Resign from the owner position.
+    usage: /fresign [faction_name] <new_owner_name>
+  fsetrank:
+    description: Assign a rank.
+    usage: /fsetrank [faction_name] <member_name> <rank>
+  fdisband:
+    description: Disband the faction.
+    usage: /fdisband [faction_name]
+  fstats:
+    description: List faction stats.
+    usage: /fstats [faction_name] [page]
+  flist:
+    description: List faction memebers.
+    usage: /flist [faction_name]
+  f:
+    description: Send a faction chat message.
+    usage: /f <message>
+  fsetprimary:
+    description: Set factions primary colour.
+    usage: /fsetprimary <colour name>
+  fsetsecondary:
+    description: Set factions secondary colour.
+    usage: /fsetsecondary <colour name>
+  frename:
+    description: Rename the faction.
+    usage: /frename [faction_name] <new_name>
+  fhelp:
+    description: Display faction help.
+    usage: /fhelp [page]
+  stats:
+    description: Shows player stats.
+    usage: /stats [page]
+  grdisable:
+    description: Disable guardian rune.
+    usage: /grdisable
+  grenable:
+    description: Enable guardian rune.
+    usage: /grenable
+  p:
+    description: Sends a message in the special chat.
+    usage: /sc <message>
+  phelp:
+    description: Displays player help.
+    usage: /phelp [page]
+  ability:
+    description: Display ability information.
+    usage: /ability <ability_name>
+  ssettle:
+    description: Create a new settlement.
+    usage: /ssettle <settlement_name>
+  sclaim:
+    description: Claim the chunk of land.
+    usage: /sclaim [settlement_name]
+  sabandon:
+    description: Abandon the chunk of land. Delete the settlement if no land is left.
+    usage: /sabandon
+  sresign:
+    description: Resign from the owner position.
+    usage: /sresign [settlement_name] <new_owner_name>
+  sdissolve:
+    description: Dissolve the settlement. The -f flag (admin mode only) is required to delete large and no-delete option settlements.
+    usage: /sdissolve [settlement_name] [-f]
+  sborder:
+    description: Show the outline of the chunk. Repeat and wilderness only in admin mode.
+    usage: /sborder [repeat times]
+  sinvite:
+    description: Invite a player to the settlement.
+    usage: /sinvite [settlement_name] <player_name>
+  saccept:
+    description: Accept a settlement join invitation.
+    usage: /saccept [settlement_name]
+  sdecline:
+    description: Decline a settlement join invitation.
+    usage: /sdecline [settlemet_name]
+  settlementquit:
+    description: Quit the settlement.
+    usage: /settlementquit
+  skick:
+    description: Kick a member from the settlement.
+    usage: /skick [settlement_name] <member_name>
+  ssetrole:
+    description: Assign a role.
+    usage: /ssetrole <member_name> <role_name>
+  sstats:
+    description: Show settlement stats.
+    usage: /sstats [settlement_name] [page]
+  slist:
+    description: List settlement members.
+    usage: /slist [settlement_name]
+  shelp:
+    description: Display settlement help.
+    usage: /shelp [page]
+  srename:
+    description: Rename the settlement.
+    usage: /srename [settlement_name] <new_name>
+  map:
+    description: Show a map of all claimed land.
+    usage: /map
+  s:
+    description: Send a settlement chat message.
+    usage: /s <message>
+  stxrayind:
+    description: Show x-ray suspects.
+    usage: /stxrayind
+  stxrayconfirm:
+    description: Confirm x-ray usage.
+    usage: /stxrayconfirm <player_name>
+  stexp:
+    description: Show experience statistics.
+    usage: /stexp
+  stattributes:
+    description: Show trained attributes statistics.
+    usage: /stattributes
+  stabilities:
+    description: Show trained abilities statistics.
+    usage: /stabilities
+  stusedabilities:
+    description: Show used abilities statistics.
+    usage: /stusedabilities
+  stroles:
+    description: Show role statistics. The -a flag shows individual settlements.
+    usage: /stroles [-a]
+  stranks:
+    description: Show rank statistics. The -a flag shows individual settlements.
+    usage: /stranks [-a]
+  stbalance:
+    description: Show economy balance statistics.
+    usage: /stbalance
+  stwages:
+    description: Show wages statistics. The -a flag shows individual factions.
+    usage: /stwages [-a]
+  stbuildings:
+    description: Show building statistics.
+    usage: /stbuildings
+  stclaimed:
+    description: Show faction claim statistics. The -a flag shows individual factions.
+    usage: /stclaimed [-a]
+  stxrayhist:
+    description: Show x-ray distribution histogram.
+    usage: /stxrayhist [material]
+  stattrhist:
+    description: Show spent attribute distribution histogram.
+    usage: /stattrhist
+  stabilhist:
+    description: Show spent ability distribution histogram.
+    usage: /stabilhist
+  stclaimshist:
+    description: Show settlement claims distribution histogram.
+    usage: /stclaimshist
+  stsizehist:
+    description: Show settlement size distribution histogram.
+    usage: /stsizehist
+  stfclaimshist:
+    description: Show faction claims distribution histogram.
+    usage: /stfclaimshist
+  stwallethist:
+    description: Show wallet distribution histogram.
+    usage: /stwallethist
+  streset:
+    description: Reset and archive statistics.
+    usage: /streset
+  stupdateplayers:
+    description: Update all player statistics.
+    usage: /stupdateplayers
+  stonline:
+    description: Show online statistics. The -a flag shows individual factions and settlements.
+    usage: /stonline [-a]
+  stgeneral:
+    description: Show general statistics.
+    usage: /stgeneral
+  fsiege:
+    description: Declare a siege.
+    usage: /fsiege [faction_name] <settlement_name>
+  fsiegeunclaim:
+    description: Unclaims a claimed settlement from the faction.
+    usage: /fsiegeunclaim [faction_name] <settlement_name>
+  fdcelarewar:
+    description: Declare war.
+    usage: /fdeclarewar [faction_name] <target_faction_name>
+  fdcelarepeace:
+    description: Declare peace.
+    usage: /fdeclarepeace [faction_name] <target_faction_name>
+  frequestally:
+    description: Request an alliance.
+    usage: /requestally [faction_name] <other_faction_name>
+  facceptally:
+    description: Accept an alliance.
+    usage: /facceptally [faction_name] [other_faction_name]
+  fdeclineally:
+    description: Decline an alliance.
+    usage: /fdeclineally [faction_name] [other_faction_name]
+  fremoveally:
+    description: Break an alliance.
+    usage: /fremoveally [faction_name] [other_faction_name]
+  ssetaffiliation:
+    description: Set settlement affiliation.
+    usage: /ssetaffiliation [settlement_name] <faction_name>
+  sremoveaffiliation:
+    description: Remove settlement affiliation.
+    usage: /sremoveaffiliation [settlement_name]
+  fsetcapital:
+    description: Set faction capital settlement.
+    usage: /fsetcapital [faction_name] <settlement_name>
+  fremovecapital:
+    description: Remove faction capital settlement.
+    usage: /fremovecapital [faction_name] <settlement_name>
+  fspawn:
+    description: Teleport to the faction capital spawn point.
+    usage: /fspawn [faction_name]

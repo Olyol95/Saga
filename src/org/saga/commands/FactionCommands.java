@@ -90,7 +90,7 @@ public class FactionCommands {
 
 	}
 
-	@Command(aliases = { "finvite" }, usage = "[faction_name] <player_name>", flags = "", desc = "Send a faction join invitation.", min = 1, max = 2)
+	@Command(aliases = { "finvite" }, usage = "[faction_name] <player_name>", flags = "", desc = "Invite a player to the faction.", min = 1, max = 2)
 	@CommandPermissions({ "saga.user.faction.invite" })
 	public static void invite(CommandContext args, Saga plugin,
 			SagaPlayer sagaPlayer) {

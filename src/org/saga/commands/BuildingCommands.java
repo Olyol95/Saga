@@ -278,7 +278,7 @@ public class BuildingCommands {
 
 	}
 	
-	@Command(aliases = { "bsetunlimited"}, usage = "", flags = "", desc = "Make the trading post unlimited.", min = 1, max = 1)
+	@Command(aliases = { "bsetunlimited"}, usage = "<true/false>", flags = "", desc = "Make the trading post unlimited.", min = 1, max = 1)
 	@CommandPermissions({ "saga.admin.building.unlimited" })
 	public static void setUnlimited(CommandContext args, Saga plugin,
 			SagaPlayer sagaPlayer) {
@@ -585,7 +585,7 @@ public class BuildingCommands {
 	}
 
 	// Home:
-	@Command(aliases = { "baddresident" }, usage = "<name>", flags = "", desc = "Add a resident to a home.", min = 1, max = 1)
+	@Command(aliases = { "baddresident" }, usage = "<player_name>", flags = "", desc = "Add a resident to a home.", min = 1, max = 1)
 	@CommandPermissions({ "saga.user.building.home.addresident" })
 	public static void addResident(CommandContext args, Saga plugin,
 			SagaPlayer sagaPlayer) {
@@ -634,7 +634,7 @@ public class BuildingCommands {
 
 	}
 
-	@Command(aliases = { "bremoveresident" }, usage = "<name>", flags = "", desc = "Remove a resident from a home.", min = 1, max = 1)
+	@Command(aliases = { "bremoveresident" }, usage = "<player_name>", flags = "", desc = "Remove a resident from a home.", min = 1, max = 1)
 	@CommandPermissions({ "saga.user.building.home.removeresident" })
 	public static void removeResident(CommandContext args, Saga plugin,
 			SagaPlayer sagaPlayer) {
