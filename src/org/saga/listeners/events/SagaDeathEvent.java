@@ -1,9 +1,11 @@
 package org.saga.listeners.events;
 
+import org.bukkit.GameMode;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.saga.config.AttributeConfiguration;
 import org.saga.config.ExperienceConfiguration;
 import org.saga.metadata.SpawnerTag;
+import org.saga.player.SagaPlayer;
 import org.saga.statistics.StatisticsManager;
 import org.saga.utility.TwoPointFunction;
 
@@ -42,7 +44,7 @@ public class SagaDeathEvent {
 	public void apply() {
 
 		// No cause:
-		if (damEvent == null)
+		if (damEvent == null || ((SagaPlayer) damEvent.sagaAttacker).getWrapped().getGameMode() == GameMode.SURVIVAL)
 			return;
 
 		// Killed a creature:

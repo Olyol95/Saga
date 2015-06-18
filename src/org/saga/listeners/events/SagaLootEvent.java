@@ -3,6 +3,7 @@ package org.saga.listeners.events;
 import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -143,27 +144,35 @@ public class SagaLootEvent {
 
 				SagaPlayer rsagaPlayer = (SagaPlayer) sagaLiving;
 
-				// Award exp:
-				Double exp = ExperienceConfiguration.config().getExp(block);
-				sagaLiving.awardExp(exp);
+				if (rsagaPlayer.getWrapped().getGameMode() == GameMode.SURVIVAL) {
 
-				SagaPricedItem blockCoins = EconomyConfiguration.config()
-						.getBlocCoinsItem(block);
-				if (blockCoins != null) {
+					// Award exp:
+					Double exp = ExperienceConfiguration.config().getExp(block);
+					sagaLiving.awardExp(exp);
 
-					// Award coins:
-					double coins = blockCoins.getPrice();
-					rsagaPlayer.handleModCoins(coins);
+					SagaPricedItem blockCoins = EconomyConfiguration.config()
+							.getBlocCoinsItem(block);
+					if (blockCoins != null) {
+
+						// Award coins:
+						double coins = blockCoins.getPrice();
+						rsagaPlayer.handleModCoins(coins);
+
+						// Statistics:
+						StatisticsManager.manager().addBlockCoins(rsagaPlayer,
+								block.getType(), coins);
+
+					}
 
 					// Statistics:
-					StatisticsManager.manager().addBlockCoins(rsagaPlayer,
-							block.getType(), coins);
+					StatisticsManager.manager().addExp("block",
+							GeneralMessages.material(block.getType()), exp);
 
-				}
+				} else {
 
-				// Statistics:
-				StatisticsManager.manager().addExp("block",
-						GeneralMessages.material(block.getType()), exp);
+                    return;
+
+                }
 
 			}
 

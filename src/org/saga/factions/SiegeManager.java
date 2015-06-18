@@ -393,15 +393,15 @@ public class SiegeManager implements SecondTicker {
 		for (SagaPlayer sagaPlayer : members) {
 
 			// Not in a bundle:
-			if (sagaPlayer.lastSagaChunk == null)
+			if (sagaPlayer.getSagaChunk() == null)
 				continue;
 
 			// Not in the siege bundle:
-			if (!sagaPlayer.lastSagaChunk.getBundle().getId().equals(bundleID))
+			if (!sagaPlayer.getSagaChunk().getBundle().getId().equals(bundleID))
 				continue;
 
 			// On the border:
-			if (sagaPlayer.lastSagaChunk.isBorder())
+			if (sagaPlayer.getSagaChunk().isBorder())
 				continue;
 
 			sieging.add(sagaPlayer);

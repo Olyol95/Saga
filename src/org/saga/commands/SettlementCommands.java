@@ -194,8 +194,15 @@ public class SettlementCommands {
 
 		// Not adjacent:
 		if (!selBundle.isAdjacent(bukkitChunk)) {
-			sagaPlayer.message(SettlementMessages.chunkMustBeAdjacent());
-			return;
+
+            // Check admin mode:
+            if (!sagaPlayer.isAdminMode()) {
+
+                sagaPlayer.message(SettlementMessages.chunkMustBeAdjacent());
+                return;
+
+            }
+
 		}
 
 		// Permissions:

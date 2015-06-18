@@ -271,7 +271,7 @@ public class EconomyMessages {
 	}
 
 	public static String coins() {
-		return EconomyConfiguration.config().coinName;
+		return ChatColor.GOLD+EconomyConfiguration.config().coinName+ChatColor.RESET;
 	}
 
 	// User:

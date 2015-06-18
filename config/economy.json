@@ -3,7 +3,7 @@
 "enabled":true,
 
 "playerCoins":2000.0,
-"coinName":"()",
+"coinName":"●",
 "exchangeDistance":10,
 
 "guardianRuneRechargeCost":1500,
@@ -45,23 +45,23 @@
 "capitalSetCost":200,
 
 "imports":[
-	{"type":IRON_INGOT,"price":62.5},
-	{"type":GRILLED_PORK,"price":7.5},
-	{"type":COOKED_FISH,"price":7.5},
-	{"type":COOKED_BEEF,"price":7.5},
-	{"type":COOKED_CHICKEN,"price":6.25},
-	{"type":BAKED_POTATO,"price":6.25},
-	{"type":WOOD,"price":1.640625}
+	{"type":"IRON_INGOT","price":62.5},
+	{"type":"GRILLED_PORK","price":7.5},
+	{"type":"COOKED_FISH","price":7.5},
+	{"type":"COOKED_BEEF","price":7.5},
+	{"type":"COOKED_CHICKEN","price":6.25},
+	{"type":"BAKED_POTATO","price":6.25},
+	{"type":"WOOD","price":1.640625}
 ],
 
 "exports":[
-	{"type":IRON_INGOT,"price":37.5},
-	{"type":GRILLED_PORK,"price":4.5},
-	{"type":COOKED_FISH,"price":4.5},
-	{"type":COOKED_BEEF,"price":4.5},
-	{"type":COOKED_CHICKEN,"price":3.75},
-	{"type":BAKED_POTATO,"price":3.75},
-	{"type":WOOD,"price":0.984375}
+	{"type":"IRON_INGOT","price":37.5},
+	{"type":"GRILLED_PORK","price":4.5},
+	{"type":"COOKED_FISH","price":4.5},
+	{"type":"COOKED_BEEF","price":4.5},
+	{"type":"COOKED_CHICKEN","price":3.75},
+	{"type":"BAKED_POTATO","price":3.75},
+	{"type":"WOOD","price":0.984375}
 ],
 
 "tradingPostExports":[
