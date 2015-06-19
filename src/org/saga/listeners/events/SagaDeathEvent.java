@@ -44,7 +44,7 @@ public class SagaDeathEvent {
 	public void apply() {
 
 		// No cause:
-		if (damEvent == null || (damEvent.sagaAttacker != null && ((SagaPlayer) damEvent.sagaAttacker).getWrapped().getGameMode() == GameMode.SURVIVAL))
+		if (damEvent == null || (damEvent.sagaAttacker != null && ((SagaPlayer) damEvent.sagaAttacker).getWrapped().getGameMode() != GameMode.SURVIVAL))
 			return;
 
 		// Killed a creature:

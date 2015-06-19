@@ -127,11 +127,11 @@ public class StatsMessages {
 			Integer attrBonus = sagaPlayer.getAttrScoreBonus(attrName);
 			Integer attrScore = sagaPlayer.getRawAttributeScore(attrName);
 
-			String scoreCurr = format.format(attrScore + attrBonus);
+			String scoreCurr = format.format(attrScore);
 			String scoreMax = format.format(sagaPlayer
 					.getAttributeCap(attrName));
 
-			strScore = scoreCurr + "/" + scoreMax;
+			strScore = scoreCurr + "+(" + format.format(attrBonus) + ")" + "/" + scoreMax;
 
 			// Colours:
 			if (attrBonus > 0) {

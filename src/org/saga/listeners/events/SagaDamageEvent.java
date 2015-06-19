@@ -11,6 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import org.saga.Saga;
 import org.saga.attributes.DamageType;
 import org.saga.config.AttributeConfiguration;
+import org.saga.config.GeneralConfiguration;
 import org.saga.config.VanillaConfiguration;
 import org.saga.dependencies.SagaMobsDependency;
 import org.saga.factions.Faction;
@@ -203,6 +204,12 @@ public class SagaDamageEvent {
 		}
 
 		else {
+
+            if (event.getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION && GeneralConfiguration.config().stopCreeperExplosions) {
+
+                if (event.getEntity() instanceof Item) cancel();
+
+            }
 
 			creatureDefender = null;
 			sagaDefender = null;
