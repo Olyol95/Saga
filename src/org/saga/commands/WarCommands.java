@@ -197,6 +197,104 @@ public class WarCommands {
 
 	}
 
+	// Siege:
+	@Command(aliases = { "fcancelsiege" }, usage = "[faction_name] <settlement_name>", flags = "", desc = "Cancel a siege.", min = 1, max = 2)
+	@CommandPermissions({ "saga.user.war.siege.declarewar" })
+	public static void cancelsiege(CommandContext args, Saga plugin,
+							 SagaPlayer sagaPlayer) {
+
+		Faction selFaction = null;
+		Bundle selBundle = null;
+
+		String bundleName = null;
+
+		// Arguments:
+		switch (args.argsLength()) {
+			case 2:
+
+				// Faction:
+				String factionName = GeneralMessages.nameFromArg(args.getString(0));
+				selFaction = FactionManager.manager().matchFaction(factionName);
+
+				if (selFaction == null) {
+					sagaPlayer.message(GeneralMessages.invalidFaction(factionName));
+					return;
+				}
+
+				// Bundle:
+				bundleName = GeneralMessages.nameFromArg(args.getString(1));
+				selBundle = BundleManager.manager().matchBundle(bundleName);
+
+				if (selBundle == null) {
+					sagaPlayer.message(GeneralMessages
+							.invalidSettlement(bundleName));
+					return;
+				}
+
+				break;
+
+			default:
+
+				// Faction:
+				selFaction = sagaPlayer.getFaction();
+
+				if (selFaction == null) {
+					sagaPlayer.message(FactionMessages.notMember());
+					return;
+				}
+
+				// Bundle:
+				bundleName = GeneralMessages.nameFromArg(args.getString(0));
+				selBundle = BundleManager.manager().matchBundle(bundleName);
+
+				if (selBundle == null) {
+					sagaPlayer.message(GeneralMessages
+							.invalidSettlement(bundleName));
+					return;
+				}
+
+				break;
+
+		}
+
+		// Permission:
+		if (!selFaction.hasPermission(sagaPlayer,
+				FactionPermission.DECLARE_SIEGE)) {
+			sagaPlayer.message(GeneralMessages.noPermission(selFaction));
+			return;
+		}
+
+		// Already owned:
+		Integer bundleID = selBundle.getId();
+		Faction owningFaction = SiegeManager.manager().getOwningFaction(
+				bundleID);
+		if (owningFaction == selFaction) {
+			sagaPlayer.message(WarMessages.alreadyOwned(selFaction, selBundle));
+			return;
+		}
+
+		// If siege does not exist:
+        Faction attackingFaction = SiegeManager.manager().getAttackingFaction(
+                bundleID);
+        if (attackingFaction == null || !attackingFaction.getId().equals(selFaction.getId())) {
+            sagaPlayer.message(WarMessages.noSiegeDeclared(selFaction, selBundle));
+            return;
+        }
+
+		// Cancel:
+		SiegeManager.manager().handleCancellation(selFaction.getId(),
+				selBundle.getId());
+
+		// Inform:
+		selFaction
+				.information(WarMessages.siegeCancelled(selFaction, selBundle));
+		if (owningFaction != null)
+			owningFaction.information(WarMessages.siegeWasCancelled(
+					owningFaction, selBundle));
+
+	}
+
+
 	@Command(aliases = { "fsiegeunclaim" }, usage = "[faction_name] <settlement_name>", flags = "", desc = "Unclaims a claimed settlement.", min = 1, max = 2)
 	@CommandPermissions({ "saga.user.war.siege.unclaim" })
 	public static void unsiege(CommandContext args, Saga plugin,

@@ -42,6 +42,7 @@ import org.saga.player.ProficiencyDefinition;
 import org.saga.player.SagaPlayer;
 import org.saga.settlements.Bundle;
 import org.saga.settlements.BundleManager;
+import org.saga.settlements.SagaChunk;
 import org.saga.settlements.Settlement;
 import org.saga.utility.Duration;
 import org.saga.utility.chat.ChatBook;
@@ -595,6 +596,24 @@ public class StatsMessages {
 					EconomyMessages.coins(settlement.getCoins()), 2);
 
 		}
+
+        SagaChunk chunk = settlement.getSagaChunks().get(0);
+
+        for (SagaChunk c: settlement.getSagaChunks()) {
+
+            if (c.getBuilding() != null && c.getBuilding() instanceof TownSquare) {
+
+                chunk = c;
+                break;
+
+            }
+
+        }
+
+        String location =chunk.getWorldName()+": ("+chunk.getX()*16+","+chunk.getZ()*16+")";
+        table.addLine("World",chunk.getWorldName(),0);
+        table.addLine("X coord",(chunk.getX()*16)+"",0);
+        table.addLine("Z coord",(chunk.getZ()*16)+"",0);
 
 		table.collapse();
 

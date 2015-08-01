@@ -232,16 +232,9 @@ public class ChatDependency {
 		ChatColor color1 = faction.getColour1();
 		ChatColor color2 = faction.getColour2();
 		ChatColor reset = ChatColor.RESET;
-        ChatColor oly = ChatColor.RESET;
-
-        if (sagaPlayer.getWrapped().getName().equals("Olyol95")) {
-
-            oly = ChatColor.AQUA;
-
-        }
 
 		return "<" + color1 + faction.getName() + "-" + color2 + "%1$s"
-				+ reset + ">" + oly + " %2$s";
+				+ reset + "> %2$s";
 
 	}
 

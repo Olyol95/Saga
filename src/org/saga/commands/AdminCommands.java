@@ -5,12 +5,14 @@
 
 package org.saga.commands;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -185,6 +187,30 @@ public class AdminCommands {
 
 		// Release:
 		selPlayer.indicateRelease();
+
+	}
+
+	// Attributes and levels:
+	@Command(aliases = { "areload" }, usage = "", flags = "", desc = "Reload Saga.", min = 0, max = 0)
+	@CommandPermissions({ "saga.admin.reload" })
+	public static void reload(CommandContext args, Saga plugin,
+								SagaPlayer sagaPlayer) {
+
+        Bukkit.getPluginManager().disablePlugin(plugin);
+
+        try {
+
+            Bukkit.getPluginManager().loadPlugin(new File("plugins/Saga.jar"));
+            Bukkit.getPluginManager().enablePlugin(Bukkit.getPluginManager().getPlugin("Saga"));
+            Bukkit.getServer().getPlayer(sagaPlayer.getName()).sendMessage(ChatColor.GREEN + "Saga Reloaded!");
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+            Bukkit.getServer().getPlayer(sagaPlayer.getName()).sendMessage(ChatColor.RED + "Error Reloading Saga!");
+
+        }
 
 	}
 

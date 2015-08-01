@@ -14,6 +14,7 @@ import org.saga.config.ProficiencyConfiguration.InvalidProficiencyException;
 import org.saga.config.SettlementConfiguration;
 import org.saga.dependencies.EconomyDependency;
 import org.saga.exceptions.NonExistantSagaPlayerException;
+import org.saga.factions.SiegeManager;
 import org.saga.messages.AdminMessages;
 import org.saga.messages.EconomyMessages;
 import org.saga.messages.FactionMessages;
@@ -1075,7 +1076,19 @@ public class SettlementCommands {
 				sagaPlayer.message(GeneralMessages.notNumber(argsPage));
 				return;
 			}
-			break;
+
+			if (sagaPlayer.isAdminMode() || (sagaPlayer.getBundle() != null && sagaPlayer.getBundle().equals(selBundle))
+					|| (SiegeManager.manager().getOwningFaction(selBundle.getId()) != null &&
+					SiegeManager.manager().getOwningFaction(selBundle.getId()).equals(sagaPlayer.getFaction()))) {
+
+				break;
+
+			} else {
+
+				sagaPlayer.message(SettlementMessages.notMember(selBundle));
+				return;
+
+			}
 
 		case 1:
 
@@ -1095,7 +1108,18 @@ public class SettlementCommands {
 				return;
 			}
 
-			break;
+			if (sagaPlayer.isAdminMode() || (sagaPlayer.getBundle() != null && sagaPlayer.getBundle().equals(selBundle))
+					|| (SiegeManager.manager().getOwningFaction(selBundle.getId()) != null &&
+					SiegeManager.manager().getOwningFaction(selBundle.getId()).equals(sagaPlayer.getFaction()))) {
+
+				break;
+
+			} else {
+
+				sagaPlayer.message(SettlementMessages.notMember(selBundle));
+				return;
+
+			}
 
 		default:
 

@@ -188,6 +188,22 @@ public class SiegeManager implements SecondTicker {
 
 	}
 
+	// Cancellation:
+	/**
+	 * Handles siege cancellation.
+	 *
+	 * @param factionID
+	 *            faction ID
+	 * @param bundleID
+	 *            bundle ID
+	 */
+	public void handleCancellation(Integer factionID, Integer bundleID) {
+
+		declaredDates.remove(bundleID);
+		declaredSieges.remove(bundleID);
+
+	}
+
 	/**
 	 * Calculates the minutes passed from declaration.
 	 * 

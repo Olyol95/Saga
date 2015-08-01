@@ -2,6 +2,7 @@ package org.saga;
 
 import java.util.*;
 
+import org.apache.commons.lang.ObjectUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -551,7 +552,9 @@ public class Saga extends JavaPlugin implements MinuteTicker {
 						+ "Unhandled command exception");
 				return false;
 
-			} finally {
+			} catch (NullPointerException e) {
+
+				//swallow -- plugin reloading.
 
 			}
 

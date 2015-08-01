@@ -14,9 +14,24 @@ public class WarMessages {
 				+ ".";
 	}
 
+    public static String noSiegeDeclared(Faction faction, Bundle bundle) {
+        return Colour.negative + "No siege has been declared on " + bundle.getName()
+                + ".";
+    }
+
+	public static String siegeCancelled(Faction faction, Bundle bundle) {
+		return faction.getColour2() + "The siege declared on " + bundle.getName()
+				+ " has been cancelled.";
+	}
+
 	public static String siegeWasDeclared(Faction faction, Bundle bundle) {
 		return faction.getColour2() + "Siege was declared on "
 				+ bundle.getName() + ".";
+	}
+
+	public static String siegeWasCancelled(Faction faction, Bundle bundle) {
+		return faction.getColour2() + "The siege which was declared on "
+				+ bundle.getName() + " has been cancelled.";
 	}
 
 	public static String siegeAlreadyDeclared(Faction faction, Bundle bundle) {

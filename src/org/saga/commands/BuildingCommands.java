@@ -3,10 +3,12 @@ package org.saga.commands;
 import java.util.ArrayList;
 import java.util.Set;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.util.Vector;
 import org.saga.Saga;
 import org.saga.SagaLogger;
 import org.saga.buildings.Arena;
@@ -798,8 +800,14 @@ public class BuildingCommands {
 				.getBuildings(TownSquare.class);
 
 		if (selBuildings.size() == 0) {
-			sagaPlayer.message(BuildingMessages.noTownSquare(bundle));
-			return;
+
+			if (!sagaPlayer.isAdminMode()) {
+
+				sagaPlayer.message(BuildingMessages.noTownSquare(bundle));
+				return;
+
+			}
+
 		}
 
 		TownSquare selBuilding = null;
@@ -811,22 +819,46 @@ public class BuildingCommands {
 
 		}
 
-		// Update spawning protection:
-		selBuilding.updateSpawningProtect(sagaPlayer);
+		Location spawnLocation;
 
-		// Prepare chunk:
-		selBuilding.getSagaChunk().loadChunk();
+		if (selBuilding != null) {
 
-		// Location:
-		Location spawnLocation = selBuilding.findSpawnLocation();
-		if (spawnLocation == null) {
+			// Update spawning protection:
+			selBuilding.updateSpawningProtect(sagaPlayer);
 
-			SagaLogger.severe(
-					selBuilding,
-					sagaPlayer + " player failed to respawn at "
-							+ selBuilding.getDisplayName());
-			sagaPlayer.error("failed to respawn");
-			return;
+			// Prepare chunk:
+			selBuilding.getSagaChunk().loadChunk();
+
+			// Location:
+			spawnLocation = selBuilding.findSpawnLocation();
+
+			if (spawnLocation == null) {
+
+				SagaLogger.severe(
+						selBuilding,
+						sagaPlayer + " player failed to respawn at "
+								+ selBuilding.getDisplayName());
+				sagaPlayer.error("failed to respawn");
+				return;
+
+			}
+
+		} else {
+
+			bundle.getSagaChunks().get(0).loadChunk();
+
+			// Displacement:
+			double spreadRadius = 6;
+			Double x = 2 * spreadRadius * (Saga.RANDOM.nextDouble() - 0.5);
+			Double z = 2 * spreadRadius * (Saga.RANDOM.nextDouble() - 0.5);
+			Vector displacement = new Vector(x.intValue(), 2, z.intValue());
+
+			// Shifted location:
+			spawnLocation = bundle.getSagaChunks().get(0).getLocation(displacement);
+			if (spawnLocation == null || spawnLocation.getY() < 10) {
+				sagaPlayer.getWrapped().sendMessage(ChatColor.RED+"Invalid spawn location!");
+				return;
+			}
 
 		}
 
