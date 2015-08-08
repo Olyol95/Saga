@@ -1,35 +1,57 @@
 package org.saga.messages.effects;
 
-import net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Sound;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.saga.Saga;
 import org.saga.player.SagaLiving;
 import org.saga.player.SagaPlayer;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.logging.Level;
 
 public class StatsEffectHandler {
 
 	public static void playAnimateArm(SagaPlayer sagaPlayer) {
 
-		Player player = sagaPlayer.getPlayer();
+		try {
 
-		((CraftPlayer) player).getHandle().playerConnection.a(new PacketPlayInArmAnimation());
+			Class<?> CraftPlayer = Class.forName("org.bukkit.craftbukkit."+Saga.plugin().getBukkitPackageVersion()+".entity.CraftPlayer");
+			Class<?> EntityPlayer = Class.forName("net.minecraft.server." + Saga.plugin().getBukkitPackageVersion() + ".EntityPlayer");
+			Class<?> PlayerConnection = Class.forName("net.minecraft.server."+Saga.plugin().getBukkitPackageVersion()+".PlayerConnection");
+			Class<?> PacketPlayInArmAnimation = Class.forName("net.minecraft.server."+Saga.plugin().getBukkitPackageVersion()+".PacketPlayInArmAnimation");
+			Method getHandle = CraftPlayer.getDeclaredMethod("getHandle");
+			Method a = PlayerConnection.getDeclaredMethod("a",PacketPlayInArmAnimation);
+			Field playerConnection = EntityPlayer.getDeclaredField("playerConnection");
 
-		//Location loc = player.getLocation();
+			Player player = sagaPlayer.getPlayer();
 
-		/**((CraftServer) Bukkit.getServer())
-				.getServer()
-				.getPlayerList()
-				.sendPacketNearby(
-						loc.getX(),
-						loc.getY(),
-						loc.getZ(),
-						64,
-						((CraftWorld) loc.getWorld()).getHandle().dimension,
-						new PacketPlayInArmAnimation());*/
+			a.invoke(playerConnection.get(EntityPlayer.cast(getHandle.invoke(CraftPlayer.cast(player)))),PacketPlayInArmAnimation.newInstance());
+
+			//Location loc = player.getLocation();
+
+			/**((CraftServer) Bukkit.getServer())
+			 .getServer()
+			 .getPlayerList()
+			 .sendPacketNearby(
+			 loc.getX(),
+			 loc.getY(),
+			 loc.getZ(),
+			 64,
+			 ((CraftWorld) loc.getWorld()).getHandle().dimension,
+			 new PacketPlayInArmAnimation());*/
+
+		} catch (Exception e) {
+
+			Saga.plugin().getLogger().log(Level.SEVERE, "Error enabling Saga! is it up to date?");
+			e.printStackTrace();
+
+			Saga.plugin().onDisable();
+
+		}
 
 	}
 

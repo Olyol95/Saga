@@ -1,13 +1,14 @@
 package org.saga;
 
+import java.lang.reflect.Method;
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.bukkit.ChatColor;
 import org.bukkit.craftbukkit.libs.jline.Terminal;
 import org.bukkit.craftbukkit.libs.jline.console.ConsoleReader;
-import org.bukkit.craftbukkit.v1_8_R3.CraftServer;
 import org.fusesource.jansi.Ansi;
 import org.fusesource.jansi.Ansi.Attribute;
 
@@ -15,9 +16,9 @@ public class SagaLogger {
 
 	private static SagaLogger instance = null;
 
-	private final ConsoleReader reader;
+	private ConsoleReader reader;
 
-	private final Terminal terminal;
+	private Terminal terminal;
 
 	private final Map<ChatColor, String> replacements = new EnumMap<>(
 			ChatColor.class);
@@ -32,54 +33,69 @@ public class SagaLogger {
 	 */
 	private SagaLogger() {
 
-		this.reader = ((CraftServer) org.saga.Saga.plugin().getServer()).getReader();
-		this.terminal = reader.getTerminal();
+		try {
 
-		replacements.put(ChatColor.BLACK, Ansi.ansi().fg(Ansi.Color.BLACK)
-				.toString());
-		replacements.put(ChatColor.DARK_BLUE, Ansi.ansi().fg(Ansi.Color.BLUE)
-				.toString());
-		replacements.put(ChatColor.DARK_GREEN, Ansi.ansi().fg(Ansi.Color.GREEN)
-				.toString());
-		replacements.put(ChatColor.DARK_AQUA, Ansi.ansi().fg(Ansi.Color.CYAN)
-				.toString());
-		replacements.put(ChatColor.DARK_RED, Ansi.ansi().fg(Ansi.Color.RED)
-				.toString());
-		replacements.put(ChatColor.DARK_PURPLE,
-				Ansi.ansi().fg(Ansi.Color.MAGENTA).toString());
-		replacements.put(ChatColor.GOLD, Ansi.ansi().fg(Ansi.Color.YELLOW)
-				.bold().toString());
-		replacements.put(ChatColor.GRAY, Ansi.ansi().fg(Ansi.Color.WHITE)
-				.toString());
-		replacements.put(ChatColor.DARK_GRAY, Ansi.ansi().fg(Ansi.Color.BLACK)
-				.bold().toString());
-		replacements.put(ChatColor.BLUE, Ansi.ansi().fg(Ansi.Color.BLUE).bold()
-				.toString());
-		replacements.put(ChatColor.GREEN, Ansi.ansi().fg(Ansi.Color.GREEN)
-				.bold().toString());
-		replacements.put(ChatColor.AQUA, Ansi.ansi().fg(Ansi.Color.CYAN).bold()
-				.toString());
-		replacements.put(ChatColor.RED, Ansi.ansi().fg(Ansi.Color.RED).bold()
-				.toString());
-		replacements.put(ChatColor.LIGHT_PURPLE,
-				Ansi.ansi().fg(Ansi.Color.MAGENTA).bold().toString());
-		replacements.put(ChatColor.YELLOW, Ansi.ansi().fg(Ansi.Color.YELLOW)
-				.bold().toString());
-		replacements.put(ChatColor.WHITE, Ansi.ansi().fg(Ansi.Color.WHITE)
-				.bold().toString());
-		replacements.put(ChatColor.MAGIC, Ansi.ansi().a(Attribute.BLINK_SLOW)
-				.toString());
-		replacements.put(ChatColor.BOLD,
-				Ansi.ansi().a(Attribute.UNDERLINE_DOUBLE).toString());
-		replacements.put(ChatColor.STRIKETHROUGH,
-				Ansi.ansi().a(Attribute.STRIKETHROUGH_ON).toString());
-		replacements.put(ChatColor.UNDERLINE, Ansi.ansi()
-				.a(Attribute.UNDERLINE).toString());
-		replacements.put(ChatColor.ITALIC, Ansi.ansi().a(Attribute.ITALIC)
-				.toString());
-		replacements.put(ChatColor.RESET,
-				Ansi.ansi().a(Attribute.RESET).fg(Ansi.Color.DEFAULT)
-						.toString());
+			Class<?> CraftServer = Class.forName("org.bukkit.craftbukkit." + Saga.plugin().getBukkitPackageVersion() + ".CraftServer");
+			Method getReader = CraftServer.getDeclaredMethod("getReader");
+
+			this.reader = (ConsoleReader) getReader.invoke(CraftServer.cast(Saga.plugin().getServer()));
+
+			this.terminal = reader.getTerminal();
+
+			replacements.put(ChatColor.BLACK, Ansi.ansi().fg(Ansi.Color.BLACK)
+					.toString());
+			replacements.put(ChatColor.DARK_BLUE, Ansi.ansi().fg(Ansi.Color.BLUE)
+					.toString());
+			replacements.put(ChatColor.DARK_GREEN, Ansi.ansi().fg(Ansi.Color.GREEN)
+					.toString());
+			replacements.put(ChatColor.DARK_AQUA, Ansi.ansi().fg(Ansi.Color.CYAN)
+					.toString());
+			replacements.put(ChatColor.DARK_RED, Ansi.ansi().fg(Ansi.Color.RED)
+					.toString());
+			replacements.put(ChatColor.DARK_PURPLE,
+					Ansi.ansi().fg(Ansi.Color.MAGENTA).toString());
+			replacements.put(ChatColor.GOLD, Ansi.ansi().fg(Ansi.Color.YELLOW)
+					.bold().toString());
+			replacements.put(ChatColor.GRAY, Ansi.ansi().fg(Ansi.Color.WHITE)
+					.toString());
+			replacements.put(ChatColor.DARK_GRAY, Ansi.ansi().fg(Ansi.Color.BLACK)
+					.bold().toString());
+			replacements.put(ChatColor.BLUE, Ansi.ansi().fg(Ansi.Color.BLUE).bold()
+					.toString());
+			replacements.put(ChatColor.GREEN, Ansi.ansi().fg(Ansi.Color.GREEN)
+					.bold().toString());
+			replacements.put(ChatColor.AQUA, Ansi.ansi().fg(Ansi.Color.CYAN).bold()
+					.toString());
+			replacements.put(ChatColor.RED, Ansi.ansi().fg(Ansi.Color.RED).bold()
+					.toString());
+			replacements.put(ChatColor.LIGHT_PURPLE,
+					Ansi.ansi().fg(Ansi.Color.MAGENTA).bold().toString());
+			replacements.put(ChatColor.YELLOW, Ansi.ansi().fg(Ansi.Color.YELLOW)
+					.bold().toString());
+			replacements.put(ChatColor.WHITE, Ansi.ansi().fg(Ansi.Color.WHITE)
+					.bold().toString());
+			replacements.put(ChatColor.MAGIC, Ansi.ansi().a(Attribute.BLINK_SLOW)
+					.toString());
+			replacements.put(ChatColor.BOLD,
+					Ansi.ansi().a(Attribute.UNDERLINE_DOUBLE).toString());
+			replacements.put(ChatColor.STRIKETHROUGH,
+					Ansi.ansi().a(Attribute.STRIKETHROUGH_ON).toString());
+			replacements.put(ChatColor.UNDERLINE, Ansi.ansi()
+					.a(Attribute.UNDERLINE).toString());
+			replacements.put(ChatColor.ITALIC, Ansi.ansi().a(Attribute.ITALIC)
+					.toString());
+			replacements.put(ChatColor.RESET,
+					Ansi.ansi().a(Attribute.RESET).fg(Ansi.Color.DEFAULT)
+							.toString());
+
+		} catch (Exception e) {
+
+			Saga.plugin().getLogger().log(Level.SEVERE, "Error enabling Saga! is it up to date?");
+			e.printStackTrace();
+
+			Saga.plugin().onDisable();
+
+		}
 
 	}
 

@@ -61,6 +61,11 @@ public class Saga extends JavaPlugin implements MinuteTicker {
 	private static Saga plugin;
 
 	/**
+	 * Bukkit package version
+	 */
+	private String packageVersion;
+
+	/**
 	 * Gets Saga plugin instance.
 	 * 
 	 * @return Saga plugin instance, null if not initialised
@@ -619,6 +624,32 @@ public class Saga extends JavaPlugin implements MinuteTicker {
 		}
 
 		throw new SagaPlayerNotLoadedException(name);
+
+	}
+
+	public String getBukkitPackageVersion() {
+
+		if (packageVersion == null) {
+
+			String[] craftBukkitPath = getServer().getClass().getCanonicalName().split("\\.");
+
+			int index = 0;
+
+			for (String dir: craftBukkitPath) {
+
+				if (dir.equals("craftbukkit")) {
+
+					packageVersion = craftBukkitPath[index+1];
+
+				}
+
+				index++;
+
+			}
+
+		}
+
+		return packageVersion;
 
 	}
 

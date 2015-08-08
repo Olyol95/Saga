@@ -3,8 +3,7 @@ package org.saga.config;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Random;
-
-import net.minecraft.server.v1_8_R3.SharedConstants;
+import java.util.logging.Level;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -18,6 +17,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import org.saga.Saga;
 import org.saga.SagaLogger;
 import org.saga.settlements.SagaMap;
 import org.saga.utility.chat.ChatFramer;
@@ -578,27 +578,40 @@ public class VanillaConfiguration {
 	public static void enableBonusCharacters() throws NoSuchFieldException,
 			SecurityException, IllegalArgumentException, IllegalAccessException {
 
-		Field field = SharedConstants.class
-				.getDeclaredField("allowedCharacters");
-		field.setAccessible(true);
+		try {
 
-		Field modifiersField = Field.class.getDeclaredField("modifiers");
-		modifiersField.setAccessible(true);
-		modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
+			Class<?> SharedConstants = Class.forName("net.minecraft.server." + Saga.plugin().getBukkitPackageVersion() + ".SharedConstants");
 
-		String oldallowedchars = (String) field.get(null);
-		String custom = "" + "\u2554\u2557\u2560\u2563\u255A\u255D\u2550\u2551"
-				+ "\u263B\u25D8\u263C" + "\u2591\u2592\u2593";
+			Field field = SharedConstants
+					.getDeclaredField("allowedCharacters");
+			field.setAccessible(true);
 
-		if (!oldallowedchars.contains(custom)) {
-			field.set(null, oldallowedchars + custom);
+			Field modifiersField = Field.class.getDeclaredField("modifiers");
+			modifiersField.setAccessible(true);
+			modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
+
+			String oldallowedchars = (String) field.get(null);
+			String custom = "" + "\u2554\u2557\u2560\u2563\u255A\u255D\u2550\u2551"
+					+ "\u263B\u25D8\u263C" + "\u2591\u2592\u2593";
+
+			if (!oldallowedchars.contains(custom)) {
+				field.set(null, oldallowedchars + custom);
+			}
+
+			instance.bonusCharacters = true;
+
+			// Enable all bonus characters:
+			ChatFramer.enableBonusCharacters();
+			SagaMap.enableBonusCharacters();
+
+		} catch (ClassNotFoundException e) {
+
+			Saga.plugin().getLogger().log(Level.SEVERE, "Error enabling Saga! is it up to date?");
+			e.printStackTrace();
+
+			Saga.plugin().onDisable();
+
 		}
-
-		instance.bonusCharacters = true;
-
-		// Enable all bonus characters:
-		ChatFramer.enableBonusCharacters();
-		SagaMap.enableBonusCharacters();
 
 	}
 
