@@ -110,7 +110,7 @@ public class ChatFramer {
 		StringBuilder label = new StringBuilder();
 		int labelShift = (int) (length / 2.0 - ChatFiller.calcLength(title) / 2.0);
 		label.append(FRAME_VERTICAL).append(" ").append(ChatFiller.fillString(
-				ChatFiller.fillString("", (double) labelShift) + title,
+				ChatFiller.fillString("", (double) labelShift) + colour + title,
 				length)).append(" ").append(colour).append(FRAME_VERTICAL).append("\n");
 		label.insert(0, colour);
 

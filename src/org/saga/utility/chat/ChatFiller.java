@@ -1,8 +1,6 @@
 package org.saga.utility.chat;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import org.bukkit.ChatColor;
 import org.saga.messages.colours.Colour.CustomColour;
@@ -22,7 +20,7 @@ public class ChatFiller {
 	/**
 	 * Gap fill string maximum size.
 	 */
-	private final static Double MAX_GAP = 1.25;
+	private final static Double MAX_GAP = 2.0/3.0;
 
 	/**
 	 * Chat width.
@@ -94,6 +92,9 @@ public class ChatFiller {
 			put('\u278A', 0.5);
 			put('\u278B', 4.0 / 6.0);
 			put('\u278C', 13.0 / 15.0);
+			put('\u0000', 1.0 / 3.0);
+
+			put('\u2B24', 8.0 / 6.0);
 
 			put(CustomColour.PREVIOUS_COLOR.getChar(), 0.0);
 			put(CustomColour.NORMAL_FORMAT.getChar(), 0.0);
@@ -110,8 +111,8 @@ public class ChatFiller {
 		{
 			add('\u278A');
 			add('\u278B');
-			add(' ');
 			add('\u278C');
+			add('\u0000');
 		}
 	};
 
@@ -149,7 +150,7 @@ public class ChatFiller {
 		}
 
 		// Add spaces:
-		Character fillChar = ' ';
+		String fillChar = " ";
 		Double fillLength = 2.0/3.0;
 		while (true) {
 
@@ -160,12 +161,11 @@ public class ChatFiller {
 				break;
 
 			// Add custom fillers:
-			if (gapLength <= MAX_GAP) {
+			if (gapLength < fillLength) {
 
-				fillChar = findCustom(gapLength, reqLength);
+				fillChar = findCustom(gapLength);
 				if (fillChar != null) {
 					result.append(fillChar);
-					fillLength = SIZE_MAP.get(fillChar);
 				}
 
 				break;
@@ -186,28 +186,42 @@ public class ChatFiller {
 	 * 
 	 * @param gapLen
 	 *            gap length
-	 * @param reqLength
-	 *            required length
 	 * @return char that best fits the gap, null if none
 	 */
-	private static Character findCustom(Double gapLen, Double reqLength) {
+	private static String findCustom(Double gapLen) {
+
+		gapLen+=(1.0/3.0)+0.15;
 
 		Set<Character> gapStrs = new HashSet<>(FILL_CHARS);
-		Double bestFitLen = -1.0;
-		Character bestFitStr = null;
+		String bestFiller = "";
+		Double bestFitLen = 100.0;
 
 		for (Character gapStr : gapStrs) {
 
-			Double gapStrLen = SIZE_MAP.get(gapStr);
+			Double strLen = 0.0;
+			String filler = "";
 
-			if (gapLen - gapStrLen >= 0 && gapStrLen > bestFitLen) {
-				bestFitLen = gapStrLen;
-				bestFitStr = gapStr;
+			while(strLen <= gapLen - SIZE_MAP.get(gapStr)) {
+
+				filler += gapStr;
+				strLen += SIZE_MAP.get(gapStr);
+
+			}
+
+			if (gapLen - strLen < bestFitLen) {
+
+				bestFitLen = gapLen - strLen;
+				bestFiller = filler;
+
 			}
 
 		}
 
-		return bestFitStr;
+		if (bestFiller.equals("")) {
+			return null;
+		} else {
+			return bestFiller;
+		}
 
 	}
 
@@ -257,6 +271,7 @@ public class ChatFiller {
 				+ "`" + CustomColour.NORMAL_FORMAT);
 		str = str.replace("\u278C", ChatColor.DARK_GRAY + "" + ChatColor.BOLD
 				+ " " + CustomColour.NORMAL_FORMAT);
+		str = str.replace("\u0000", ChatColor.DARK_GRAY + ".");
 
 		return str;
 
