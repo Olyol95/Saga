@@ -12,12 +12,12 @@ public class ChatFiller {
 	/**
 	 * Default character length.
 	 */
-	public final static Double DEFAULT_LENGTH = 3.0 / 2.0;
+	public final static Double DEFAULT_LENGTH = 1.0;
 
 	/**
 	 * Maximum character length.
 	 */
-	public final static Double MAX_LENGTH = 3.0 / 2.0;
+	public final static Double MAX_LENGTH = 2.0;
 
 	/**
 	 * Gap fill string maximum size.
@@ -27,7 +27,7 @@ public class ChatFiller {
 	/**
 	 * Chat width.
 	 */
-	public final static Double CHAT_WIDTH = 80.0;
+	public final static Double CHAT_WIDTH = 53.0;
 
 	/**
 	 * Size map.
@@ -40,62 +40,64 @@ public class ChatFiller {
 		private static final long serialVersionUID = 1L;
 
 		{
-			put('i', 0.5);
-			put('k', 5.0 / 4.0);
-			put('t', 1.0);
-			put('f', 5.0 / 4.0);
-			put('(', 5.0 / 4.0);
-			put(')', 5.0 / 4.0);
-			put('<', 5.0 / 4.0);
-			put('>', 5.0 / 4.0);
-			put('{', 5.0 / 4.0);
-			put('}', 5.0 / 4.0);
-			put(',', 1.0 / 2.0);
-			put('.', 1.0 / 2.0);
-			put('[', 1.0);
-			put(']', 1.0);
-			put('I', 1.0);
-			put('|', 1.0 / 2.0);
-			put('*', 5.0 / 4.0);
-			put('"', 5.0 / 4.0);
-			put('|', 0.5);
-			put('!', 0.5);
-			put(':', 0.5);
-			put('l', 3.0 / 4.0);
-			put('.', 1.0 / 2.0);
-			put('\'', 3.0 / 4.0);
-			put(' ', 1.0 / 1.0);
-			put('\"', 5.0 / 4.0);
+			put('f', 5.0 / 6.0);
+			put('i', 1.0 / 3.0);
+			put('k', 5.0 / 6.0);
+			put('l', 1.0 / 2.0);
+			put('t', 4.0 / 6.0);
+			put('I', 2.0 / 3.0);
+			put('(', 5.0 / 6.0);
+			put(')', 5.0 / 6.0);
+			put('<', 5.0 / 6.0);
+			put('>', 5.0 / 6.0);
+			put('{', 5.0 / 6.0);
+			put('}', 5.0 / 6.0);
+			put(',', 1.0 / 3.0);
+			put('.', 1.0 / 3.0);
+			put('[', 4.0 / 6.0);
+			put(']', 4.0 / 6.0);
+			put('|', 2.0 / 3.0);
+			put('*', 5.0 / 6.0);
+			put('"', 5.0 / 6.0);
+			put('!', 1.0 / 3.0);
+			put(':', 1.0 / 3.0);
+			put('\'', 1.0 / 2.0);
 			put('`', 0.5);
-			put('\0', 0.0);
+
+			put('\u278A', 4.0 / 3.0);
+			put('\u278B', 4.0 / 3.0);
+			put(' ', 2.0 / 3.0);
+			put('\u278C', 4.0 / 3.0);
+
+			put('\u2500', 1.5);
+			put('\u2502', 1.0);
+			put('\u250C', 1.5);
+			put('\u2510', 1.0);
+			put('\u2514', 1.5);
+			put('\u2518', 1.5);
+
+			put('\u2550', 1.5);
+			put('\u2551', 1.5);
+
+			put('\u2554', 1.5);
+			put('\u2560', 1.5);
+			put('\u255A', 1.5);
+
+			put('\u2557', 1.5);
+			put('\u2563', 1.5);
+			put('\u255D', 1.5);
+
+			put('\u2591', 1.5);
+			put('\u2592', 1.5);
+			put('\u2593', 1.5);
 
 			put('\u278A', 0.5);
-			put('\u278B', 3.0 / 4.0);
-			put(' ', 1.0);
-			put('\u278C', 5.0 / 4.0);
-
-			put('\u2500', 5.0 / 4.0);
-			put('\u2502', 1.0 / 4.0);
-			put('\u250C', 3.0 / 4.0);
-			put('\u2510', 3.0 / 4.0);
-			put('\u2514', 3.0 / 4.0);
-			put('\u2518', 3.0 / 4.0);
-
-			put('\u2550', 5.0 / 4.0);
-			put('\u2551', 1.0 / 2.0);
-
-			put('\u2554', 3.0 / 4.0);
-			put('\u2560', 3.0 / 4.0);
-			put('\u255A', 3.0 / 4.0);
-
-			put('\u2557', 4.0 / 4.0);
-			put('\u2563', 4.0 / 4.0);
-			put('\u255D', 4.0 / 4.0);
-
-			put('\u2591', 2.0);
+			put('\u278B', 4.0 / 6.0);
+			put('\u278C', 13.0 / 15.0);
 
 			put(CustomColour.PREVIOUS_COLOR.getChar(), 0.0);
 			put(CustomColour.NORMAL_FORMAT.getChar(), 0.0);
+			put(ChatColor.COLOR_CHAR, 0.0);
 
 		}
 	};
@@ -148,7 +150,7 @@ public class ChatFiller {
 
 		// Add spaces:
 		Character fillChar = ' ';
-		Double fillLength = 1.0;
+		Double fillLength = 2.0/3.0;
 		while (true) {
 
 			Double gapLength = reqLength - length;

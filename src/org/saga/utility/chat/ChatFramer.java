@@ -95,7 +95,7 @@ public class ChatFramer {
 		while (ChatFiller.calcLength(labelUp.toString() + FRAME_HORIZONTAL) <= length) {
 			labelUp.append(FRAME_HORIZONTAL);
 		}
-		labelUp.insert(0, " " + TITLE_TOP_LEFT);
+		labelUp.insert(0, TITLE_TOP_LEFT);
 		labelUp.append(TITLE_TOP_RIGHT);
 		labelUp.insert(0, colour);
 		labelUp.append("\n");
@@ -148,8 +148,8 @@ public class ChatFramer {
 		// FRAME_TOP_RIGHT = '\u2524';
 		// FRAME_BOTTOM_LEFT = '\u2514';
 		// FRAME_BOTTOM_RIGHT = '\u2518';
-		FRAME_HORIZONTAL = '\u2500';
-		FRAME_VERTICAL = '\u2502';
+		//FRAME_HORIZONTAL = '\u2500';
+		//FRAME_VERTICAL = '\u2502';
 
 		TITLE_TOP_LEFT = '\u2554';
 		TITLE_TOP_RIGHT = '\u2557';
@@ -157,8 +157,8 @@ public class ChatFramer {
 		FRAME_TOP_RIGHT = '\u2563';
 		FRAME_BOTTOM_LEFT = '\u255A';
 		FRAME_BOTTOM_RIGHT = '\u255D';
-		// FRAME_HORIZONTAL = '\u2550';
-		// FRAME_VERTICAL = '\u2551';
+		FRAME_HORIZONTAL = '\u2550';
+		FRAME_VERTICAL = '\u2551';
 
 	}
 

@@ -216,11 +216,11 @@ public class SagaMap {
 	 */
 	public static void enableBonusCharacters() {
 
-		BUILDING = "\u2502B\u2502";
+		BUILDING = "`B";
 		WILDERNESS = "\u2591";
-		BORDER = "[]";
-		CLAIMED = "| |";
-		YOUAREHERE = "\u2502X\u2502";
+		BORDER = "\u2592";
+		CLAIMED = "\u2593";
+		YOUAREHERE = "`X";
 
 	}
 

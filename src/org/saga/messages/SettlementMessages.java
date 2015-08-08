@@ -402,7 +402,7 @@ public class SettlementMessages {
 
 		// Add borders:
 		for (int i = 0; i < map.size(); i++) {
-			if (i != 0)
+			if (i!=0)
 				result.append("\n");
 			result.append(map.get(i));
 		}
@@ -411,7 +411,7 @@ public class SettlementMessages {
 		String title = locationChunk.getWorld().getName() + " map " + "("
 				+ locationChunk.getX() + ", " + locationChunk.getZ() + ")";
 
-		return ChatFramer.frame(title, result.toString(), ChatColor.GOLD, 0.75);
+		return ChatFramer.frame(title, result.toString(), ChatColor.GOLD, 0.9);
 		// TODO: Remove frame size limitation for special map characters when
 		// chat handles them correctly.
 

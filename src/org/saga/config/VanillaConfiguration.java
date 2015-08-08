@@ -1,6 +1,8 @@
 package org.saga.config;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Random;
 import java.util.logging.Level;
@@ -568,35 +570,44 @@ public class VanillaConfiguration {
 	 * Enables bonus characters.
 	 * http://forums.bukkit.org/threads/printing-special
 	 * -characters-%E2%99%A0-%E2%99%A3-%E2%99%A5-%E2%99%A6-in-chat.72293/
-	 * thanks, Father Of Time
+	 * thanks, Father Of Time (updated by Olyol95)
 	 * 
 	 * @throws NoSuchFieldException
 	 * @throws SecurityException
 	 * @throws IllegalArgumentException
 	 * @throws IllegalAccessException
+	 * @throws NoSuchMethodException
+	 * @throws InvocationTargetException
 	 */
-	public static void enableBonusCharacters() throws NoSuchFieldException,
-			SecurityException, IllegalArgumentException, IllegalAccessException {
+	public static void enableBonusCharacters() throws NoSuchFieldException, NoSuchMethodException,
+			SecurityException, IllegalArgumentException, IllegalAccessException, InvocationTargetException {
 
 		try {
 
 			Class<?> SharedConstants = Class.forName("net.minecraft.server." + Saga.plugin().getBukkitPackageVersion() + ".SharedConstants");
 
-			Field field = SharedConstants
-					.getDeclaredField("allowedCharacters");
+			Method isAllowedChar = SharedConstants.getDeclaredMethod("isAllowedChatCharacter",char.class);
+
+			Field field = SharedConstants.getDeclaredField("allowedCharacters");
 			field.setAccessible(true);
 
 			Field modifiersField = Field.class.getDeclaredField("modifiers");
 			modifiersField.setAccessible(true);
 			modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
 
-			String oldallowedchars = (String) field.get(null);
-			String custom = "" + "\u2554\u2557\u2560\u2563\u255A\u255D\u2550\u2551"
-					+ "\u263B\u25D8\u263C" + "\u2591\u2592\u2593";
+			char[] oldAllowedChars = (char[]) field.get(null);
 
-			if (!oldallowedchars.contains(custom)) {
-				field.set(null, oldallowedchars + custom);
+			char[] customChars = {'?', '?','?','?','?','?','?','?','?','?','?','?','?','?'};
+
+			String newAllowedChars = String.copyValueOf(oldAllowedChars);
+
+			for (char c: customChars) {
+
+				if (! (Boolean)isAllowedChar.invoke(null,c)) newAllowedChars += c;
+
 			}
+
+			field.set(null, newAllowedChars.toCharArray());
 
 			instance.bonusCharacters = true;
 

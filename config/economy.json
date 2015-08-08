@@ -3,8 +3,11 @@
 "enabled":true,
 
 "playerCoins":2000.0,
-"coinName":"●",
+"coinName":"\u2B24",
 "exchangeDistance":10,
+
+"platinumEnabled":true,
+"platinumName":"\u2B24",
 
 "guardianRuneRechargeCost":1500,
 
