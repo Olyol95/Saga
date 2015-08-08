@@ -23,6 +23,7 @@ import org.saga.listeners.events.SagaBuildEvent;
 import org.saga.listeners.events.SagaEventHandler;
 import org.saga.listeners.events.SagaLootEvent;
 import org.saga.metadata.UnnaturalTag;
+import org.saga.player.PlatinumManager;
 import org.saga.player.SagaPlayer;
 import org.saga.settlements.Bundle;
 import org.saga.settlements.BundleManager;
@@ -194,7 +195,21 @@ public class BlockListener implements Listener {
 
 			}
 
-			Player player = (Player) entity;
+			Player player;
+
+			if (entity instanceof EnderPearl) {
+
+				player = (Player) ((EnderPearl) entity).getShooter();
+
+			} else if (entity instanceof Snowball) {
+
+				player = (Player) ((Snowball) entity).getShooter();
+
+			} else {
+
+				player = (Player) entity;
+
+			}
 
 			// Cancel build on failure:
 			SagaPlayer sagaPlayer = Saga.plugin().getLoadedPlayer(
@@ -285,7 +300,21 @@ public class BlockListener implements Listener {
 
 			}
 
-			Player player = (Player) entity;
+			Player player;
+
+			if (entity instanceof EnderPearl) {
+
+				player = (Player) ((EnderPearl) entity).getShooter();
+
+			} else if (entity instanceof Snowball) {
+
+				player = (Player) ((Snowball) entity).getShooter();
+
+			} else {
+
+				player = (Player) entity;
+
+			}
 
 			// Cancel build on failure:
 			SagaPlayer sagaPlayer = Saga.plugin().getLoadedPlayer(
