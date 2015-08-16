@@ -56,6 +56,16 @@ public class EconomyConfiguration {
 	public String coinName;
 
 	/**
+	 * Platinum name.
+	 */
+	public String platinumName;
+
+	/**
+	 * Whether the platinum currency is enabled.
+	 */
+	public Boolean platinumEnabled;
+
+	/**
 	 * Exchange distance.
 	 */
 	public Double exchangeDistance;
@@ -209,6 +219,8 @@ public class EconomyConfiguration {
 	 */
 	private Boolean enableHooking;
 
+	private String[][] tradeWorlds;
+
 	// Initialisation:
 	/**
 	 * Used by gson.
@@ -228,6 +240,16 @@ public class EconomyConfiguration {
 			playerCoins = 0.0;
 		}
 
+		if (platinumEnabled == null) {
+			SagaLogger.nullField(getClass(), "platinumEnabled");
+			platinumEnabled = true;
+		}
+
+		if (platinumName == null) {
+			SagaLogger.nullField(getClass(), "platinumName");
+			platinumName = "\u2B24";
+		}
+
 		if (enabled == null) {
 			SagaLogger.nullField(getClass(), "enabled");
 			enabled = true;
@@ -235,7 +257,7 @@ public class EconomyConfiguration {
 
 		if (coinName == null) {
 			SagaLogger.nullField(getClass(), "coinName");
-			coinName = "coins";
+			coinName = "\u2B24";
 		}
 
 		if (exchangeDistance == null) {
@@ -395,6 +417,10 @@ public class EconomyConfiguration {
 		}
 		for (SagaPricedItem item : blockCoins) {
 			item.complete();
+		}
+
+		if (tradeWorlds == null) {
+			tradeWorlds = new String[0][0];
 		}
 
 		// Options;
@@ -777,6 +803,8 @@ public class EconomyConfiguration {
 	public Double getCapitalSetCost() {
 		return capitalSetCost;
 	}
+
+	public String[][] getTradeWorlds() { return  tradeWorlds; }
 
 	// Trading post:
 	/**

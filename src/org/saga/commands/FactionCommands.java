@@ -146,6 +146,13 @@ public class FactionCommands {
 			return;
 		}
 
+		if (!sagaPlayer.canTradeWithPlayer(selPlayer)) {
+
+			sagaPlayer.message(FactionMessages.notTradable(sagaPlayer,selPlayer));
+			return;
+
+		}
+
 		// Invite:
 		selPlayer.addFactionInvite(selFaction.getId());
 

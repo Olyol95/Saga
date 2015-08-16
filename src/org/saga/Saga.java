@@ -118,6 +118,7 @@ public class Saga extends JavaPlugin implements MinuteTicker {
 		BundleManager.unload(); // Needs building manager.
 		FactionManager.unload(); // Needs access to chunk group manager.
 		StatisticsManager.unload(); // Needs access to clock.
+		ResetManager.unload();
 
 		// Dependencies:
 		PermissionsDependency.disable();
@@ -196,6 +197,7 @@ public class Saga extends JavaPlugin implements MinuteTicker {
 		FactionClaimManager.load(); // Needs access to factions and bundles.
 		SiegeManager.load(); // Needs access to factions and bundles.
 		WarManager.load(); // Needs access to factions and bundles.
+		ResetManager.load();
 
 		// Register events:
 		pluginManager.registerEvents(new PlayerListener(), this);

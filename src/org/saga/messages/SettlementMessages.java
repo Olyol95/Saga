@@ -267,6 +267,12 @@ public class SettlementMessages {
 		return Colour.negative + "Can't kick settlement owner.";
 	}
 
+	public static String notTradable(SagaPlayer sagaPlayer, SagaPlayer selPlayer) {
+
+		return Colour.negative+"You cannot invite this player to your settlement as your world ("+sagaPlayer.getOriginWorld()+") is not friendly with "+selPlayer.getOriginWorld()+".";
+
+	}
+
 	// Roles:
 	public static String invalidRole(String roleName) {
 		return Colour.negative + "Role " + roleName + " is invalid.";

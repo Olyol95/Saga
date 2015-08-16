@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.saga.buildings.production.SagaItem;
 import org.saga.config.EconomyConfiguration;
 import org.saga.dependencies.EconomyDependency;
@@ -69,6 +70,14 @@ public class EconomyMessages {
 	public static String insufficient(Faction bundle) {
 		return Colour.negative + "Insufficient " + EconomyMessages.coins()
 				+ ".";
+	}
+
+	public static String originCannotTradeInThisWorld(SagaPlayer sagaPlayer, SagaPlayer selPlayer) {
+		return Colour.negative + "Your homeland ("+sagaPlayer.getOriginWorld()+") does not allow you to trade with players from "+selPlayer.getOriginWorld()+"!";
+	}
+
+	public static String originCannotTradeInThisWorld(SagaPlayer sagaPlayer, World world) {
+		return Colour.negative + "Your homeland ("+sagaPlayer.getOriginWorld()+") does not allow you to trade in "+world.getName()+"!";
 	}
 
 	// Settlement:

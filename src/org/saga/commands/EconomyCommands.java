@@ -82,6 +82,13 @@ public class EconomyCommands {
 			return;
 		}
 
+		if (!sagaPlayer.canTradeWithPlayer(selPlayer)) {
+
+			sagaPlayer.message(EconomyMessages.originCannotTradeInThisWorld(sagaPlayer, selPlayer));
+			return;
+
+		}
+
 		// Pay:
 		EconomyDependency.removeCoins(sagaPlayer, amount);
 		EconomyDependency.addCoins(selPlayer, amount);

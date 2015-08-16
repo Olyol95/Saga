@@ -8,19 +8,17 @@ import com.google.gson.JsonParseException;
 import org.bukkit.Effect;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.saga.Saga;
 import org.saga.SagaLogger;
 import org.saga.buildings.production.SagaItem;
-import org.saga.config.AbilityConfiguration;
-import org.saga.config.AttributeConfiguration;
-import org.saga.config.EconomyConfiguration;
-import org.saga.config.ExperienceConfiguration;
-import org.saga.config.FactionConfiguration;
+import org.saga.config.*;
 import org.saga.dependencies.EconomyDependency;
 import org.saga.dependencies.PermissionsDependency;
 import org.saga.dependencies.Trader;
+import org.saga.exceptions.FeatureNotEnabledException;
 import org.saga.factions.Faction;
 import org.saga.factions.FactionManager;
 import org.saga.factions.SiegeManager;
@@ -95,6 +93,8 @@ public class SagaPlayer extends SagaLiving implements Trader {
 	 */
 	private Boolean adminMode;
 
+	private String originWorld;
+
 	// Control:
 	/**
 	 * Disables and enables player information saving.
@@ -131,6 +131,8 @@ public class SagaPlayer extends SagaLiving implements Trader {
 		this.coins = EconomyConfiguration.config().playerCoins;
 
 		this.guardRune = new GuardianRune(this);
+
+		this.originWorld = GeneralConfiguration.config().getDefaultWorld();
 
 	}
 
@@ -181,6 +183,12 @@ public class SagaPlayer extends SagaLiving implements Trader {
 			bundleInvites = new ArrayList<>();
 			// TODO Restore bundle invites check: SagaLogger.nullField(this,
 			// "bundleInvites");
+		}
+
+		if (originWorld == null) {
+
+			originWorld = GeneralConfiguration.config().getDefaultWorld();
+
 		}
 
 		if (guardRune == null) {
@@ -985,12 +993,36 @@ public class SagaPlayer extends SagaLiving implements Trader {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see saga.economy.Transaction.Trader#getCurrency()
 	 */
 	@Override
 	public Double getCoins() {
 		return coins;
+	}
+
+	public boolean addPlatinum(Integer amount) throws FeatureNotEnabledException {
+		if (EconomyConfiguration.config().platinumEnabled) {
+			return PlatinumManager.addAmount(getWrapped().getUniqueId(), amount);
+		} else throw new FeatureNotEnabledException("add platinum", "platinumEnabled has been set to false in the configuration.");
+	}
+
+	public boolean removePlatinum(Integer amount) throws FeatureNotEnabledException {
+		if (EconomyConfiguration.config().platinumEnabled) {
+			return PlatinumManager.removeAmount(getWrapped().getUniqueId(), amount);
+		} else throw new FeatureNotEnabledException("remove platinum", "platinumEnabled has been set to false in the configuration.");
+	}
+
+	public Integer getPlatinum() throws FeatureNotEnabledException {
+		if (EconomyConfiguration.config().platinumEnabled) {
+			return PlatinumManager.requestAmount(getWrapped().getUniqueId());
+		} else throw new FeatureNotEnabledException("get platinum", "platinumEnabled has been set to false in the configuration.");
+	}
+
+	public boolean setPlatinum(Integer amount) throws FeatureNotEnabledException {
+		if (EconomyConfiguration.config().platinumEnabled) {
+			return PlatinumManager.setAmount(getWrapped().getUniqueId(), amount);
+		} else throw new FeatureNotEnabledException("set platinum", "platinumEnabled has been set to false in the configuration.");
 	}
 
 	/*
@@ -1187,12 +1219,6 @@ public class SagaPlayer extends SagaLiving implements Trader {
 	 * 
 	 * @param playerName
 	 *            player name
-	 * @param player
-	 *            minecraft player
-	 * @param plugin
-	 *            plugin instance for access
-	 * @param balanceInformation
-	 *            balance information
 	 * @return saga player
 	 */
 	public static SagaPlayer load(String playerName) {
@@ -1367,6 +1393,100 @@ public class SagaPlayer extends SagaLiving implements Trader {
 		}
 
 		return getName() + result;
+
+	}
+
+	public String getOriginWorld() {
+
+		return originWorld;
+
+	}
+
+	public void setOriginWorld(String world) {
+
+		originWorld = world;
+
+	}
+
+	public boolean canTradeWithPlayer(SagaPlayer selPlayer) {
+
+		String[][] tradeWorlds = EconomyConfiguration.config().getTradeWorlds();
+
+		boolean tradable = false;
+
+		if (!selPlayer.getOriginWorld().equals(getOriginWorld())) {
+
+			for (int tradeGroup = 0; tradeGroup < tradeWorlds.length; tradeGroup++) {
+
+				for (int world = 0; world < tradeWorlds[tradeGroup].length; world++) {
+
+					if (tradeWorlds[tradeGroup][world].equalsIgnoreCase(getOriginWorld())) {
+
+						for (int world1 = 0; world1 < tradeWorlds[tradeGroup].length; world1++) {
+
+							if (tradeWorlds[tradeGroup][world1].equalsIgnoreCase(selPlayer.getOriginWorld())) {
+
+								tradable = true;
+								break;
+
+							}
+
+						}
+
+					}
+
+				}
+
+			}
+
+		} else {
+
+			tradable = true;
+
+		}
+
+		return tradable;
+
+	}
+
+	public boolean canTradeInWorld(World w) {
+
+		String[][] tradeWorlds = EconomyConfiguration.config().getTradeWorlds();
+
+		boolean tradable = false;
+
+		if (!w.getName().equalsIgnoreCase(getOriginWorld())) {
+
+			for (int tradeGroup = 0; tradeGroup < tradeWorlds.length; tradeGroup++) {
+
+				for (int world = 0; world < tradeWorlds[tradeGroup].length; world++) {
+
+					if (tradeWorlds[tradeGroup][world].equalsIgnoreCase(getOriginWorld())) {
+
+						for (int world1 = 0; world1 < tradeWorlds[tradeGroup].length; world1++) {
+
+							if (tradeWorlds[tradeGroup][world1].equalsIgnoreCase(w.getName())) {
+
+								tradable = true;
+								break;
+
+							}
+
+						}
+
+					}
+
+				}
+
+			}
+
+		} else {
+
+			tradable = true;
+
+		}
+
+		return tradable;
 
 	}
 

@@ -356,6 +356,13 @@ public class BuySign extends BuildingSign {
 	@Override
 	protected void onRightClick(SagaPlayer sagaPlayer) {
 
+		if (!sagaPlayer.canTradeInWorld(super.getBuilding().getSagaChunk().getWorld())) {
+
+			sagaPlayer.message(EconomyMessages.originCannotTradeInThisWorld(sagaPlayer,super.getBuilding().getSagaChunk().getWorld()));
+			return;
+
+		}
+
 		// Create item:
 		ItemStack item = this.item.createItem();
 

@@ -7,6 +7,7 @@ import org.saga.listeners.events.SagaDamageEvent.PvPOverride;
 import org.saga.messages.colours.Colour;
 import org.saga.player.GuardianRune;
 import org.saga.player.Proficiency.ProficiencyType;
+import org.saga.utility.chat.ChatFramer;
 import org.saga.utility.chat.ChatUtil;
 
 public class PlayerMessages {
@@ -176,6 +177,42 @@ public class PlayerMessages {
 				+ messageColor + "< " + message;
 
 		return namedMessage;
+
+	}
+
+	public static String resetMessage() {
+
+		String message = "You are about to reset "+ChatColor.WHITE+"all"+Colour.frame+" of your data!\n" +
+				"If you continue, you "+ChatColor.WHITE+"WILL"+Colour.frame+" lose everything:\n" +
+				"- If you own a settlement, it will be dissolved!\n" +
+				"- If you own a faction, it will be disbanded!\n" +
+				"- Your items will be deleted from your inventory!\n" +
+				"- Your /homes will be removed!\n" +
+				"- Your attributes will be reset to 0!\n" +
+				"- Your abilities will be reset to 0!\n" +
+				"- Your wallet will be reset to 0!\n" +
+				"Are you sure you wish to continue? "+ChatColor.WHITE+"/resetconfirm\n\n" +
+				"This will only be available for "+ChatColor.WHITE+"30"+Colour.frame+" seconds.";
+
+		return ChatFramer.frame(ChatColor.RED+"WARNING", message, ChatColor.GOLD, 1.0);
+
+	}
+
+	public static String resetFailedNoTicket() {
+
+		return Colour.negative+"Reset failed. Either you never ran /reset or your ticket has expired. Please run /reset again if you wish to continue.";
+
+	}
+
+	public static String resetBegun() {
+
+		return Colour.positive+"Reset begun, sit back and relax whilst we take care of a few things...";
+
+	}
+
+	public static String resetSuccessful() {
+
+		return Colour.positive+"Reset successful!";
 
 	}
 

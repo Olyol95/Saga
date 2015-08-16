@@ -57,6 +57,12 @@ public class FactionMessages {
 
 	}
 
+	public static String notTradable(SagaPlayer sagaPlayer, SagaPlayer selPlayer) {
+
+		return Colour.negative+"You cannot invite this player to your faction as your world ("+sagaPlayer.getOriginWorld()+") is not friendly with "+selPlayer.getOriginWorld()+".";
+
+	}
+
 	// Members:
 	public static String notMember() {
 		return Colour.negative + "You aren't a faction member.";

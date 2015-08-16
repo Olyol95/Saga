@@ -1,19 +1,25 @@
 package org.saga.commands;
 
+import java.io.File;
 import java.util.Collection;
 
+import org.bukkit.ChatColor;
+import org.saga.ResetManager;
 import org.saga.Saga;
 import org.saga.SagaLogger;
 import org.saga.abilities.AbilityDefinition;
 import org.saga.config.AbilityConfiguration;
+import org.saga.config.AttributeConfiguration;
+import org.saga.config.EconomyConfiguration;
+import org.saga.config.GeneralConfiguration;
+import org.saga.dependencies.EconomyDependency;
 import org.saga.dependencies.PermissionsDependency;
-import org.saga.messages.AbilityMessages;
-import org.saga.messages.GeneralMessages;
-import org.saga.messages.HelpMessages;
-import org.saga.messages.PlayerMessages;
-import org.saga.messages.StatsMessages;
+import org.saga.factions.Faction;
+import org.saga.messages.*;
 import org.saga.player.GuardianRune;
 import org.saga.player.SagaPlayer;
+import org.saga.saveload.Directory;
+import org.saga.settlements.Bundle;
 import org.sk89q.Command;
 import org.sk89q.CommandContext;
 import org.sk89q.CommandPermissions;
@@ -170,6 +176,139 @@ public class PlayerCommands {
 
 		// Inform:
 		sagaPlayer.message(HelpMessages.ability(definition));
+
+	}
+
+	// Reset:
+	@Command(aliases = { "reset" }, usage = "", flags = "", desc = "Start again.", min = 0, max = 1)
+	@CommandPermissions({ "saga.user.player.guardrune.disable" })
+	public static void resetData(CommandContext args, Saga plugin, SagaPlayer sagaPlayer) {
+
+		ResetManager.getInstance().insertTicket(sagaPlayer.getPlayer().getUniqueId());
+		sagaPlayer.message(PlayerMessages.resetMessage());
+
+	}
+
+	// Reset:
+	@Command(aliases = { "resetconfirm" }, usage = "", flags = "", desc = "Confirm to start again.", min = 0, max = 1)
+	@CommandPermissions({ "saga.user.player.guardrune.disable" })
+	public static void resetConfirm(CommandContext args, Saga plugin, SagaPlayer sagaPlayer) {
+
+		if (ResetManager.getInstance().checkTicket(sagaPlayer.getPlayer().getUniqueId())) {
+
+			sagaPlayer.message(PlayerMessages.resetBegun());
+
+			Bundle selBundle = sagaPlayer.getBundle();
+
+			if (selBundle != null) {
+
+				if (selBundle.isOwner(sagaPlayer.getName())) {
+
+					for (String player: selBundle.getMembers()) {
+
+						if (!player.equals(sagaPlayer.getName())) {
+
+							SagaPlayer sagaPlayer1 = Saga.plugin().getLoadedPlayer(player);
+
+							selBundle.removeMember(sagaPlayer1);
+							sagaPlayer1.message(SettlementMessages.wasKicked(sagaPlayer1, selBundle));
+
+						} else {
+
+							selBundle.removeMember(sagaPlayer);
+							sagaPlayer.message(SettlementMessages.dissolved(selBundle));
+
+						}
+
+					}
+
+					selBundle.delete();
+
+				} else {
+
+					selBundle.removeMember(sagaPlayer);
+
+				}
+
+			}
+
+			Faction selFaction = sagaPlayer.getFaction();
+
+			if (selFaction != null) {
+
+				if (selFaction.isOwner(sagaPlayer.getName())) {
+
+					for (String player: selFaction.getMembers()) {
+
+						if (!player.equals(sagaPlayer.getName())) {
+
+							SagaPlayer sagaPlayer1 = Saga.plugin().getLoadedPlayer(player);
+
+							selFaction.removeMember(sagaPlayer1);
+							sagaPlayer1.message(FactionMessages.wasKicked(sagaPlayer1, selFaction));
+
+						} else {
+
+							selFaction.removeMember(sagaPlayer);
+							sagaPlayer.message(FactionMessages.disbanded(selFaction));
+
+						}
+
+					}
+
+					selFaction.delete();
+
+				} else {
+
+					selFaction.removeMember(sagaPlayer);
+
+				}
+
+			}
+
+			sagaPlayer.setExp(0);
+
+			sagaPlayer.getGuardRune().discharge();
+
+			for (String attribute: AttributeConfiguration.config().getAttributeNames()) {
+
+				sagaPlayer.setAttributeScore(attribute,0);
+
+			}
+
+			for (String ability: AbilityConfiguration.config().getAbilityNames()) {
+
+				sagaPlayer.setAblityScore(ability, 0);
+
+			}
+
+			sagaPlayer.getBundleInvites().clear();
+			sagaPlayer.getFactionInvites().clear();
+
+			EconomyDependency.removeCoins(sagaPlayer,sagaPlayer.getCoins());
+			EconomyDependency.addCoins(sagaPlayer, 2000.0);
+
+			File essentialsData = new File(Directory.ESSENTIALS_PLAYER_DATA.getDirectory()+sagaPlayer.getPlayer().getUniqueId()+".yml");
+
+			if (essentialsData.exists()) {
+
+				essentialsData.delete();
+
+			}
+
+			sagaPlayer.getPlayer().getInventory().clear();
+
+			sagaPlayer.setOriginWorld(GeneralConfiguration.config().getDefaultWorld());
+
+			sagaPlayer.getPlayer().performCommand("spawn "+sagaPlayer.getName()+" default");
+			ResetManager.getInstance().removeTicket(sagaPlayer.getPlayer().getUniqueId());
+			sagaPlayer.message(PlayerMessages.resetSuccessful());
+
+		} else {
+
+			sagaPlayer.message(PlayerMessages.resetFailedNoTicket());
+
+		}
 
 	}
 

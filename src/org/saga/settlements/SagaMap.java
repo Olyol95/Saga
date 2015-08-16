@@ -7,6 +7,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.block.Biome;
+import org.saga.config.VanillaConfiguration;
 import org.saga.player.SagaPlayer;
 import org.saga.utility.AsciiCompass;
 

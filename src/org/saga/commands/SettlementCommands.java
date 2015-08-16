@@ -616,6 +616,13 @@ public class SettlementCommands {
 			return;
 		}
 
+		if (!sagaPlayer.canTradeWithPlayer(selPlayer)) {
+
+			sagaPlayer.message(SettlementMessages.notTradable(sagaPlayer, selPlayer));
+			return;
+
+		}
+
 		// Add invite:
 		selPlayer.addBundleInvite(selBundle.getId());
 

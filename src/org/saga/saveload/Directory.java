@@ -27,7 +27,9 @@ public enum Directory {
 			"plugins/Saga/settlements/", WriterReader.NAME_SUBS + ".json"), FACTION_DATA(
 			"plugins/Saga/factions/", WriterReader.NAME_SUBS + ".json"),
 
-	WIKI("plugins/Saga/wiki/", WriterReader.NAME_SUBS + ".txt");
+	WIKI("plugins/Saga/wiki/", WriterReader.NAME_SUBS + ".txt"),
+
+	ESSENTIALS_PLAYER_DATA("plugins/Essentials/userdata/","");
 
 	/**
 	 * File extension.
