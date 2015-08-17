@@ -1,13 +1,18 @@
 name: Saga
 main: org.saga.Saga
-version: 1.0
-author: Olyol95, andfRa
+version: 1.0.1
+authors:
+  - Olyol95
+  - andfRa
 softdepend:
   - GroupManager
   - PermissionsEx
   - Vault
   - EssentialsChat
 commands:
+  areload:
+    description: Reload Saga.
+    usage: /areload
   astatsother:
     description: Show other player stats. With -o flag offline players are also included.
     usage: /astatsother <player_name> [page] [-o]
@@ -386,3 +391,12 @@ commands:
   fspawn:
     description: Teleport to the faction capital spawn point.
     usage: /fspawn [faction_name]
+  wild:
+    description: Teleport to a random place in the wilderness.
+    usage: /wild
+  reset:
+    description: Reset all of your player data.
+    usage: /reset
+  resetconfirm:
+    description: Confirm a player data reset.
+    usage: /resetconfirm
