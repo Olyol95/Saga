@@ -198,6 +198,12 @@ public class PlayerMessages {
 
 	}
 
+	public static String teleporting() {
+
+		return Colour.positive+"Teleporting...";
+
+	}
+
 	public static String resetFailedNoTicket() {
 
 		return Colour.negative+"Reset failed. Either you never ran /reset or your ticket has expired. Please run /reset again if you wish to continue.";

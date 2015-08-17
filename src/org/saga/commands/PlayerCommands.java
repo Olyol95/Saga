@@ -2,8 +2,11 @@ package org.saga.commands;
 
 import java.io.File;
 import java.util.Collection;
+import java.util.Random;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.util.Vector;
 import org.saga.ResetManager;
 import org.saga.Saga;
 import org.saga.SagaLogger;
@@ -20,6 +23,9 @@ import org.saga.player.GuardianRune;
 import org.saga.player.SagaPlayer;
 import org.saga.saveload.Directory;
 import org.saga.settlements.Bundle;
+import org.saga.settlements.BundleManager;
+import org.saga.settlements.SagaChunk;
+import org.saga.settlements.Settlement;
 import org.sk89q.Command;
 import org.sk89q.CommandContext;
 import org.sk89q.CommandPermissions;
@@ -179,9 +185,57 @@ public class PlayerCommands {
 
 	}
 
+	//wild
+	// Reset:
+	@Command(aliases = { "wilderness", "wild" }, usage = "", flags = "", desc = "Teleport to the wilderness.", min = 0, max = 0)
+	@CommandPermissions({ "saga.user.player.wild" })
+	public static void wild(CommandContext args, Saga plugin, SagaPlayer sagaPlayer) {
+
+		Random random = new Random();
+
+		int minX = GeneralConfiguration.config().getRandomTPMinX();
+		int maxX = GeneralConfiguration.config().getRandomTPMaxX();
+		int minZ = GeneralConfiguration.config().getRandomTPMinZ();
+		int maxZ = GeneralConfiguration.config().getRandomTPMaxZ();
+
+		int chunkx,chunkz;
+
+		Location spawnLocation;
+
+		do {
+
+			chunkx = random.nextInt((maxX - minX) + 1) + minX;
+			chunkz = random.nextInt((maxZ - minZ) + 1) + minZ;
+
+			SagaChunk sagaChunk = BundleManager.manager().getSagaChunk(sagaPlayer.getLocation().getWorld().getName(),chunkx,chunkz);
+
+			// Displacement:
+			double spreadRadius = 6;
+			Double x = 2 * spreadRadius * (Saga.RANDOM.nextDouble() - 0.5);
+			Double z = 2 * spreadRadius * (Saga.RANDOM.nextDouble() - 0.5);
+			Vector displacement = new Vector(x.intValue(), 2, z.intValue());
+
+			// Shifted location:
+			Double dx = 16 * chunkx + 7.5 + displacement.getX();
+			Double dz = 16 * chunkz + 7.5 + displacement.getZ();
+			Double dy = displacement.getY();
+
+			spawnLocation = new Location(sagaPlayer.getPlayer().getWorld(), dx, sagaPlayer.getPlayer().getWorld().getHighestBlockYAt(dx.intValue(), dz.intValue()) + dy, dz);
+
+			if (sagaChunk != null ||  spawnLocation.getY() < 10) {
+				spawnLocation = null;
+			}
+
+		} while (spawnLocation == null);
+
+		sagaPlayer.message(PlayerMessages.teleporting());
+		sagaPlayer.teleport(spawnLocation);
+
+	}
+
 	// Reset:
 	@Command(aliases = { "reset" }, usage = "", flags = "", desc = "Start again.", min = 0, max = 1)
-	@CommandPermissions({ "saga.user.player.guardrune.disable" })
+	@CommandPermissions({ "saga.user.player.reset" })
 	public static void resetData(CommandContext args, Saga plugin, SagaPlayer sagaPlayer) {
 
 		ResetManager.getInstance().insertTicket(sagaPlayer.getPlayer().getUniqueId());
@@ -190,8 +244,8 @@ public class PlayerCommands {
 	}
 
 	// Reset:
-	@Command(aliases = { "resetconfirm" }, usage = "", flags = "", desc = "Confirm to start again.", min = 0, max = 1)
-	@CommandPermissions({ "saga.user.player.guardrune.disable" })
+	@Command(aliases = { "resetconfirm" }, usage = "", flags = "", desc = "Confirm to start again.", min = 0, max = 0)
+	@CommandPermissions({ "saga.user.player.reset.confirm" })
 	public static void resetConfirm(CommandContext args, Saga plugin, SagaPlayer sagaPlayer) {
 
 		if (ResetManager.getInstance().checkTicket(sagaPlayer.getPlayer().getUniqueId())) {

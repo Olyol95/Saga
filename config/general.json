@@ -35,6 +35,8 @@
 "xrayMinStone":1500,
 "xrayDiamondRatio":0.010,
 
-"commandsOverride":{}
+"commandsOverride":{},
+
+"randomTPBounds":[-300,300,-300,300]
 
 }

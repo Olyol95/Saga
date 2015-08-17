@@ -150,6 +150,8 @@ public class GeneralConfiguration {
 	 */
 	private Hashtable<String, String> commandsOverride;
 
+	private Integer[] randomTPBounds;
+
 	// Initialisation:
 	/**
 	 * Used by gson.
@@ -278,6 +280,11 @@ public class GeneralConfiguration {
 			commandsOverride = new Hashtable<>();
 		}
 
+		if (randomTPBounds == null || randomTPBounds.length != 4) {
+			SagaLogger.nullField(getClass(), "randomTPBounds");
+			randomTPBounds = new Integer[]{-300,300,-300,300};
+		}
+
 	}
 
 	// Potions:
@@ -399,6 +406,14 @@ public class GeneralConfiguration {
 	public Double getXrayDiamondRatio() {
 		return xrayDiamondRatio;
 	}
+
+	public Integer getRandomTPMinX() { return randomTPBounds[0]; }
+
+	public Integer getRandomTPMaxX() { return randomTPBounds[1]; }
+
+	public Integer getRandomTPMinZ() { return randomTPBounds[2]; }
+
+	public Integer getRandomTPMaxZ() { return randomTPBounds[3]; }
 
 	// Override:
 	/**
