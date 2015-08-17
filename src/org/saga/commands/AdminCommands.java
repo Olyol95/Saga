@@ -9,18 +9,22 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.net.URLClassLoader;
 import java.util.*;
 import java.util.regex.Pattern;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
+import org.bukkit.command.PluginCommand;
+import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginLoader;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.SimplePluginManager;
 import org.bukkit.plugin.java.JavaPluginLoader;
 import org.saga.Clock;
@@ -206,63 +210,75 @@ public class AdminCommands {
 
 		try {
 
-			SimplePluginManager simplePluginManager = (SimplePluginManager) Bukkit.getPluginManager();
+			PluginManager pluginManager = Bukkit.getServer().getPluginManager();
 
-			Field pluginsField = simplePluginManager.getClass().getDeclaredField("plugins");
+			Field simpleCommandMapField = pluginManager.getClass().getDeclaredField("commandMap");
+			simpleCommandMapField.setAccessible(true);
+			SimpleCommandMap simpleCommandMap = (SimpleCommandMap) simpleCommandMapField.get(pluginManager);
+
+			Field knownCommandsField = SimpleCommandMap.class.getDeclaredField("knownCommands");
+			knownCommandsField.setAccessible(true);
+			Map<String, org.bukkit.command.Command> knownCommands = (Map<String, org.bukkit.command.Command>)knownCommandsField.get(simpleCommandMap);
+
+			Field lookupNamesField = pluginManager.getClass().getDeclaredField("lookupNames");
+			lookupNamesField.setAccessible(true);
+			Map<String, Plugin> lookupNames = (Map<String, Plugin>) lookupNamesField.get(pluginManager);
+
+			Field pluginsField = pluginManager.getClass().getDeclaredField("plugins");
 			pluginsField.setAccessible(true);
-			ArrayList<Plugin> plugins = ((ArrayList<Plugin>) pluginsField.get(simplePluginManager));
-			plugins.remove(plugin);
-			pluginsField.set(simplePluginManager, plugins);
+			List<Plugin> plugins = (List<Plugin>) pluginsField.get(pluginManager);
 
-			HandlerList.unregisterAll(plugin);
+			ArrayList<Map.Entry> toRemove = new ArrayList<>();
 
-			Field fileAssociationsField = simplePluginManager.getClass().getDeclaredField("fileAssociations");
-			fileAssociationsField.setAccessible(true);
-			Map<Pattern,PluginLoader> fileAssociations = ((Map<Pattern,PluginLoader>) fileAssociationsField.get(simplePluginManager));
-			ArrayList<Pattern> toRemove = new ArrayList<>();
-			for (Pattern pattern: plugin.getPluginLoader().getPluginFileFilters()) {
-				toRemove.add(pattern);
-			}
-			for (Pattern pattern: toRemove) {
-				fileAssociations.remove(pattern);
-			}
-			fileAssociationsField.set(simplePluginManager,fileAssociations);
+			for (Map.Entry entry: knownCommands.entrySet()) {
 
-			Field permissionsField = simplePluginManager.getClass().getDeclaredField("permissions");
-			permissionsField.setAccessible(true);
-			Map<String,Permission> permissions = ((Map<String,Permission>) permissionsField.get(simplePluginManager));
-			ArrayList<String> toRemove1 = new ArrayList<>();
-			for (String permission: permissions.keySet()) {
-				if (permission.startsWith("saga.")) {
-					toRemove1.add(permission);
+				if (entry.getValue() instanceof PluginCommand) {
+					PluginCommand c = (PluginCommand) entry.getValue();
+					if (c.getPlugin().getName().equalsIgnoreCase(plugin.getName())) {
+						c.unregister(simpleCommandMap);
+						toRemove.add(entry);
+					}
 				}
-			}
-			for(String permission: toRemove1) {
-				permissions.remove(permission);
-			}
-			permissionsField.set(simplePluginManager,permissions);
 
-		} catch (NoSuchFieldException | IllegalAccessException e) {
+			}
 
-			System.out.println("Failed to unload plugin from PluginManager, live code injection failed! " + e.getMessage());
-			Bukkit.getPluginManager().enablePlugin(plugin);
-			return;
+			for (Map.Entry entry: toRemove) {
+
+				knownCommands.entrySet().remove(entry);
+
+			}
+
+			pluginManager.disablePlugin(plugin);
+
+			lookupNames.remove(plugin.getName());
+			plugins.remove(plugin);
+
+			JavaPluginLoader pluginLoader = (JavaPluginLoader) plugin.getPluginLoader();
+
+			Field loadersField = pluginLoader.getClass().getDeclaredField("loaders");
+			loadersField.setAccessible(true);
+
+			Map loaders = (Map) loadersField.get(pluginLoader);
+			loaders.remove(plugin.getDescription().getName());
+
+			((URLClassLoader)plugin.getClass().getClassLoader()).close();
+
+			Bukkit.getPluginManager().loadPlugin(new File("plugins/Saga.jar"));
+			Bukkit.getPluginManager().enablePlugin(Bukkit.getPluginManager().getPlugin("Saga"));
+			Bukkit.getPlayer(sagaPlayer.getName()).sendMessage(ChatColor.GREEN + "Saga Reloaded!");
+
+			plugin = null;
+			sagaPlayer = null;
+
+			System.gc();
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+			Bukkit.getServer().getPlayer(sagaPlayer.getName()).sendMessage(ChatColor.RED + "Error Reloading Saga!");
 
 		}
-
-        try {
-
-            Bukkit.getPluginManager().loadPlugin(new File("plugins/Saga.jar"));
-            Bukkit.getPluginManager().enablePlugin(Bukkit.getPluginManager().getPlugin("Saga"));
-            Bukkit.getServer().getPlayer(sagaPlayer.getName()).sendMessage(ChatColor.GREEN + "Saga Reloaded!");
-
-        } catch (Exception e) {
-
-            e.printStackTrace();
-
-            Bukkit.getServer().getPlayer(sagaPlayer.getName()).sendMessage(ChatColor.RED + "Error Reloading Saga!");
-
-        }
 
 	}
 

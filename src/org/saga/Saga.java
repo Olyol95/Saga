@@ -146,6 +146,8 @@ public class Saga extends JavaPlugin implements MinuteTicker {
 		// Logger:
 		SagaLogger.unload();
 
+		System.gc();
+
 	}
 
 	/*
@@ -155,6 +157,8 @@ public class Saga extends JavaPlugin implements MinuteTicker {
 	 */
 	@Override
 	public void onEnable() {
+
+		System.gc();
 
 		// Set global instance:
 		Saga.plugin = this;
