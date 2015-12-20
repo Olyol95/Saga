@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="EssentialsGroupManager">
     <CLASSES>
-      <root url="jar://$USER_HOME$/Documents/lib/EssentialsGroupManager.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/EssentialsGroupManager.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

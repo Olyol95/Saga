@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="spoutcraftplugin">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/spoutcraftplugin.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

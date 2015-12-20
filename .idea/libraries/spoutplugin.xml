@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="spoutplugin">
-    <CLASSES>
-      <root url="jar://$USER_HOME$/Documents/lib/spoutplugin.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
