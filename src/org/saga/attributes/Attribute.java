@@ -1,13 +1,13 @@
 package org.saga.attributes;
 
+import org.bukkit.Material;
+import org.saga.SagaLogger;
+import org.saga.utility.TwoPointFunction;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Hashtable;
 import java.util.Map.Entry;
-
-import org.bukkit.Material;
-import org.saga.SagaLogger;
-import org.saga.utility.TwoPointFunction;
 
 public class Attribute {
 

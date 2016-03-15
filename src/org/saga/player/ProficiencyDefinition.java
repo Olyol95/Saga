@@ -1,11 +1,11 @@
 package org.saga.player;
 
-import java.util.Hashtable;
-
 import org.saga.SagaLogger;
 import org.saga.factions.Faction.FactionPermission;
 import org.saga.player.Proficiency.ProficiencyType;
 import org.saga.settlements.Settlement.SettlementPermission;
+
+import java.util.Hashtable;
 
 /**
  * Defines a profession.

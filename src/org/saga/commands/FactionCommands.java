@@ -1,8 +1,5 @@
 package org.saga.commands;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import org.bukkit.ChatColor;
 import org.saga.Saga;
 import org.saga.config.EconomyConfiguration;
@@ -15,19 +12,16 @@ import org.saga.factions.Faction;
 import org.saga.factions.Faction.FactionPermission;
 import org.saga.factions.FactionManager;
 import org.saga.factions.WarManager;
-import org.saga.messages.EconomyMessages;
-import org.saga.messages.FactionMessages;
-import org.saga.messages.GeneralMessages;
-import org.saga.messages.HelpMessages;
-import org.saga.messages.SettlementMessages;
-import org.saga.messages.StatsMessages;
-import org.saga.messages.WarMessages;
+import org.saga.messages.*;
 import org.saga.player.Proficiency;
 import org.saga.player.Proficiency.ProficiencyType;
 import org.saga.player.SagaPlayer;
 import org.sk89q.Command;
 import org.sk89q.CommandContext;
 import org.sk89q.CommandPermissions;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class FactionCommands {
 

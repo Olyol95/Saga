@@ -1,14 +1,14 @@
 package org.saga.buildings;
 
-import java.util.Collection;
-import java.util.Hashtable;
-import java.util.Set;
-
 import org.saga.Clock.DaytimeTicker.Daytime;
 import org.saga.SagaLogger;
 import org.saga.buildings.production.SagaRecipe;
 import org.saga.settlements.Settlement;
 import org.saga.utility.TwoPointFunction;
+
+import java.util.Collection;
+import java.util.Hashtable;
+import java.util.Set;
 
 public class BuildingDefinition {
 

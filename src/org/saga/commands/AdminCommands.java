@@ -5,27 +5,15 @@
 
 package org.saga.commands;
 
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.net.URLClassLoader;
-import java.util.*;
-import java.util.regex.Pattern;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.entity.Player;
-import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginLoader;
 import org.bukkit.plugin.PluginManager;
-import org.bukkit.plugin.SimplePluginManager;
 import org.bukkit.plugin.java.JavaPluginLoader;
 import org.saga.Clock;
 import org.saga.Clock.DaytimeTicker.Daytime;
@@ -39,12 +27,7 @@ import org.saga.dependencies.EconomyDependency;
 import org.saga.dependencies.PermissionsDependency;
 import org.saga.exceptions.NonExistantSagaPlayerException;
 import org.saga.exceptions.SagaPlayerNotLoadedException;
-import org.saga.messages.AdminMessages;
-import org.saga.messages.EconomyMessages;
-import org.saga.messages.GeneralMessages;
-import org.saga.messages.PlayerMessages;
-import org.saga.messages.SettlementMessages;
-import org.saga.messages.StatsMessages;
+import org.saga.messages.*;
 import org.saga.messages.effects.SettlementEffectHandler;
 import org.saga.player.GuardianRune;
 import org.saga.player.SagaPlayer;
@@ -57,6 +40,13 @@ import org.saga.settlements.Settlement;
 import org.sk89q.Command;
 import org.sk89q.CommandContext;
 import org.sk89q.CommandPermissions;
+
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.net.URLClassLoader;
+import java.util.*;
 
 public class AdminCommands {
 

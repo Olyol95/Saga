@@ -1,22 +1,12 @@
 package org.saga.player;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Set;
-
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
-import org.bukkit.entity.Arrow;
-import org.bukkit.entity.Damageable;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Fireball;
-import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 import org.saga.Saga;
@@ -33,6 +23,8 @@ import org.saga.settlements.Bundle;
 import org.saga.settlements.BundleManager;
 import org.saga.settlements.SagaChunk;
 import org.saga.shape.RelativeShape.Orientation;
+
+import java.util.*;
 
 public class SagaLiving {
 

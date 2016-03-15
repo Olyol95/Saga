@@ -1,32 +1,10 @@
 package org.saga.messages;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map.Entry;
-
 import org.saga.abilities.AbilityDefinition;
 import org.saga.attributes.Attribute;
-import org.saga.buildings.Academy;
-import org.saga.buildings.BuildingDefinition;
-import org.saga.buildings.TownSquare;
-import org.saga.buildings.TradingPost;
-import org.saga.buildings.TrainingCamp;
-import org.saga.buildings.Warehouse;
-import org.saga.buildings.signs.AbilitySign;
-import org.saga.buildings.signs.AttributeSign;
-import org.saga.buildings.signs.BuySign;
-import org.saga.buildings.signs.ExportSign;
-import org.saga.buildings.signs.GuardianRuneSign;
-import org.saga.buildings.signs.ImportSign;
-import org.saga.buildings.signs.SellSign;
-import org.saga.config.AbilityConfiguration;
-import org.saga.config.AttributeConfiguration;
-import org.saga.config.BuildingConfiguration;
-import org.saga.config.EconomyConfiguration;
-import org.saga.config.FactionConfiguration;
-import org.saga.config.GeneralConfiguration;
-import org.saga.config.ProficiencyConfiguration;
-import org.saga.config.SettlementConfiguration;
+import org.saga.buildings.*;
+import org.saga.buildings.signs.*;
+import org.saga.config.*;
 import org.saga.messages.colours.Colour;
 import org.saga.messages.colours.ColourLoop;
 import org.saga.player.Proficiency.ProficiencyType;
@@ -37,6 +15,10 @@ import org.saga.utility.chat.ChatBook;
 import org.saga.utility.chat.ChatTable;
 import org.saga.utility.chat.ChatUtil;
 import org.saga.utility.chat.RomanNumeral;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map.Entry;
 
 public class HelpMessages {
 

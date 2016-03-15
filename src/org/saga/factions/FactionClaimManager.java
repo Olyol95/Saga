@@ -1,14 +1,14 @@
 package org.saga.factions;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 import com.google.gson.JsonParseException;
 import org.saga.Clock;
 import org.saga.Clock.SecondTicker;
 import org.saga.SagaLogger;
 import org.saga.saveload.Directory;
 import org.saga.saveload.WriterReader;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class FactionClaimManager implements SecondTicker {
 

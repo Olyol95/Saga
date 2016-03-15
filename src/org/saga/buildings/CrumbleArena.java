@@ -1,16 +1,6 @@
 package org.saga.buildings;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Random;
-
-import org.bukkit.ChatColor;
-import org.bukkit.Chunk;
-import org.bukkit.Effect;
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.Sign;
@@ -30,6 +20,8 @@ import org.saga.listeners.events.SagaBuildEvent.BuildOverride;
 import org.saga.messages.BuildingMessages;
 import org.saga.player.SagaPlayer;
 import org.saga.utility.SagaLocation;
+
+import java.util.*;
 
 public class CrumbleArena extends Building implements SecondTicker {
 

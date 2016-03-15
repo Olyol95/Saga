@@ -1,9 +1,5 @@
 package org.saga.abilities;
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Set;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -18,6 +14,10 @@ import org.saga.messages.AbilityMessages;
 import org.saga.messages.effects.StatsEffectHandler;
 import org.saga.player.SagaLiving;
 import org.saga.player.SagaPlayer;
+
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Set;
 
 public class MeteorsTarget extends Ability {
 

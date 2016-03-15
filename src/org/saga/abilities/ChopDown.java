@@ -1,7 +1,5 @@
 package org.saga.abilities;
 
-import java.util.ArrayList;
-
 import org.bukkit.Effect;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -14,6 +12,8 @@ import org.saga.Saga;
 import org.saga.messages.AbilityMessages;
 import org.saga.messages.effects.StatsEffectHandler;
 import org.saga.player.SagaPlayer;
+
+import java.util.ArrayList;
 
 public class ChopDown extends Ability {
 

@@ -1,7 +1,5 @@
 package org.saga.abilities;
 
-import java.util.List;
-
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -17,6 +15,8 @@ import org.saga.listeners.events.SagaEventHandler;
 import org.saga.messages.effects.StatsEffectHandler;
 import org.saga.player.SagaLiving;
 import org.saga.player.SagaPlayer;
+
+import java.util.List;
 
 public class Crush extends Ability {
 

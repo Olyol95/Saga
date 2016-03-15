@@ -2,11 +2,7 @@ package org.saga.buildings;
 
 import org.bukkit.block.Sign;
 import org.bukkit.event.block.SignChangeEvent;
-import org.saga.buildings.signs.AbilitySign;
-import org.saga.buildings.signs.AttributeSign;
-import org.saga.buildings.signs.BuildingSign;
-import org.saga.buildings.signs.ResetAbilitySign;
-import org.saga.buildings.signs.ResetAttributeSign;
+import org.saga.buildings.signs.*;
 
 public class TrainingCamp extends Building {
 

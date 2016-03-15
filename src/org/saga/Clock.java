@@ -1,12 +1,12 @@
 package org.saga;
 
+import org.bukkit.World;
+import org.saga.Clock.DaytimeTicker.Daytime;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.List;
-
-import org.bukkit.World;
-import org.saga.Clock.DaytimeTicker.Daytime;
 
 public class Clock implements Runnable {
 

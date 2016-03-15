@@ -1,32 +1,22 @@
 package org.saga.listeners;
 
-import java.util.Iterator;
-import java.util.List;
-
 import org.bukkit.Chunk;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Creature;
-import org.bukkit.entity.Creeper;
-import org.bukkit.entity.Fireball;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Projectile;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.EntityBlockFormEvent;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.saga.Saga;
 import org.saga.config.GeneralConfiguration;
 import org.saga.config.SettlementConfiguration;
 import org.saga.config.VanillaConfiguration;
 import org.saga.factions.Faction;
-import org.saga.listeners.events.SagaBuildEvent;
 import org.saga.listeners.events.SagaDamageEvent;
 import org.saga.listeners.events.SagaDeathEvent;
 import org.saga.listeners.events.SagaEventHandler;
@@ -36,6 +26,9 @@ import org.saga.player.SagaLiving;
 import org.saga.player.SagaPlayer;
 import org.saga.settlements.BundleManager;
 import org.saga.settlements.SagaChunk;
+
+import java.util.Iterator;
+import java.util.List;
 
 public class EntityListener implements Listener {
 

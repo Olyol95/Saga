@@ -1,17 +1,17 @@
 package org.saga.factions;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Hashtable;
-
 import com.google.gson.JsonParseException;
 import org.saga.Clock;
 import org.saga.Clock.SecondTicker;
 import org.saga.SagaLogger;
 import org.saga.saveload.Directory;
 import org.saga.saveload.WriterReader;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Hashtable;
 
 public class WarManager implements SecondTicker {
 

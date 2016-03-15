@@ -1,15 +1,14 @@
 package org.saga.settlements;
 
-import java.util.ArrayList;
-import java.util.Hashtable;
-
 import org.bukkit.ChatColor;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.block.Biome;
-import org.saga.config.VanillaConfiguration;
 import org.saga.player.SagaPlayer;
 import org.saga.utility.AsciiCompass;
+
+import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class SagaMap {
 
@@ -46,7 +45,7 @@ public class SagaMap {
 		private static final long serialVersionUID = 1L;
 
 		{
-			put(Biome.BEACH, ChatColor.BLUE);
+			put(Biome.BEACHES, ChatColor.BLUE);
 
 			put(Biome.DESERT, ChatColor.YELLOW);
 			put(Biome.DESERT_HILLS, ChatColor.YELLOW);
@@ -60,13 +59,13 @@ public class SagaMap {
 			put(Biome.HELL, ChatColor.RED);
 
 			put(Biome.ICE_MOUNTAINS, ChatColor.WHITE);
-			put(Biome.ICE_PLAINS, ChatColor.WHITE);
+			put(Biome.ICE_FLATS, ChatColor.WHITE);
 
 			put(Biome.JUNGLE, ChatColor.GREEN);
 			put(Biome.JUNGLE_HILLS, ChatColor.GREEN);
 
 			put(Biome.MUSHROOM_ISLAND, ChatColor.BLACK);
-			put(Biome.MUSHROOM_SHORE, ChatColor.BLACK);
+			put(Biome.MUSHROOM_ISLAND_SHORE, ChatColor.BLACK);
 
 			put(Biome.OCEAN, ChatColor.DARK_BLUE);
 
@@ -76,7 +75,7 @@ public class SagaMap {
 
 			put(Biome.SKY, ChatColor.WHITE);
 
-			put(Biome.SMALL_MOUNTAINS, ChatColor.GRAY);
+			put(Biome.SMALLER_EXTREME_HILLS, ChatColor.GRAY);
 
 			put(Biome.SWAMPLAND, ChatColor.DARK_GRAY);
 

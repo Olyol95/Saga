@@ -13,8 +13,9 @@
     <orderEntry type="library" name="EssentialsGroupManager" level="project" />
     <orderEntry type="library" name="gson" level="project" />
     <orderEntry type="library" name="PermissionsEx" level="project" />
-    <orderEntry type="library" name="spigot" level="project" />
     <orderEntry type="library" name="spoutcraftplugin" level="project" />
     <orderEntry type="library" name="Vault" level="project" />
+    <orderEntry type="library" name="HealthBar" level="project" />
+    <orderEntry type="library" name="spigot" level="project" />
   </component>
 </module>

@@ -1,7 +1,5 @@
 package org.saga.buildings.signs;
 
-import java.util.ArrayList;
-
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Sign;
@@ -14,6 +12,8 @@ import org.saga.buildings.Building;
 import org.saga.config.SettlementConfiguration;
 import org.saga.player.SagaPlayer;
 import org.saga.saveload.SagaCustomSerialization;
+
+import java.util.ArrayList;
 
 public abstract class BuildingSign extends SagaCustomSerialization {
 

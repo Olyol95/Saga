@@ -1,9 +1,5 @@
 package org.saga.buildings.production;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Set;
-
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
 import org.bukkit.inventory.Inventory;
@@ -17,6 +13,10 @@ import org.saga.buildings.storage.StorageArea;
 import org.saga.exceptions.InvalidBuildingException;
 import org.saga.messages.BuildingMessages;
 import org.saga.settlements.Settlement;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Set;
 
 public class ProductionBuilding extends Building {
 

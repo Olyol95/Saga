@@ -1,9 +1,5 @@
 package org.saga.buildings;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-
 import org.bukkit.ChatColor;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
@@ -21,6 +17,10 @@ import org.saga.listeners.events.SagaDamageEvent.PvPOverride;
 import org.saga.messages.BuildingMessages;
 import org.saga.player.SagaPlayer;
 import org.saga.settlements.SagaChunk;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 
 public class Arena extends Building implements SecondTicker {
 

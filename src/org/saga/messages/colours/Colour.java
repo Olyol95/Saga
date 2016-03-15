@@ -1,8 +1,8 @@
 package org.saga.messages.colours;
 
-import java.util.Stack;
-
 import org.bukkit.ChatColor;
+
+import java.util.Stack;
 
 public class Colour {
 

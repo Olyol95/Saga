@@ -1,7 +1,5 @@
 package org.saga.abilities;
 
-import java.util.List;
-
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -13,6 +11,8 @@ import org.saga.Saga;
 import org.saga.listeners.events.SagaDamageEvent;
 import org.saga.listeners.events.SagaEventHandler;
 import org.saga.player.SagaLiving;
+
+import java.util.List;
 
 public class Charge extends Ability {
 

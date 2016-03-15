@@ -1,10 +1,10 @@
 package org.saga.buildings.production;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.Material;
 import org.saga.SagaLogger;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SagaResource extends SagaRecipe {
 

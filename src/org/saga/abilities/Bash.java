@@ -1,13 +1,13 @@
 package org.saga.abilities;
 
-import java.util.Random;
-
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.saga.attributes.DamageType;
 import org.saga.listeners.events.SagaDamageEvent;
 import org.saga.player.SagaPlayer;
+
+import java.util.Random;
 
 public class Bash extends Ability {
 

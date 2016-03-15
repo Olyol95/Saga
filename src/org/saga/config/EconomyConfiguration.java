@@ -1,10 +1,5 @@
 package org.saga.config;
 
-import java.io.IOException;
-import java.util.Collection;
-import java.util.Hashtable;
-import java.util.Random;
-
 import com.google.gson.JsonParseException;
 import org.bukkit.block.Block;
 import org.saga.Clock.DaytimeTicker.Daytime;
@@ -18,6 +13,11 @@ import org.saga.saveload.Directory;
 import org.saga.saveload.WriterReader;
 import org.saga.settlements.Settlement;
 import org.saga.utility.TwoPointFunction;
+
+import java.io.IOException;
+import java.util.Collection;
+import java.util.Hashtable;
+import java.util.Random;
 
 public class EconomyConfiguration {
 

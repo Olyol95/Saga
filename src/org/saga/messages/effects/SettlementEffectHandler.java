@@ -1,7 +1,5 @@
 package org.saga.messages.effects;
 
-import java.util.ArrayList;
-
 import org.bukkit.Chunk;
 import org.bukkit.Effect;
 import org.bukkit.Location;
@@ -11,6 +9,8 @@ import org.saga.buildings.Building;
 import org.saga.buildings.storage.StorageArea;
 import org.saga.player.SagaPlayer;
 import org.saga.settlements.SagaChunk;
+
+import java.util.ArrayList;
 
 public class SettlementEffectHandler {
 

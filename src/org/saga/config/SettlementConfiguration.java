@@ -1,15 +1,5 @@
 package org.saga.config;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
-
 import com.google.gson.JsonParseException;
 import org.bukkit.ChatColor;
 import org.saga.SagaLogger;
@@ -17,6 +7,10 @@ import org.saga.saveload.Directory;
 import org.saga.saveload.WriterReader;
 import org.saga.settlements.Settlement;
 import org.saga.utility.TwoPointFunction;
+
+import java.io.IOException;
+import java.util.*;
+import java.util.Map.Entry;
 
 public class SettlementConfiguration {
 

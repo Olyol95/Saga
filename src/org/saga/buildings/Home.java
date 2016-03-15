@@ -1,7 +1,5 @@
 package org.saga.buildings;
 
-import java.util.ArrayList;
-
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -12,6 +10,8 @@ import org.saga.listeners.events.SagaBuildEvent.BuildOverride;
 import org.saga.messages.BuildingMessages;
 import org.saga.player.SagaPlayer;
 import org.saga.settlements.Settlement.SettlementPermission;
+
+import java.util.ArrayList;
 
 public class Home extends Building {
 

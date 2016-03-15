@@ -1,8 +1,5 @@
 package org.saga.utility;
 
-import java.util.HashMap;
-import java.util.Set;
-
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -10,6 +7,9 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.saga.SagaLogger;
 import org.saga.buildings.production.SagaItem;
+
+import java.util.HashMap;
+import java.util.Set;
 
 public class InventoryUtil {
 

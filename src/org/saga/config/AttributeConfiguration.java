@@ -1,16 +1,15 @@
 package org.saga.config;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.Iterator;
-
 import com.google.gson.JsonParseException;
 import org.saga.SagaLogger;
 import org.saga.attributes.Attribute;
 import org.saga.attributes.DamageType;
 import org.saga.saveload.Directory;
 import org.saga.saveload.WriterReader;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class AttributeConfiguration {
 

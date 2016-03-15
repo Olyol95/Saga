@@ -1,19 +1,5 @@
 package org.saga.saveload;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.jar.JarFile;
-import java.util.zip.ZipEntry;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.saga.SagaLogger;
@@ -21,6 +7,10 @@ import org.saga.abilities.Ability;
 import org.saga.buildings.Building;
 import org.saga.buildings.signs.BuildingSign;
 import org.saga.settlements.Bundle;
+
+import java.io.*;
+import java.util.jar.JarFile;
+import java.util.zip.ZipEntry;
 
 public class WriterReader {
 

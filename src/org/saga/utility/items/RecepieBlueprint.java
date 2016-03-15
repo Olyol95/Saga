@@ -1,10 +1,10 @@
 package org.saga.utility.items;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-
 import org.bukkit.inventory.ItemStack;
 import org.saga.SagaLogger;
+
+import java.util.ArrayList;
+import java.util.HashSet;
 
 public class RecepieBlueprint {
 

@@ -1,13 +1,5 @@
 package org.saga.config;
 
-import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-
 import com.google.gson.JsonParseException;
 import org.saga.SagaLogger;
 import org.saga.buildings.Building;
@@ -15,6 +7,10 @@ import org.saga.buildings.BuildingDefinition;
 import org.saga.exceptions.InvalidBuildingException;
 import org.saga.saveload.Directory;
 import org.saga.saveload.WriterReader;
+
+import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.util.*;
 
 public class BuildingConfiguration {
 

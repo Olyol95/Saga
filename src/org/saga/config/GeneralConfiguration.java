@@ -1,10 +1,5 @@
 package org.saga.config;
 
-import java.io.IOException;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Hashtable;
-
 import com.google.gson.JsonParseException;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -14,6 +9,11 @@ import org.saga.SagaLogger;
 import org.saga.saveload.Directory;
 import org.saga.saveload.WriterReader;
 import org.saga.statistics.StatisticsManager;
+
+import java.io.IOException;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Hashtable;
 
 public class GeneralConfiguration {
 

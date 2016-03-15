@@ -1,8 +1,5 @@
 package org.saga.abilities;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -18,6 +15,9 @@ import org.saga.messages.effects.StatsEffectHandler;
 import org.saga.player.SagaPlayer;
 import org.saga.shape.BlockFilter;
 import org.saga.shape.RelativeShape;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public class HeavySwing extends Ability {
 

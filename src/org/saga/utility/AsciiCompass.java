@@ -1,8 +1,8 @@
 package org.saga.utility;
 
-import java.util.ArrayList;
-
 import org.bukkit.ChatColor;
+
+import java.util.ArrayList;
 
 public class AsciiCompass {
 	public enum Point {

@@ -1,9 +1,9 @@
 package org.saga.shape;
 
-import java.util.ArrayList;
-
 import org.bukkit.Location;
 import org.bukkit.block.Block;
+
+import java.util.ArrayList;
 
 public class RelativeShape {
 

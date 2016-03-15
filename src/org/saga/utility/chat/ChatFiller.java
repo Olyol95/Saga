@@ -1,9 +1,11 @@
 package org.saga.utility.chat;
 
-import java.util.*;
-
 import org.bukkit.ChatColor;
 import org.saga.messages.colours.Colour.CustomColour;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ChatFiller {
 

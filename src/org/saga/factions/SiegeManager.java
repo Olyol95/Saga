@@ -1,13 +1,5 @@
 package org.saga.factions;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Hashtable;
-import java.util.Map.Entry;
-import java.util.Set;
-
 import com.google.gson.JsonParseException;
 import org.saga.Clock;
 import org.saga.Clock.SecondTicker;
@@ -21,6 +13,14 @@ import org.saga.saveload.WriterReader;
 import org.saga.settlements.Bundle;
 import org.saga.settlements.BundleManager;
 import org.saga.settlements.Settlement;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Hashtable;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class SiegeManager implements SecondTicker {
 

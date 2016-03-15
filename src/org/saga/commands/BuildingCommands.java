@@ -1,8 +1,5 @@
 package org.saga.commands;
 
-import java.util.ArrayList;
-import java.util.Set;
-
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -11,22 +8,13 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.util.Vector;
 import org.saga.Saga;
 import org.saga.SagaLogger;
-import org.saga.buildings.Arena;
-import org.saga.buildings.Building;
-import org.saga.buildings.CrumbleArena;
-import org.saga.buildings.Home;
-import org.saga.buildings.TownSquare;
-import org.saga.buildings.TradingPost;
+import org.saga.buildings.*;
 import org.saga.buildings.storage.StorageArea;
 import org.saga.config.BuildingConfiguration;
 import org.saga.exceptions.InvalidBuildingException;
 import org.saga.factions.Faction;
 import org.saga.factions.SiegeManager;
-import org.saga.messages.BuildingMessages;
-import org.saga.messages.GeneralMessages;
-import org.saga.messages.SettlementMessages;
-import org.saga.messages.StatsMessages;
-import org.saga.messages.WarMessages;
+import org.saga.messages.*;
 import org.saga.messages.effects.SettlementEffectHandler;
 import org.saga.player.SagaPlayer;
 import org.saga.settlements.Bundle;
@@ -39,6 +27,9 @@ import org.saga.utility.SagaLocation;
 import org.sk89q.Command;
 import org.sk89q.CommandContext;
 import org.sk89q.CommandPermissions;
+
+import java.util.ArrayList;
+import java.util.Set;
 
 public class BuildingCommands {
 

@@ -1,8 +1,5 @@
 package org.saga.abilities;
 
-import java.util.Collection;
-import java.util.Random;
-
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -11,6 +8,9 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.saga.messages.AbilityMessages;
 import org.saga.player.SagaLiving;
+
+import java.util.Collection;
+import java.util.Random;
 
 public class Repair extends Ability {
 

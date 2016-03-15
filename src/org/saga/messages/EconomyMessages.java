@@ -1,7 +1,5 @@
 package org.saga.messages;
 
-import java.util.ArrayList;
-
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -14,6 +12,8 @@ import org.saga.player.SagaPlayer;
 import org.saga.settlements.Bundle;
 import org.saga.settlements.Settlement;
 import org.saga.utility.chat.ChatUtil;
+
+import java.util.ArrayList;
 
 public class EconomyMessages {
 

@@ -1,7 +1,5 @@
 package org.saga.buildings.signs;
 
-import java.util.Collection;
-
 import org.bukkit.Material;
 import org.bukkit.block.Sign;
 import org.bukkit.inventory.ItemStack;
@@ -17,6 +15,8 @@ import org.saga.messages.EconomyMessages;
 import org.saga.messages.GeneralMessages;
 import org.saga.player.SagaPlayer;
 import org.saga.statistics.StatisticsManager;
+
+import java.util.Collection;
 
 public class BuySign extends BuildingSign {
 

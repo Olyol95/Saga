@@ -1,15 +1,14 @@
 package org.saga.attributes;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 import org.bukkit.Effect;
 import org.bukkit.Material;
-import org.saga.attributes.DamageType;
 import org.saga.config.AttributeConfiguration;
 import org.saga.listeners.events.SagaDamageEvent;
 import org.saga.listeners.events.SagaLootEvent;
 import org.saga.player.SagaLiving;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public class AttributeManager {
 

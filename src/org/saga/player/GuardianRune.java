@@ -1,7 +1,5 @@
 package org.saga.player;
 
-import java.util.List;
-
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -10,6 +8,8 @@ import org.saga.SagaLogger;
 import org.saga.config.GeneralConfiguration;
 import org.saga.messages.PlayerMessages;
 import org.saga.statistics.StatisticsManager;
+
+import java.util.List;
 
 public class GuardianRune {
 

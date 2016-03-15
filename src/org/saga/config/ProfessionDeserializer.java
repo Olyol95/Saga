@@ -5,10 +5,10 @@
 
 package org.saga.config;
 
-import java.lang.reflect.Type;
-
 import com.google.gson.*;
 import org.saga.player.ProficiencyDefinition;
+
+import java.lang.reflect.Type;
 
 /**
  * 

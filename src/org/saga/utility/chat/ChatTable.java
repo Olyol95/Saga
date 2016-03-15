@@ -1,10 +1,10 @@
 package org.saga.utility.chat;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 import org.bukkit.ChatColor;
 import org.saga.messages.colours.ColourLoop;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class ChatTable {
 

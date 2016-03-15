@@ -1,8 +1,8 @@
 package org.saga.utility;
 
-import java.util.Random;
-
 import org.saga.SagaLogger;
+
+import java.util.Random;
 
 public class TwoPointFunction {
 

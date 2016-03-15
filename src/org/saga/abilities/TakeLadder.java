@@ -1,8 +1,5 @@
 package org.saga.abilities;
 
-import java.util.ArrayList;
-import java.util.Set;
-
 import org.bukkit.Effect;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -15,6 +12,9 @@ import org.bukkit.inventory.PlayerInventory;
 import org.saga.Saga;
 import org.saga.messages.AbilityMessages;
 import org.saga.utility.InventoryUtil;
+
+import java.util.ArrayList;
+import java.util.Set;
 
 public class TakeLadder extends Ability {
 

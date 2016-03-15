@@ -1,9 +1,5 @@
 package org.saga.buildings;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Set;
-
 import org.bukkit.block.Sign;
 import org.bukkit.event.block.SignChangeEvent;
 import org.saga.Clock.DaytimeTicker;
@@ -11,16 +7,16 @@ import org.saga.SagaLogger;
 import org.saga.buildings.production.ProductionBuilding;
 import org.saga.buildings.production.SagaItem;
 import org.saga.buildings.production.SagaPricedItem;
-import org.saga.buildings.signs.BuildingSign;
-import org.saga.buildings.signs.BuySign;
-import org.saga.buildings.signs.ExportSign;
-import org.saga.buildings.signs.ImportSign;
-import org.saga.buildings.signs.SellSign;
+import org.saga.buildings.signs.*;
 import org.saga.config.EconomyConfiguration;
 import org.saga.exceptions.InvalidBuildingException;
 import org.saga.messages.EconomyMessages;
 import org.saga.settlements.Settlement;
 import org.saga.settlements.Settlement.SettlementPermission;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Set;
 
 public class TradingPost extends ProductionBuilding implements DaytimeTicker {
 

@@ -1,11 +1,5 @@
 package org.saga.abilities;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.Set;
-
 import org.bukkit.Material;
 import org.saga.SagaLogger;
 import org.saga.config.AbilityConfiguration;
@@ -14,6 +8,8 @@ import org.saga.player.SagaLiving;
 import org.saga.player.SagaPlayer;
 import org.saga.settlements.Bundle;
 import org.saga.utility.TwoPointFunction;
+
+import java.util.*;
 
 /**
  * Defines a profession.

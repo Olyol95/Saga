@@ -1,16 +1,16 @@
 package org.saga;
 
-import java.lang.reflect.Method;
-import java.util.EnumMap;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import org.bukkit.ChatColor;
 import org.bukkit.craftbukkit.libs.jline.Terminal;
 import org.bukkit.craftbukkit.libs.jline.console.ConsoleReader;
 import org.fusesource.jansi.Ansi;
 import org.fusesource.jansi.Ansi.Attribute;
+
+import java.lang.reflect.Method;
+import java.util.EnumMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SagaLogger {
 

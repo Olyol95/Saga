@@ -1,15 +1,15 @@
 package org.saga.buildings;
 
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Hashtable;
-
 import org.bukkit.entity.Monster;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 import org.saga.Clock.DaytimeTicker;
 import org.saga.exceptions.InvalidBuildingException;
 import org.saga.settlements.SagaChunk;
+
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Hashtable;
 
 public class Watchtower extends Building implements DaytimeTicker {
 

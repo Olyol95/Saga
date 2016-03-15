@@ -1,10 +1,5 @@
 package org.saga.commands;
 
-import java.io.File;
-import java.util.Collection;
-import java.util.Random;
-
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.util.Vector;
 import org.saga.ResetManager;
@@ -13,7 +8,6 @@ import org.saga.SagaLogger;
 import org.saga.abilities.AbilityDefinition;
 import org.saga.config.AbilityConfiguration;
 import org.saga.config.AttributeConfiguration;
-import org.saga.config.EconomyConfiguration;
 import org.saga.config.GeneralConfiguration;
 import org.saga.dependencies.EconomyDependency;
 import org.saga.dependencies.PermissionsDependency;
@@ -25,10 +19,13 @@ import org.saga.saveload.Directory;
 import org.saga.settlements.Bundle;
 import org.saga.settlements.BundleManager;
 import org.saga.settlements.SagaChunk;
-import org.saga.settlements.Settlement;
 import org.sk89q.Command;
 import org.sk89q.CommandContext;
 import org.sk89q.CommandPermissions;
+
+import java.io.File;
+import java.util.Collection;
+import java.util.Random;
 
 public class PlayerCommands {
 

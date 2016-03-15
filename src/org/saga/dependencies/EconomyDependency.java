@@ -3,7 +3,6 @@ package org.saga.dependencies;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
 import net.milkbowl.vault.economy.EconomyResponse.ResponseType;
-
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.saga.Saga;
 import org.saga.SagaLogger;

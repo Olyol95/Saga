@@ -1,8 +1,5 @@
 package org.saga.buildings.storage;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -18,6 +15,9 @@ import org.saga.shape.BlockFilter;
 import org.saga.shape.RelativeShape;
 import org.saga.shape.RelativeShape.Orientation;
 import org.saga.utility.SagaLocation;
+
+import java.util.ArrayList;
+import java.util.HashSet;
 
 public class StorageArea {
 

@@ -1,7 +1,5 @@
 package org.saga.buildings;
 
-import java.util.ArrayList;
-
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
@@ -19,6 +17,8 @@ import org.saga.messages.GeneralMessages;
 import org.saga.player.SagaPlayer;
 import org.saga.settlements.Bundle;
 import org.saga.settlements.Settlement.SettlementPermission;
+
+import java.util.ArrayList;
 
 public class Warehouse extends Building {
 

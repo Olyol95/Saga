@@ -1,9 +1,5 @@
 package org.saga.abilities;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -18,6 +14,10 @@ import org.saga.player.SagaPlayer;
 import org.saga.shape.Point;
 import org.saga.shape.TrapezoidGrid;
 import org.saga.utility.TwoPointFunction;
+
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
 
 public class Meteors extends Ability {
 

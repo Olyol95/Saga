@@ -1,7 +1,5 @@
 package org.saga.abilities;
 
-import java.util.HashSet;
-
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
@@ -11,6 +9,8 @@ import org.bukkit.event.player.PlayerShearEntityEvent;
 import org.saga.abilities.AbilityDefinition.ActivationAction;
 import org.saga.listeners.events.SagaDamageEvent;
 import org.saga.player.SagaLiving;
+
+import java.util.HashSet;
 
 public class AbilityManager {
 

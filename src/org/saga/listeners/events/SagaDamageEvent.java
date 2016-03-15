@@ -1,7 +1,5 @@
 package org.saga.listeners.events;
 
-import java.util.PriorityQueue;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
@@ -20,6 +18,8 @@ import org.saga.player.SagaPlayer;
 import org.saga.settlements.BundleManager;
 import org.saga.settlements.SagaChunk;
 import org.saga.utility.TwoPointFunction;
+
+import java.util.PriorityQueue;
 
 public class SagaDamageEvent {
 

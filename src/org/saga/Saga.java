@@ -1,8 +1,5 @@
 package org.saga;
 
-import java.util.*;
-
-import org.apache.commons.lang.ObjectUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -10,24 +7,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.saga.Clock.MinuteTicker;
-import org.saga.commands.AdminCommands;
-import org.saga.commands.BuildingCommands;
-import org.saga.commands.EconomyCommands;
-import org.saga.commands.FactionCommands;
-import org.saga.commands.PlayerCommands;
-import org.saga.commands.SettlementCommands;
-import org.saga.commands.StatisticsCommands;
-import org.saga.commands.WarCommands;
-import org.saga.config.AbilityConfiguration;
-import org.saga.config.AttributeConfiguration;
-import org.saga.config.BuildingConfiguration;
-import org.saga.config.EconomyConfiguration;
-import org.saga.config.ExperienceConfiguration;
-import org.saga.config.FactionConfiguration;
-import org.saga.config.GeneralConfiguration;
-import org.saga.config.ProficiencyConfiguration;
-import org.saga.config.SettlementConfiguration;
-import org.saga.config.VanillaConfiguration;
+import org.saga.commands.*;
+import org.saga.config.*;
 import org.saga.dependencies.ChatDependency;
 import org.saga.dependencies.EconomyDependency;
 import org.saga.dependencies.PermissionsDependency;
@@ -38,20 +19,13 @@ import org.saga.factions.FactionClaimManager;
 import org.saga.factions.FactionManager;
 import org.saga.factions.SiegeManager;
 import org.saga.factions.WarManager;
-import org.saga.listeners.BlockListener;
-import org.saga.listeners.EntityListener;
-import org.saga.listeners.PlayerListener;
-import org.saga.listeners.ServerListener;
-import org.saga.listeners.WorldListener;
+import org.saga.listeners.*;
 import org.saga.player.SagaPlayer;
 import org.saga.settlements.BundleManager;
 import org.saga.statistics.StatisticsManager;
-import org.sk89q.CommandPermissionsException;
-import org.sk89q.CommandUsageException;
-import org.sk89q.CommandsManager;
-import org.sk89q.MissingNestedCommandException;
-import org.sk89q.UnhandledCommandException;
-import org.sk89q.WrappedCommandException;
+import org.sk89q.*;
+
+import java.util.*;
 
 public class Saga extends JavaPlugin implements MinuteTicker {
 

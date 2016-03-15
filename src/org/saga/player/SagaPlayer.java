@@ -1,9 +1,5 @@
 package org.saga.player;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
-
 import com.google.gson.JsonParseException;
 import org.bukkit.Effect;
 import org.bukkit.Material;
@@ -34,6 +30,10 @@ import org.saga.settlements.BundleManager;
 import org.saga.settlements.Settlement;
 import org.saga.statistics.StatisticsManager;
 import org.saga.utility.InventoryUtil;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class SagaPlayer extends SagaLiving implements Trader {
 

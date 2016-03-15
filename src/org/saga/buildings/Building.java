@@ -1,8 +1,5 @@
 package org.saga.buildings;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -41,6 +38,9 @@ import org.saga.settlements.Settlement;
 import org.saga.settlements.Settlement.SettlementPermission;
 import org.saga.utility.chat.ChatUtil;
 import org.sk89q.CommandContext;
+
+import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * 

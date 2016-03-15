@@ -1,7 +1,5 @@
 package org.saga.listeners.events;
 
-import java.util.ArrayList;
-
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -22,6 +20,8 @@ import org.saga.player.SagaPlayer;
 import org.saga.settlements.SagaChunk;
 import org.saga.statistics.StatisticsManager;
 import org.saga.utility.TwoPointFunction;
+
+import java.util.ArrayList;
 
 public class SagaLootEvent {
 

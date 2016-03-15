@@ -61,7 +61,7 @@ public class StatsEffectHandler {
 
 		Location loc = living.getLocation();
 
-		loc.getWorld().playSound(loc, Sound.ANVIL_LAND, 1.0f, 2.0f);
+		loc.getWorld().playSound(loc, Sound.BLOCK_ANVIL_LAND, 1.0f, 2.0f);
 
 	}
 
@@ -71,13 +71,13 @@ public class StatsEffectHandler {
 
 		Location loc = living.getLocation();
 
-		loc.getWorld().playSound(loc, Sound.ANVIL_LAND, 1.0f, 2.0f);
+		loc.getWorld().playSound(loc, Sound.BLOCK_ANVIL_LAND, 1.0f, 2.0f);
 
 	}
 
 	public static void playLevelUp(SagaPlayer sagaPlayer) {
 
-		sagaPlayer.playGlobalSound(Sound.LEVEL_UP, 1.0F, 0.5F);
+		sagaPlayer.playGlobalSound(Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 0.5F);
 
 	}
 
@@ -113,7 +113,7 @@ public class StatsEffectHandler {
 		}
 
 		// Sound:
-		loc.getWorld().playSound(loc, Sound.FALL_BIG, 0.5f, 0.5f);
+		loc.getWorld().playSound(loc, Sound.ENTITY_PLAYER_BIG_FALL, 0.5f, 0.5f);
 
 	}
 

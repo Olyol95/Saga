@@ -1,9 +1,6 @@
 package org.saga.dependencies;
 
-import java.util.Hashtable;
-
 import net.milkbowl.vault.permission.Permission;
-
 import org.anjocaido.groupmanager.GroupManager;
 import org.anjocaido.groupmanager.permissions.AnjoPermissionsHandler;
 import org.bukkit.entity.Player;
@@ -14,8 +11,9 @@ import org.saga.Saga;
 import org.saga.SagaLogger;
 import org.saga.player.SagaPlayer;
 import org.sk89q.SagaCommandsManager;
-
 import ru.tehkode.permissions.bukkit.PermissionsEx;
+
+import java.util.Hashtable;
 
 /**
  * Permissions manager. Hooks up with different permission plugins.

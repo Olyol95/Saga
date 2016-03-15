@@ -1,12 +1,12 @@
 package org.saga.statistics;
 
-import java.util.HashSet;
-
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.saga.player.SagaPlayer;
+
+import java.util.HashSet;
 
 public class XrayIndicator {
 

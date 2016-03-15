@@ -1,8 +1,5 @@
 package org.saga.config;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
 import com.google.gson.JsonParseException;
 import org.saga.SagaLogger;
 import org.saga.player.Proficiency;
@@ -10,6 +7,9 @@ import org.saga.player.Proficiency.ProficiencyType;
 import org.saga.player.ProficiencyDefinition;
 import org.saga.saveload.Directory;
 import org.saga.saveload.WriterReader;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class ProficiencyConfiguration {
 

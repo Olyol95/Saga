@@ -1,12 +1,12 @@
 package org.saga.utility.chat;
 
-import java.util.ArrayList;
-import java.util.Hashtable;
-
 import org.bukkit.ChatColor;
 import org.saga.messages.GeneralMessages;
 import org.saga.messages.colours.Colour;
 import org.saga.messages.colours.ColourLoop;
+
+import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class ChatBook {
 

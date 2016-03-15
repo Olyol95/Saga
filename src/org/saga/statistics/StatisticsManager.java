@@ -1,29 +1,12 @@
 package org.saga.statistics;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.GregorianCalendar;
-import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.Set;
-import java.util.TreeSet;
-
 import com.google.gson.JsonParseException;
 import org.bukkit.Material;
 import org.saga.Clock;
 import org.saga.Clock.HourTicker;
 import org.saga.SagaLogger;
 import org.saga.abilities.Ability;
-import org.saga.config.AbilityConfiguration;
-import org.saga.config.AttributeConfiguration;
-import org.saga.config.BuildingConfiguration;
-import org.saga.config.GeneralConfiguration;
-import org.saga.config.ProficiencyConfiguration;
-import org.saga.config.SettlementConfiguration;
+import org.saga.config.*;
 import org.saga.dependencies.EconomyDependency;
 import org.saga.factions.Faction;
 import org.saga.factions.SiegeManager;
@@ -37,6 +20,11 @@ import org.saga.settlements.Bundle;
 import org.saga.settlements.Settlement;
 import org.saga.utility.chat.ChatUtil;
 import org.saga.utility.chat.RomanNumeral;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class StatisticsManager implements HourTicker {
 

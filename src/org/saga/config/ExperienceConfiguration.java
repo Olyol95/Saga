@@ -1,9 +1,5 @@
 package org.saga.config;
 
-import java.io.IOException;
-import java.util.Collection;
-import java.util.Hashtable;
-
 import com.google.gson.JsonParseException;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -14,6 +10,10 @@ import org.saga.player.SagaLiving;
 import org.saga.saveload.Directory;
 import org.saga.saveload.WriterReader;
 import org.saga.utility.TwoPointFunction;
+
+import java.io.IOException;
+import java.util.Collection;
+import java.util.Hashtable;
 
 public class ExperienceConfiguration {
 

@@ -1,7 +1,7 @@
 package org.saga.dependencies;
 
+import com.earth2me.essentials.chat.EssentialsChat;
 import net.milkbowl.vault.chat.Chat;
-
 import org.anjocaido.groupmanager.GroupManager;
 import org.anjocaido.groupmanager.dataholder.OverloadedWorldHolder;
 import org.bukkit.ChatColor;
@@ -14,11 +14,7 @@ import org.saga.SagaLogger;
 import org.saga.config.EconomyConfiguration;
 import org.saga.config.GeneralConfiguration;
 import org.saga.factions.Faction;
-import org.saga.player.Proficiency;
 import org.saga.player.SagaPlayer;
-import org.saga.settlements.Bundle;
-
-import com.earth2me.essentials.chat.EssentialsChat;
 
 public class ChatDependency {
 

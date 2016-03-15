@@ -1,9 +1,5 @@
 package org.saga.config;
 
-import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.util.ArrayList;
-
 import com.google.gson.JsonParseException;
 import org.saga.SagaLogger;
 import org.saga.abilities.Ability;
@@ -11,6 +7,10 @@ import org.saga.abilities.AbilityDefinition;
 import org.saga.exceptions.InvalidAbilityException;
 import org.saga.saveload.Directory;
 import org.saga.saveload.WriterReader;
+
+import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.util.ArrayList;
 
 public class AbilityConfiguration {
 

@@ -1,10 +1,5 @@
 package org.saga.messages;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.saga.config.GeneralConfiguration;
@@ -19,6 +14,11 @@ import org.saga.utility.chat.ChatBook;
 import org.saga.utility.chat.ChatFramer;
 import org.saga.utility.chat.ChatTable;
 import org.saga.utility.chat.ChatUtil;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class StatisticsMessages {
 

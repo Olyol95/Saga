@@ -1,7 +1,5 @@
 package org.saga.abilities;
 
-import java.util.List;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Arrow;
@@ -13,6 +11,8 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.util.Vector;
 import org.saga.Saga;
 import org.saga.listeners.events.SagaDamageEvent;
+
+import java.util.List;
 
 public class Ricochet extends Ability {
 

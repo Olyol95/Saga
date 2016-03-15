@@ -1,16 +1,12 @@
 package org.saga.factions;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Hashtable;
-import java.util.Random;
-import java.util.Set;
-
 import org.saga.SagaLogger;
 import org.saga.player.SagaPlayer;
 import org.saga.saveload.Directory;
 import org.saga.saveload.WriterReader;
 import org.saga.statistics.StatisticsManager;
+
+import java.util.*;
 
 public class FactionManager {
 

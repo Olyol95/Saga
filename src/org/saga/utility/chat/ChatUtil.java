@@ -1,14 +1,14 @@
 package org.saga.utility.chat;
 
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.saga.messages.colours.ColourLoop;
 import org.saga.utility.ArrayUtil;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 
 public class ChatUtil {
 

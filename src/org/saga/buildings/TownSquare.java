@@ -1,10 +1,6 @@
 package org.saga.buildings;
 
-import java.util.HashSet;
-import java.util.Hashtable;
-
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.event.player.PlayerRespawnEvent;
@@ -19,6 +15,9 @@ import org.saga.listeners.events.SagaDamageEvent.PvPOverride;
 import org.saga.player.SagaPlayer;
 import org.saga.settlements.SagaChunk;
 import org.saga.utility.SagaLocation;
+
+import java.util.HashSet;
+import java.util.Hashtable;
 
 public class TownSquare extends Building implements SecondTicker {
 

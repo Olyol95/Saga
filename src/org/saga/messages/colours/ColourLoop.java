@@ -1,9 +1,9 @@
 package org.saga.messages.colours;
 
-import java.util.ArrayList;
-
 import org.bukkit.ChatColor;
 import org.saga.messages.PlayerMessages;
+
+import java.util.ArrayList;
 
 public class ColourLoop {
 

@@ -1,7 +1,5 @@
 package org.saga.listeners.events;
 
-import java.util.PriorityQueue;
-
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -19,6 +17,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.saga.player.SagaPlayer;
 import org.saga.settlements.SagaChunk;
+
+import java.util.PriorityQueue;
 
 public class SagaBuildEvent {
 

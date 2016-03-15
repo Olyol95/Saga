@@ -1,13 +1,13 @@
 package org.saga.config;
 
-import java.io.IOException;
-import java.util.Hashtable;
-
 import com.google.gson.JsonParseException;
 import org.saga.SagaLogger;
 import org.saga.saveload.Directory;
 import org.saga.saveload.WriterReader;
 import org.saga.utility.TwoPointFunction;
+
+import java.io.IOException;
+import java.util.Hashtable;
 
 public class FactionConfiguration {
 

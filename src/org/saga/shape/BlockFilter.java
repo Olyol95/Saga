@@ -1,9 +1,9 @@
 package org.saga.shape;
 
-import java.util.HashSet;
-
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+
+import java.util.HashSet;
 
 public class BlockFilter implements ShapeFilter {
 

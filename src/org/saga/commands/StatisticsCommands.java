@@ -5,8 +5,6 @@
 
 package org.saga.commands;
 
-import java.util.ArrayList;
-
 import org.bukkit.Material;
 import org.saga.Saga;
 import org.saga.config.GeneralConfiguration;
@@ -22,6 +20,8 @@ import org.saga.utility.MetricPrefix;
 import org.sk89q.Command;
 import org.sk89q.CommandContext;
 import org.sk89q.CommandPermissions;
+
+import java.util.ArrayList;
 
 public class StatisticsCommands {
 
