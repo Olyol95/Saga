@@ -152,6 +152,8 @@ public class GeneralConfiguration {
 
 	private Integer[] randomTPBounds;
 
+	private Integer[] randomTPCentre;
+
 	// Initialisation:
 	/**
 	 * Used by gson.
@@ -285,6 +287,11 @@ public class GeneralConfiguration {
 			randomTPBounds = new Integer[]{-300,300,-300,300};
 		}
 
+		if (randomTPCentre == null || randomTPCentre.length != 2) {
+			SagaLogger.nullField(getClass(), "randomTPCentre");
+			randomTPCentre = new Integer[]{0,0};
+		}
+
 	}
 
 	// Potions:
@@ -414,6 +421,10 @@ public class GeneralConfiguration {
 	public Integer getRandomTPMinZ() { return randomTPBounds[2]; }
 
 	public Integer getRandomTPMaxZ() { return randomTPBounds[3]; }
+
+	public Integer getRandomTPCentreX() { return randomTPCentre[0]; }
+
+	public Integer getRandomTPCentreZ() { return randomTPCentre[1]; }
 
 	// Override:
 	/**

@@ -193,10 +193,10 @@ public class PlayerCommands {
 
 		Random random = new Random();
 
-		int minX = GeneralConfiguration.config().getRandomTPMinX();
-		int maxX = GeneralConfiguration.config().getRandomTPMaxX();
-		int minZ = GeneralConfiguration.config().getRandomTPMinZ();
-		int maxZ = GeneralConfiguration.config().getRandomTPMaxZ();
+		int minX = GeneralConfiguration.config().getRandomTPCentreX() + GeneralConfiguration.config().getRandomTPMinX();
+		int maxX = GeneralConfiguration.config().getRandomTPCentreX() + GeneralConfiguration.config().getRandomTPMaxX();
+		int minZ = GeneralConfiguration.config().getRandomTPCentreZ() + GeneralConfiguration.config().getRandomTPMinZ();
+		int maxZ = GeneralConfiguration.config().getRandomTPCentreZ() + GeneralConfiguration.config().getRandomTPMaxZ();
 
 		int chunkx,chunkz;
 
