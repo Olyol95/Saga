@@ -38,6 +38,7 @@
 "commandsOverride":{},
 
 "randomTPBounds":[-300,300,-300,300],
-"randomTPCentre":[0,0]
+"randomTPCentre":[0,0],
+"randomTPCooldown": 30
 
 }

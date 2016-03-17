@@ -1,5 +1,6 @@
 package org.saga.dependencies;
 
+import com.earth2me.essentials.api.NoLoanPermittedException;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
 import net.milkbowl.vault.economy.EconomyResponse.ResponseType;
@@ -7,6 +8,7 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.saga.Saga;
 import org.saga.SagaLogger;
 import org.saga.config.EconomyConfiguration;
+import org.saga.messages.colours.Colour;
 import org.saga.player.SagaPlayer;
 
 public class EconomyDependency {
@@ -20,6 +22,8 @@ public class EconomyDependency {
 	 * Vault economy.
 	 */
 	private Economy vaultEconomy = null;
+
+	private boolean essentialsEconomy = false;
 
 	/**
 	 * Enables the manager.
@@ -49,6 +53,15 @@ public class EconomyDependency {
 				return;
 			}
 		} catch (ClassNotFoundException e) {
+		}
+
+		try {
+			Class.forName("com.earth2me.essentials.api.Economy");
+			manager.essentialsEconomy = true;
+				SagaLogger.info("Using Essentials economy.");
+				return;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
 
 		SagaLogger.info("Using default economy.");
@@ -95,6 +108,21 @@ public class EconomyDependency {
 
 		}
 
+		if (manager.essentialsEconomy) {
+
+			String player = sagaPlayer.getName();
+
+			try {
+				com.earth2me.essentials.api.Economy.add(player, amount);
+			} catch (Exception e) {
+				sagaPlayer.message(Colour.negative + e.getLocalizedMessage());
+				SagaLogger.severe(EconomyDependency.class,
+						"failed to add coins to " + player + " player: "
+								+ e.getLocalizedMessage());
+			}
+
+		}
+
 		sagaPlayer.addCoins(amount);
 
 	}
@@ -129,6 +157,21 @@ public class EconomyDependency {
 
 		}
 
+		if (manager.essentialsEconomy) {
+
+			String player = sagaPlayer.getName();
+
+			try {
+				com.earth2me.essentials.api.Economy.subtract(player, amount);
+			} catch (Exception e) {
+				sagaPlayer.message(Colour.negative + e.getLocalizedMessage());
+				SagaLogger.severe(EconomyDependency.class,
+						"failed to remove coins from " + player + " player: "
+								+ e.getLocalizedMessage());
+			}
+
+		}
+
 		return sagaPlayer.removeCoins(amount);
 
 	}
@@ -148,6 +191,21 @@ public class EconomyDependency {
 			String player = sagaPlayer.getName();
 
 			return manager.vaultEconomy.getBalance(player);
+
+		}
+
+		if (manager.essentialsEconomy) {
+
+			String player = sagaPlayer.getName();
+
+			try {
+				return com.earth2me.essentials.api.Economy.getMoney(player);
+			} catch (Exception e) {
+				sagaPlayer.message(Colour.negative + e.getLocalizedMessage());
+				SagaLogger.severe(EconomyDependency.class,
+						"failed to get coins for " + player + " player: "
+								+ e.getLocalizedMessage());
+			}
 
 		}
 

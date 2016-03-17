@@ -2,6 +2,7 @@ package org.saga.commands;
 
 import org.bukkit.Location;
 import org.bukkit.util.Vector;
+import org.saga.CooldownManager;
 import org.saga.ResetManager;
 import org.saga.Saga;
 import org.saga.SagaLogger;
@@ -188,6 +189,13 @@ public class PlayerCommands {
 	@CommandPermissions({ "saga.user.player.wild" })
 	public static void wild(CommandContext args, Saga plugin, SagaPlayer sagaPlayer) {
 
+		int cooldown = CooldownManager.getInstance().getTimeRemaining(sagaPlayer.getPlayer(),"wilderness");
+
+		if (!sagaPlayer.getPlayer().hasPermission("saga.user.player.wild.exempt") && cooldown > 0) {
+			sagaPlayer.message(GeneralMessages.onCooldown(cooldown));
+			return;
+		}
+
 		Random random = new Random();
 
 		int minX = GeneralConfiguration.config().getRandomTPCentreX() + GeneralConfiguration.config().getRandomTPMinX();
@@ -225,6 +233,7 @@ public class PlayerCommands {
 
 		} while (spawnLocation == null);
 
+		CooldownManager.getInstance().putCooldown(sagaPlayer.getPlayer(), "wilderness", GeneralConfiguration.config().getRandomTPCooldown());
 		sagaPlayer.message(PlayerMessages.teleporting());
 		sagaPlayer.teleport(spawnLocation);
 

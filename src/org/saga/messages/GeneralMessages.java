@@ -266,4 +266,8 @@ public class GeneralMessages {
 				+ " settlement).";
 	}
 
+	public static String onCooldown(int cooldown) {
+		return Colour.negative + "You cannot use that command for another " + cooldown + " seconds!";
+	}
+
 }
