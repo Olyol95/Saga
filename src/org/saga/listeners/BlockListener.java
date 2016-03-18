@@ -10,6 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.hanging.HangingBreakByEntityEvent;
+import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.saga.Saga;
 import org.saga.config.GeneralConfiguration;
@@ -170,7 +171,7 @@ public class BlockListener implements Listener {
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
 		
-		if (event.getEntity() instanceof ItemFrame || event.getEntity() instanceof Painting) {
+		if (event.getEntity() instanceof ItemFrame || event.getEntity() instanceof Painting || event.getEntity() instanceof ArmorStand) {
 			
 			Entity entity = event.getDamager();
 
@@ -227,12 +228,39 @@ public class BlockListener implements Listener {
 		}
 		
 	}
+
+	@EventHandler(priority = EventPriority.NORMAL)
+	public void onPlayerInteractAtEntity(PlayerInteractAtEntityEvent event) {
+
+		if (event.getRightClicked() instanceof ArmorStand) {
+
+			Player player = event.getPlayer();
+
+			// Cancel build on failure:
+			SagaPlayer sagaPlayer = Saga.plugin().getLoadedPlayer(player.getName());
+			if (sagaPlayer == null) {
+				event.setCancelled(true);
+				return;
+			}
+
+			// Get saga chunk:
+			SagaChunk sagaChunk = BundleManager.manager().getSagaChunk(event.getRightClicked().getLocation());
+
+			// Build event:
+			SagaBuildEvent buildEvent = new SagaBuildEvent(event, sagaPlayer,sagaChunk);
+			SagaEventHandler.handleBuild(buildEvent);
+			if (buildEvent.isCancelled())
+				return;
+
+		}
+
+	}
 	
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
-		
+
 		if (event.getRightClicked() instanceof ItemFrame) {
-			
+
 			Player player = event.getPlayer();
 			
 			// Cancel build on failure:
@@ -275,7 +303,7 @@ public class BlockListener implements Listener {
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void onHangingBreakByEntityEvent(HangingBreakByEntityEvent event) {
 		
-		if (event.getEntity() instanceof ItemFrame || event.getEntity() instanceof Painting) {
+		if (event.getEntity() instanceof ItemFrame || event.getEntity() instanceof Painting || event.getEntity() instanceof ArmorStand) {
 			
 			Entity entity = event.getRemover();
 

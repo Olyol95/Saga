@@ -221,7 +221,7 @@ public class GeneralConfiguration {
 			harmfulSplashPotions = new HashSet<>();
 		}
 
-		if (harmfulSplashPotions.remove(null) == true) {
+		if (harmfulSplashPotions.remove(null)) {
 			SagaLogger.nullField(getClass(), "harmfulSplashPotions element");
 		}
 
@@ -255,7 +255,7 @@ public class GeneralConfiguration {
 			guardRuneDisableWorlds = new HashSet<>();
 		}
 
-		if (guardRuneDisableWorlds.remove(null) == true) {
+		if (guardRuneDisableWorlds.remove(null)) {
 			SagaLogger.nullField(getClass(), "guardRuneDisableWorlds element");
 		}
 
@@ -296,7 +296,7 @@ public class GeneralConfiguration {
 
 		if (randomTPCooldown == null) {
 			SagaLogger.nullField(getClass(), "randomTPCooldown");
-			randomTPCooldown = 30;
+			randomTPCooldown = 300;
 		}
 
 	}

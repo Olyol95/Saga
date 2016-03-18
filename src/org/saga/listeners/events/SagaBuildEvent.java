@@ -291,6 +291,14 @@ public class SagaBuildEvent {
 
 				return true;
 
+			case ITEM_FRAME:
+
+				return true;
+
+			case ARMOR_STAND:
+
+				return true;
+
 			default:
 				break;
 
