@@ -102,8 +102,18 @@ public class SagaEventHandler {
 				event.getDefenderFaction().onPvPDefend(event);
 
 			// PvP override:
-			if (!event.getOverride().isAllow()) {
+			if (!event.getPvPOverride().isAllow()) {
 				event.sagaAttacker.message(PlayerMessages.pvpOverride(event));
+				event.cancel();
+				return;
+			}
+
+		}
+
+		if (event.isPvC()) {
+
+			if (!event.getPvCOverride().isAllow()) {
+				event.sagaAttacker.message(PlayerMessages.pvcOverride(event));
 				event.cancel();
 				return;
 			}

@@ -57,7 +57,7 @@ public class PlayerMessages {
 	// Player versus player:
 	public static String pvpOverride(SagaDamageEvent event) {
 
-		PvPOverride cause = event.getOverride();
+		PvPOverride cause = event.getPvPOverride();
 
 		switch (cause) {
 		case SAME_FACTION_DENY:
@@ -87,6 +87,26 @@ public class PlayerMessages {
 		}
 
 		return Colour.negative + "Can't attack player.";
+
+	}
+
+	public static String pvcOverride(SagaDamageEvent event) {
+
+		SagaDamageEvent.PvCOverride cause = event.getPvCOverride();
+
+		switch (cause) {
+
+			case SETTLEMENT_DENY:
+
+				return Colour.negative + "You can't attack animals in this settlement.";
+
+			default:
+
+				break;
+
+		}
+
+		return Colour.negative + "Can't attack creature.";
 
 	}
 

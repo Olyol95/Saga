@@ -118,6 +118,8 @@ public class SagaDamageEvent {
 	 */
 	private PriorityQueue<PvPOverride> pvpOverride = new PriorityQueue<>();
 
+	private PriorityQueue<PvCOverride> pvcOverride = new PriorityQueue<>();
+
 	// Initiate:
 	/**
 	 * Extracts saga entities and chunks.
@@ -582,12 +584,27 @@ public class SagaDamageEvent {
 	 * 
 	 * @return top override, NONE if none
 	 */
-	public PvPOverride getOverride() {
+	public PvPOverride getPvPOverride() {
 
 		if (pvpOverride.size() == 0)
 			return PvPOverride.NONE;
 
 		return pvpOverride.peek();
+
+	}
+
+	public void addPvcOverride(PvCOverride override) {
+
+		pvcOverride.add(override);
+
+	}
+
+	public PvCOverride getPvCOverride() {
+
+		if (pvcOverride.size() == 0)
+			return PvCOverride.NONE;
+
+		return pvcOverride.peek();
 
 	}
 
@@ -627,6 +644,20 @@ public class SagaDamageEvent {
 		public boolean isAllow() {
 			return allow;
 		}
+
+	}
+
+	public enum PvCOverride {
+
+		ADMIN_ALLOW(true), SETTLEMENT_DENY(false),
+
+		NONE(true);
+
+		private boolean allow;
+
+		PvCOverride(boolean allow) { this.allow = allow; }
+
+		public boolean isAllow() { return allow; }
 
 	}
 

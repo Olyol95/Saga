@@ -3,7 +3,10 @@ package org.saga.settlements;
 import com.google.gson.JsonParseException;
 import org.bukkit.Chunk;
 import org.bukkit.Material;
+import org.bukkit.entity.Animals;
 import org.bukkit.entity.Enderman;
+import org.bukkit.entity.Villager;
+import org.bukkit.entity.Wolf;
 import org.bukkit.event.Event.Result;
 import org.bukkit.event.block.EntityBlockFormEvent;
 import org.bukkit.event.entity.CreatureSpawnEvent;
@@ -1170,6 +1173,26 @@ public class Bundle extends SagaCustomSerialization {
 		// Deny pvp:
 		if (isOptionEnabled(BundleToggleable.PVP_PROTECTION))
 			event.addPvpOverride(PvPOverride.SAFE_AREA_DENY);
+
+		if (event.isPvC()) {
+			if (((SagaPlayer)event.sagaAttacker).isAdminMode()) {
+				event.addPvcOverride(SagaDamageEvent.PvCOverride.ADMIN_ALLOW);
+			} else if (!locationChunk.getBundle().isMember(((SagaPlayer) event.sagaAttacker).getName())) {
+				if ((event.getDefender() instanceof Animals)) {
+					if (event.getDefender() instanceof Wolf && (
+							((Wolf) event.getDefender()).isAngry() ||
+							((Wolf) event.getDefender()).getTarget().equals(event.getAttacker())
+					)) {
+						return;
+					} else {
+						event.addPvcOverride(SagaDamageEvent.PvCOverride.SETTLEMENT_DENY);
+					}
+				}
+				if (event.getDefender() instanceof Villager) {
+					event.addPvcOverride(SagaDamageEvent.PvCOverride.SETTLEMENT_DENY);
+				}
+			}
+		}
 
 	}
 
