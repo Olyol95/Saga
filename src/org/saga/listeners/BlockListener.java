@@ -10,6 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.hanging.HangingBreakByEntityEvent;
+import org.bukkit.event.hanging.HangingBreakEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.saga.Saga;
@@ -172,13 +173,13 @@ public class BlockListener implements Listener {
 	public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
 		
 		if (event.getEntity() instanceof ItemFrame || event.getEntity() instanceof Painting || event.getEntity() instanceof ArmorStand) {
-			
+
 			Entity entity = event.getDamager();
 
 			if (GeneralConfiguration.isDisabled(entity.getLocation().getWorld()))
 				return;
 
-			if (entity instanceof Creeper) {
+			if (entity instanceof Creeper || entity instanceof Explosive) {
 
 				if (GeneralConfiguration.config().stopCreeperExplosions) {
 
@@ -192,13 +193,9 @@ public class BlockListener implements Listener {
 
 			Player player;
 
-			if (entity instanceof EnderPearl) {
+			if (entity instanceof Projectile) {
 
-				player = (Player) ((EnderPearl) entity).getShooter();
-
-			} else if (entity instanceof Snowball) {
-
-				player = (Player) ((Snowball) entity).getShooter();
+				player = (Player) ((Projectile) entity).getShooter();
 
 			} else {
 
@@ -299,6 +296,23 @@ public class BlockListener implements Listener {
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void onBlockBurn(BlockBurnEvent event) {
 	}
+
+	@EventHandler(priority = EventPriority.NORMAL)
+	public void onHangingBreakEvent(HangingBreakEvent event) {
+
+		if (GeneralConfiguration.isDisabled(event.getEntity().getLocation().getWorld()))
+			return;
+
+		if (event.getEntity() instanceof ItemFrame || event.getEntity() instanceof Painting || event.getEntity() instanceof ArmorStand) {
+			if (event.getCause().equals(HangingBreakEvent.RemoveCause.EXPLOSION)) {
+				if (GeneralConfiguration.config().stopCreeperExplosions) {
+
+					event.setCancelled(true);
+
+				}
+			}
+		}
+	}
 	
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void onHangingBreakByEntityEvent(HangingBreakByEntityEvent event) {
@@ -310,7 +324,7 @@ public class BlockListener implements Listener {
 			if (GeneralConfiguration.isDisabled(event.getEntity().getLocation().getWorld()))
 				return;
 
-			if (entity instanceof Creeper) {
+			if (entity instanceof Creeper || entity instanceof Explosive) {
 
 				if (GeneralConfiguration.config().stopCreeperExplosions) {
 
@@ -324,13 +338,9 @@ public class BlockListener implements Listener {
 
 			Player player;
 
-			if (entity instanceof EnderPearl) {
+			if (entity instanceof Projectile) {
 
-				player = (Player) ((EnderPearl) entity).getShooter();
-
-			} else if (entity instanceof Snowball) {
-
-				player = (Player) ((Snowball) entity).getShooter();
+				player = (Player) ((Projectile) entity).getShooter();
 
 			} else {
 
