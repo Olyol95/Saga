@@ -193,6 +193,7 @@ public class Saga extends JavaPlugin implements MinuteTicker {
 		// Register Command Classes to the command map
 		commandMap.register(AdminCommands.class);
 		commandMap.register(FactionCommands.class);
+		commandMap.register(MerchantCommands.class);
 		commandMap.register(SettlementCommands.class);
 		commandMap.register(EconomyCommands.class);
 		commandMap.register(PlayerCommands.class);
