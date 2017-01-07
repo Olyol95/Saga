@@ -1,7 +1,7 @@
 package org.saga;
 
-import net.minecraft.server.v1_9_R2.Tuple;
 import org.bukkit.entity.Player;
+import org.saga.utility.Tuple;
 
 import java.util.Date;
 import java.util.Hashtable;

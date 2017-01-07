@@ -367,7 +367,7 @@ public class SagaDamageEvent {
 
 			// Apply Saga damage:
 			if (sagaDefender.getHealth() > event.getDamage()) {
-				sagaDefender.getWrapped().damage(harm);
+				sagaDefender.getWrapped().setHealth(sagaDefender.getHealth() - harm);
 
 				// Take control:
 				event.setDamage(0.0);
