@@ -2,6 +2,7 @@ package org.saga.settlements;
 
 import com.google.gson.JsonParseException;
 import org.bukkit.Chunk;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Animals;
 import org.bukkit.entity.Enderman;

@@ -85,6 +85,9 @@ public class PlayerListener implements Listener {
 		if (GeneralConfiguration.isDisabled(event.getPlayer().getWorld()))
 			return;
 
+		// Handle chunk change:
+		handleChunkChange(sagaPlayer, new PlayerMoveEvent(player, null, player.getLocation()));
+
 		// Forward to chunk group:
 		if (sagaPlayer.getBundle() != null)
 			sagaPlayer.getBundle().onMemberJoin(event, sagaPlayer);
@@ -134,6 +137,9 @@ public class PlayerListener implements Listener {
 				event.getPlayer().getName());
 		if (sagaPlayer == null)
 			return;
+
+		// Handle chunk change:
+		handleChunkChange(sagaPlayer, new PlayerMoveEvent(event.getPlayer(), null, event.getRespawnLocation()));
 
 		// Get bundle:
 		Bundle bundle = sagaPlayer.getBundle();
@@ -300,17 +306,19 @@ public class PlayerListener implements Listener {
 		Location l1 = event.getFrom();
 		Location l2 = event.getTo();
 
-		int x1 = l1.getBlockX();
-		int y1 = l1.getBlockY();
-		int z1 = l1.getBlockZ();
+		if (l1 != null && l2 != null) {
+			int x1 = l1.getBlockX();
+			int y1 = l1.getBlockY();
+			int z1 = l1.getBlockZ();
 
-		int x2 = l2.getBlockX();
-		int y2 = l2.getBlockY();
-		int z2 = l2.getBlockZ();
+			int x2 = l2.getBlockX();
+			int y2 = l2.getBlockY();
+			int z2 = l2.getBlockZ();
 
-		// Coordinates didn't change much:
-		if (x1 == x2 && y1 == y2 && z1 == z2)
-			return;
+			// Coordinates didn't change much:
+			if (x1 == x2 && y1 == y2 && z1 == z2)
+				return;
+		}
 
 		SagaChunk sagaChunk1 = sagaPlayer.lastSagaChunk;
 		SagaChunk sagaChunk2 = BundleManager.manager().getSagaChunk(l2);

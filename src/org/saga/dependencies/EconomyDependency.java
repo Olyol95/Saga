@@ -61,7 +61,6 @@ public class EconomyDependency {
 				SagaLogger.info("Using Essentials economy.");
 				return;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 		}
 
 		SagaLogger.info("Using default economy.");
