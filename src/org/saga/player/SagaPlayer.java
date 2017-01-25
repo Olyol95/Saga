@@ -124,6 +124,7 @@ public class SagaPlayer extends SagaLiving implements Trader {
 		this.name = name;
 
 		this.exp = 0.0;
+		this.health = 20.0;
 
 		this.factionInvites = new ArrayList<>();
 		this.bundleInvites = new ArrayList<>();

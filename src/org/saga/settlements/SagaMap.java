@@ -217,9 +217,9 @@ public class SagaMap {
 	public static void enableBonusCharacters() {
 
 		BUILDING = "`B";
-		WILDERNESS = "\u2591";
-		BORDER = "\u2592";
-		CLAIMED = "\u2593";
+		WILDERNESS = "\u2592";
+		BORDER = "\u2593";
+		CLAIMED = "\u2588";
 		YOUAREHERE = "`X";
 
 	}

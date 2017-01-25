@@ -87,7 +87,7 @@ public class ChatFiller {
 			put('\u2563', 1.5);
 			put('\u255D', 1.5);
 
-			put('\u2591', 1.5);
+			put('\u2588', 1.5);
 			put('\u2592', 1.5);
 			put('\u2593', 1.5);
 
