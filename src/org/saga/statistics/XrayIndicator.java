@@ -219,7 +219,7 @@ public class XrayIndicator {
 
 		materials.add(Material.AIR);
 		materials.add(Material.WATER);
-		materials.add(Material.STATIONARY_WATER);
+		materials.add(Material.LEGACY_STATIONARY_WATER);
 
 		return materials;
 

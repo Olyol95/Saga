@@ -72,8 +72,6 @@ public class BuySign extends BuildingSign {
 	 *            third line
 	 * @param fourthLine
 	 *            fourth line
-	 * @param event
-	 *            event that created the sign
 	 * @param building
 	 *            building
 	 */
@@ -102,8 +100,6 @@ public class BuySign extends BuildingSign {
 	 * 
 	 * @param sign
 	 *            bukkit sign
-	 * @param firstLine
-	 *            first line
 	 * @param secondLine
 	 *            second line
 	 * @param thirdLine
@@ -167,12 +163,6 @@ public class BuySign extends BuildingSign {
 			// Material:
 			sMaterial = sMatData[0];
 			type = Material.matchMaterial(sMaterial);
-			if (type == null) {
-				try {
-					type = Material.getMaterial(Integer.parseInt(sMaterial));
-				} catch (NumberFormatException e) {
-				}
-			}
 
 			// Data:
 			if (sMatData.length > 1) {
@@ -197,12 +187,6 @@ public class BuySign extends BuildingSign {
 			// Material:
 			sMaterial = sMatData[0];
 			type = Material.matchMaterial(sMaterial);
-			if (type == null) {
-				try {
-					type = Material.getMaterial(Integer.parseInt(sMaterial));
-				} catch (NumberFormatException e) {
-				}
-			}
 			if (type == null)
 				return;
 

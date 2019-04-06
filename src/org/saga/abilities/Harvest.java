@@ -66,10 +66,6 @@ public class Harvest extends Ability {
 		ItemStack itemHand = event.getItem();
 		Player player = event.getPlayer();
 
-		// Drops:
-		boolean reedTrigger = false;
-		boolean wheatTrigger = false;
-
 		// Target:
 		Location dropLocation = event.getPlayer().getLocation();
 
@@ -87,6 +83,7 @@ public class Harvest extends Ability {
 			return false;
 		}
 
+		boolean trigger = false;
 		// Harvest:
 		for (Block block : blocks) {
 
@@ -94,28 +91,18 @@ public class Harvest extends Ability {
 			BlockBreakEvent eventB = new BlockBreakEvent(block, player);
 			Saga.plugin().getServer().getPluginManager().callEvent(eventB);
 			if (eventB.isCancelled())
-				return reedTrigger || wheatTrigger;
+				return trigger;
 
 			block.breakNaturally(itemHand);
 			getSagaLiving().damageTool();
 
-			// Drop indication:
-			if (block.getType() == Material.SUGAR_CANE_BLOCK) {
-				reedTrigger = true;
-			} else if (block.getType() == Material.CROPS) {
-				wheatTrigger = true;
-			}
+			trigger = trigger || block.getType().isEdible();
 
 		}
 
 		// Effects:
-		if (reedTrigger) {
-			getSagaLiving().playGlobalEffect(Effect.STEP_SOUND,
-					Material.SUGAR_CANE_BLOCK.getId());
-		}
-		if (wheatTrigger) {
-			getSagaLiving().playGlobalEffect(Effect.STEP_SOUND,
-					Material.CROPS.getId());
+		if (trigger) {
+			getSagaLiving().playGlobalEffect(Effect.STEP_SOUND, Material.SUGAR_CANE.getId());
 		}
 
 		if (getSagaLiving() instanceof SagaPlayer)
@@ -484,8 +471,11 @@ public class Harvest extends Ability {
 
 		BlockFilter filter = new BlockFilter();
 
-		filter.addMaterial(Material.CROPS);
-		filter.addMaterial(Material.SUGAR_CANE_BLOCK);
+		filter.addMaterial(Material.SUGAR_CANE);
+		filter.addMaterial(Material.CARROTS);
+		filter.addMaterial(Material.POTATOES);
+		filter.addMaterial(Material.BEETROOTS);
+		filter.addMaterial(Material.NETHER_WART_BLOCK);
 
 		return filter;
 

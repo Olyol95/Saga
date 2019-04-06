@@ -2,6 +2,7 @@ package org.saga.buildings.production;
 
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.saga.Saga;
@@ -305,7 +306,7 @@ public class ProductionBuilding extends Building {
 	/**
 	 * Stores blocks.
 	 * 
-	 * @param items
+	 * @param sagaItem
 	 *            saga block to store
 	 */
 	public void storeBlock(SagaItem sagaItem) {
@@ -317,8 +318,8 @@ public class ProductionBuilding extends Building {
 			// Remove block:
 			int index = Saga.RANDOM.nextInt(possibleStorage.size());
 			Block block = possibleStorage.get(index);
-			block.setTypeIdAndData(sagaItem.getType().getId(), sagaItem
-					.getData().byteValue(), false);
+			block.setType(sagaItem.getType());
+
 			sagaItem.modifyAmount(-1);
 			possibleStorage.remove(index);
 
@@ -333,7 +334,7 @@ public class ProductionBuilding extends Building {
 	/**
 	 * Stores items.
 	 * 
-	 * @param items
+	 * @param sagaItem
 	 *            saga item to store
 	 */
 	public void storeItem(SagaItem sagaItem) {
@@ -384,8 +385,6 @@ public class ProductionBuilding extends Building {
 	/**
 	 * Filters out chests that can used for storage.
 	 * 
-	 * @param blocks
-	 *            all storage blocks
 	 * @return chests for storage
 	 */
 	private ArrayList<Chest> findChests() {

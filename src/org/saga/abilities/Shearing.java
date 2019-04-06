@@ -78,7 +78,7 @@ public class Shearing extends Ability {
 			for (int i = 0; i < bonus; i++) {
 				location.getWorld().dropItemNaturally(
 						location,
-						new ItemStack(Material.WOOL, 1, sheep.getColor()
+						new ItemStack(Material.LEGACY_WOOL, 1, sheep.getColor()
 								.getWoolData()));
 				triggered = true;
 			}

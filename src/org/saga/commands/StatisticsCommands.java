@@ -286,13 +286,6 @@ public class StatisticsCommands {
 			String strMaterial = args.getString(0);
 			material = Material.matchMaterial(strMaterial);
 			if (material == null) {
-				try {
-					material = Material.getMaterial(Integer
-							.parseInt(strMaterial));
-				} catch (NumberFormatException e) {
-				}
-			}
-			if (material == null) {
 				sagaPlayer
 						.message(EconomyMessages.invalidMaterial(strMaterial));
 				return;

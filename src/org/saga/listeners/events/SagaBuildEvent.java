@@ -269,7 +269,7 @@ public class SagaBuildEvent {
 
 				return true;
 
-			case FIREBALL:
+			case FIRE_CHARGE:
 
 				return true;
 
@@ -281,7 +281,7 @@ public class SagaBuildEvent {
 
 				return true;
 
-			case INK_SACK:
+			case INK_SAC:
 
 				if (item.getData().getData() != 15)
 					break;
@@ -312,7 +312,7 @@ public class SagaBuildEvent {
 
 		// Trample:
 		return event.getAction() == Action.PHYSICAL
-				&& block.getType() == Material.SOIL;
+				&& block.getType() == Material.FARMLAND;
 
 	}
 

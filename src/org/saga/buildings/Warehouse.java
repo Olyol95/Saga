@@ -80,7 +80,7 @@ public class Warehouse extends Building {
 	/**
 	 * Stores blocks.
 	 * 
-	 * @param items
+	 * @param sagaItem
 	 *            saga block to store
 	 */
 	private void storeBlock(SagaItem sagaItem) {
@@ -94,8 +94,7 @@ public class Warehouse extends Building {
 				// Remove block:
 				int index = Saga.RANDOM.nextInt(storage.size());
 				Block block = storage.get(index);
-				block.setTypeIdAndData(sagaItem.getType().getId(), sagaItem
-						.getData().byteValue(), false);
+				block.setType(sagaItem.getType());
 				sagaItem.modifyAmount(-1);
 				storage.remove(index);
 
@@ -124,7 +123,7 @@ public class Warehouse extends Building {
 	/**
 	 * Stores items.
 	 * 
-	 * @param items
+	 * @param sagaItem
 	 *            saga item to store
 	 */
 	private void storeItem(SagaItem sagaItem) {
@@ -464,8 +463,6 @@ public class Warehouse extends Building {
 	/**
 	 * Filters out chests that can used for storage.
 	 * 
-	 * @param blocks
-	 *            all storage blocks
 	 * @return chests for storage
 	 */
 	private ArrayList<Chest> findChests() {
@@ -552,7 +549,7 @@ public class Warehouse extends Building {
 			}
 
 			// Burning furnace:
-			else if (targetMaterial.equals(Material.BURNING_FURNACE)
+			else if (targetMaterial.equals(Material.LEGACY_BURNING_FURNACE)
 					&& event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
 
 				event.setUseItemInHand(Result.DENY);
@@ -574,7 +571,7 @@ public class Warehouse extends Building {
 			}
 
 			// Door:
-			else if (targetMaterial.equals(Material.WOODEN_DOOR)) {
+			else if (targetMaterial.equals(Material.LEGACY_WOODEN_DOOR)) {
 
 				event.setUseItemInHand(Result.DENY);
 				event.setUseInteractedBlock(Result.DENY);
@@ -584,7 +581,7 @@ public class Warehouse extends Building {
 			}
 
 			// Trap door:
-			else if (targetMaterial.equals(Material.TRAP_DOOR)) {
+			else if (targetMaterial.equals(Material.LEGACY_TRAP_DOOR)) {
 
 				event.setUseItemInHand(Result.DENY);
 				event.setUseInteractedBlock(Result.DENY);
@@ -594,7 +591,7 @@ public class Warehouse extends Building {
 			}
 
 			// Enchantment table:
-			else if (targetMaterial.equals(Material.ENCHANTMENT_TABLE)
+			else if (targetMaterial.equals(Material.ENCHANTING_TABLE)
 					&& event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
 
 				event.setUseItemInHand(Result.DENY);
@@ -616,7 +613,7 @@ public class Warehouse extends Building {
 			}
 
 			// Brewing stand item:
-			else if (targetMaterial.equals(Material.BREWING_STAND_ITEM)
+			else if (targetMaterial.equals(Material.BREWING_STAND)
 					&& event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
 
 				event.setUseItemInHand(Result.DENY);
@@ -627,7 +624,7 @@ public class Warehouse extends Building {
 			}
 
 			// Fence gate:
-			else if (targetMaterial.equals(Material.FENCE_GATE)) {
+			else if (targetMaterial.equals(Material.LEGACY_FENCE_GATE)) {
 
 				event.setUseItemInHand(Result.DENY);
 				event.setUseInteractedBlock(Result.DENY);

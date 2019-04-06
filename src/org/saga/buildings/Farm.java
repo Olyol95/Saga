@@ -63,7 +63,7 @@ public class Farm extends ProductionBuilding {
 
 		// Stop trampling:
 		if (event.getAction() == Action.PHYSICAL
-				&& event.getClickedBlock().getType() == Material.SOIL) {
+				&& event.getClickedBlock().getType() == Material.FARMLAND) {
 
 			event.setCancelled(true);
 

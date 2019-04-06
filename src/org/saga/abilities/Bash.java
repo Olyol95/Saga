@@ -78,10 +78,10 @@ public class Bash extends Ability {
 		// Only if the target is holding a sword:
 		Material targetsItem = event.sagaDefender.getHandItem().getType();
 		if (targetsItem != Material.DIAMOND_SWORD
-				&& targetsItem != Material.GOLD_SWORD
+				&& targetsItem != Material.GOLDEN_SWORD
 				&& targetsItem != Material.IRON_SWORD
 				&& targetsItem != Material.STONE_SWORD
-				&& targetsItem != Material.WOOD_SWORD
+				&& targetsItem != Material.WOODEN_SWORD
 				&& targetsItem != Material.BOW)
 			return false;
 

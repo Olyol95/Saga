@@ -37,7 +37,7 @@ public class SagaEventHandler {
 				Block block = event.getBlock();
 				if (PermissionsDependency.hasPermission(sagaPlayer,
 						PermissionsDependency.WILDERNESS_PLACE_PERMISSION + "."
-								+ block.getTypeId()))
+								+ block.getType()))
 					event.addBuildOverride(BuildOverride.WILDERNESS_SPECIFIC_BLOCK_ALLOW);
 			}
 
@@ -46,7 +46,7 @@ public class SagaEventHandler {
 				Block block = event.getBlock();
 				if (PermissionsDependency.hasPermission(sagaPlayer,
 						PermissionsDependency.WILDERNESS_DESTROY_PERMISSION
-								+ "." + block.getTypeId()))
+								+ "." + block.getType()))
 					event.addBuildOverride(BuildOverride.WILDERNESS_SPECIFIC_BLOCK_ALLOW);
 			}
 			

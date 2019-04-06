@@ -45,27 +45,36 @@ public class SagaMap {
 		private static final long serialVersionUID = 1L;
 
 		{
-			put(Biome.BEACHES, ChatColor.BLUE);
+			put(Biome.BEACH, ChatColor.BLUE);
 
 			put(Biome.DESERT, ChatColor.YELLOW);
 			put(Biome.DESERT_HILLS, ChatColor.YELLOW);
 
 			put(Biome.FOREST, ChatColor.DARK_GREEN);
-			put(Biome.FOREST_HILLS, ChatColor.DARK_GREEN);
+			put(Biome.BIRCH_FOREST, ChatColor.DARK_GREEN);
+			put(Biome.BIRCH_FOREST_HILLS, ChatColor.DARK_GREEN);
+			put(Biome.TALL_BIRCH_FOREST, ChatColor.DARK_GREEN);
+
+			put(Biome.DARK_FOREST, ChatColor.DARK_GRAY);
+			put(Biome.DARK_FOREST_HILLS, ChatColor.DARK_GRAY);
+
+			put(Biome.FLOWER_FOREST, ChatColor.DARK_PURPLE);
 
 			put(Biome.FROZEN_OCEAN, ChatColor.DARK_BLUE);
 			put(Biome.FROZEN_RIVER, ChatColor.DARK_BLUE);
 
-			put(Biome.HELL, ChatColor.RED);
+			put(Biome.NETHER, ChatColor.RED);
 
-			put(Biome.ICE_MOUNTAINS, ChatColor.WHITE);
-			put(Biome.ICE_FLATS, ChatColor.WHITE);
+			put(Biome.ICE_SPIKES, ChatColor.WHITE);
+			put(Biome.SNOWY_BEACH, ChatColor.WHITE);
+			put(Biome.SNOWY_TUNDRA, ChatColor.WHITE);
+			put(Biome.SNOWY_MOUNTAINS, ChatColor.WHITE);
 
 			put(Biome.JUNGLE, ChatColor.GREEN);
 			put(Biome.JUNGLE_HILLS, ChatColor.GREEN);
 
-			put(Biome.MUSHROOM_ISLAND, ChatColor.BLACK);
-			put(Biome.MUSHROOM_ISLAND_SHORE, ChatColor.BLACK);
+			put(Biome.MUSHROOM_FIELDS, ChatColor.BLACK);
+			put(Biome.MUSHROOM_FIELD_SHORE, ChatColor.BLACK);
 
 			put(Biome.OCEAN, ChatColor.DARK_BLUE);
 
@@ -73,11 +82,9 @@ public class SagaMap {
 
 			put(Biome.RIVER, ChatColor.BLUE);
 
-			put(Biome.SKY, ChatColor.WHITE);
+			put(Biome.THE_VOID, ChatColor.WHITE);
 
-			put(Biome.SMALLER_EXTREME_HILLS, ChatColor.GRAY);
-
-			put(Biome.SWAMPLAND, ChatColor.DARK_GRAY);
+			put(Biome.SWAMP, ChatColor.DARK_GRAY);
 
 			put(Biome.TAIGA, ChatColor.WHITE);
 			put(Biome.TAIGA_HILLS, ChatColor.WHITE);

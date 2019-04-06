@@ -48,14 +48,12 @@ public class CrumbleArena extends Building implements SecondTicker {
 	/**
 	 * Stable block for the arena.
 	 */
-	transient public static MaterialData STABLE_BLOCK = new MaterialData(
-			Material.SMOOTH_BRICK, (byte) 3);
+	transient public static Material STABLE_BLOCK = Material.STONE_BRICKS;
 
 	/**
 	 * Damaged block for the arena.
 	 */
-	transient public static MaterialData DAMAGED_BLOCK = new MaterialData(
-			Material.SMOOTH_BRICK, (byte) 2);
+	transient public static Material DAMAGED_BLOCK = Material.CRACKED_STONE_BRICKS;
 
 	/**
 	 * Key for number of hotspots.
@@ -462,10 +460,7 @@ public class CrumbleArena extends Building implements SecondTicker {
 				// Only arena block:
 				Block block = chunk.getBlock(Dx, y, Dz);
 				if (block.getType() != Material.AIR
-						&& (block.getType() != STABLE_BLOCK.getItemType()
-								&& block.getData() != STABLE_BLOCK.getData() || block
-								.getType() != DAMAGED_BLOCK.getItemType()
-								&& block.getData() != DAMAGED_BLOCK.getData()))
+						&& (block.getType() != STABLE_BLOCK || block.getType() != DAMAGED_BLOCK))
 					continue;
 
 				// Add:
@@ -486,13 +481,10 @@ public class CrumbleArena extends Building implements SecondTicker {
 	 */
 	private void damageBlock(Block block) {
 
-		if (block.getType() == STABLE_BLOCK.getItemType()
-				&& block.getData() == STABLE_BLOCK.getData()) {
-			block.setTypeIdAndData(DAMAGED_BLOCK.getItemTypeId(),
-					DAMAGED_BLOCK.getData(), false);
-		} else if (block.getType() == DAMAGED_BLOCK.getItemType()
-				&& block.getData() == DAMAGED_BLOCK.getData()) {
-			block.setTypeIdAndData(Material.AIR.getId(), (byte) 0, false);
+		if (block.getType() == STABLE_BLOCK) {
+			block.setType(DAMAGED_BLOCK);
+		} else if (block.getType() == DAMAGED_BLOCK) {
+			block.setType(Material.AIR);
 		}
 
 	}
@@ -508,8 +500,7 @@ public class CrumbleArena extends Building implements SecondTicker {
 
 		ArrayList<Block> filtered = new ArrayList<>();
 		for (Block block : blocks) {
-			if (block.getType() == STABLE_BLOCK.getItemType()
-					&& block.getData() == STABLE_BLOCK.getData())
+			if (block.getType() == STABLE_BLOCK)
 				filtered.add(block);
 		}
 
@@ -529,8 +520,7 @@ public class CrumbleArena extends Building implements SecondTicker {
 		ArrayList<Block> filtered = new ArrayList<>();
 		for (Block block : blocks) {
 
-			if (block.getType() != STABLE_BLOCK.getItemType()
-					&& block.getData() != STABLE_BLOCK.getData())
+			if (block.getType() != STABLE_BLOCK)
 				continue;
 
 			if (getAdjacent(block, BlockFace.NORTH).getType() != Material.AIR
@@ -630,8 +620,7 @@ public class CrumbleArena extends Building implements SecondTicker {
 
 		ArrayList<Block> filtered = new ArrayList<>();
 		for (Block block : blocks) {
-			if (block.getType() == DAMAGED_BLOCK.getItemType()
-					&& block.getData() == DAMAGED_BLOCK.getData())
+			if (block.getType() == DAMAGED_BLOCK)
 				filtered.add(block);
 		}
 
@@ -734,7 +723,7 @@ public class CrumbleArena extends Building implements SecondTicker {
 
 		// Effect:
 		location.getWorld().playEffect(anchor.getLocation().add(0.5, 0.5, 0.5),
-				Effect.STEP_SOUND, STABLE_BLOCK.getItemTypeId());
+				Effect.STEP_SOUND, STABLE_BLOCK);
 
 	}
 
@@ -751,11 +740,9 @@ public class CrumbleArena extends Building implements SecondTicker {
 
 		for (Block block : arenaBlocks) {
 			if (block.getType() != Material.AIR
-					&& block.getType() != DAMAGED_BLOCK.getItemType()
-					&& block.getData() != DAMAGED_BLOCK.getData())
+					&& block.getType() != DAMAGED_BLOCK)
 				continue;
-			block.setTypeIdAndData(STABLE_BLOCK.getItemTypeId(),
-					STABLE_BLOCK.getData(), false);
+			block.setType(STABLE_BLOCK);
 		}
 
 	}

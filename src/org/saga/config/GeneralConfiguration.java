@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.saga.Saga;
 import org.saga.SagaLogger;
 import org.saga.saveload.Directory;
 import org.saga.saveload.WriterReader;
@@ -324,7 +325,7 @@ public class GeneralConfiguration {
 		if (data == null)
 			return;
 
-		block.setData(data);
+		SagaLogger.warning("Call to deprecated function modifyBlockData" );
 
 		// Statistics:
 		StatisticsManager.manager().onBlockDataChange();

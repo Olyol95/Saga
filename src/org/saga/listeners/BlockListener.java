@@ -386,8 +386,8 @@ public class BlockListener implements Listener {
 	private static boolean canSpread(Material mat, Location from, Location to) {
 
 		if (mat != Material.FIRE && mat != Material.LAVA
-				&& mat != Material.STATIONARY_LAVA && mat != Material.WATER
-				&& mat != Material.STATIONARY_WATER)
+				&& mat != Material.LEGACY_STATIONARY_LAVA && mat != Material.WATER
+				&& mat != Material.LEGACY_STATIONARY_WATER)
 			return true;
 
 		SagaChunk fromChunk = BundleManager.manager().getSagaChunk(from);

@@ -263,7 +263,7 @@ public class StorageArea {
 	/**
 	 * Adds blocks to storage.
 	 * 
-	 * @param blocks
+	 * @param toStore
 	 *            to add
 	 * @return blocks to add
 	 */
@@ -283,7 +283,6 @@ public class StorageArea {
 				return toStore;
 
 			storeBlock.setType(toStore.getType());
-			storeBlock.setData(toStore.getData().getData());
 
 			toStore.setAmount(toStore.getAmount() - 1);
 
@@ -335,7 +334,7 @@ public class StorageArea {
 	/**
 	 * Adds blocks to storage.
 	 * 
-	 * @param items
+	 * @param toStore
 	 *            to add
 	 * @return remaining items
 	 */
@@ -452,8 +451,8 @@ public class StorageArea {
 
 					// From
 					// https://github.com/Bukkit/CraftBukkit/blob/master/src/main/java/org/bukkit/craftbukkit/inventory/CraftInventory.java
-					boolean equals = item.getTypeId() == anInventory
-							.getTypeId()
+					boolean equals = item.getType() == anInventory
+							.getType()
 							&& item.getDurability() == anInventory
 							.getDurability()
 							&& item.getEnchantments().equals(

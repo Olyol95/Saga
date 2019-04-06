@@ -150,25 +150,14 @@ public class Dig extends Ability {
 	 */
 	private boolean checkBlock(Block block) {
 
-		if (block.getType() == Material.DIRT)
-			return true;
-
-		if (block.getType() == Material.GRASS)
-			return true;
-
-		if (block.getType() == Material.SOIL)
-			return true;
-
-		if (block.getType() == Material.SNOW_BLOCK)
-			return true;
-
-		if (block.getType() == Material.SAND)
-			return true;
-
-		if (block.getType() == Material.GRAVEL)
-			return true;
-
-		return block.getType() == Material.SOUL_SAND;
+		return block.getType() == Material.DIRT
+				|| block.getType() == Material.GRASS
+				|| block.getType() == Material.FARMLAND
+				|| block.getType() == Material.SNOW_BLOCK
+				|| block.getType() == Material.SAND
+				|| block.getType() == Material.GRAVEL
+				|| block.getType() == Material.COARSE_DIRT
+				|| block.getType() == Material.SOUL_SAND;
 
 	}
 

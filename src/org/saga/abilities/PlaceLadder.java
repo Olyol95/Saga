@@ -120,8 +120,7 @@ public class PlaceLadder extends Ability {
 
 			// Set ladder:
 			if (canSupport(ladderBlock, data)) {
-				ladderBlock.setTypeIdAndData(Material.LADDER.getId(), data,
-						false);
+				ladderBlock.setType(Material.LADDER);
 			} else {
 				break;
 			}

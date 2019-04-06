@@ -153,7 +153,7 @@ public class EntityListener implements Listener {
 	@EventHandler (priority = EventPriority.NORMAL)
 	public void onEntityInteract(EntityInteractEvent event) {
 
-		if (event.getBlock().getType() == Material.SOIL) {
+		if (event.getBlock().getType() == Material.FARMLAND) {
 
 			SagaChunk sagaChunk = BundleManager.manager().getSagaChunk(event.getBlock().getLocation());
 

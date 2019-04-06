@@ -31,9 +31,9 @@
     "defend":{},
     "passive":{},
     "handling":{
-      "STONE_SPADE":{"x1":0,"y1":0.0,"x2":100,"y2":0.5},
-      "IRON_SPADE":{"x1":0,"y1":0.0,"x2":100,"y2":0.5},
-      "DIAMOND_SPADE":{"x1":0,"y1":0.0,"x2":100,"y2":0.5}
+      "STONE_SHOVEL":{"x1":0,"y1":0.0,"x2":100,"y2":0.5},
+      "IRON_SHOVEL":{"x1":0,"y1":0.0,"x2":100,"y2":0.5},
+      "DIAMOND_SHOVEL":{"x1":0,"y1":0.0,"x2":100,"y2":0.5}
     },
     "description":"Ranged damage, armour pierce, shovel handling."
   },

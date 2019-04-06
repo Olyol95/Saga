@@ -306,7 +306,7 @@ public class SagaChunk {
 	/**
 	 * Checks if the location is on the saga chunk.
 	 * 
-	 * @param loaction
+	 * @param location
 	 *            location
 	 * @return true if the location is on the saga chunk
 	 */
@@ -528,14 +528,10 @@ public class SagaChunk {
 	/**
 	 * Called when a player is killed by another player.
 	 * 
-	 * @param event
-	 *            event
-	 * @param damager
+	 * @param attacker
 	 *            damager saga player
-	 * @param damaged
+	 * @param defender
 	 *            damaged saga player
-	 * @param locationChunk
-	 *            chunk where the pvp occured
 	 */
 	public void onPvpKill(SagaPlayer attacker, SagaPlayer defender) {
 
@@ -693,8 +689,7 @@ public class SagaChunk {
 			if (type == Material.CHEST || type == Material.TRAPPED_CHEST
 					|| type == Material.BREWING_STAND
 					|| type == Material.FURNACE
-					|| type == Material.BURNING_FURNACE
-					|| type == Material.ENCHANTMENT_TABLE) {
+					|| type == Material.ENCHANTING_TABLE) {
 
 				if (!getBundle().hasPermission(sagaPlayer,
 						SettlementPermission.OPEN_SETTLEMENT_CONTAINERS)) {
@@ -742,22 +737,6 @@ public class SagaChunk {
 
 		// Forward to chunk group:
 		getBundle().onEntityBlockForm(event, this);
-
-	}
-
-	// Interact events:
-	/**
-	 * Called when a player interacts with an entity on the chunk.
-	 * 
-	 * @param event
-	 *            event
-	 * @param sagaPlayer
-	 *            saga player
-	 * @param sagaChunk
-	 *            saga chunk
-	 */
-	public void onPlayerInteractEntity(PlayerInteractEntityEvent event,
-			SagaPlayer sagaPlayer) {
 
 	}
 
@@ -1042,11 +1021,11 @@ public class SagaChunk {
 
 			// Water:
 			int seaLevel = world.getSeaLevel();
-			if (chunk.getBlock(0, seaLevel, 0).getType() == Material.STATIONARY_WATER
-					&& chunk.getBlock(15, seaLevel, 0).getType() == Material.STATIONARY_WATER
-					&& chunk.getBlock(15, seaLevel, 15).getType() == Material.STATIONARY_WATER
-					&& chunk.getBlock(0, seaLevel, 15).getType() == Material.STATIONARY_WATER
-					&& chunk.getBlock(7, seaLevel, 7).getType() == Material.STATIONARY_WATER) {
+			if (chunk.getBlock(0, seaLevel, 0).getType() == Material.LEGACY_STATIONARY_WATER
+					&& chunk.getBlock(15, seaLevel, 0).getType() == Material.LEGACY_STATIONARY_WATER
+					&& chunk.getBlock(15, seaLevel, 15).getType() == Material.LEGACY_STATIONARY_WATER
+					&& chunk.getBlock(0, seaLevel, 15).getType() == Material.LEGACY_STATIONARY_WATER
+					&& chunk.getBlock(7, seaLevel, 7).getType() == Material.LEGACY_STATIONARY_WATER) {
 				return WATER;
 			}
 

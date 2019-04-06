@@ -11,7 +11,7 @@
   "definitions":[
     {"className":"org.saga.abilities.ChopDown",
       "name":"chop down",
-      "itemRestrictions":["DIAMOND_AXE","GOLD_AXE","IRON_AXE","STONE_AXE"],
+      "itemRestrictions":["DIAMOND_AXE","GOLDEN_AXE","IRON_AXE","STONE_AXE"],
       "activationAction":"RIGHT_CLICK",
       "usedItem":"AIR",
       "usedAmount":{"x1":1,"y1":0.0},
@@ -31,7 +31,7 @@
 
     {"className":"org.saga.abilities.Trim",
       "name":"trim",
-      "itemRestrictions":["SHEARS","DIAMOND_AXE","GOLD_AXE","IRON_AXE","STONE_AXE"],
+      "itemRestrictions":["SHEARS","DIAMOND_AXE","GOLDEN_AXE","IRON_AXE","STONE_AXE"],
       "activationAction":"RIGHT_CLICK",
       "usedItem":"AIR",
       "usedAmount":{"x1":1,"y1":0.0},
@@ -78,7 +78,7 @@
 
     {"className":"org.saga.abilities.Dig",
       "name":"dig",
-      "itemRestrictions":["DIAMOND_SPADE","GOLD_SPADE","IRON_SPADE","STONE_SPADE"],
+      "itemRestrictions":["DIAMOND_SHOVEL","GOLDEN_SHOVEL","IRON_SHOVEL","STONE_SHOVEL"],
       "activationAction":"RIGHT_CLICK",
       "usedItem":"AIR",
       "usedAmount":{"x1":1,"y1":0.0},
@@ -102,7 +102,7 @@
 
     {"className":"org.saga.abilities.Harvest",
       "name":"harvest",
-      "itemRestrictions":["DIAMOND_HOE","GOLD_HOE","IRON_HOE","STONE_HOE"],
+      "itemRestrictions":["DIAMOND_HOE","GOLDEN_HOE","IRON_HOE","STONE_HOE"],
       "activationAction":"RIGHT_CLICK",
       "usedItem":"AIR",
       "usedAmount":{"x1":1,"y1":0.0},
@@ -150,7 +150,7 @@
 
     {"className":"org.saga.abilities.HeavySwing",
       "name":"heavy swing",
-      "itemRestrictions":["DIAMOND_PICKAXE","GOLD_PICKAXE","IRON_PICKAXE"],
+      "itemRestrictions":["DIAMOND_PICKAXE","GOLDEN_PICKAXE","IRON_PICKAXE"],
       "activationAction":"RIGHT_CLICK",
       "usedItem":"AIR",
       "usedAmount":{"x1":1,"y1":0.0},
@@ -244,7 +244,7 @@
 
     {"className":"org.saga.abilities.Bash",
       "name":"disarm",
-      "itemRestrictions":["DIAMOND_SWORD","GOLD_SWORD","IRON_SWORD","STONE_SWORD","BOW"],
+      "itemRestrictions":["DIAMOND_SWORD","GOLDEN_SWORD","IRON_SWORD","STONE_SWORD","BOW"],
       "activationAction":"NONE",
       "usedItem":"AIR",
       "usedAmount":{"x1":1,"y1":0.0},
@@ -366,7 +366,7 @@
 
     {"className":"org.saga.abilities.Counterattack",
       "name":"counter",
-      "itemRestrictions":["DIAMOND_SWORD","GOLD_SWORD","IRON_SWORD","STONE_SWORD"],
+      "itemRestrictions":["DIAMOND_SWORD","GOLDEN_SWORD","IRON_SWORD","STONE_SWORD"],
       "activationAction":"NONE",
       "usedItem":"AIR",
       "usedAmount":{"x1":1,"y1":0.0},
@@ -386,7 +386,7 @@
 
     {"className":"org.saga.abilities.Charge",
       "name":"charge",
-      "itemRestrictions":["DIAMOND_SWORD","GOLD_SWORD","IRON_SWORD","STONE_SWORD"],
+      "itemRestrictions":["DIAMOND_SWORD","GOLDEN_SWORD","IRON_SWORD","STONE_SWORD"],
       "activationAction":"RIGHT_CLICK",
       "usedItem":"AIR",
       "usedAmount":{"x1":1,"y1":0.0},
@@ -410,7 +410,7 @@
 
     {"className":"org.saga.abilities.Crush",
       "name":"crush",
-      "itemRestrictions":["DIAMOND_SWORD","GOLD_SWORD","IRON_SWORD","STONE_SWORD"],
+      "itemRestrictions":["DIAMOND_SWORD","GOLDEN_SWORD","IRON_SWORD","STONE_SWORD"],
       "activationAction":"RIGHT_CLICK",
       "usedItem":"AIR",
       "usedAmount":{"x1":1,"y1":0.0},

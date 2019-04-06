@@ -183,33 +183,33 @@ public class Repair extends Ability {
 
 		// Pick axe:
 		if (type == Material.STONE_PICKAXE || type == Material.IRON_PICKAXE
-				|| type == Material.GOLD_PICKAXE
+				|| type == Material.GOLDEN_PICKAXE
 				|| type == Material.DIAMOND_PICKAXE) {
 			return 1.0 / 3.0;
 		}
 
 		// Axe:
 		if (type == Material.STONE_AXE || type == Material.IRON_AXE
-				|| type == Material.GOLD_AXE || type == Material.DIAMOND_AXE) {
+				|| type == Material.GOLDEN_AXE || type == Material.DIAMOND_AXE) {
 			return 1.0 / 3.0;
 		}
 
 		// Hoe:
 		if (type == Material.STONE_HOE || type == Material.IRON_HOE
-				|| type == Material.GOLD_HOE || type == Material.DIAMOND_HOE) {
+				|| type == Material.GOLDEN_HOE || type == Material.DIAMOND_HOE) {
 			return 1.0 / 2.0;
 		}
 
 		// Shovel:
-		if (type == Material.STONE_SPADE || type == Material.IRON_SPADE
-				|| type == Material.GOLD_SPADE
-				|| type == Material.DIAMOND_SPADE) {
+		if (type == Material.STONE_SHOVEL || type == Material.IRON_SHOVEL
+				|| type == Material.GOLDEN_SHOVEL
+				|| type == Material.DIAMOND_SHOVEL) {
 			return 1.0 / 1.0;
 		}
 
 		// Sword:
 		if (type == Material.STONE_SWORD || type == Material.IRON_SWORD
-				|| type == Material.GOLD_SWORD
+				|| type == Material.GOLDEN_SWORD
 				|| type == Material.DIAMOND_SWORD) {
 			return 1.0 / 2.0;
 		}
@@ -217,7 +217,7 @@ public class Repair extends Ability {
 		// Helmet:
 		if (type == Material.LEATHER_HELMET
 				|| type == Material.CHAINMAIL_HELMET
-				|| type == Material.IRON_HELMET || type == Material.GOLD_HELMET
+				|| type == Material.IRON_HELMET || type == Material.GOLDEN_HELMET
 				|| type == Material.DIAMOND_HELMET) {
 			return 1.0 / 5.0;
 		}
@@ -226,7 +226,7 @@ public class Repair extends Ability {
 		if (type == Material.LEATHER_CHESTPLATE
 				|| type == Material.CHAINMAIL_CHESTPLATE
 				|| type == Material.IRON_CHESTPLATE
-				|| type == Material.GOLD_CHESTPLATE
+				|| type == Material.GOLDEN_CHESTPLATE
 				|| type == Material.DIAMOND_CHESTPLATE) {
 			return 1.0 / 8.0;
 		}
@@ -235,14 +235,14 @@ public class Repair extends Ability {
 		if (type == Material.LEATHER_LEGGINGS
 				|| type == Material.CHAINMAIL_LEGGINGS
 				|| type == Material.IRON_LEGGINGS
-				|| type == Material.GOLD_LEGGINGS
+				|| type == Material.GOLDEN_LEGGINGS
 				|| type == Material.DIAMOND_LEGGINGS) {
 			return 1.0 / 7.0;
 		}
 
 		// Boots:
 		if (type == Material.LEATHER_BOOTS || type == Material.CHAINMAIL_BOOTS
-				|| type == Material.IRON_BOOTS || type == Material.GOLD_BOOTS
+				|| type == Material.IRON_BOOTS || type == Material.GOLDEN_BOOTS
 				|| type == Material.DIAMOND_BOOTS) {
 			return 1.0 / 4.0;
 		}
@@ -265,28 +265,28 @@ public class Repair extends Ability {
 	private static Material getRepairMaterial(Material type) {
 
 		// Diamond tools:
-		if (type == Material.DIAMOND_PICKAXE || type == Material.DIAMOND_SPADE
+		if (type == Material.DIAMOND_PICKAXE || type == Material.DIAMOND_SHOVEL
 				|| type == Material.DIAMOND_AXE || type == Material.DIAMOND_HOE
 				|| type == Material.DIAMOND_SWORD) {
 			return Material.DIAMOND;
 		}
 
 		// Gold tools:
-		if (type == Material.GOLD_PICKAXE || type == Material.GOLD_SPADE
-				|| type == Material.GOLD_AXE || type == Material.GOLD_HOE
-				|| type == Material.GOLD_SWORD) {
+		if (type == Material.GOLDEN_PICKAXE || type == Material.GOLDEN_SHOVEL
+				|| type == Material.GOLDEN_AXE || type == Material.GOLDEN_HOE
+				|| type == Material.GOLDEN_SWORD) {
 			return Material.GOLD_INGOT;
 		}
 
 		// Iron tools:
-		if (type == Material.IRON_PICKAXE || type == Material.IRON_SPADE
+		if (type == Material.IRON_PICKAXE || type == Material.IRON_SHOVEL
 				|| type == Material.IRON_AXE || type == Material.IRON_HOE
 				|| type == Material.IRON_SWORD) {
 			return Material.IRON_INGOT;
 		}
 
 		// Stone tools:
-		if (type == Material.STONE_PICKAXE || type == Material.STONE_SPADE
+		if (type == Material.STONE_PICKAXE || type == Material.STONE_SHOVEL
 				|| type == Material.STONE_AXE || type == Material.STONE_HOE
 				|| type == Material.STONE_SWORD) {
 			return Material.COBBLESTONE;
@@ -316,9 +316,9 @@ public class Repair extends Ability {
 		}
 
 		// Gold armour:
-		if (type == Material.GOLD_HELMET || type == Material.GOLD_CHESTPLATE
-				|| type == Material.GOLD_LEGGINGS
-				|| type == Material.GOLD_BOOTS) {
+		if (type == Material.GOLDEN_HELMET || type == Material.GOLDEN_CHESTPLATE
+				|| type == Material.GOLDEN_LEGGINGS
+				|| type == Material.GOLDEN_BOOTS) {
 			return Material.GOLD_INGOT;
 		}
 

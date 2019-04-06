@@ -49,35 +49,35 @@
 
 "imports":[
 	{"type":"IRON_INGOT","price":62.5},
-	{"type":"GRILLED_PORK","price":7.5},
-	{"type":"COOKED_FISH","price":7.5},
+	{"type":"LEGACY_GRILLED_PORK","price":7.5},
+	{"type":"LEGACY_COOKED_FISH","price":7.5},
 	{"type":"COOKED_BEEF","price":7.5},
 	{"type":"COOKED_CHICKEN","price":6.25},
 	{"type":"BAKED_POTATO","price":6.25},
-	{"type":"WOOD","price":1.640625}
+	{"type":"LEGACY_WOOD","price":1.640625}
 ],
 
 "exports":[
 	{"type":"IRON_INGOT","price":37.5},
-	{"type":"GRILLED_PORK","price":4.5},
-	{"type":"COOKED_FISH","price":4.5},
+	{"type":"LEGACY_GRILLED_PORK","price":4.5},
+	{"type":"LEGACY_COOKED_FISH","price":4.5},
 	{"type":"COOKED_BEEF","price":4.5},
 	{"type":"COOKED_CHICKEN","price":3.75},
 	{"type":"BAKED_POTATO","price":3.75},
-	{"type":"WOOD","price":0.984375}
+	{"type":"LEGACY_WOOD","price":0.984375}
 ],
 
 "tradingPostExports":[
 	{"type":"BREAD","amount":6,"price":5.5,               "reqWork":2},
 	{"type":"BAKED_POTATO","amount":1,"price":5.5,        "reqWork":2},
-	{"type":"GRILLED_PORK","amount":1,"price":6.6,        "reqWork":2},
+	{"type":"LEGACY_GRILLED_PORK","amount":1,"price":6.6,        "reqWork":2},
 	{"type":"COOKED_BEEF","amount":1,"price":6.6,         "reqWork":2},
 	{"type":"COOKED_CHICKEN","amount":1,"price":5.6,      "reqWork":2},
 	
-	{"type":"WOOD","data":0,"amount":8,"price":1.44375,   "reqWork":2},
-	{"type":"WOOD","data":1,"amount":8,"price":1.44375,   "reqWork":2},
-	{"type":"WOOD","data":2,"amount":8,"price":1.44375,   "reqWork":2},
-	{"type":"WOOD","data":3,"amount":8,"price":1.44375,   "reqWork":2},
+	{"type":"LEGACY_WOOD","data":0,"amount":8,"price":1.44375,   "reqWork":2},
+	{"type":"LEGACY_WOOD","data":1,"amount":8,"price":1.44375,   "reqWork":2},
+	{"type":"LEGACY_WOOD","data":2,"amount":8,"price":1.44375,   "reqWork":2},
+	{"type":"LEGACY_WOOD","data":3,"amount":8,"price":1.44375,   "reqWork":2},
 	
 	{"type":"IRON_INGOT","amount":1,"price":55,           "reqWork":2}
 ],

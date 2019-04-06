@@ -108,7 +108,7 @@ public class VanillaConfiguration {
 		if (helmet != null)
 			if (helmet.getType() == Material.LEATHER_HELMET)
 				reduction = reduction + 0.04;
-			else if (helmet.getType() == Material.GOLD_HELMET)
+			else if (helmet.getType() == Material.GOLDEN_HELMET)
 				reduction = reduction + 0.08;
 			else if (helmet.getType() == Material.CHAINMAIL_HELMET)
 				reduction = reduction + 0.08;
@@ -121,7 +121,7 @@ public class VanillaConfiguration {
 		if (boots != null)
 			if (boots.getType() == Material.LEATHER_BOOTS)
 				reduction = reduction + 0.04;
-			else if (boots.getType() == Material.GOLD_BOOTS)
+			else if (boots.getType() == Material.GOLDEN_BOOTS)
 				reduction = reduction + 0.04;
 			else if (boots.getType() == Material.CHAINMAIL_BOOTS)
 				reduction = reduction + 0.04;
@@ -134,7 +134,7 @@ public class VanillaConfiguration {
 		if (leggings != null)
 			if (leggings.getType() == Material.LEATHER_LEGGINGS)
 				reduction = reduction + 0.08;
-			else if (leggings.getType() == Material.GOLD_LEGGINGS)
+			else if (leggings.getType() == Material.GOLDEN_LEGGINGS)
 				reduction = reduction + 0.12;
 			else if (leggings.getType() == Material.CHAINMAIL_LEGGINGS)
 				reduction = reduction + 0.16;
@@ -147,7 +147,7 @@ public class VanillaConfiguration {
 		if (chestplate != null)
 			if (chestplate.getType() == Material.LEATHER_CHESTPLATE)
 				reduction = reduction + 0.12;
-			else if (chestplate.getType() == Material.GOLD_CHESTPLATE)
+			else if (chestplate.getType() == Material.GOLDEN_CHESTPLATE)
 				reduction = reduction + 0.20;
 			else if (chestplate.getType() == Material.CHAINMAIL_CHESTPLATE)
 				reduction = reduction + 0.20;
@@ -485,9 +485,9 @@ public class VanillaConfiguration {
 			return 6;
 		case STONE_SWORD:
 			return 5;
-		case GOLD_SWORD:
+		case GOLDEN_SWORD:
 			return 4;
-		case WOOD_SWORD:
+		case WOODEN_SWORD:
 			return 4;
 
 		case DIAMOND_AXE:
@@ -496,9 +496,9 @@ public class VanillaConfiguration {
 			return 5;
 		case STONE_AXE:
 			return 4;
-		case GOLD_AXE:
+		case GOLDEN_AXE:
 			return 3;
-		case WOOD_AXE:
+		case WOODEN_AXE:
 			return 3;
 
 		case DIAMOND_PICKAXE:
@@ -507,20 +507,20 @@ public class VanillaConfiguration {
 			return 4;
 		case STONE_PICKAXE:
 			return 3;
-		case GOLD_PICKAXE:
+		case GOLDEN_PICKAXE:
 			return 2;
-		case WOOD_PICKAXE:
+		case WOODEN_PICKAXE:
 			return 2;
 
-		case DIAMOND_SPADE:
+		case DIAMOND_SHOVEL:
 			return 4;
-		case IRON_SPADE:
+		case IRON_SHOVEL:
 			return 3;
-		case STONE_SPADE:
+		case STONE_SHOVEL:
 			return 2;
-		case GOLD_SPADE:
+		case GOLDEN_SHOVEL:
 			return 1;
-		case WOOD_SPADE:
+		case WOODEN_SHOVEL:
 			return 1;
 		default:
 			return 1;

@@ -222,9 +222,8 @@ public class Home extends Building {
 		Material type = block.getType();
 		if (type == Material.CHEST || type == Material.TRAPPED_CHEST
 				|| type == Material.BREWING_STAND
-				|| block.getType() == Material.FURNACE
-				|| type == Material.BURNING_FURNACE
-				|| block.getType() == Material.ENCHANTMENT_TABLE) {
+				|| type == Material.FURNACE
+				|| type == Material.ENCHANTING_TABLE) {
 
 			if (!getChunkBundle().hasPermission(sagaPlayer,
 					SettlementPermission.OPEN_HOME_CONTAINERS)

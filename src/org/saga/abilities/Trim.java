@@ -142,7 +142,7 @@ public class Trim extends Ability {
 
 		// Play effect:
 		player.playEffect(clickedBlock.getLocation(), Effect.STEP_SOUND,
-				Material.LEAVES.getId());
+				Material.OAK_LEAVES);
 
 		if (getSagaLiving() instanceof SagaPlayer)
 			StatsEffectHandler.playAnimateArm((SagaPlayer) getSagaLiving());
@@ -165,77 +165,25 @@ public class Trim extends Ability {
 		if (greens.size() > GREENS_LIMIT)
 			return;
 
-		Block nextAnchor = null;
+		BlockFace[] directions = {
+			BlockFace.NORTH,
+			BlockFace.NORTH_EAST,
+			BlockFace.EAST,
+			BlockFace.SOUTH_EAST,
+			BlockFace.SOUTH,
+			BlockFace.SOUTH_WEST,
+			BlockFace.WEST,
+			BlockFace.NORTH_WEST,
+			BlockFace.UP,
+			BlockFace.DOWN,
+		};
 
-		// North:
-		nextAnchor = anchor.getRelative(BlockFace.NORTH);
-		if (nextAnchor.getType().equals(Material.LEAVES)
-				&& !greens.contains(nextAnchor)) {
-			greens.add(nextAnchor);
-			getGreens(nextAnchor, greens);
-		}
-
-		// North-east:
-		nextAnchor = anchor.getRelative(BlockFace.NORTH_EAST);
-		if (isGreen(nextAnchor) && !greens.contains(nextAnchor)) {
-			greens.add(nextAnchor);
-			getGreens(nextAnchor, greens);
-		}
-
-		// East:
-		nextAnchor = anchor.getRelative(BlockFace.EAST);
-		if (isGreen(nextAnchor) && !greens.contains(nextAnchor)) {
-			greens.add(nextAnchor);
-			getGreens(nextAnchor, greens);
-		}
-
-		// South-east:
-		nextAnchor = anchor.getRelative(BlockFace.SOUTH_EAST);
-		if (isGreen(nextAnchor) && !greens.contains(nextAnchor)) {
-			greens.add(nextAnchor);
-			getGreens(nextAnchor, greens);
-		}
-
-		// South:
-		nextAnchor = anchor.getRelative(BlockFace.SOUTH);
-		if (isGreen(nextAnchor) && !greens.contains(nextAnchor)) {
-			greens.add(nextAnchor);
-			getGreens(nextAnchor, greens);
-		}
-
-		// South-west:
-		nextAnchor = anchor.getRelative(BlockFace.SOUTH_WEST);
-		if (isGreen(nextAnchor) && !greens.contains(nextAnchor)) {
-			greens.add(nextAnchor);
-			getGreens(nextAnchor, greens);
-		}
-
-		// West:
-		nextAnchor = anchor.getRelative(BlockFace.WEST);
-		if (isGreen(nextAnchor) && !greens.contains(nextAnchor)) {
-			greens.add(nextAnchor);
-			getGreens(nextAnchor, greens);
-		}
-
-		// North-west:
-		nextAnchor = anchor.getRelative(BlockFace.NORTH_WEST);
-		if (isGreen(nextAnchor) && !greens.contains(nextAnchor)) {
-			greens.add(nextAnchor);
-			getGreens(nextAnchor, greens);
-		}
-
-		// Up:
-		nextAnchor = anchor.getRelative(BlockFace.UP);
-		if (isGreen(nextAnchor) && !greens.contains(nextAnchor)) {
-			greens.add(nextAnchor);
-			getGreens(nextAnchor, greens);
-		}
-
-		// Down:
-		nextAnchor = anchor.getRelative(BlockFace.DOWN);
-		if (isGreen(nextAnchor) && !greens.contains(nextAnchor)) {
-			greens.add(nextAnchor);
-			getGreens(nextAnchor, greens);
+		for (BlockFace blockFace: directions) {
+			Block nextAnchor = anchor.getRelative(blockFace);
+			if (isGreen(nextAnchor) && !greens.contains(nextAnchor)) {
+				greens.add(nextAnchor);
+				getGreens(nextAnchor, greens);
+			}
 		}
 
 	}
@@ -249,13 +197,17 @@ public class Trim extends Ability {
 	 */
 	private static boolean isGreen(Block block) {
 
-		if (block.getType() == Material.LEAVES)
-			return true;
-		if (block.getType() == Material.LONG_GRASS)
-			return true;
-		if (block.getType() == Material.RED_ROSE)
-			return true;
-		return block.getType() == Material.YELLOW_FLOWER;
+		Material type = block.getType();
+		return type == Material.ACACIA_LEAVES
+				|| type == Material.BIRCH_LEAVES
+				|| type == Material.DARK_OAK_LEAVES
+				|| type == Material.JUNGLE_LEAVES
+				|| type == Material.OAK_LEAVES
+				|| type == Material.SPRUCE_LEAVES
+				|| type == Material.TALL_GRASS
+				|| type == Material.SUNFLOWER
+				|| type == Material.POPPY
+				|| type == Material.DANDELION;
 
 	}
 
